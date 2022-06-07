@@ -23,7 +23,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "quarto-blog",
+    "title": "BLOG",
     "section": "",
     "text": "Uma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\nblog\n\n\nteste\n\n\n\n\n\n\n\n\n\n\n\n5/31/22\n\n\nLucas Carmo\n\n\n\n\n\n\nNenhum item correspondente"
   },
@@ -33,5 +33,12 @@
     "title": "Primeira postagem",
     "section": "",
     "text": "Esta é a primeira vez que eu estou usando o quarto para escrita de blogs.\n\n\nCódigo\nx <- \"lucas\"\n\nimprimir_nome <- function(nome) print(x)\n\nimprimir_nome(x)\n\n\n[1] \"lucas\""
+  },
+  {
+    "objectID": "main.html",
+    "href": "main.html",
+    "title": "Main",
+    "section": "",
+    "text": "About this blog"
   }
 ]

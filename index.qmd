@@ -1,9 +1,9 @@
 ---
-title: "quarto-blog"
+title: "BLOG"
 listing:
   contents: posts
   sort: "date desc"
-  type: "default"
+  type: "default" 
   categories: true
   sort-ui: false
   filter-ui: true
