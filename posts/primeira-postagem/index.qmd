@@ -30,11 +30,10 @@ $$ e = mc^2$$
 
 $\frac{\alpha}{\beta}$ 
 
-{{< shortcodes >}}
+{{< meta title >}}
 
 {{< meta subtitle >}}
 
-{{< meta categories >}}
 
 :::{.callout-tip collapse="true"}
 
@@ -45,27 +44,12 @@ default callout é a melhor forma de escrever callouts que não ficam ocupando m
 
 :::{.panel-tabset}
 
-## R
+## Lucas
 
-```{r}
-#| code-fold: false
-x <- 19
+Lucas isso etc e aquilo
 
-```
+## Flávia
 
-
-## Python
-
-```{python}
-#| code-fold: false
-x = 20
-```
-
-## Julia
-
-```{julia}
-#| code-fold: false
-\eta = 69
-```
+Fulano ciclano beltrano
 
 :::

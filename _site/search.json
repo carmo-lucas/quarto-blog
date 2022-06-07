@@ -2,37 +2,16 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Sobre",
     "section": "",
     "text": "About this blog"
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code."
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "BLOG",
+    "title": "blog",
     "section": "",
-    "text": "Uma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\nblog\n\n\nteste\n\n\n\n\n\n\n\n\n\n\n\n5/31/22\n\n\nLucas Carmo\n\n\n\n\n\n\nNenhum item correspondente"
-  },
-  {
-    "objectID": "posts/primeira-postagem/index.html",
-    "href": "posts/primeira-postagem/index.html",
-    "title": "Primeira postagem",
-    "section": "",
-    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\n{{< shortcodes >}}\nUma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nRPythonJulia\n\n\n\nx <- 19\n\n\n\n\nx = 20\n\n\n\n\nx = 20"
+    "text": "Uma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\nblog\n\n\nteste\n\n\n\n\n\n\n\n\n\n\n\n31/05/2022\n\n\nLucas Carmo\n\n\n\n\n\n\nNenhum item correspondente"
   },
   {
     "objectID": "main.html",
@@ -42,17 +21,45 @@
     "text": "About this blog"
   },
   {
-    "objectID": "posts/primeira-postagem/index.html#r",
-    "href": "posts/primeira-postagem/index.html#r",
+    "objectID": "posts/primeira-postagem/index.html",
+    "href": "posts/primeira-postagem/index.html",
     "title": "Primeira postagem",
-    "section": "R",
-    "text": "R\n\n\nCódigo\nx <- 19"
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
   },
   {
-    "objectID": "posts/primeira-postagem/index.html#python",
-    "href": "posts/primeira-postagem/index.html#python",
+    "objectID": "posts/primeira-postagem copy/index.html",
+    "href": "posts/primeira-postagem copy/index.html",
     "title": "Primeira postagem",
-    "section": "Python",
-    "text": "Python\n\n\nCódigo\nx = 20\n\n\n:::"
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n?var:ph_agua\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
+  },
+  {
+    "objectID": "posts/primeira-postagem copy 2/index.html",
+    "href": "posts/primeira-postagem copy 2/index.html",
+    "title": "Primeira postagem",
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n?var:ph_agua\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
+  },
+  {
+    "objectID": "posts/primeira-postagem copy 3/index.html",
+    "href": "posts/primeira-postagem copy 3/index.html",
+    "title": "Primeira postagem",
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n?var:ph_agua\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
+  },
+  {
+    "objectID": "posts/primeira-postagem copy 4/index.html",
+    "href": "posts/primeira-postagem copy 4/index.html",
+    "title": "Primeira postagem",
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n?var:ph_agua\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
+  },
+  {
+    "objectID": "posts/primeira-postagem copy 5/index.html",
+    "href": "posts/primeira-postagem copy 5/index.html",
+    "title": "Primeira postagem",
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n?var:ph_agua\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
   }
 ]

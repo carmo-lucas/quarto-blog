@@ -2,19 +2,20 @@ project:
   type: website
 
 website:
-  title: "Attempting Science"
+  site-url: "hhtps://www.lucascarmo.com.br"
+  title: "lucas carmo"
   navbar:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/carmo-lucas
       - icon: twitter
-        href: https://twitter.com
+        href: https://twitter.com/carmo_lcl
       - icon: linkedin
-        href: https://linkedin.com
+        href: https://linkedin.com/in/lucas-carmo-ba4351b8/
 format:
   html:
-    theme: lux
+    theme: sandstone
     css: styles.css
     code-copy: true
     code-fold: true
