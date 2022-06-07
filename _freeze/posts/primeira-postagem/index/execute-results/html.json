@@ -1,0 +1,14 @@
+{
+  "hash": "bf68bfefb785121e020723a87f755e00",
+  "result": {
+    "markdown": "---\nauthor: \"Lucas Carmo\"\ntitle: \"Primeira postagem\"\nsubtitle: \"Uma primeira impressão do quarto e quais as minhas intenções\"\nformat: html\ndate: 2022-05-31\ncategories: [blog, teste]\n---\n\n\n# Intro\n\nEsta é a primeira vez que eu estou usando o `quarto` para escrita de blogs.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nx <- \"lucas\"\n\nimprimir_nome <- function(nome) print(x)\n\nimprimir_nome(x)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"lucas\"\n```\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

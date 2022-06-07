@@ -1,0 +1,25 @@
+---
+author: "Lucas Carmo"
+title: "Primeira postagem"
+subtitle: "Uma primeira impressão do quarto e quais as minhas intenções"
+format: html
+date: 2022-05-31
+categories: [blog, teste]
+---
+
+# Intro
+
+Esta é a primeira vez que eu estou usando o `quarto` para escrita de blogs.
+
+
+```{r}
+
+x <- "lucas"
+
+imprimir_nome <- function(nome) print(x)
+
+imprimir_nome(x)
+
+```
+
+
