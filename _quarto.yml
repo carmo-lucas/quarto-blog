@@ -20,5 +20,5 @@ format:
     code-fold: true
     code-line-numbers: true
 
-lang: pt-BR
+language: _pt-BR-personalizado.yml
 smooth-scroll: true
