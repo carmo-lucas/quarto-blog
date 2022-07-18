@@ -1,0 +1,97 @@
+---
+author: "Lucas Carmo"
+title: "Usando o PowerToys para criar tarefas no ClickUp"
+subtitle: "O processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run"
+format: html
+date: 2022-07-14
+categories: [powershell, powertoys, n8n, clickup]
+---
+
+# tl;dr
+
+# Porque eu quero integrar o PowerToys ao ClickUp?
+
+Eu tenho usado o clickup para registrar algumas tarefas pessoais e da empresa.
+O objetivo maior é escrever tarefas de uma forma ágil para que eu não tenha que entrar no site do clickup e navegar por várias janelas até achar o local certo para a criação da mesma.
+
+## Mas o que é o PowerToys? 
+
+PoywerToys é um software open-source, desenvolvido pela comunidade que incrementa a experiência do windows
+através de módulos de: 
+seleção de cores;
+renomeação de arquivos;
+administração de janelas
+e utilitários de mouse e teclado e outros,
+porém a mais interessante destas ferramentas (para mim) é o PowerToys Run.
+
+O Run é um módulo de pesquisa parecido com a busca do windows porém com funcionalidades extra.
+Através dele é possível calcular conversões de medidas, pesquisar arquivos, consultar cotações de moedas e navegar até URL.
+Contudo a mais poderosa dessas fuções é a execução de comandos no shell.
+
+# Como fazer isso?
+
+A primeira etapa foi criar o script em `.ps1` que execute a função que eu quero que faça:
+criar um arquivo de texto temporário que irá passar as informações para o workflow do n8n. 
+
+## Mas o que é n8n?
+
+O n8n é um software que serve para criação de workflows baseados em nódulos (nodes).
+Cada node recebe dados de um ou mais nodes, processa-o e repassa para um ou mais nodes,
+ou seja,
+o dado inicial é processado através de várias etapas para que seja criada um dado final,
+geralmente, mas não necessariamente, com a intenção de gerar conhecimento.
+
+---
+
+Eu nunca aprendi `powershell` então tive que ir atrás de referências de como criar uma função nesta linguagem que me permitisse passar o nome e a prioridade de uma nova tarefa.
+
+A referência que eu usei para este script é de um
+[vídeo](https://www.youtube.com/watch?v=UVUd9_k9C6A&t=20735s)
+que explica como criar scripts e funções e demonstra como torná-los executáveis.
+
+Eu aprendi que para que um script seja executável, é necessário que o arquivo seja salvo com
+a extensão `.ps1m` 
+o que o identifica como sendo um módulo do powershell e também deve estar salvo no diretório 
+`%user%\Documents\WindowsPowerShell\Modules\MeuModulo`.
+É importante também garantir que a pasta e o nome do arquivo sejam iguais.
+
+Este script contém a seguinte função `task`:
+
+```powershell
+# MeuModulo.ps1m
+
+function task {
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory=$True)]
+    $nome = $1,
+    $prioridade = $2
+)
+
+$json = "{
+    ""name"": ""$nome"",
+    ""priority"": $prioridade
+}"
+
+Out-File -InputObject $json -FilePath "~\.n8n\Automations.json" -Encoding utf8
+exit
+}
+```
+A função `task` aceita dois argumentos; o nome e prioridade da tarefa e salva-os em um
+arquivo que será usado como uma forma de cache para a execução das etapas seguintes do workflow.
+Este arquivo é formatado no modelo `json` para que sejam facilmente lidas pelo n8n posteriormente.
+
+
+
+`%localappdata%\Microsoft\PowerToys\PowerToys Run\Settings\Plugins\Microsoft.Plugin.Shell` 
+
+```json
+{
+  "Shell": 1, \\ Mudar de 2 para 1
+  "ReplaceWinR": false,
+  "LeaveShellOpen": false,
+  "RunAsAdministrator": false,
+  "Count": {}
+}
+```
+

@@ -37,7 +37,7 @@ $\frac{\alpha}{\beta}$
 
 :::{.callout-tip collapse="true"}
 
-default callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço
+callout com `collapse="true"` é a melhor forma de escrever callouts que não ficam ocupando muito espaço
 
 :::
 

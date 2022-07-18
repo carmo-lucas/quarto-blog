@@ -17,6 +17,7 @@ format:
   html:
     theme: sandstone
     css: styles.css
+    code-overflow: scroll
     code-copy: true
     code-fold: true
     code-line-numbers: true
