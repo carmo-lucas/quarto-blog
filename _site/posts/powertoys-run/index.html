@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-0.9.535">
@@ -8,7 +8,7 @@
 
 <meta name="author" content="Lucas Carmo">
 
-<title>lucas carmo - Primeira postagem</title>
+<title>lucas carmo - Usando o PowerToys para criar tarefas no ClickUp</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,20 +106,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "type": "overlay",
   "limit": 20,
   "language": {
-    "search-no-results-text": "Sem resultados",
-    "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar link para esta busca",
-    "search-hide-matches-text": "Esconder matches adicionais",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "mais matches neste documento",
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
     "search-clear-button-title": "Limpar",
     "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Submeter"
+    "search-submit-button-title": "Enviar"
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -166,11 +165,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Primeira postagem</h1>
-            <p class="subtitle lead">Uma primeira impressão do quarto e quais as minhas intenções</p>
+      <h1 class="title">Usando o PowerToys para criar tarefas no ClickUp</h1>
+            <p class="subtitle lead">O processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run</p>
                                 <div class="quarto-categories">
-                <div class="quarto-category">blog</div>
-                <div class="quarto-category">teste</div>
+                <div class="quarto-category">powershell</div>
+                <div class="quarto-category">powertoys</div>
+                <div class="quarto-category">n8n</div>
+                <div class="quarto-category">clickup</div>
               </div>
                   </div>
   </div>
@@ -180,13 +181,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
       
       <div>
-<<<<<<< HEAD
-      <div class="quarto-title-meta-heading">Publicado</div>
-=======
       <div class="quarto-title-meta-heading"></div>
->>>>>>> 169196b371c086aa5a76af492cc72ae0e0fbbec0
       <div class="quarto-title-meta-contents">
-        <p class="date">31 de maio de 2022</p>
+        <p class="date">14 de julho de 2022</p>
       </div>
     </div>
       
@@ -203,79 +200,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<section id="intro" class="level1">
-<h1>Intro</h1>
-<p>Esta é a primeira vez que eu estou usando o <code>quarto</code> para escrita de blogs.</p>
-<div class="cell">
-<details>
-<summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="ot">&lt;-</span> <span class="st">"lucas"</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>imprimir_nome <span class="ot">&lt;-</span> <span class="cf">function</span>(nome) <span class="fu">print</span>(x)</span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">imprimir_nome</span>(x)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "lucas"</code></pre>
-</div>
-</div>
+<section id="tldr" class="level1">
+<h1>tl;dr</h1>
 </section>
-<section id="equações" class="level1">
-<h1>Equações</h1>
-<p><span class="math display">\[ \LaTeX \]</span></p>
-<p><span class="math display">\[ e = mc^2\]</span></p>
-<p><span class="math inline">\(\frac{\alpha}{\beta}\)</span></p>
-<<<<<<< HEAD
-<p><code>{{&lt; shortcodes &gt;}}</code></p>
-=======
-<p>Primeira postagem</p>
->>>>>>> 169196b371c086aa5a76af492cc72ae0e0fbbec0
-<p>Uma primeira impressão do quarto e quais as minhas intenções</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Dica
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>default callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço</p>
-</div>
-</div>
-</div>
-<div class="panel-tabset">
-<<<<<<< HEAD
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="ot">&lt;-</span> <span class="dv">19</span></span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="op">=</span> <span class="dv">20</span></span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-=======
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Lucas</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Flávia</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>Lucas isso etc e aquilo</p>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>Fulano ciclano beltrano</p>
->>>>>>> 169196b371c086aa5a76af492cc72ae0e0fbbec0
-</div>
-</div>
-</div>
-<p>Maybe i’ll try some equations</p>
-<p><span class="math display">\[ \eta = \frac{\tau}{\dot\gamma} \]</span></p>
+<section id="porque-eu-quero-integrar-o-powertoys-ao-clickup" class="level1">
+<h1>Porque eu quero integrar o PowerToys ao ClickUp?</h1>
+<p>Eu tenho usado o clickup para registrar algumas tarefas pessoais e da empresa. O objetivo maior é escrever tarefas de uma forma ágil para que eu não tenha que entrar no site do clickup e navegar por várias janelas até achar o local certo para a criação da mesma.</p>
+<section id="mas-o-que-é-o-powertoys" class="level2">
+<h2 class="anchored" data-anchor-id="mas-o-que-é-o-powertoys">Mas o que é o PowerToys?</h2>
+<p>PoywerToys é um software open-source, desenvolvido pela comunidade que incrementa a experiência do windows através de módulos de: seleção de cores; renomeação de arquivos; administração de janelas e utilitários de mouse e teclado e outros, porém a mais interessante destas ferramentas (para mim) é o PowerToys Run.</p>
+<p>O Run é um módulo de pesquisa parecido com a busca do windows porém com funcionalidades extra. Através dele é possível calcular conversões de medidas, pesquisar arquivos, consultar cotações de moedas e navegar até URL. Contudo a mais poderosa dessas fuções é a execução de comandos no shell.</p>
+</section>
+</section>
+<section id="como-fazer-isso" class="level1">
+<h1>Como fazer isso?</h1>
+<p>A primeira etapa foi criar o script em <code>.ps1</code> que execute a função que eu quero que faça: criar um arquivo de texto temporário que irá passar as informações para o workflow do n8n.</p>
+<section id="mas-o-que-é-n8n" class="level2">
+<h2 class="anchored" data-anchor-id="mas-o-que-é-n8n">Mas o que é n8n?</h2>
+<p>O n8n é um software que serve para criação de workflows baseados em nódulos (nodes). Cada node recebe dados de um ou mais nodes, processa-o e repassa para um ou mais nodes, ou seja, o dado inicial é processado através de várias etapas para que seja criada um dado final, geralmente, mas não necessariamente, com a intenção de gerar conhecimento.</p>
+<hr>
+<p>Eu nunca aprendi <code>powershell</code> então tive que ir atrás de referências de como criar uma função nesta linguagem que me permitisse passar o nome e a prioridade de uma nova tarefa.</p>
+<p>A referência que eu usei para este script é de um <a href="https://www.youtube.com/watch?v=UVUd9_k9C6A&amp;t=20735s">vídeo</a> que explica como criar scripts e funções e demonstra como torná-los executáveis.</p>
+<p>Eu aprendi que para que um script seja executável, é necessário que o arquivo seja salvo com a extensão <code>.ps1m</code> o que o identifica como sendo um módulo do powershell e também deve estar salvo no diretório <code>%user%\Documents\WindowsPowerShell\Modules\MeuModulo</code>. É importante também garantir que a pasta e o nome do arquivo sejam iguais.</p>
+<p>Este script contém a seguinte função <code>task</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource powershell number-lines code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># MeuModulo.ps1m</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">function</span> task <span class="op">{</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="op">[</span>CmdletBinding<span class="op">()]</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">param</span><span class="op">(</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="op">[</span>Parameter<span class="op">(</span>Mandatory<span class="op">=</span><span class="va">$True</span><span class="op">)]</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="va">$nome</span> <span class="op">=</span> $1<span class="op">,</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="va">$prioridade</span> <span class="op">=</span> $2</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="op">)</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="va">$json</span> <span class="op">=</span> <span class="st">"{</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="st">""</span>name<span class="st">""</span><span class="op">:</span> <span class="st">""</span><span class="va">$nome</span><span class="st">""</span><span class="op">,</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>    <span class="st">""</span>priority<span class="st">""</span><span class="op">:</span> <span class="va">$prioridade</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="op">}</span><span class="st">"</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="fu">Out-File</span> <span class="op">-</span>InputObject <span class="va">$json</span> <span class="op">-</span>FilePath <span class="st">"~\.n8n\Automations.json"</span> <span class="op">-</span>Encoding utf8</span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="kw">exit</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="op">}</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A função <code>task</code> aceita dois argumentos; o nome e prioridade da tarefa e salva-os em um arquivo que será usado como uma forma de cache para a execução das etapas seguintes do workflow. Este arquivo é formatado no modelo <code>json</code> para que sejam facilmente lidas pelo n8n posteriormente.</p>
+<p><code>%localappdata%\Microsoft\PowerToys\PowerToys Run\Settings\Plugins\Microsoft.Plugin.Shell</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="dt">"Shell"</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span> <span class="er">\\</span> <span class="er">Mudar</span> <span class="er">de</span> <span class="er">2</span> <span class="er">para</span> <span class="er">1</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="dt">"ReplaceWinR"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="dt">"LeaveShellOpen"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="dt">"RunAsAdministrator"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="dt">"Count"</span><span class="fu">:</span> <span class="fu">{}</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="fu">}</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -301,7 +278,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiado!");
+    button.setAttribute("title", "Copiada");
     setTimeout(function() {
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');

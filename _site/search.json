@@ -2,37 +2,16 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Sobre",
     "section": "",
     "text": "About this blog"
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code."
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "BLOG",
+    "title": "blog",
     "section": "",
-    "text": "Uma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\nblog\n\n\nteste\n\n\n\n\n\n\n\n\n\n\n\n5/31/22\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
-  },
-  {
-    "objectID": "posts/primeira-postagem/index.html",
-    "href": "posts/primeira-postagem/index.html",
-    "title": "Primeira postagem",
-    "section": "",
-    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\n{{< shortcodes >}}\nUma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nRPython\n\n\n\nx <- 19\n\n\n\n\nx = 20\n\n\n\n\nMaybe i’ll try some equations\n\\[ \\eta = \\frac{\\tau}{\\dot\\gamma} \\]"
+    "text": "O processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n\n\n14/07/2022\n\n\nLucas Carmo\n\n\n\n\n\n\n\n\n\nUma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\nblog\n\n\nteste\n\n\n\n\n\n\n\n\n\n\n\n31/05/2022\n\n\nLucas Carmo\n\n\n\n\n\n\nNenhum item correspondente"
   },
   {
     "objectID": "main.html",
@@ -42,17 +21,66 @@
     "text": "About this blog"
   },
   {
-    "objectID": "posts/primeira-postagem/index.html#r",
-    "href": "posts/primeira-postagem/index.html#r",
+    "objectID": "posts/primeira-postagem/index.html",
+    "href": "posts/primeira-postagem/index.html",
     "title": "Primeira postagem",
-    "section": "R",
-    "text": "R\n\n\nCódigo\nx <- 19"
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
   },
   {
-    "objectID": "posts/primeira-postagem/index.html#python",
-    "href": "posts/primeira-postagem/index.html#python",
+    "objectID": "posts/primeira-postagem copy/index.html",
+    "href": "posts/primeira-postagem copy/index.html",
     "title": "Primeira postagem",
-    "section": "Python",
-    "text": "Python\n\n\nCódigo\nx = 20\n\n\n:::"
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n?var:ph_agua\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
+  },
+  {
+    "objectID": "posts/primeira-postagem copy 2/index.html",
+    "href": "posts/primeira-postagem copy 2/index.html",
+    "title": "Primeira postagem",
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n?var:ph_agua\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
+  },
+  {
+    "objectID": "posts/primeira-postagem copy 3/index.html",
+    "href": "posts/primeira-postagem copy 3/index.html",
+    "title": "Primeira postagem",
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n?var:ph_agua\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
+  },
+  {
+    "objectID": "posts/primeira-postagem copy 4/index.html",
+    "href": "posts/primeira-postagem copy 4/index.html",
+    "title": "Primeira postagem",
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n?var:ph_agua\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
+  },
+  {
+    "objectID": "posts/primeira-postagem copy 5/index.html",
+    "href": "posts/primeira-postagem copy 5/index.html",
+    "title": "Primeira postagem",
+    "section": "",
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n?var:ph_agua\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano"
+  },
+  {
+    "objectID": "posts/powertoys-run/index.html",
+    "href": "posts/powertoys-run/index.html",
+    "title": "Otimizando o PowerToys Run",
+    "section": "",
+    "text": "Porque eu quero integrar o PowerToys ao ClickUp?\nEu tenho usado o clickup para registrar algumas tarefas pessoais e da empresa. O objetivo maior é escrever tarefas de uma forma ágil para que eu não tenha que entrar no site do clickup e navegar por várias janelas até achar o local certo para a criação da mesma.\nMas o que é o powertoys? É um software desenvolvido pela comunidade\nA primeira etapa foi criar o script em .ps1 que faça a função que eu quero que faça, que é basicamente criar um arquivo de texto temporário que irá passar as informações para o workflow do n8n.\nA referência que eu usei para este script é de um vídeo que explica como criar variáveis e funções e demonstra como tornar estes executáveis.\n%user%\\Documents\\WindowsPowerShell\\Modules`\nEste script contém uma função\nfunction task {\n[CmdletBinding()]\nparam(\n    [Parameter(Mandatory=$True)]\n    [string]$Nome = $1,\n    [string]$Prioridade = $2\n)\n\n$full = \"{name: '$Nome', priority: $Prioridade}\"\n\nWrite-Output $full\n}\n%localappdata%\\Microsoft\\PowerToys\\PowerToys Run\\Settings\\Plugins\\Microsoft.Plugin.Shell\n{\n  \"Shell\": 1, \\\\ Mudar de 2 para 1\n  \"ReplaceWinR\": false,\n  \"LeaveShellOpen\": false,\n  \"RunAsAdministrator\": false,\n  \"Count\": {}\n}"
+  },
+  {
+    "objectID": "posts/powertoys-run/index.html#mas-o-que-é-o-powertoys",
+    "href": "posts/powertoys-run/index.html#mas-o-que-é-o-powertoys",
+    "title": "Usando o PowerToys para criar tarefas no ClickUp",
+    "section": "Mas o que é o PowerToys?",
+    "text": "Mas o que é o PowerToys?\nPoywerToys é um software open-source, desenvolvido pela comunidade que incrementa a experiência do windows através de módulos de: seleção de cores; renomeação de arquivos; administração de janelas e utilitários de mouse e teclado e outros, porém a mais interessante destas ferramentas (para mim) é o PowerToys Run.\nO Run é um módulo de pesquisa parecido com a busca do windows porém com funcionalidades extra. Através dele é possível calcular conversões de medidas, pesquisar arquivos, consultar cotações de moedas e navegar até URL. Contudo a mais poderosa dessas fuções é a execução de comandos no shell."
+  },
+  {
+    "objectID": "posts/powertoys-run/index.html#mas-o-que-é-n8n",
+    "href": "posts/powertoys-run/index.html#mas-o-que-é-n8n",
+    "title": "Usando o PowerToys para criar tarefas no ClickUp",
+    "section": "Mas o que é n8n?",
+    "text": "Mas o que é n8n?\nO n8n é um software que serve para criação de workflows baseados em nódulos (nodes). Cada node recebe dados de um ou mais nodes, processa-o e repassa para um ou mais nodes, ou seja, o dado inicial é processado através de várias etapas para que seja criada um dado final, geralmente, mas não necessariamente, com a intenção de gerar conhecimento.\n\nEu nunca aprendi powershell então tive que ir atrás de referências de como criar uma função nesta linguagem que me permitisse passar o nome e a prioridade de uma nova tarefa.\nA referência que eu usei para este script é de um vídeo que explica como criar scripts e funções e demonstra como torná-los executáveis.\nEu aprendi que para que um script seja executável, é necessário que o arquivo seja salvo com a extensão .ps1m o que o identifica como sendo um módulo do powershell e também deve estar salvo no diretório %user%\\Documents\\WindowsPowerShell\\Modules\\MeuModulo. É importante também garantir que a pasta e o nome do arquivo sejam iguais.\nEste script contém a seguinte função task:\n# MeuModulo.ps1m\n\nfunction task {\n[CmdletBinding()]\nparam(\n    [Parameter(Mandatory=$True)]\n    $nome = $1,\n    $prioridade = $2\n)\n\n$json = \"{\n    \"\"name\"\": \"\"$nome\"\",\n    \"\"priority\"\": $prioridade\n}\"\n\nOut-File -InputObject $json -FilePath \"~\\.n8n\\Automations.json\" -Encoding utf8\nexit\n}\nA função task aceita dois argumentos; o nome e prioridade da tarefa e salva-os em um arquivo que será usado como uma forma de cache para a execução das etapas seguintes do workflow. Este arquivo é formatado no modelo json para que sejam facilmente lidas pelo n8n posteriormente.\n%localappdata%\\Microsoft\\PowerToys\\PowerToys Run\\Settings\\Plugins\\Microsoft.Plugin.Shell\n{\n  \"Shell\": 1, \\\\ Mudar de 2 para 1\n  \"ReplaceWinR\": false,\n  \"LeaveShellOpen\": false,\n  \"RunAsAdministrator\": false,\n  \"Count\": {}\n}"
   }
 ]
