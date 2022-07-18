@@ -23,11 +23,11 @@ callout-warning-caption: "Aviso"
 callout-important-caption: "Importante"
 callout-caution-caption: "Perigo"
 
-code-summary: "Code"
+code-summary: "`Code`"
 
-code-tools-menu-caption: "Code"
-code-tools-show-all-code: "Mostrar Code"
-code-tools-hide-all-code: "Esconder Code"
+code-tools-menu-caption: "`Code`"
+code-tools-show-all-code: "Mostrar `Code`"
+code-tools-hide-all-code: "Esconder `Code`"
 code-tools-view-source: "Ver Source"
 code-tools-source-code: "Source Code"
 

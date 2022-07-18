@@ -25,14 +25,14 @@
     "href": "index.html",
     "title": "BLOG",
     "section": "",
-    "text": "Uma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\nblog\n\n\nteste\n\n\n\n\n\n\n\n\n\n\n\n5/31/22\n\n\nLucas Carmo\n\n\n\n\n\n\nNenhum item correspondente"
+    "text": "Uma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\nblog\n\n\nteste\n\n\n\n\n\n\n\n\n\n\n\n5/31/22\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
   },
   {
     "objectID": "posts/primeira-postagem/index.html",
     "href": "posts/primeira-postagem/index.html",
     "title": "Primeira postagem",
     "section": "",
-    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\n{{< shortcodes >}}\nUma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nRPythonJulia\n\n\n\nx <- 19\n\n\n\n\nx = 20\n\n\n\n\nx = 20"
+    "text": "Equações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\n{{< shortcodes >}}\nUma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\n\n\nDica\n\n\n\n\n\ndefault callout é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nRPython\n\n\n\nx <- 19\n\n\n\n\nx = 20\n\n\n\n\nMaybe i’ll try some equations\n\\[ \\eta = \\frac{\\tau}{\\dot\\gamma} \\]"
   },
   {
     "objectID": "main.html",

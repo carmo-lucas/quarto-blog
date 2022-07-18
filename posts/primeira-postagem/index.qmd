@@ -30,11 +30,9 @@ $$ e = mc^2$$
 
 $\frac{\alpha}{\beta}$ 
 
-{{< shortcodes >}}
+`{{< shortcodes >}}`
 
 {{< meta subtitle >}}
-
-{{< meta categories >}}
 
 :::{.callout-tip collapse="true"}
 
@@ -45,7 +43,7 @@ default callout é a melhor forma de escrever callouts que não ficam ocupando m
 
 :::{.panel-tabset}
 
-## R
+# R
 
 ```{r}
 #| code-fold: false
@@ -53,19 +51,16 @@ x <- 19
 
 ```
 
-
-## Python
+# Python
 
 ```{python}
 #| code-fold: false
 x = 20
 ```
 
-## Julia
-
-```{julia}
-#| code-fold: false
-\eta = 69
-```
 
 :::
+
+Maybe i'll try some equations
+
+$$ \eta = \frac{\tau}{\dot\gamma} $$ 
