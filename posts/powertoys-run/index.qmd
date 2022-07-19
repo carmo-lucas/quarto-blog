@@ -9,6 +9,8 @@ categories: [powershell, powertoys, n8n, clickup]
 
 # tl;dr
 
+Este artigo descreve como utilizad 
+
 # Porque eu quero integrar o PowerToys ao ClickUp?
 
 Eu tenho usado o clickup para registrar algumas tarefas pessoais e da empresa.
@@ -31,11 +33,11 @@ Contudo a mais poderosa dessas fuções é a execução de comandos no shell.
 # Como fazer isso?
 
 A primeira etapa foi criar o script em `.ps1` que execute a função que eu quero que faça:
-criar um arquivo de texto temporário que irá passar as informações para o workflow do n8n. 
+criar um arquivo de texto temporário que irá passar as informações para o workflow do [n8n](https://www.n8n.io). 
 
-## Mas o que é n8n?
+## Mas o que é [n8n](https://www.n8n.io)?
 
-O n8n é um software que serve para criação de workflows baseados em nódulos (nodes).
+O [n8n](https://www.n8n.io) é um software que serve para criação de workflows baseados em nódulos (nodes).
 Cada node recebe dados de um ou mais nodes, processa-o e repassa para um ou mais nodes,
 ou seja,
 o dado inicial é processado através de várias etapas para que seja criada um dado final,
@@ -57,7 +59,7 @@ o que o identifica como sendo um módulo do powershell e também deve estar salv
 
 Este script contém a seguinte função `task`:
 
-```powershell
+```{.powershell #lst-taskFunction lst-cap="Função para Criar Tarefa"}
 # MeuModulo.ps1m
 
 function task {
@@ -66,26 +68,53 @@ param(
     [Parameter(Mandatory=$True)]
     $nome = $1,
     $prioridade = $2
-)
+  )
 
 $json = "{
     ""name"": ""$nome"",
     ""priority"": $prioridade
 }"
 
-Out-File -InputObject $json -FilePath "~\.n8n\Automations.json" -Encoding utf8
+Out-File -InputObject $json -FilePath "~\Automations.json" -Encoding utf8
 exit
 }
+
 ```
+
+
 A função `task` aceita dois argumentos; o nome e prioridade da tarefa e salva-os em um
 arquivo que será usado como uma forma de cache para a execução das etapas seguintes do workflow.
-Este arquivo é formatado no modelo `json` para que sejam facilmente lidas pelo n8n posteriormente.
+Este arquivo é formatado no modelo `json` para que sejam facilmente lidas pelo [n8n](https://www.n8n.io) posteriormente.
 
+Assim que o arquivo `json` é criado, o [n8n](https://www.n8n.io) inicia a automação que foi configurada e manda as informações para o ClickUp.
 
-
-`%localappdata%\Microsoft\PowerToys\PowerToys Run\Settings\Plugins\Microsoft.Plugin.Shell` 
+O arquivo criado pela função tem esta estrutura:
 
 ```json
+// Automations.json
+{
+  "name": "Aqui vai o nome da tarefa a ser criada", 
+  "priority": 1
+}
+```
+
+Até aí tudo certo mas como que eu faço para executar esta função?
+
+# Resolvendo as questões do PowerToys Run
+
+O PowerToys Run é capaz de executar commandos no prompt `cmd` automaticamente através da sua interface usando `>` como prefixo.
+
+
+![Prompt do PowerToys Run](powertoysrun.png){fig-alt="screenshot a interface do powertoys run"}
+
+Porém como eu escrevi a função em `ps1`, ela não é executável através do prompt `cmd`, portanto deve-se 
+configurar o powertoys para utilizar o prompt do powershell como default.
+Isso é feito através da modificação do arquivo `ShellPluginSettings.json` localizado em 
+`%localappdata%\Microsoft\PowerToys\PowerToys Run\Settings\Plugins\Microsoft.Plugin.Shell`.
+Onde a configuração para `Shell` deve ser alterada de 2 para 1.
+
+```json
+# ShellPluginSettings.json
 {
   "Shell": 1, \\ Mudar de 2 para 1
   "ReplaceWinR": false,
@@ -95,3 +124,19 @@ Este arquivo é formatado no modelo `json` para que sejam facilmente lidas pelo 
 }
 ```
 
+Para que a alteração tenha efeito, feche o PowerToys, mude a configuração e depois abra-o novamente.
+A desvantagem de usar o shell do powershell é que ele não é fechado automaticamente por isso eu inseri `exit` na linha 17 de @lst-taskFunction.
+
+# Como configurar o workflow do [n8n](https://www.n8n.io)?
+
+Tendo finalizado as etapas acima é necessário configura um workflow do [n8n](https://www.n8n.io) para a criação da tarefa.
+De forma simplificada o workflow deverá ter 4 nodes: 
+
+1. Monitora quando o arquivo é alterado
+2. Lê o arquivo
+3. Converte arquivo para json
+4. Envia informações contidas no arquivo para o ClickUp 
+
+![Exemplo de workflow do n8n](n8nexample.png){fig-alt="screenshot da interface de um exemplo de workflow do n8n"}
+
+Adicionalmente podem ser adicionados nodes para tratamento de erros ou com lógica de condicionais mas isso vou deixar para outro post.

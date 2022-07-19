@@ -21,6 +21,8 @@ format:
     code-copy: true
     code-fold: true
     code-line-numbers: true
-
+execute:
+  freeze: auto
 language: _pt-BR-personalizado.yml
 smooth-scroll: true
+date-format: 'DD - MMM - YYYY'
