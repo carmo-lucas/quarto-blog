@@ -5,6 +5,7 @@ subtitle: "Uma primeira impressão do quarto e quais as minhas intenções"
 format: html
 date: 2022-05-31
 categories: [blog, teste]
+draft: true
 ---
 
 # Intro
@@ -44,14 +45,18 @@ callout com `collapse="true"` é a melhor forma de escrever callouts que não fi
 
 :::{.panel-tabset}
 
-## Lucas
+# Lucas
 
 Lucas isso etc e aquilo
 
-## Flávia
+# Flávia
 
 Fulano ciclano beltrano
 
 Maybe i'll try some equations
+
+
+::: 
+
 
 $$ \eta = \frac{\tau}{\dot\gamma} $$ 
