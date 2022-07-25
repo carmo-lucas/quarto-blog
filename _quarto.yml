@@ -2,11 +2,13 @@ project:
   type: website
 
 website:
-  site-url: "hhtps://www.lucascarmo.com.br"
+  site-url: "https://www.lucascarmo.com.br"
   title: "lucas carmo"
   navbar:
-    right:
+    left:
+      - blog.qmd
       - about.qmd
+    right:
       - icon: github
         href: https://github.com/carmo-lucas
       - icon: twitter
@@ -15,7 +17,9 @@ website:
         href: https://linkedin.com/in/lucas-carmo-ba4351b8/
 format:
   html:
-    theme: sandstone
+    theme: 
+      light: sandstone
+      dark: darkly
     css: styles.css
     code-overflow: scroll
     code-copy: true
@@ -26,3 +30,4 @@ execute:
 language: _pt-BR-personalizado.yml
 smooth-scroll: true
 date-format: 'DD - MMM - YYYY'
+highlight-style: dracula

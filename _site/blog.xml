@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>lucas carmo</title>
-<link>hhtps://www.lucascarmo.com.br/index.html</link>
-<atom:link href="hhtps://www.lucascarmo.com.br/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://www.lucascarmo.com.br/blog.html</link>
+<atom:link href="https://www.lucascarmo.com.br/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-0.9.535</generator>
 <lastBuildDate>Thu, 14 Jul 2022 03:00:00 GMT</lastBuildDate>
 <item>
   <title>Usando o PowerToys para criar tarefas no ClickUp</title>
   <dc:creator>Lucas Carmo</dc:creator>
-  <link>hhtps://www.lucascarmo.com.br/posts/powertoys-run/index.html</link>
+  <link>https://www.lucascarmo.com.br/posts/powertoys-run/index.html</link>
   <description><![CDATA[ 
 
 
@@ -81,7 +81,7 @@
 <p>O PowerToys Run é capaz de executar commandos no prompt <code>cmd</code> automaticamente através da sua interface usando <code>&gt;</code> como prefixo.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="hhtps://www.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" class="img-fluid figure-img" alt="screenshot a interface do powertoys run"></p>
+<p><img src="https://www.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" class="img-fluid figure-img" alt="screenshot a interface do powertoys run"></p>
 <p></p><p></p>
 </figure>
 </div>
@@ -107,7 +107,7 @@
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="hhtps://www.lucascarmo.com.br/posts/powertoys-run/n8nexample.png" class="img-fluid figure-img" alt="screenshot da interface de um exemplo de workflow do n8n"></p>
+<p><img src="https://www.lucascarmo.com.br/posts/powertoys-run/n8nexample.png" class="img-fluid figure-img" alt="screenshot da interface de um exemplo de workflow do n8n"></p>
 <p></p><p></p>
 </figure>
 </div>
@@ -121,14 +121,14 @@
   <category>powertoys</category>
   <category>n8n</category>
   <category>clickup</category>
-  <guid>hhtps://www.lucascarmo.com.br/posts/powertoys-run/index.html</guid>
+  <guid>https://www.lucascarmo.com.br/posts/powertoys-run/index.html</guid>
   <pubDate>Thu, 14 Jul 2022 03:00:00 GMT</pubDate>
-  <media:content url="hhtps://www.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" medium="image" type="image/png" height="45" width="144"/>
+  <media:content url="https://www.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" medium="image" type="image/png" height="45" width="144"/>
 </item>
 <item>
   <title>Primeira postagem</title>
   <dc:creator>Lucas Carmo</dc:creator>
-  <link>hhtps://www.lucascarmo.com.br/posts/primeira-postagem/index.html</link>
+  <link>https://www.lucascarmo.com.br/posts/primeira-postagem/index.html</link>
   <description><![CDATA[ 
 
 
@@ -192,7 +192,7 @@ Dica
  ]]></description>
   <category>blog</category>
   <category>teste</category>
-  <guid>hhtps://www.lucascarmo.com.br/posts/primeira-postagem/index.html</guid>
+  <guid>https://www.lucascarmo.com.br/posts/primeira-postagem/index.html</guid>
   <pubDate>Tue, 31 May 2022 03:00:00 GMT</pubDate>
 </item>
 </channel>

@@ -9,9 +9,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "blog",
+    "title": "home",
     "section": "",
-    "text": "O processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n\n\n14 - 07 - 2022\n\n\nLucas Carmo\n\n\n\n\n\n\n  \n\n\n\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n\n\n14 - 07 - 2022\n\n\nLucas Carmo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\nblog\n\n\nteste\n\n\n\n\n\n\n\n\n\n\n\n31 - 05 - 2022\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
+    "text": "Será que markdown dentro de divs funciona?\nThis column takes 1/3 of the page\n\n\nSerá que markdown dentro de divs funciona?\nThis column takes 1/3 of the page\n\n\nSerá que markdown dentro de divs funciona?\nThis column takes 1/3 of the page"
   },
   {
     "objectID": "posts/powertoys-run/index.html#mas-o-que-é-o-powertoys",
@@ -75,5 +75,19 @@
     "title": "apresentações",
     "section": "",
     "text": "Sem matches"
+  },
+  {
+    "objectID": "index.html#será-que-markdown-dentro-de-divs-funciona",
+    "href": "index.html#será-que-markdown-dentro-de-divs-funciona",
+    "title": "home",
+    "section": "Será que markdown dentro de divs funciona?",
+    "text": "Será que markdown dentro de divs funciona?\nThis column takes 1/3 of the page"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "blog",
+    "section": "",
+    "text": "Ordenar por\n       Default\n         \n          Título\n        \n         \n          Data - Mais antigo\n        \n         \n          Data - Mais novo\n        \n         \n          Autor\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n\n\n14 - 07 - 2022\n\n\nLucas Carmo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\nblog\n\n\nteste\n\n\n\n\n\n\n\n\n\n\n\n31 - 05 - 2022\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
   }
 ]

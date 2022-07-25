@@ -3,12 +3,18 @@
     "listing": "/index.html",
     "items": [
       "/posts/powertoys-run/index.html",
-      "/posts/powertoys-run/index.html",
       "/posts/primeira-postagem/index.html"
     ]
   },
   {
     "listing": "/apresentacoes.html",
     "items": []
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/powertoys-run/index.html",
+      "/posts/primeira-postagem/index.html"
+    ]
   }
 ]
