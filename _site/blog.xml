@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>lucas carmo</title>
-<link>hhtps://www.lucascarmo.com.br/index.html</link>
-<atom:link href="hhtps://www.lucascarmo.com.br/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://www.lucascarmo.com.br/blog.html</link>
+<atom:link href="https://www.lucascarmo.com.br/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-0.9.535</generator>
 <lastBuildDate>Thu, 14 Jul 2022 03:00:00 GMT</lastBuildDate>
 <item>
   <title>Usando o PowerToys para criar tarefas no ClickUp</title>
   <dc:creator>Lucas Carmo</dc:creator>
-  <link>hhtps://www.lucascarmo.com.br/posts/powertoys-run/index.html</link>
+  <link>https://www.lucascarmo.com.br/posts/powertoys-run/index.html</link>
   <description><![CDATA[ 
 
 
@@ -81,7 +81,7 @@
 <p>O PowerToys Run é capaz de executar commandos no prompt <code>cmd</code> automaticamente através da sua interface usando <code>&gt;</code> como prefixo.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="hhtps://www.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" class="img-fluid figure-img" alt="screenshot a interface do powertoys run"></p>
+<p><img src="https://www.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" class="img-fluid figure-img" alt="screenshot a interface do powertoys run"></p>
 <p></p><p></p>
 </figure>
 </div>
@@ -107,7 +107,7 @@
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="hhtps://www.lucascarmo.com.br/posts/powertoys-run/n8nexample.png" class="img-fluid figure-img" alt="screenshot da interface de um exemplo de workflow do n8n"></p>
+<p><img src="https://www.lucascarmo.com.br/posts/powertoys-run/n8nexample.png" class="img-fluid figure-img" alt="screenshot da interface de um exemplo de workflow do n8n"></p>
 <p></p><p></p>
 </figure>
 </div>
@@ -121,9 +121,79 @@
   <category>powertoys</category>
   <category>n8n</category>
   <category>clickup</category>
-  <guid>hhtps://www.lucascarmo.com.br/posts/powertoys-run/index.html</guid>
+  <guid>https://www.lucascarmo.com.br/posts/powertoys-run/index.html</guid>
   <pubDate>Thu, 14 Jul 2022 03:00:00 GMT</pubDate>
-  <media:content url="hhtps://www.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" medium="image" type="image/png" height="45" width="144"/>
+  <media:content url="https://www.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" medium="image" type="image/png" height="45" width="144"/>
+</item>
+<item>
+  <title>Primeira postagem</title>
+  <dc:creator>Lucas Carmo</dc:creator>
+  <link>https://www.lucascarmo.com.br/posts/primeira-postagem/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="intro" class="level1">
+<h1>Intro</h1>
+<p>Esta é a primeira vez que eu estou usando o <code>quarto</code> para escrita de blogs.</p>
+<div class="cell">
+<details>
+<summary><code>Code</code></summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1">x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"lucas"</span></span>
+<span id="cb1-2"></span>
+<span id="cb1-3">imprimir_nome <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(nome) <span class="fu" style="color: #4758AB;">print</span>(x)</span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">imprimir_nome</span>(x)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "lucas"</code></pre>
+</div>
+</div>
+</section>
+<section id="equações" class="level1">
+<h1>Equações</h1>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5CLaTeX%20"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%20e%20=%20mc%5E2"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Calpha%7D%7B%5Cbeta%7D"></p>
+<p>Primeira postagem</p>
+<p>Uma primeira impressão do quarto e quais as minhas intenções</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Dica
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>callout com <code>collapse="true"</code> é a melhor forma de escrever callouts que não ficam ocupando muito espaço</p>
+</div>
+</div>
+</div>
+<p>:::{.panel-tabset}</p>
+<section id="lucas" class="level2">
+<h2 class="anchored" data-anchor-id="lucas">Lucas</h2>
+<p>Lucas isso etc e aquilo</p>
+</section>
+<section id="flávia" class="level2">
+<h2 class="anchored" data-anchor-id="flávia">Flávia</h2>
+<p>Fulano ciclano beltrano</p>
+<p>Maybe i’ll try some equations</p>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5Ceta%20=%20%5Cfrac%7B%5Ctau%7D%7B%5Cdot%5Cgamma%7D%20"></p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>blog</category>
+  <category>teste</category>
+  <guid>https://www.lucascarmo.com.br/posts/primeira-postagem/index.html</guid>
+  <pubDate>Tue, 31 May 2022 03:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
