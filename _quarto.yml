@@ -2,24 +2,35 @@ project:
   type: website
 
 website:
+  reader-mode: true
   site-url: "https://www.lucascarmo.com.br"
   title: "lucas carmo"
   navbar:
     left:
-      - blog.qmd
-      - about.qmd
+      - icon: file-earmark-text-fill
+        href: https://www.lucascarmo.com.br/blog
+      - icon: info-square-fill
+        href: https://www.lucascarmo.com.br/about
+      - icon: projector-fill
+        href: https://lucascarmo.com.br
     right:
+      - icon: youtube
+        href: https://www.youtube.com/channel/UC2t8dH8YZhnhDMQFteI0Crw
+      - icon: instagram
+        href: https://instagram.com/lucas_carmo
       - icon: github
         href: https://github.com/carmo-lucas
       - icon: twitter
         href: https://twitter.com/carmo_lcl
       - icon: linkedin
         href: https://linkedin.com/in/lucas-carmo-ba4351b8/
+  page-footer:
+    border: true
+    left: "Copyright 2022, Lucas Carmo" 
 format:
   html:
     theme: 
       light: sandstone
-      dark: darkly
     css: styles.css
     code-overflow: scroll
     code-copy: true
