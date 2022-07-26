@@ -1,16 +1,22 @@
 project:
   type: website
 
+  preview:
+    port: 4200
+    browser: false
+
 website:
+  cookie-consent:
+    express: true
   reader-mode: true
   site-url: "https://www.lucascarmo.com.br"
   title: "lucas carmo"
   navbar:
     left:
       - icon: file-earmark-text-fill
-        href: https://www.lucascarmo.com.br/blog
+        href: blog.qmd
       - icon: info-square-fill
-        href: https://www.lucascarmo.com.br/about
+        href: about.qmd
       - icon: projector-fill
         href: https://lucascarmo.com.br
     right:

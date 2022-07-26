@@ -3,8 +3,8 @@ title: "apresentações"
 listing:
   contents: apresentacoes
   sort: "date desc"
-  type: "default" 
-  categories: true
+  type: grid
+  categories: false
   sort-ui: false
   filter-ui: true
   feed: true
