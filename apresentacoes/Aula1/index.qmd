@@ -1,0 +1,436 @@
+---
+title: "Aula 1 - Instalação e introdução ao R"
+subtitle: ""
+author: "Lucas C. L. do Carmo"
+date: "2020-09-22"
+format:
+  revealjs:
+    theme: default
+    footer: "[lucas carmo](/)/[apresentações](/apresentacoes.html)"
+    preview-links: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(comment = "", echo=TRUE)
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EsIjBRYgopg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Por que usar o R?
+
+## Vantagens
+
+:::{.incremental}
+- É de graça
+- Muito utilizado no meio acadêmico	
+- *open source* o que significa que qualquer pessoa pode fazer modificações e extensões (inclusive você!!)
+- Análises podem ser revisadas e seus erros corrigidos facilmente
+-  Usando `rmarkdown::` não é mais necessário copiar e colar dados e tabelas de outros softwares para o Word.
+
+:::
+
+## Por que não usar o R?
+
+## Desvantagens
+	
+* Curva de aprendizado pode ser íngrime
+* Tudo ( grande maioria) é feito na linha de comando
+* Domínio de inglês é quase um pre-requisito
+
+## Instalação
+
+Instale primeiro o `R` através do link abaixo:
+
+[R](https://cran-r.c3sl.ufpr.br/)
+
+Depois instale o RStudio
+
+[R Studio](https://rstudio.com/products/rstudio/download/)
+
+
+
+## Como usar o RStudio
+
+
+## Funcionalidades do R
+
+A funcionalidade mais básica do `R` é ser uma calculadora.
+
+```{r, echo=TRUE}
+1 + 2
+
+10^6 / 10^7
+
+2 + 8 * 2 #<<
+```
+
+Uma calculadora que obedece a ordem de operações
+
+## Vantagens em relação a uma calculadora
+
+É possível criar variáveis (*objetos*) que armazenam os valores de cálculos já feitos.
+
+
+```{r}
+# armazena o resultado da operação 
+# em um objeto chamado "resultado"
+resultado <- 70 * 7 
+
+
+# retorna o valor do objeto criado
+resultado
+```
+
+
+
+## Tipos de dados (classes)
+
+1. Numéricos:
+	- Decimais (`numeric`)
+	- Inteiros (`Integer`)
+2. Texto (`Character` ou caracteres)
+3. Fatores 
+3. Lógicos (`TRUE`, `FALSE`)
+4. Complexo (3 + 2i)
+4. `NA`, `NaN` e `NULL`
+5. Raw 
+
+
+
+## Tipos de objetos
+
+Objetos são as estruturas onde você armazena os resultados das operações ou qualquer valor que seja necessário para o trabalho que será realizado.
+
+1. Vetores
+2. Matrizes
+3. Listas
+4. Dataframes
+5. Fórmulas
+6. Funções
+
+
+## Criando Objetos
+
+Para criar um objeto você deve seguir a seguinte sintaxe:
+
+```
+nome_do_objeto <- valor atribuído ao objeto
+```
+
+Regras:
+
+- Nome do objeto não pode iniciar com um número;
+- Nome do objeto não pode ter espaços ou caracteres especiais (%, $, &, +, -);
+- Deve ser descritivo mas não muito longo.
+
+## Vetores
+
+Vetores são objetos que podem conter apenas um tipo de dado
+
+
+```{r}
+vetor_1 <- c(1,4,8,345,7567)
+
+vetor_2 <- c("abc", 76, "nove", FALSE, "9")
+
+```
+
+
+```{r}
+vetor_1
+vetor_2
+
+class(vetor_2)
+```
+
+Não é possível representar a `string` "abc" como um número, portanto todos os elementos são convertidos para o tipo (classe) `character`
+
+## Matrizes
+
+Matrizes são como vetores porém bidimensionais:
+
+```{r}
+matriz <- matrix(c(1,4,7,10), ncol = 2, byrow = TRUE)
+
+matriz
+```
+
+
+$$ 
+matriz = 
+\begin{bmatrix}
+1 & 4 \\
+7 & 10 \\
+\end{bmatrix}
+$$ 
+
+
+
+## Listas
+
+Listas são objetos mais complexos que aceitam vários tipos de dados em um mesmo objeto
+
+
+```{r}
+lista <- list("a", 45, TRUE, "texto longo")
+lista
+```
+
+
+É possível colocar outros objetos dentro de listas, assim como vetores e matrizes.
+
+
+
+## Mais listas
+
+```{r}
+lista_2 <- list(
+	"abc",
+	list(
+		"elemento" = 10,
+		"matriz_lista" = matrix(c(1,2,3,4,5,8), ncol = 2),
+		"vetor_lista" = c(1,6,4,4,5,7,7)
+	)
+)
+
+```
+
+## Mais listas
+
+```{r}
+lista_2
+```
+
+## Dataframes
+
+Dataframes são as conhecidas tabelas. 
+Objetos com linhas e colunas e estrutura retangular.
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+```{r}
+tabela <- data.frame(
+	x = 1:6,
+	y = c(12, 3, 2, 5.1, 4.5, 0.05),
+	z = rep(c("a","b"), 3)
+)
+
+```
+
+:::
+
+::: {.column width="40%"}
+
+```{r, echo=FALSE}
+tabela
+```
+
+:::
+
+::::
+
+## Selecionando elementos (vetores)
+
+Frequentemente é necessário se selecionar os elementos de dentro de vetores, matrizes, dataframes, e listas e fazemos isso usando o operador `[]`.
+
+Cada elemento dos objetos contém um índice por exemplo:
+
+```{r}
+elementos <- c("indice 1", "indice 2", "indice 3")
+
+elementos[1]
+
+elementos[c(2,3)]
+
+elementos[-3] # seleciona todos menos o terceiro elemento
+
+```
+
+## Selecionando elementos (matrizes)
+
+```{r}
+matriz
+
+matriz[1,2] # [linha, coluna]
+
+matriz[ ,1] # apenas a primeira coluna
+
+matriz[2, ] # apenas a segunda coluna
+
+```
+
+
+## Funções e Fórmulas
+
+Funções e fórmulas são tipos de objetos mais avançado e iremos discutí-los 
+nas próximas aulas.
+
+## Operadores Aritméticos
+
+Temos os operadores aritméticos como já mostrados anteriormente.
+
+|Operador     | Descrição                                          | Exemplo       |
+|-------------|----------------------------------------------------|---------------|
+| `+`         | Adição                                             | `4 + 5 = 9`   | 
+| `-`         | Subtração                                          | `9 - 5 = 4`   | 
+| `*`         | Multiplicação                                      | `3 * 4 = 12`  |
+| `/`         | Divisão                                            | `90 / 3 = 30` |
+| `^` ou `**` | Exponenciação                                      | `10^2 = 100`  |
+| `X %% Y`    | *Modulus* (restante inteiro da divisão de x por y) | `15 %% 2 = 1` |
+| `X %/% Y`   | Divisão de número inteiro                          | `5 %/% 2 = 2` | 
+
+
+## Operadores Lógicos
+
+Os operadores lógicos são operadores de equalidade ou inequalidade que retornam valores `TRUE` ou `FALSE` (verdadeiro ou falso).
+
+|Operador     | Descrição                      | Exemplo               |
+|-------------|--------------------------------|-----------------------|
+| `>`, `<`    | Maior que, menor que           | `1 > 2 = FALSE`       | 
+| `>=`, `<=`  | Maior ou igual, menor ou igual | `22 >= 22 = TRUE`     | 
+| `==`        | Exatamente igual               | `3 == 3 = TRUE`       |
+| `!=`        | Não igual a                    | `3 != 4 = TRUE`       |
+| `!x`        | Negação                        | `15 %% 2 = 1`         |
+| `x | y`     | x OU y                         | `4 |  12 < 10 = TRUE` |
+| `x & y`     | x E y                          | `4 & 12 < 10 = FALSE` |
+|`isTRUE(x)`  | Testa se `x` é `TRUE`          |                       |
+
+
+## Condicionais
+
+Há a possibilidade de executar operações ou não dependendo da condição expressada.
+
+
+
+```
+se (condição for TRUE){
+	Executar o código aqui dentro
+}
+```
+
+
+```{r}
+
+n_ligacoes_carbono <- 5
+
+if (n_ligacoes_carbono > 4) {
+	warning("O Carbono não pode ter mais que 4 ligações")
+}
+
+```
+
+
+
+ Condicionais (continuação)
+
+```{r}
+n_ligacoes_carbono <- 3
+
+if (n_ligacoes_carbono > 4) {
+	warning("O Carbono não pode ter mais que 4 ligações")
+} else {#<<
+	message("Número de ligações do carbono OK")
+}
+
+```
+
+
+## Estruturas de repetição
+
+## Loop do tipo `for`
+
+:::: {.columns}
+
+::: {.column width="40%"}
+```{r}
+for (i in 1:10) {
+	print(i)
+}
+```
+
+
+:::
+
+::: {.column width="60%"}
+```
+para (elemento na sequência 1 a 10){
+	imprima(elemento)
+}
+
+```
+:::
+
+::::
+
+## `for` loop
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+frutas <- c("banana", "maçã", "ameixa")
+
+for (fruta in frutas) {
+	print(fruta)
+}
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+cores <- c("amarela","vermelha")
+
+for (fruta in frutas) {
+	for (cor in cores) {
+		print(paste("Tal",fruta,"é",cor))
+	}
+}
+```
+:::
+
+::::
+
+## `while` loop
+
+Loops `while` se repetem até que a expressão avaliada seja `FALSE`.
+
+:::: {.columns}
+
+::: {.column width="40%"}
+```{r}
+i <- 1
+
+while (i < 6) {
+	print(paste("Iteração",i))
+	i <- i + 1
+}
+```
+:::
+
+::: {.column width="60%"}
+```
+atribuindo valor de 1 a i
+
+enquanto (i menor que 6){
+	imprima (Iteração i)
+	adicione 1 a i
+}
+```
+:::
+
+::::
+
+
+## Resumo da aula
+
+- Instalamos o `R` e o RStudio
+- Aprendemos quais são os tipos de dados (classes) básicos do `R`
+- Aprendemos o que são objetos e como atribuir valores a eles
+	- Vetores, Matrizes, Listas, *Dataframes*, ~~Fórmulas~~, ~~Funções~~
+- Aprendemos a selecionar elementos dos objetos
+- Aprendemos a usar alguns operadores aritméticos e lógicos
+- Aprendemos a usar estruturas de condição `if` e `if else`
+- Aprendemos a escrever um `for loop` e um `while loop`

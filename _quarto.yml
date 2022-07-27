@@ -1,6 +1,5 @@
 project:
   type: website
-
   preview:
     port: 4200
     browser: false
@@ -13,12 +12,9 @@ website:
   title: "lucas carmo"
   navbar:
     left:
-      - icon: file-earmark-text-fill
-        href: blog.qmd
-      - icon: info-square-fill
-        href: about.qmd
-      - icon: projector-fill
-        href: https://lucascarmo.com.br
+    - blog.qmd
+    - about.qmd
+    - apresentacoes.qmd
     right:
       - icon: youtube
         href: https://www.youtube.com/channel/UC2t8dH8YZhnhDMQFteI0Crw
@@ -47,4 +43,3 @@ execute:
 language: _pt-BR-personalizado.yml
 smooth-scroll: true
 date-format: 'DD - MMM - YYYY'
-highlight-style: dracula

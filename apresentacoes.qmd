@@ -1,16 +1,15 @@
 ---
 title: "apresentações"
 listing:
-  contents: apresentacoes
-  sort: "date desc"
-  type: grid
-  categories: false
-  sort-ui: false
-  filter-ui: true
-  feed: true
+    sort: "date desc"
+    categories: false
+    sort-ui: false
+    filter-ui: true
+    fields: [image, date, title, author, subtitle]
+    type: grid
+    contents: "apresentacoes"
 page-layout: full
-title-block-banner: true
+title-block-banner: false
 date-format: "DD - MM - YYYY"
 ---
-
 

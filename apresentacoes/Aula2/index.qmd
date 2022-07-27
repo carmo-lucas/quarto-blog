@@ -1,0 +1,500 @@
+---
+title: "Aula 2 - Funções e Manipulação de Objetos"
+subtitle: ""
+author: "Lucas C. L. do Carmo"
+date: "2020-09-30"
+format: 
+  revealjs:
+    theme: default
+    footer: "[lucas carmo](/) / [apresentações](/apresentacoes.html)"
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(comment = "", echo=TRUE)
+```
+
+## Anteriormente...
+
+1. Aprendemos sobre classes de dados;
+2. Aprendemos sobre estruturas de dados (objetos);
+3. Aprendemos a selecionar elementos de objetos;
+4. Começamos a aprender o RStudio
+
+## Hoje...
+
+- Como transformar e criar novos objetos usando operações matemáticas
+- Como usar `scripts` com o formato `.R`.
+- O que são funções e como usá-las
+- Importando dados para o `R` / RStudio
+
+
+
+## Algumas dicas:
+
+- "Tem um símbolo de `+` aparecendo no meu console o que eu faço?"
+- Se você apertar a seta para cima enquanto o console está selecionado você reescreve o último comando.
+- Existem alguns objetos já existentes no `R` como:
+	- `letters`: alfabeto em letras minúsculas;
+	- `pi`: $\pi$;
+	- `cars`: *dataframe* contendo dados de velocidade e distância até pararem;
+	- `iris`: *dataframe* contendo comprimento de pétalas e sépalas
+
+
+
+## O que falta descobrir?
+
+É possível adicionar elementos em um objeto através do seu índice
+
+```{r}
+x <- c(9,6,3) # contém 3 elementos
+
+x
+
+x[4] <- 1 # adicionando um elemento na quarta posição
+
+x
+```
+
+Também é possivel sobrescrever elementos dessa forma em matrizes e listas usando as formas de indicar a posição de cada tipo de objeto.
+
+
+
+## Criando novas colunas de um _dataframe_
+
+_Dataframes_ são tabelas cujas colunas tem que ter o mesmo número de linhas sempre.
+
+Para selecionar uma coluna podemos usar a sintaxe `tabela$nome_da_coluna` o que retorna um vetor.
+
+#### Ex.
+
+```{r}
+tbl <- data.frame(
+	col_1 = 1:10,
+	col_2 = letters[1:10]
+)
+
+tbl$col_2
+```
+
+
+
+## Criando nova coluna em tabela existente
+
+::::{.columns}
+
+:::{.column width="50%"}
+```{r}
+tbl
+```
+:::
+
+:::{.column width="50%"}
+```{r}
+tbl$col_3 <- LETTERS[1:10] #<<
+
+tbl
+```
+:::
+
+::::
+
+## Criando uma outra coluna usando operações aritméticas
+
+::::{.columns}
+
+:::{.column width="50%"}
+```{r}
+tbl
+
+```
+:::
+
+:::{.column width="50%"}
+```{r}
+tbl$col_4 <- tbl$col_1 ** 4 #<<
+
+tbl
+```
+
+:::
+
+::::
+
+## Operações vetorizadas
+
+O `R` aplica estes operadores matemáticos de forma __vetorizada__ o que significa que eu posso fazer soma, multiplicação e outras operações facilmente.
+
+::::{.columns}
+
+:::{.column width="50%"}
+```{r}
+a <- c(1,5,10,15)
+
+a + 2
+
+a * 2 
+```
+:::
+
+
+
+:::{.column width="50%"}
+```{r}
+b <- c(1,2,3,4)
+
+a + b
+
+a * b
+```
+:::
+
+::::
+
+## Vetores de comprimentos diferentes
+
+```{r}
+c <- c(1,5)
+
+d <- c(10, 20, 30)
+
+c * d 
+
+c + d
+
+```
+
+
+
+```{r}
+f <- c(1, 10, 100, 1000)
+
+c * f 
+
+```
+
+
+
+## Operadores Lógicos
+
+Os operadores lógicos são operadores de equalidade ou inequalidade que retornam valores `TRUE` ou `FALSE` (verdadeiro ou falso).
+
+|Operador     | Descrição                      | Exemplo               |
+|-------------|--------------------------------|-----------------------|
+| `>`, `<`    | Maior que, menor que           | `1 > 2 = FALSE`       | 
+| `>=`, `<=`  | Maior ou igual, menor ou igual | `22 >= 22 = TRUE`     | 
+| `==`        | Exatamente igual               | `3 == 3 = TRUE`       |
+| `!=`        | Não igual a                    | `3 != 4 = TRUE`       |
+| `!`         | Negação                        | retorna o oposto do que o procede        |
+| `x ∣ y`     | x OU y                         | `4 ∣  12 < 10 = TRUE`  |
+| `x & y`     | x E y                          | `4 & 12 < 10 = FALSE` |
+|`isTRUE(x)`  | Testa se `x` é `TRUE`          |                       |
+
+
+
+## Operadores lógicos também são aplicados de forma vetorizada
+
+```{r, eval="hold"}
+a
+
+a > 5
+
+a >= 5
+
+a == 5
+
+```
+
+
+## Usando vetores lógicos para selecionar valores dentro de objetos
+
+```{r}
+a
+
+a > 3 # retorna vetor lógico com resultado da expressão
+
+a[a > 3]
+```
+
+
+## Para Matrizes
+
+```{r}
+m <- matrix(a, ncol = 2)
+
+m
+
+m > 4
+
+m[m > 4]
+
+```
+
+
+
+## Para *Dataframes*
+
+```{r}
+tbl <- data.frame(
+	nome = c("Lucas", "Robson", "Marta"),
+	idade = c(28, 44, 12)
+)
+```
+
+::::{.columns}
+
+:::{.column width="50%"}
+```{r}
+tbl$idade > 30
+```
+
+```{r}
+tbl["idade"] > 30
+```
+:::
+
+:::{.column width="50%"}
+```{r}
+tbl[tbl["idade"] > 30]
+```
+:::
+::::
+
+::: aside
+Há formas menos confusas de fazer isto.
+:::
+
+
+# Funções
+
+## O que são funções?
+
+Função é um termo genérico que representa uma abstração de código.  
+Mas o que isso significa?
+
+::::{.columns}
+
+:::{.column width="50%"}
+$Maths:$
+
+$f(x) = 3x + 9$ 
+
+$f(3) = 18$
+:::
+
+
+
+:::{.column width="50%"}
+
+`Código:`
+
+```{r}
+f <- function(x) {
+	3 * x + 9
+}
+
+f(3)
+
+```
+
+:::
+::::
+
+Já usamos diversas funções na aula anterior como:
+
+- `c()` serve para combinar vários elementos em um vetor
+- `list()` serve para criar listas
+- `data.frame()` serve para criar *dataframes*
+
+
+::: {.notes}
+
+Fazer meio que uma piadinha que eu to fazendo eles perder tempo.
+
+:::
+
+## Como escrever funções?
+
+```{r, eval=FALSE}
+
+nome_da_função <- function(arg1, arg2, arg3, ...){
+	expressão a ser realizada
+}
+
+```
+
+
+### Ex.
+
+```{r}
+
+congratular <- function(nome, idade){ # arg1 nome, arg2 idade
+	return(paste("Parabéns",nome,"pelos seus",idade,"anos de vida!"))
+}
+
+congratular("Mateus", 43)
+```
+
+
+## Usando outros princípios para criar funções mais úteis
+
+### Soma de elementos dentro de um vetor:
+
+$$soma = X_1 + X_2 + X_3 + X_4 + \ldots + X_n$$ 
+
+$$\sum_{i=1}^n X_i$$
+
+__Exercício__
+
+Como escrever uma função que faça isso?
+
+
+```{r, eval=FALSE}
+soma <- function(x){
+	# o que colocar aqui dentro?
+}
+```
+
+
+## Solução
+
+```{r}
+
+soma <- function(x){
+	sigma <- 0
+	for (i in seq_along(x)) {
+		sigma <- sigma + x[i]
+	}
+	return(sigma)
+}
+
+a
+soma(a)
+```
+
+## Explicação
+
+__Exercício__
+
+Escrevam a função `media()`.
+
+$$\bar X = \frac{1}{N}\sum_{i=1}^n X_i$$ 
+
+```{r, eval=FALSE}
+media <- function(x){
+	
+}
+```
+
+::: {.notes}
+Explicar como escrever a função `soma` usando o loop `for`.
+Pode não ser a forma mais otimizada.
+:::
+
+## Funções úteis
+
+- `lenght(x)`: retorna o comprimento do objeto `x`
+- `seq()`: cria uma sequência de números
+- `rep()`: repete elementos de um vetor várias vezes
+- `as.numerical()`: converte elementos para números (quando possível)
+- `as.character()`: converte elementos para caracteres (quando possível)
+- `as.logical()`: converte elementos para valores lógicos (quando possível)
+- `print()`: *imprime* o objeto no console
+- `paste()`: *cola* objetos de forma vetorizada
+- `ls()`: lista os objetos criados
+- `rm(x)`: remove objeto `x`
+
+
+## Funções matemáticas úteis
+
+- `round(x, n)`: arredonda `x` para `n` casas decimais
+- `signif(x, n)`: arredonda `x` para `n` números significativos
+- `floor(x)`: arredonda para o número inteiro mais baixo
+- `ceiling(x)`: arredonda para o número inteiro mais alto
+- `max(x)`: retorna máximo valor no vetor
+- `min(x)`: retorna mínimo valor no vetor
+- `log(x)`: log na base $e$ 
+- `log10(x)`: log base 10
+- `exp(x)`: $e^x$
+- `sin()`, `cos()`, `tan()`: ângulos dados em radianos.
+
+## Exemplos
+
+::::{.columns}
+
+:::{.column width="50%"}
+```{r}
+signif(pi, 2)
+
+floor(pi)
+
+ceiling(pi)
+
+sin(pi/6)
+```
+
+:::
+
+:::{.column width="50%"}
+
+```{r}
+x <- c(22/7, 87/21, 9/1.339)
+
+signif(x, 3)
+
+floor(x)
+
+ceiling(x)
+
+round( sin(x), 2 )
+```
+:::
+
+::::
+
+## Pacotes
+
+Sabemos escrever as nossas próprias funções agora mas como iniciantes podemos ter muitos problemas em implementá-las em programas mais complexos.
+
+### O que são pacotes?
+
+Pacotes são coleções de funções escritas por terceiros.
+Existem pacotes para construir gráficos (`ggplot2::`), para manipular texto (`stringr::`), reportar resultados (`rmarkdown::`) e quimiometria (`chemometrics::`).
+
+Também existem pacotes que extendem a funcionalidade de pacotes por exemplo o `patchwork::` que serve para criar figuras com múltiplos gráficos.
+
+## Pacotes (...)
+
+O termo mais comum para __pacotes__ é *library* ou seja, uma biblioteca de funções que você pode importar para o seu ambiente de trabalho para facilitar sua vida.
+
+O `R` em si próprio possui algumas *libraries* por padrão: `stats::`, `base::`, `methods::`, `utils::` e outras.
+
+***
+
+Para instalar uma *library* no seu computador use a seguinte função:
+
+```{r, eval=FALSE}
+
+install.packages("nome_da_library") # as aspas importam
+
+```
+
+Uma vez que instalado ele ficará armazenado no seu computador até que você atualize a sua versão do `R`
+
+Para carregar as funções do pacote no seu ambiente use:
+
+```{r, eval=FALSE}
+
+library(nome_da_library) # sem aspas
+
+```
+
+# Resumindo...
+
+## Nesta aula
+
+- Aprendemos a selecionar elementos de vetores baseado em condições lógicas
+- Aprendemos que o `R` executa operações de forma vetorizada
+- Aprendemos o que são funções e como escrevê-las
+- Aprendemos o que são pacotes:
+	- Instalação de pacotes
+	- Importando funções de pacotes

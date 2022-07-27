@@ -7,7 +7,11 @@
   },
   {
     "listing": "/apresentacoes.html",
-    "items": []
+    "items": [
+      "/apresentacoes/Aula3/index.html",
+      "/apresentacoes/Aula2/index.html",
+      "/apresentacoes/Aula1/index.html"
+    ]
   },
   {
     "listing": "/blog.html",
