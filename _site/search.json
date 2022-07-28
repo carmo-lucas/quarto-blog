@@ -683,14 +683,14 @@
     "href": "apresentacoes/Aula3/index.html#wide-data-e-long-data",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Wide data e long data",
-    "text": "Wide data e long data\n\n\n\n\ntbl <- tibble(\n  \"Pais\" = c(\"Brasil\", \"Argentina\"),\n  \"1999\" = c(0.5, 0.69),\n  \"2000\" = c(0.6, 0.98),\n  \"2001\" = c(0.71, 0.96)\n)\n\n\n\ntbl\n\n# A tibble: 2 × 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96"
+    "text": "Wide data e long data\n\n\n\n\ntbl <- tibble(\n  \"Pais\" = c(\"Brasil\", \"Argentina\"),\n  \"1999\" = c(0.5, 0.69),\n  \"2000\" = c(0.6, 0.98),\n  \"2001\" = c(0.71, 0.96)\n)\n\n\n\ntbl\n\n# A tibble: 2 x 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#transformando-a-tabela-para-formato-long",
     "href": "apresentacoes/Aula3/index.html#transformando-a-tabela-para-formato-long",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Transformando a tabela para formato long",
-    "text": "Transformando a tabela para formato long\n\ntbl\n\n# A tibble: 2 × 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96\n\n\n\ntbl_long <- \n  pivot_longer(data = tbl, # quais os dados vou usar\n               cols = -Pais, # quais colunas quero transformar\n               names_to = \"Ano\", # nomes das colunas vão para...\n               values_to = \"Valor\") # valores vão para coluna ...\n\n\n\n       Pais  Ano Valor\n1    Brasil 1999  0.50\n2    Brasil 2000  0.60\n3    Brasil 2001  0.71\n4 Argentina 1999  0.69\n5 Argentina 2000  0.98\n6 Argentina 2001  0.96"
+    "text": "Transformando a tabela para formato long\n\ntbl\n\n# A tibble: 2 x 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96\n\n\n\ntbl_long <- \n  pivot_longer(data = tbl, # quais os dados vou usar\n               cols = -Pais, # quais colunas quero transformar\n               names_to = \"Ano\", # nomes das colunas vão para...\n               values_to = \"Valor\") # valores vão para coluna ...\n\n\n\n       Pais  Ano Valor\n1    Brasil 1999  0.50\n2    Brasil 2000  0.60\n3    Brasil 2001  0.71\n4 Argentina 1999  0.69\n5 Argentina 2000  0.98\n6 Argentina 2001  0.96"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#e-agora-podemos-usar-os-dados-para-fazer-gráficos",
@@ -711,7 +711,7 @@
     "href": "apresentacoes/Aula3/index.html#nosso-primeiro-gráfico",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Nosso primeiro gráfico",
-    "text": "Nosso primeiro gráfico\nVamos usar o dataset mpg para fazer este gráfico:\n\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows"
+    "text": "Nosso primeiro gráfico\nVamos usar o dataset mpg para fazer este gráfico:\n\n\n# A tibble: 234 x 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto~ f        18    29 p     comp~\n 2 audi         a4           1.8  1999     4 manu~ f        21    29 p     comp~\n 3 audi         a4           2    2008     4 manu~ f        20    31 p     comp~\n 4 audi         a4           2    2008     4 auto~ f        21    30 p     comp~\n 5 audi         a4           2.8  1999     6 auto~ f        16    26 p     comp~\n 6 audi         a4           2.8  1999     6 manu~ f        18    26 p     comp~\n 7 audi         a4           3.1  2008     6 auto~ f        18    27 p     comp~\n 8 audi         a4 quattro   1.8  1999     4 manu~ 4        18    26 p     comp~\n 9 audi         a4 quattro   1.8  1999     4 auto~ 4        16    25 p     comp~\n10 audi         a4 quattro   2    2008     4 manu~ 4        20    28 p     comp~\n# ... with 224 more rows"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#inicializando",

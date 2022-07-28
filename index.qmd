@@ -5,8 +5,3 @@ title-block-banner: false
 date-format: "DD - MM - YYYY"
 
 ---
-
-
-## Lucas Chagas Lima do Carmo
-
-Meu nome é esse, eu sou assim
