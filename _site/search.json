@@ -53,7 +53,7 @@
     "href": "apresentacoes.html",
     "title": "apresentações",
     "section": "",
-    "text": "Lucas C. L. do Carmo\n\n\n05 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n30 - 09 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n22 - 09 - 2020\n\n\n\n\n\n\n\n\nSem matches"
+    "text": "Lucas C. L. do Carmo\n\n\n28 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n22 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n05 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n30 - 09 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n22 - 09 - 2020\n\n\n\n\n\n\n\n\nSem matches"
   },
   {
     "objectID": "index.html#será-que-markdown-dentro-de-divs-funciona",
@@ -943,5 +943,341 @@
     "title": "Aula 2 - Funções e Manipulação de Objetos",
     "section": "Nesta aula",
     "text": "Nesta aula\n\nAprendemos a selecionar elementos de vetores baseado em condições lógicas\nAprendemos que o R executa operações de forma vetorizada\nAprendemos o que são funções e como escrevê-las\nAprendemos o que são pacotes:\n\nInstalação de pacotes\nImportando funções de pacotes\n\n\n\n\nlucas carmo / apresentações"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#anteriormente",
+    "href": "apresentacoes/Aula5/index.html#anteriormente",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Anteriormente…",
+    "text": "Anteriormente…\n\nIntrodução ao ggplot2 (Aula 3)\nWorkshop de importação e transformação de dados (Aula 4)"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos",
+    "href": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Exemplos de geoms coletivos",
+    "text": "Exemplos de geoms coletivos"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos-2",
+    "href": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos-2",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Exemplos de geoms coletivos (2)",
+    "text": "Exemplos de geoms coletivos (2)"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos",
+    "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Sobrescrevendo mapeamentos estéticos",
+    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = cyl) + #<<\n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + #<<\n  geom_point()"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
+    "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Sobrescrevendo mapeamentos estéticos",
+    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + #<<\n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy) + \n  geom_point(col = \"blue\") #<<"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#extensões",
+    "href": "apresentacoes/Aula5/index.html#extensões",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Extensões",
+    "text": "Extensões\nExistem extensões que adicionam outros temas, geoms, stats, tipos de gráficos, escalas de cores, gráficos interativos e muito mais ao ggplot2. Alguns dos principais são:\n\ngganimate:: facilita a criação animações de gráficos e exporta em .gif ou formato de vídeo.\nggforce:: adiciona outros geoms e outros tipos de facet\npatchwork:: facilita a combinação de vários gráficos em uma só imagem\nggrepel:: automaticamente posiciona elementos de geom_text() para que não fiquem sobrepostos\ngghighlight:: facilita que dados sejam destacados nos gráficos\nggtext:: facilita formatação de textos dos gráficos\nggthemes:: importa vários temas distintos\nggpmisc:: adiciona várias funcionalidades variadas\nggpubr:: importa funções que facilitam a construção de gráficos prontos para publicação\nesquisse:: interface gráfica para criação de gráficos"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#gganimate",
+    "href": "apresentacoes/Aula5/index.html#gganimate",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "gganimate",
+    "text": "gganimate\n\nlibrary(gapminder)\nlibrary(gganimate)\n\nggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +\n  geom_point(alpha = 0.7, show.legend = FALSE) +\n  scale_colour_manual(values = country_colors) +\n  scale_size(range = c(2, 12)) +\n  scale_x_log10() +\n  facet_wrap(~continent) +\n  # Here comes the gganimate specific bits\n  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +\n  transition_time(year) +\n  ease_aes('linear')"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#ggforce",
+    "href": "apresentacoes/Aula5/index.html#ggforce",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "ggforce",
+    "text": "ggforce"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#ggrepel",
+    "href": "apresentacoes/Aula5/index.html#ggrepel",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "ggrepel",
+    "text": "ggrepel"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#ggtext",
+    "href": "apresentacoes/Aula5/index.html#ggtext",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "ggtext",
+    "text": "ggtext"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#como-salvar-gráficos",
+    "href": "apresentacoes/Aula5/index.html#como-salvar-gráficos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Como salvar gráficos?",
+    "text": "Como salvar gráficos?"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#como-salvar-gráficos-1",
+    "href": "apresentacoes/Aula5/index.html#como-salvar-gráficos-1",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Como salvar gráficos?",
+    "text": "Como salvar gráficos?"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#como-salvar-gráficos-2",
+    "href": "apresentacoes/Aula5/index.html#como-salvar-gráficos-2",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Como salvar gráficos?",
+    "text": "Como salvar gráficos?\nA forma mais “adequada” de se salvar gráficos é usando a função ggsave().\n\nggsave(\n  plot = grafico,\n  filename = \"grafico-1.png\",\n  device = \"png\",\n  path = \"pasta-de-graficos\",\n  width = 16,\n  height = 12,\n  units = \"cm\",\n  dpi = 600\n)\n\n\n\nlucas carmo / apresentações"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#hoje",
+    "href": "apresentacoes/Aula5/index.html#hoje",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Hoje…",
+    "text": "Hoje…\n\nQuais os geoms do ggplot2\nComo modificar escalas\n\nEscalas de cor\nEscalas de formas de pontos\nEscalas de tipos de linhas\nEscalas dos eixos\n\nComo adicionar média, desvios e barras de erro diretamente\nComo modificar temas dos gráficos\nExtensões do ggplot2\nComo salvar os gráficos"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#geoms",
+    "href": "apresentacoes/Aula5/index.html#geoms",
+    "title": "Aula 5",
+    "section": "geoms",
+    "text": "geoms"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#geoms-básicos",
+    "href": "apresentacoes/Aula5/index.html#geoms-básicos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "geoms básicos:",
+    "text": "geoms básicos:\n\n\n\ngeom_point()\ngeom_line(), geom_path()\ngeom_col()\ngeom_text(), geom_label()\ngeom_area()\ngeom_rect(), geom_raster(), geom_tile()\ngeom_polygon()\n\n\nTodos estes aceitam coordenadas de x e y, aceitam outrs estéticas como color, fill, size e outros.\nEu chamo de geoms básicos porque eles apenas mostram os dados que são apresentados a eles sem fazer nenhum tipo de cálculo ou transformação."
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#exemplos-de-geoms-básicos",
+    "href": "apresentacoes/Aula5/index.html#exemplos-de-geoms-básicos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Exemplos de geoms básicos",
+    "text": "Exemplos de geoms básicos"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#exemplos-de-geoms-básicos-2",
+    "href": "apresentacoes/Aula5/index.html#exemplos-de-geoms-básicos-2",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Exemplos de geoms básicos (2)",
+    "text": "Exemplos de geoms básicos (2)"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#geoms-coletivos",
+    "href": "apresentacoes/Aula5/index.html#geoms-coletivos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "geoms coletivos",
+    "text": "geoms coletivos\nOs geoms coletivos são elementos gráficos que agrupam os dados de alguma forma ou que aplicam alguma transformação matemática/estatística para exemplificar algum grau de incerteza ou mostrar a ditribuição dos dados.\nNesta categoria temos:\n\ngeom_histogram(), geom_freqpoly()\ngeom_boxplot()\ngeom_violin()\ngeom_density(), geom_density_2d()\ngeom_smooth(),\ngeom_linerange()"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#outros-geoms",
+    "href": "apresentacoes/Aula5/index.html#outros-geoms",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Outros geoms",
+    "text": "Outros geoms\nExistem outros geoms que podem encontrados na página de referência do ggplot2.\nhttps://ggplot2.tidyverse.org/reference/\nLá você pode achar mais informações que se aplique ao seu uso."
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#plotando-funções",
+    "href": "apresentacoes/Aula5/index.html#plotando-funções",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "plotando funções",
+    "text": "plotando funções"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#estéticas",
+    "href": "apresentacoes/Aula5/index.html#estéticas",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Estéticas",
+    "text": "Estéticas\nNa primeira aula de ggplot2 eu expliquei que as estéticas do gráfico, (eixo x, eixo y, cor, tipo de linha, tamanho de ponto etc) são mapeadas aos dados que são passados à função ggplot.\nÉ possível customizar a escala do mapeamento através das funções scale_*_*() ou sobrescrever as estéticas manualmente."
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#mudando-escalas",
+    "href": "apresentacoes/Aula5/index.html#mudando-escalas",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Mudando escalas",
+    "text": "Mudando escalas\n\n\n\nggplot(mpg) + \n  aes(displ, hwy,\n      col = cyl,\n      shape = drv) + \n  geom_point(size = 3) +\n  scale_color_gradient( #<<\n    low = \"grey25\", \n    high = \"firebrick\") +\n  scale_shape_manual( #<<\n    values = c(2,4,1))"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#referência-de-tipos-de-pontos-e-linhas",
+    "href": "apresentacoes/Aula5/index.html#referência-de-tipos-de-pontos-e-linhas",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Referência de tipos de pontos e linhas",
+    "text": "Referência de tipos de pontos e linhas"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#mudando-escalas-dos-eixos",
+    "href": "apresentacoes/Aula5/index.html#mudando-escalas-dos-eixos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Mudando escalas dos eixos",
+    "text": "Mudando escalas dos eixos\nAs escalas dos eixos podem ser modificadas através das funções scale_<x>_*() onde dentro de < > pode ser o eixo x e eixo y.\nAlgumas das transformações comuns são: - Aumentar os limites do gráfico - Inverter os valores dos eixos - Mudar para escala logarítmica, inverso, raiz quadrada - Mudar a quantidade de linhas divisoras breaks - Mudar as labels dos breaks"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#modificando-escala-dos-eixos",
+    "href": "apresentacoes/Aula5/index.html#modificando-escala-dos-eixos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Modificando escala dos eixos",
+    "text": "Modificando escala dos eixos\n\n\n\nggplot(mpg) +\n  aes(displ,hwy) +\n  geom_point() +\n  scale_x_log10(#<<\n    limits = c(0.5,10),\n    breaks = c(1,10),\n    labels = c(\"um\", \"dez\")\n  ) + \n  scale_y_sqrt( #<<\n    breaks = c(max(mpg$hwy), \n               min(mpg$hwy), \n               mean(mpg$hwy)),\n    labels = scales::dollar,\n    expand = c(0,0)\n  )"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#adicionando-resumos-estatísticos",
+    "href": "apresentacoes/Aula5/index.html#adicionando-resumos-estatísticos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Adicionando resumos estatísticos",
+    "text": "Adicionando resumos estatísticos\nUma das formas de plotar os resumos estatísticos, como média e desvio padrão entre triplicatas, é calcular estes valores, criar um objeto com eles e plotar no gráfico.\n\nDesvantagens\nAumenta o número de operações\nMais código para escrever\nMenos intuitivo para quem está lendo\nDificulta a adição dos dados do resumo sobre os dados brutos no gráfico\n\nPara se adicionar resumos estatísticos (média, desvio padrão etc) existe um tipo específico de geom chamado stat_summary().\nAtravés deste é possível adicionar funções que retornam os valores dos resumos estatísticos sem ter que criar um objeto antes de criar o gráfico"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#comparando-métodos",
+    "href": "apresentacoes/Aula5/index.html#comparando-métodos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Comparando métodos",
+    "text": "Comparando métodos\n\n\n\n\n\nMétodo 1\n\ndf_summary <- df %>% \n  group_by(x) %>% \n  summarise(\n    y_mean = mean(y)\n  )\n\nggplot(df) +\n  aes(x,y) +\n  geom_point() +\n  geom_point(\n    data = df_summary,\n    aes(x, y_mean),\n    size = 5, \n    color = \"red\")\n\n\nMétodo 2\n\nggplot(df) +\n  aes(x, y) +\n  geom_point() +\n  stat_summary(\n    fun = mean, \n    geom = \"point\",\n    size = 5,\n    col = \"red\")"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#resultado-dos-métodos",
+    "href": "apresentacoes/Aula5/index.html#resultado-dos-métodos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Resultado dos métodos",
+    "text": "Resultado dos métodos\n\n\nMétodo 1\n\n\n\n\n\n\nMétodo 2\n\n\n\n\n\n\n\nNeste caso foi usado apenas a função média, mas pode ser usada qualquer função escrita que retorne o valor central, mínimos e máximos."
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#temas-do-ggplot2",
+    "href": "apresentacoes/Aula5/index.html#temas-do-ggplot2",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Temas do ggplot2",
+    "text": "Temas do ggplot2\nPor padrão alguns temas vêm instalados como o theme_bw(), theme_dark(), theme_void() e alguns outros.\n\nPorém é possível modificar os elementos de um tema usando a função theme(). Esta função contém muitos argumentos e não é prático estudá-los nesta aula, contudo é bem documentado na página de temas do ggplot2 https://ggplot2.tidyverse.org/reference/theme.html."
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#elementos-do-tema",
+    "href": "apresentacoes/Aula5/index.html#elementos-do-tema",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Elementos do tema",
+    "text": "Elementos do tema"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#extensões-do-ggplot2",
+    "href": "apresentacoes/Aula5/index.html#extensões-do-ggplot2",
+    "title": "Aula 5",
+    "section": "Extensões do ggplot2",
+    "text": "Extensões do ggplot2"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#anteriormente",
+    "href": "apresentacoes/Aula6/index.html#anteriormente",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Anteriormente…",
+    "text": "Anteriormente…\n\nAprendemos algumas funcionalidades do ggplot2"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#hoje",
+    "href": "apresentacoes/Aula6/index.html#hoje",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Hoje…",
+    "text": "Hoje…\n\nComo organizar os dados e usar os Projects do RStudio"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#aula-resumida-em-um-slide",
+    "href": "apresentacoes/Aula6/index.html#aula-resumida-em-um-slide",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Aula resumida em um slide",
+    "text": "Aula resumida em um slide"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#criando-projetos",
+    "href": "apresentacoes/Aula6/index.html#criando-projetos",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Criando Projetos",
+    "text": "Criando Projetos"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#criando-projetos-1",
+    "href": "apresentacoes/Aula6/index.html#criando-projetos-1",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Criando Projetos",
+    "text": "Criando Projetos"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#criando-projetos-2",
+    "href": "apresentacoes/Aula6/index.html#criando-projetos-2",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Criando Projetos",
+    "text": "Criando Projetos"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#criando-projetos-3",
+    "href": "apresentacoes/Aula6/index.html#criando-projetos-3",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Criando Projetos",
+    "text": "Criando Projetos"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#arquivo-.rproj",
+    "href": "apresentacoes/Aula6/index.html#arquivo-.rproj",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Arquivo .rproj",
+    "text": "Arquivo .rproj\nO arquivo .rproj é um arquivo de text simples que contém as configurações do projeto.\nQuando você abre o seu arquivo .rproj o seu ambiente de trabalho abre no diretório onde o arquivo .rproj está.\nO que é um ambiente de trabalho?\nUsando o arquivo .rproj fica mais fácil organizar seus arquivos e análises."
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#o-pacote-here",
+    "href": "apresentacoes/Aula6/index.html#o-pacote-here",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "O pacote here::",
+    "text": "O pacote here::\nO pacote here:: é uma forma mais robusta de navegar pelos diretórios (pastas) do seu projeto.\nComo usá-lo:\n\nlibrary(here)\n\nhere()\n\n[1] \"C:/Users/lucas/Documents/quarto-blog\"\n\nhere(\"pasta-1\",\"ssc.csv\")\n\n[1] \"C:/Users/lucas/Documents/quarto-blog/pasta-1/ssc.csv\""
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#por-que-usar-projetos",
+    "href": "apresentacoes/Aula6/index.html#por-que-usar-projetos",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Por que usar projetos?",
+    "text": "Por que usar projetos?\nExistem três principais motivos para usar os Projects.\n\nTodas as análises, dados, scripts, gráficos, funções, objetos (…) podem ser acessados em apenas um diretório facilmente e esta pasta pode ser compartilhada facilmente com terceiros sem que haja necessidade de mandar vários arquivos individuais para que a análise funcione.\nO uso de referenciamento de diretórios relativo (usando here::) garante que o projeto irá funcionar no computador de outra pessoa caso você compartilhe essas análises com alguém.\nEm termos práticos é mais fácil escrever here(\"pasta1\",\"arquivo1.txt\") do que usar o nome completo do caminho para o diretório como C://Users/nome/universidade/mestrado/pasta1/arquivo.txt e também garante menos erros."
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#resumindo",
+    "href": "apresentacoes/Aula6/index.html#resumindo",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Resumindo",
+    "text": "Resumindo"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#algumas-dicas",
+    "href": "apresentacoes/Aula6/index.html#algumas-dicas",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Algumas dicas",
+    "text": "Algumas dicas\n\nEm geral é interessante que todos os seus arquivos sejam nomeados de uma forma que seja fácil saber o que representam sem ter que abrí-los"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#algumas-dicas-1",
+    "href": "apresentacoes/Aula6/index.html#algumas-dicas-1",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Algumas dicas",
+    "text": "Algumas dicas\n\nEvite usar espaços e caracteres especiais como %, *, &, #, ! porque podem gerar erros na hora de usar estes nomes para referenciar caminhos. Prefira utilizar - e _ para separar informações dos arquivos"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#algumas-dicas-2",
+    "href": "apresentacoes/Aula6/index.html#algumas-dicas-2",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Algumas dicas",
+    "text": "Algumas dicas\n\nSe for usar uma data use o formato YYYY-MM-DD Ex: 2020-03-14\nSe existe algum tipo de ordenamento use zeros antes do nome do arquivo para garantir que or arquivos fiquem ordenados na sequência correta\n\n01-intro.txt\n02-objetivos.txt\n03-materiais.txt"
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#algumas-dicas-3",
+    "href": "apresentacoes/Aula6/index.html#algumas-dicas-3",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Algumas dicas",
+    "text": "Algumas dicas\n\nProcure organizar seus arquivos em pastas quando relevante\nO Windows não possui uma ferramenta para adicionar tags aos arquivos, existe um programa grátis chamado TagSpaces que facilita a organização e busca de arquivos usando as tags."
+  },
+  {
+    "objectID": "apresentacoes/Aula6/index.html#exemplo-de-um-projeto-ruim",
+    "href": "apresentacoes/Aula6/index.html#exemplo-de-um-projeto-ruim",
+    "title": "Aula 6 - Organizando suas análises",
+    "section": "Exemplo de um projeto ruim",
+    "text": "Exemplo de um projeto ruim"
   }
 ]

@@ -1,0 +1,648 @@
+---
+title: "Aula 5 - Gráficos com ggplot2"
+subtitle: ""
+author: "Lucas C. L. do Carmo"
+date: "2020-10-22"
+format: revealjs
+image: ggplot-theme-elements.jpeg
+---
+
+https://www.youtube.com/watch?v=vMx_ARUkRGo&list=PLwhLOy1PoHDHKfod_nZt7rExHBSlEu_pm&index=5
+
+```{r, include=FALSE}
+library(tidyverse)
+library(latex2exp)
+library(patchwork)
+
+theme_present <- function(){
+  theme_bw(base_size = 12) +
+    theme(
+    legend.position = "bottom",
+    text = element_text(size = 12)
+    )
+}
+
+theme_set(theme_present())
+
+knitr::opts_chunk$set(comment = "", message = FALSE, warning = FALSE, cache = TRUE)
+```
+
+
+## Anteriormente...
+
+- Introdução ao `ggplot2` (Aula 3)
+- Workshop de importação e transformação de dados (Aula 4)
+
+## Hoje...
+
+- Quais os `geoms` do `ggplot2`
+- Como modificar escalas
+  - Escalas de cor
+  - Escalas de formas de pontos
+  - Escalas de tipos de linhas
+  - Escalas dos eixos
+- Como adicionar média, desvios e barras de erro diretamente
+- Como modificar temas dos gráficos
+- Extensões do `ggplot2`
+- Como salvar os gráficos
+
+
+# `geoms`
+
+## `geoms` básicos:
+
+::::{.columns}
+:::{.column}
+
+- `geom_point()`
+- `geom_line()`, `geom_path()`
+- `geom_col()`
+- `geom_text()`, `geom_label()`
+- `geom_area()`
+- `geom_rect()`, `geom_raster()`, `geom_tile()`
+- `geom_polygon()`
+
+:::
+
+:::{.column}
+
+Todos estes aceitam coordenadas de `x` e `y`, aceitam outrs estéticas como `color`, `fill`, `size` e outros.
+
+Eu chamo de `geoms` básicos porque eles apenas mostram os dados que são apresentados a eles sem fazer nenhum tipo de cálculo ou transformação.
+
+:::
+
+::::
+
+
+## Exemplos de `geoms` básicos
+
+```{r, echo=FALSE}
+df <- data.frame(
+  x = 1:5,
+  y = c(2,4,5,2,1),
+  lab = c("a","a","b","c","b")
+)
+```
+
+
+```{r echo=FALSE}
+theme_set(theme_present())
+p1 <- ggplot(df) + aes(x,y) + geom_area() + ggtitle("geom_area()")
+p2 <- ggplot(df) + aes(x,y) + geom_line() + ggtitle("geom_line()")
+p3 <- ggplot(df) + aes(x,y) + geom_col() + ggtitle("geom_col()")
+p4 <- ggplot(df) + aes(x,y) + geom_polygon() + ggtitle("geom_polygon()")
+
+p1 + p2 + p3 + p4
+```
+
+
+## Exemplos de `geoms` básicos (2)
+
+```{r echo=FALSE}
+theme_set(theme_present())
+p1 <- ggplot(df) + aes(x,y) + geom_tile() + ggtitle("geom_tile()")
+p2 <- ggplot(df) + aes(x,y,label = lab) + geom_text() + ggtitle("geom_text()")
+p3 <- ggplot(df) + aes(x,y) + geom_point() + ggtitle("geom_point()")
+p4 <- ggplot(df) + aes(x,y, label = lab) + geom_label() + ggtitle("geom_label()")
+
+p1 + p2 + p3 + p4
+```
+
+
+## `geoms` coletivos
+
+Os `geoms` coletivos são elementos gráficos que agrupam os dados de alguma forma ou que aplicam alguma transformação matemática/estatística para exemplificar algum grau de incerteza ou mostrar a ditribuição dos dados.
+
+Nesta categoria temos: 
+
+- `geom_histogram()`, `geom_freqpoly()`
+- `geom_boxplot()`
+- `geom_violin()`
+- `geom_density()`, `geom_density_2d()`
+- `geom_smooth()`,
+- `geom_linerange()`
+
+
+## Exemplos de `geoms` coletivos
+
+```{r, echo = FALSE}
+
+df <- data.frame(
+  x = 1:40,
+  y = rnorm(40,55, 5),
+  class = c("a" ,"b","c","d")
+)
+
+```
+
+```{r, echo = FALSE}
+theme_set(theme_present())
+p1 <- ggplot(df) + aes(y, group = class) + geom_histogram(binwidth = 2.5) + ggtitle("geom_histogram()")
+p2 <- ggplot(df) + aes(y) + geom_density() + ggtitle("geom_density()")
+p3 <- ggplot(df) + aes(class,y) + geom_boxplot() + ggtitle("geom_boxplot()")
+p4 <- ggplot(df) + aes(class,y) + geom_violin() + ggtitle("geom_violin()")
+
+p1 + p2 + p3 + p4
+```
+
+
+## Exemplos de `geoms` coletivos (2)
+
+```{r, echo = FALSE}
+
+df <- data.frame(
+  x = 1:10,
+  y = rnorm(10,5, 5),
+  error = rnorm(10,2,0.4)
+)
+
+```
+
+```{r, echo = FALSE}
+theme_set(theme_present())
+p <-  ggplot(df) + aes(x,y, ymin = y - error, ymax = y + error)
+
+p1 <- p + geom_ribbon(alpha = .5) + ggtitle("geom_ribbon()")
+
+p2 <- p + geom_errorbar() + ggtitle("geom_errorbar()")
+
+p3 <- p + geom_pointrange() + ggtitle("geom_pointrange()")
+
+p4 <- p + geom_crossbar() + ggtitle("geom_crossbar()")
+
+p1 + p2 + p3 + p4
+```
+
+
+## Outros `geoms`
+
+Existem outros `geoms` que podem encontrados na página de referência do `ggplot2`.
+
+https://ggplot2.tidyverse.org/reference/
+
+Lá você pode achar mais informações que se aplique ao seu uso.
+
+
+## plotando funções
+
+```{r, eval=FALSE}
+geom_function(fun = function(x) cos(x))
+```
+
+```{r, echo = FALSE}
+theme_set(theme_present())
+ggplot() +
+  geom_function(fun = function(x) 20*sin(x)) +
+  geom_function(fun = function(x) x^2 + 4*x - 3, color = "red") +
+  geom_function(fun = function(x) 7*x - 9, color = "blue") +
+  annotate("text",x = -pi*2, y = 60, label = TeX("$y = 7x - 9$"), color = "blue",hjust = 0) +
+  annotate("text",x = -pi*2, y = 55, label = TeX("$y = x^2 + 4x -3$"), color = "red",hjust = 0) +
+  annotate("text",x = -pi*2, y = 50, label = TeX("$y = 20 \\cdot \\sin(x)$"),hjust = 0) +
+  xlim(-pi*2,pi*2)
+```
+
+
+## Estéticas
+
+Na primeira aula de `ggplot2` eu expliquei que as estéticas do gráfico, (eixo x, eixo y, cor, tipo de linha, tamanho de ponto etc) são mapeadas aos dados que são passados à função `ggplot`.
+
+É possível customizar a escala do mapeamento através das funções `scale_*_*()` ou sobrescrever as estéticas manualmente.
+
+## Sobrescrevendo mapeamentos estéticos
+
+::::{.columns}
+:::{.column}
+```{r echo=TRUE}
+ggplot(mpg) +
+  aes(displ, hwy,
+      col = cyl) + #<<
+  geom_point() 
+```
+:::
+
+:::{.column}
+```{r echo=TRUE}
+ggplot(mpg) +
+  aes(displ, hwy,
+      col = "blue") + #<<
+  geom_point()
+```
+:::
+
+::::
+
+## Sobrescrevendo mapeamentos estéticos
+
+::::{.columns}
+:::{.column}
+```{r echo=TRUE}
+ggplot(mpg) +
+  aes(displ, hwy,
+      col = "blue") + #<<
+  geom_point() 
+```
+:::
+
+:::{.column}
+```{r echo=TRUE}
+ggplot(mpg) +
+  aes(displ, hwy) + 
+  geom_point(col = "blue") #<<
+```
+:::
+
+::::
+
+
+## Mudando escalas
+
+::::{.columns}
+:::{.column}
+```{r, eval = FALSE, echo=TRUE}
+
+ggplot(mpg) + 
+  aes(displ, hwy,
+      col = cyl,
+      shape = drv) + 
+  geom_point(size = 3) +
+  scale_color_gradient( #<<
+    low = "grey25", 
+    high = "firebrick") +
+  scale_shape_manual( #<<
+    values = c(2,4,1))
+```
+
+:::
+
+:::{.column height="100%"}
+```{r, echo = FALSE}
+ggplot(mpg) +
+  aes(displ, hwy,
+      col = cyl,
+      shape = drv) + 
+  geom_point(size = 3) +
+  scale_color_gradient( #<<
+    low = "grey25", 
+    high = "firebrick") +
+  scale_shape_manual( #<<
+    values = c(2,4,1)
+  )
+```
+:::
+
+::::
+
+## Referência de tipos de pontos e linhas
+
+::::{.columns}
+:::{.column}
+```{r, echo = FALSE}
+df_shapes <- data.frame(shape = 0:24)
+ggplot(df_shapes, aes(0, 0, shape = shape)) +
+  geom_point(aes(shape = shape), size = 9, stroke = 2, color = "grey25", fill = 'firebrick') +
+  scale_shape_identity() +
+  facet_wrap( ~ shape) +
+  theme_void(20)
+```
+:::
+
+:::{.column}
+
+```{r, echo=FALSE}
+df_lines <- data.frame(
+  linetype = factor(
+    1:4,
+    labels = c("solid", "longdash", "dashed", "dotted")
+  )
+)
+ggplot(df_lines) +
+  geom_hline(aes(linetype = linetype, yintercept = 0), size = 2) +
+  scale_linetype_identity() +
+  facet_grid(linetype ~ .) +
+  theme_void(20)
+```
+
+:::
+
+::::
+
+## Mudando escalas dos eixos
+
+As escalas dos eixos podem ser modificadas através das funções `scale_<x>_*()` onde dentro de < > pode ser o eixo `x` e eixo `y`.
+
+Algumas das transformações comuns são:
+- Aumentar os limites do gráfico
+- Inverter os valores dos eixos
+- Mudar para escala logarítmica, inverso, raiz quadrada
+- Mudar a quantidade de linhas divisoras *breaks*
+- Mudar as *labels* dos *breaks* 
+
+
+
+## Modificando escala dos eixos
+
+::::{.columns}
+:::{.column}
+```{r eval=FALSE, echo=TRUE}
+ggplot(mpg) +
+  aes(displ,hwy) +
+  geom_point() +
+  scale_x_log10(#<<
+    limits = c(0.5,10),
+    breaks = c(1,10),
+    labels = c("um", "dez")
+  ) + 
+  scale_y_sqrt( #<<
+    breaks = c(max(mpg$hwy), 
+               min(mpg$hwy), 
+               mean(mpg$hwy)),
+    labels = scales::dollar,
+    expand = c(0,0)
+  )
+```
+:::
+
+:::{.column}
+
+```{r, echo=FALSE}
+ggplot(mpg) +
+  aes(displ,hwy) +
+  geom_point() +
+  scale_x_log10(#<<
+    limits = c(0.5,10),
+    breaks = c(1,10),
+    labels = c("um", "dez")
+  ) + 
+  scale_y_sqrt( #<<
+    breaks = c(max(mpg$hwy), 
+               min(mpg$hwy), 
+               mean(mpg$hwy)),
+    labels = scales::dollar,
+    expand = c(0,0)
+  )
+```
+
+:::
+::::
+
+
+## Adicionando resumos estatísticos
+
+Uma das formas de *plotar* os resumos estatísticos, como média e desvio padrão entre triplicatas, é calcular estes valores, criar um objeto com eles e *plotar* no gráfico. 
+
+
+- Desvantagens
+ - Aumenta o número de operações
+ - Mais código para escrever
+ - Menos intuitivo para quem está lendo
+ - Dificulta a adição dos dados do resumo sobre os dados brutos no gráfico
+
+Para se adicionar resumos estatísticos (média, desvio padrão etc) existe um tipo específico de `geom` chamado `stat_summary()`.
+
+Através deste é possível adicionar funções que retornam os valores dos resumos estatísticos sem ter que criar um objeto antes de criar o gráfico
+
+## Comparando métodos
+
+```{r, echo = FALSE}
+df <- data.frame(
+  x = rep(1:5,5),
+  y = rnorm(25, 10,1)
+)
+```
+
+::::{.columns}
+:::{.column}
+
+### Método 1
+
+```{r, eval=FALSE, echo=TRUE}
+df_summary <- df %>% 
+  group_by(x) %>% 
+  summarise(
+    y_mean = mean(y)
+  )
+
+ggplot(df) +
+  aes(x,y) +
+  geom_point() +
+  geom_point(
+    data = df_summary,
+    aes(x, y_mean),
+    size = 5, 
+    color = "red")
+```
+:::
+
+:::{.column}
+
+### Método 2
+
+```{r, eval=FALSE, echo=TRUE}
+ggplot(df) +
+  aes(x, y) +
+  geom_point() +
+  stat_summary(
+    fun = mean, 
+    geom = "point",
+    size = 5,
+    col = "red") 
+
+```
+:::
+::::
+
+
+## Resultado dos métodos
+
+::::{.columns}
+:::{.column}
+
+### Método 1
+
+```{r, echo=FALSE}
+df_summary <- df %>% 
+  group_by(x) %>% 
+  summarise(
+    y_mean = mean(y)
+  )
+
+ggplot(df) +
+  aes(x,y) +
+  geom_point() +
+  geom_point(
+    data = df_summary,
+    aes(x, y_mean),
+    size = 5, 
+    color = "red")
+```
+:::
+
+:::{.column}
+
+### Método 2
+
+```{r, echo=FALSE}
+ggplot(df) +
+  aes(x, y) +
+  geom_point() +
+  stat_summary(
+    fun = mean, 
+    geom = "point",
+    size = 5,
+    col = "red") 
+
+```
+:::
+
+::::
+
+Neste caso foi usado apenas a função média, mas pode ser usada qualquer função escrita que retorne o valor central, mínimos e máximos.
+
+
+# Modificando temas
+
+## Temas do `ggplot2`
+
+Por padrão alguns temas vêm instalados como o `theme_bw()`, `theme_dark()`, `theme_void()` e alguns outros.
+
+```{r, echo=FALSE, fig.align="center", fig.asp=0.5}
+p <- ggplot(df,aes(x,y)) + geom_point()
+
+p1 <- p + theme_dark() + ggtitle("theme_dark()")
+
+p2 <- p + theme_bw() + ggtitle("theme_bw()")
+
+p3 <- p + theme_void() + ggtitle("theme_void()")
+
+p1 + p2 + p3
+```
+
+Porém é possível modificar os elementos de um tema usando a função `theme()`.
+Esta função contém muitos argumentos e não é prático estudá-los nesta aula, contudo é bem documentado na página de temas do `ggplot2` https://ggplot2.tidyverse.org/reference/theme.html.
+
+
+## Elementos do tema
+
+```{r, echo=FALSE}
+knitr::include_graphics("ggplot-theme-elements.jpeg")
+```
+
+# Extensões do ggplot2
+
+## Extensões
+
+Existem extensões que adicionam outros temas, `geoms`, `stats`, tipos de gráficos, escalas de cores, gráficos interativos e muito mais ao `ggplot2`.
+Alguns dos principais são:
+
+- `gganimate::` facilita a criação animações de gráficos e exporta em `.gif` ou formato de vídeo.
+- `ggforce::` adiciona outros `geoms` e outros tipos de `facet`
+- `patchwork::` facilita a combinação de vários gráficos em uma só imagem
+- `ggrepel::` automaticamente posiciona elementos de `geom_text()` para que não fiquem sobrepostos
+- `gghighlight::` facilita que dados sejam destacados nos gráficos
+- `ggtext::` facilita formatação de textos dos gráficos
+- `ggthemes::` importa vários temas distintos
+- `ggpmisc::` adiciona várias funcionalidades variadas
+- `ggpubr::` importa funções que facilitam a construção de gráficos prontos para publicação
+- `esquisse::` interface gráfica para criação de gráficos
+
+
+## `gganimate`
+
+```{r animation, echo=TRUE, eval=FALSE}
+library(gapminder)
+library(gganimate)
+
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  # Here comes the gganimate specific bits
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+```
+
+
+## `ggforce`
+
+```{r, echo=FALSE}
+library(ggforce)
+#> Loading required package: ggplot2
+ggplot(iris, aes(Petal.Length, Petal.Width, colour = Species)) +
+  geom_point() +
+  facet_zoom(x = Species == "versicolor")
+```
+
+## `ggrepel`
+
+```{r, echo=FALSE}
+library(ggrepel)
+set.seed(42)
+
+dat <- subset(mtcars, wt > 2.75 & wt < 3.45)
+dat$car <- rownames(dat)
+
+p <- ggplot(dat, aes(wt, mpg, label = car)) +
+  geom_point(color = "red")
+
+p1 <- p + geom_text() + labs(title = "geom_text()")
+
+p2 <- p + geom_text_repel() + labs(title = "geom_text_repel()")
+
+gridExtra::grid.arrange(p1, p2, ncol = 2)
+```
+
+## `ggtext`
+
+```{r, echo=FALSE}
+library(ggtext)
+
+labels <- c(
+  setosa = "",
+  virginica = "",
+  versicolor = ""
+)
+
+ggplot(iris, aes(Species, Sepal.Width)) +
+  geom_boxplot() +
+  scale_x_discrete(
+    name = NULL,
+    labels = labels
+  ) +
+  theme(
+    axis.text.x = element_markdown(color = "black", size = 11)
+  )
+```
+
+## Como salvar gráficos?
+
+```{r, echo = FALSE, fig.align="center"}
+knitr::include_graphics("save-button.png")
+```
+
+## Como salvar gráficos?
+
+```{r, echo = FALSE, fig.align="center"}
+knitr::include_graphics("save-dialog.png")
+```
+
+## Como salvar gráficos?
+
+A forma mais "adequada" de se salvar gráficos é usando a função `ggsave()`.
+
+```{r, eval=FALSE, echo=TRUE}
+ggsave(
+  plot = grafico,
+  filename = "grafico-1.png",
+  device = "png",
+  path = "pasta-de-graficos",
+  width = 16,
+  height = 12,
+  units = "cm",
+  dpi = 600
+)
+```
+

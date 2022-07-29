@@ -1,0 +1,151 @@
+---
+title: "Aula 6 - Organizando suas análises"
+subtitle: ""
+author: "Lucas C. L. do Carmo"
+date: "2020-10-28"
+format: revealjs
+image: file-structure.png
+---
+
+https://www.youtube.com/watch?v=RnkBqTqLZ3Q&list=PLwhLOy1PoHDHKfod_nZt7rExHBSlEu_pm&index=6
+
+```{r, include=FALSE}
+library(tidyverse)
+library(latex2exp)
+library(patchwork)
+library(here)
+
+theme_present <- function(){
+  theme_gray(base_size = 12) +
+    theme(legend.position = "bottom")
+}
+
+theme_set(theme_present())
+
+knitr::opts_chunk$set(comment = "", fig.retina = 2, message = FALSE, warning = FALSE, cache = TRUE)
+```
+
+
+## Anteriormente...
+
+- Aprendemos algumas funcionalidades do `ggplot2`
+
+## Hoje...
+
+- Como organizar os dados e usar os `Projects` do RStudio
+
+
+
+## Aula resumida em um slide
+
+
+![](file-structure.png)
+
+
+## Criando Projetos
+
+
+![](project-dialog-1.png)
+
+
+
+
+## Criando Projetos
+
+![](project-dialog-2.png)
+
+
+
+
+## Criando Projetos
+
+![](project-dialog-3.png)
+
+
+
+
+## Criando Projetos
+
+![](projeto-folder.png)
+
+
+
+## Arquivo `.rproj`
+
+O arquivo `.rproj` é um arquivo de text simples que contém as configurações do projeto.
+
+Quando você abre o seu arquivo `.rproj` o seu ambiente de trabalho abre no diretório onde o arquivo
+`.rproj` está.
+
+O que é um ambiente de trabalho?
+
+Usando o arquivo `.rproj` fica mais fácil organizar seus arquivos e análises.
+
+
+## O pacote `here::`
+
+O pacote `here::` é uma forma mais robusta de navegar pelos diretórios (pastas) do seu projeto.
+
+Como usá-lo:
+
+```{r echo=TRUE}
+library(here)
+
+here()
+
+here("pasta-1","ssc.csv")
+
+```
+
+
+
+## Por que usar projetos?
+
+Existem três principais motivos para usar os `Projects`.
+
+- Todas as análises, dados, scripts, gráficos, funções, objetos (...) podem ser acessados em apenas um diretório facilmente e esta pasta pode ser compartilhada facilmente com terceiros sem que haja necessidade de mandar vários arquivos individuais para que a análise funcione.
+
+- O uso de referenciamento de diretórios relativo (usando `here::`) garante que o projeto irá funcionar no computador de outra pessoa caso você compartilhe essas análises com alguém.
+
+- Em termos práticos é mais fácil escrever `here("pasta1","arquivo1.txt")` do que usar o nome completo do caminho para o diretório como `C://Users/nome/universidade/mestrado/pasta1/arquivo.txt` e também garante menos erros.
+
+## Resumindo
+
+
+![](file-structure.png)
+
+
+## Algumas dicas
+
+- Em geral é interessante que todos os seus arquivos sejam nomeados de uma forma que seja fácil saber o que representam sem ter que abrí-los
+
+
+## Algumas dicas
+
+- Evite usar espaços e caracteres especiais como `%, *, &, #, !` porque podem gerar erros na hora de usar estes nomes para referenciar caminhos. Prefira utilizar `-` e `_` para separar informações dos arquivos
+
+
+## Algumas dicas
+
+- Se for usar uma data use o formato `YYYY-MM-DD` Ex: 2020-03-14
+
+- Se existe algum tipo de ordenamento use zeros antes do nome do arquivo para garantir que or arquivos fiquem ordenados na sequência correta 
+
+```
+01-intro.txt
+02-objetivos.txt
+03-materiais.txt
+```
+
+## Algumas dicas
+
+- Procure organizar seus arquivos em pastas quando relevante
+
+- O Windows não possui uma ferramenta para adicionar *tags* aos arquivos, existe um programa grátis chamado *TagSpaces* que facilita a organização e busca de arquivos usando as *tags*.
+
+## Exemplo de um projeto ruim
+
+
+![](exemplo-ruim.png)
+
+# FIM

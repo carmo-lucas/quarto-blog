@@ -4,4 +4,12 @@
 execute:
   freeze: auto
 date-format: "YYYY-MM-DD"
-
+format: 
+  revealjs:
+    theme: default
+    footer: "[lucas carmo](/) / [apresentações](/apresentacoes.html)"
+fig-asp: 1
+fig-dpi: 300
+width: 1920
+height: 1080
+slide-number: true
