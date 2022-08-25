@@ -1,0 +1,296 @@
+---
+title: Cosmetic emulsion physical stability screening by means of rheology
+subtitle: "Master's Dissertation Defense"
+author:
+    name: "Lucas Chagas Lima do Carmo"
+    email: msclucaslima@gmail.com
+    affiliation:
+        name: Federal University of Paraná
+date: 2020-03-16
+bibliography: bibliography.bib
+format:
+  revealjs:
+    theme: simple
+    footer: "[lucas carmo](/)/[apresentações](/apresentacoes.html)"
+    preview-links: true
+---
+
+## Acknowledgements
+
+## Table of Contents
+
+- Introduction
+- Objectives
+- Materials & Methods
+- Results and Discussion
+    - "Classic" methods of stability assessment
+    - Influence of oil content on rheology
+    - Influence of time on rheology
+    - Rheological thermal analysis
+- Final Considerations
+
+# Introduction
+
+## Cosmetic Industry
+
+```{r abihpec-plot}
+#| fig-cap: "Ex-factory revenue of the cosmetic industry since 2006"
+
+library(tidyverse)
+library(lubridate)
+
+abihpec_data <- tibble(
+    ano = c(2006:2017),
+    `R$` = c(17.5, 19.6, 21.3, 24.4, 27.3, 29.9, 34.6, 38.2, 43.2, 43.2, 44.9, 47.5),
+    `US$` = c(8.1, 10.1, 11.7, 12.6, 15.5, 17.9, 17.6, 17.6, 18.4, 13, 12.9, 14.5)
+) %>%
+    pivot_longer(
+        cols = c(`R$`, `US$`),
+        names_to = "Country",
+        values_to = "value"
+    )
+
+write_csv(abihpec_data, "data.csv")
+
+ggplot(data = abihpec_data) +
+    geom_col(
+        aes(
+            x = ano,
+            y = value,
+            fill = Country
+        ),
+        position = position_dodge(width = .9), width = 0.8
+    ) +
+    geom_text(
+        aes(
+            x = ano,
+            y = value,
+            label = format(value, digits = 2),
+            color = Country
+        ),
+        position = position_dodge2(width = .9),
+        vjust = -1, hjust = .5, fontface = "bold"
+    ) +
+    scale_y_continuous(limits = c(0, 55), expand = c(0, 0)) +
+    scale_fill_manual(
+        values = c("#278627", "royalblue"),
+        aesthetics = c("fill", "color")
+    ) +
+    scale_x_continuous(breaks = c(2006:2017)) +
+    labs(
+        title = "Ex-factory revenue of the cosmetic industry since 2006",
+        x = "", y = "$ in Billions", fill = "Currency", col = "Currency"
+    ) +
+    theme_bw() +
+    theme(
+        legend.position = c(0.01, 0.99),
+        legend.justification = c(0, 1)
+    )
+```
+
+## Cosmetic Industry OJS
+
+```{ojs}
+width = 1800
+height = 1000
+
+data = FileAttachment("data.csv").csv({ typed: true })
+
+Plot.plot({
+    marks: [
+        Plot.barY(
+            data, {x:"ano",y:"value",fill:"Country"}
+        )
+    ]
+})
+
+```
+
+
+[@abihpec2018]
+
+## "Classic" Stability Studies
+
+## Emulsions
+
+## Emulsion Types
+
+## Colloid Stability - 1
+
+## Colloid Stability - 2
+
+## Colloid Stability - 3
+
+## Colloid Stability - 4
+
+## Colloid Stability - 5
+
+## Colloid Stability - 6
+
+## Colloid Stability - 7
+
+## Colloid Stability - 8
+
+## Destabilisation Mechanisms
+
+## Cosmetic Cream Structure - 1
+
+## Cosmetic Cream Structure - 2
+
+## Rheology - 1
+
+## Rheology - 2
+
+## Rheology - 3
+
+## Rheology - 4
+
+## Rheology - 5
+
+## Rheology - 6
+
+## Rheology - 7
+
+## Rheology - 8
+
+## Rheological Thermal Analysis - 1
+
+## Rheological Thermal Analysis - 2
+
+## Rheological Thermal Analysis - 3
+
+## Rheological Variables
+
+# Objectives
+
+## Objectives
+
+## Proposal
+
+# Materials and Methods
+
+## Cream Composition
+
+## Emulsification - 1
+
+## Emulsification - 2
+
+## Emulsification - 3
+
+## Emulsification - 4
+
+## Formulas
+
+## Methods
+
+# Results
+
+# Part I - "Classic" Methods
+
+## Macroscopic Evaluation - 1
+
+## Macroscopic Evaluation - 2
+
+## pH Evaluation Over Time - 1
+
+## pH Evaluation Over Time - 2
+
+## pH Evaluation Over Time - 3
+
+## pH Evaluation Over Time - 4
+
+## Microscopy 10X Magnification - 1
+
+## Microscopy 10X Magnification - 2
+
+## Microscopy 10X Magnification - 3
+
+## Microscopy 40X Magnification - 1
+
+## Microscopy 40X Magnification - 2
+
+## Microscopy 40X Magnification - 3
+
+## Polarized Light Microscopy - 1
+
+## Polarized Light Microscopy - 2
+
+## Polarized Light Microscopy - 3
+
+## Fraunhofer Diffraction Sizing - 1
+
+## Fraunhofer Diffraction Sizing - 2
+
+## Fraunhofer Diffraction Sizing - 3
+
+## Fraunhofer Diffraction Sizing - 4
+
+## Fraunhofer Diffraction Sizing - 5
+
+## Droplet Size Over Time
+
+# Part II - Influence of oil content on rheology
+
+## Amplitude sweeps
+
+## Linear Viscoelasticity Region
+
+## Yield Stress
+
+## Cohesive Energy
+
+## Frequency Sweeps
+
+## Complex Viscosity
+
+# Part III - Influence of storage time on rheology
+
+## Yield Stress Over Time
+
+## Frequency Sweeps Over Time - 1
+
+## Frequency Sweeps Over Time - 2
+
+## Frequency Sweeps Over Time - 3
+
+## Frequency Sweeps Over Time - 4
+
+## Crossover Frequency Over Time
+
+## Emulsion Gelled Structure
+
+# Part IV - Rheological thermal analysis
+
+## Moduli vs. Temperature - 1
+
+## Moduli vs. Temperature - 2
+
+## Moduli vs. Temperature - 3
+
+## Moduli vs. Time - 1
+
+## Moduli vs. Time - 2
+
+## Moduli vs. Time - 3
+
+## Calculating $\alpha$ and $\Xi$ - 1
+
+## Calculating $\alpha$ and $\Xi$ - 2
+
+## Calculating $\alpha$ and $\Xi$ - 3
+
+## Calculating $\alpha$ and $\Xi$ - 4
+
+## Calculating $\alpha$ and $\Xi$ - 5
+
+## Distribution of $\Xi$ values
+
+## $\alpha$ Comparison Between Formulas
+
+# Final Considerations
+
+## Final Considerations - 1
+## Final Considerations - 2
+
+# {.unnumbered}
+
