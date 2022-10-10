@@ -9,7 +9,7 @@
 <link>https://www.lucascarmo.com.br/blog.html</link>
 <atom:link href="https://www.lucascarmo.com.br/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-0.9.490</generator>
+<generator>quarto-0.9.535</generator>
 <lastBuildDate>Thu, 14 Jul 2022 03:00:00 GMT</lastBuildDate>
 <item>
   <title>Usando o PowerToys para criar tarefas no ClickUp</title>
@@ -22,7 +22,7 @@
 
 <section id="tldr" class="level1">
 <h1>tl;dr</h1>
-<p>Este artigo descreve como utilizad</p>
+<p>Este artigo descreve como utilizar o um software da microsoft chamado PowerToys Run para manipular informações no <a href="app.clickup.com">ClickUp</a>.</p>
 </section>
 <section id="porque-eu-quero-integrar-o-powertoys-ao-clickup" class="level1">
 <h1>Porque eu quero integrar o PowerToys ao ClickUp?</h1>

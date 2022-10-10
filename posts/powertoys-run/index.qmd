@@ -9,7 +9,8 @@ categories: [powershell, powertoys, n8n, clickup]
 
 # tl;dr
 
-Este artigo descreve como utilizad 
+Este artigo descreve como utilizar o um software da microsoft chamado PowerToys Run para
+manipular informações no [ClickUp](app.clickup.com).
 
 # Porque eu quero integrar o PowerToys ao ClickUp?
 

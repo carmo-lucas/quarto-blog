@@ -5,3 +5,7 @@ title-block-banner: false
 date-format: "DD - MM - YYYY"
 
 ---
+
+Aqui é a página inicial do site.
+
+Colocar fotos e links para outras páginas e sites.
