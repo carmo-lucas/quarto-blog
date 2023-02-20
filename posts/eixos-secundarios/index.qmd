@@ -1,0 +1,322 @@
+---
+author: "Lucas Carmo"
+title: "Como criar eixos secundários no `ggplot2`"
+subtitle: ""
+format: html
+date: 2023-02-11
+categories: [ggplot2, dataviz]
+---
+
+# tl;dr
+
+# O que é um eixo secundário?
+
+Eixos secundários são comuns em gráficos para comparar duas ou mais variáveis dependentes ao longo de uma terceira variável independente.
+São úteis para a visualização de monitoramento de várias métricas com unidades diferentes ou para a comparação de duas variáveis que não são necessariamente relacionadas ou estão na mesma grandeza.
+
+Alguns dos _softwares_ de planilha que tem funcionalidades para criação de gráficos mais acessíveis possuem em seus menus a opção de adicionar um eixo y secundário.
+
+# Como fazer eixos secundários no ggplot2?
+
+A documentação oficial do `ggplot2::` dá alguns exemplos simples de como criar um eixo secundário `y` ou `x` ([Specify a secondary axis](https://ggplot2.tidyverse.org/reference/sec_axis.html))
+
+Porém a documentação não abrange todas as funcionalidades possíveis então nessa postagem vou buscar explorar mais as possibilidades de configurações de eixos secundários.
+
+# Gráfico exemplo
+
+```{r, gráfico-base}
+#| fig-cap: Gráfico base criado com valores aleatórios.
+#| fig-cap-location: margin
+
+library(ggplot2)
+
+dataframe <- data.frame(
+  x = 1:10,
+  y = 1:10 + rnorm(10, mean = 4, sd = 2)
+)
+
+
+p <- ggplot(data = dataframe) +
+        aes(x = x, y = y) +
+        geom_point()
+
+p
+
+```
+
+O gráfico acima é (`p`) é apenas a base para as próximas customizações.
+
+De acordo com os exemplos na documentação, basta adicionar a função para configurar a escala do eixo y (ou x) ao gráfico original e com o argumento `sex.axis` especificar as configurações do segundo eixo.
+Usando `dup_axis()` como valor para o argumento, apenas será duplicado o eixo y do lado esquerdo para o direito.
+Porém usando o valor `sec.axis()` 
+
+```{r}
+#| label: fig-sec-axis
+#| fig-subcap: 
+#| - dup_axis()
+#| - sec_axis(~ log10(y))
+#| fig-cap: Adição de eixos y secundários no lado direito.
+
+p + scale_y_continuous(sec.axis = dup_axis())
+p + scale_y_continuous(sec.axis = sec_axis(~ log10(.), name="log(y)"))
+
+```
+
+Veja que ao criar um eixo secundário usando `sec_axis()` é possível aplicar uma transformação na escala do eixo.
+No exemplo acima foi aplicado a transformação $\log_{10} y$ porem podem ser aplicadas outras transformações lineares, como multiplicação, exponenciação, soma, divisão etc.
+
+# Exemplo mais complexo
+
+Nos exemplos acima apenas criei um gráfico com os dois eixos mas sem os dados relacionados ao eixo y do lado direito portanto abaixo irei especificar melhor os usos dos dois eixos.
+
+```{r}
+#| fig-cap: Função seno vs função exponencial
+
+x <- seq(from = 0, to = 2*pi , by = 0.05)
+
+df <- data.frame(
+  x = x,
+  seno = sin(x),
+  exponencial = exp(x)
+)
+
+p <- ggplot(df, aes(x = x)) +
+        geom_line(aes(y = seno), color = "firebrick", linewidth = 1) +
+        geom_line(aes(y = exponencial), color = "royalblue", linewidth = 1) +
+        labs(y = "sin x")
+
+p
+```
+
+Acima se observa um gráfico com duas linhas, uma representando, uma função seno (vermelho), e outra função exponencial (azul),
+porém mal se percebe a "ondulação" da função seno por estar com uma amplitude aparente tão pequena em relação à função exponencial.
+Nesses casos que se é interessante utilizar o eixo secundário para comparar a variação entre as duas séries de dados.
+
+Porém só criar o eixo secundário não significa que os dados irão automaticamente ser mapeados à nova escala criada.
+Como assim?
+
+Os valores dos dados e os valores da escala são independentes,
+então é necessário que sejam transformados individualmente.
+Isso precisa ser feito 'manualmente', portanto é necessário transformar os dados de uma das séries de dados através de uma transformação linear.
+
+Esta transformação linear não é nada mais do que mapear os dados 
+
+```{r, coeficiente}
+#| echo: true
+#| code-fold: false
+#| fig-cap: Utilização de um coeficiente com valor constante para transformar os dados e a escala do eixo secundário.
+#| label: fig-coeficiente
+
+coeficiente <- 2500
+
+ggplot(df, aes(x = x)) +
+  geom_line(aes(y = seno * coeficiente), color = "firebrick", linewidth = 1) +
+  geom_line(aes(y = exponencial), color = "royalblue", linewidth = 1) +
+  scale_y_continuous(sec.axis = sec_axis(~ . / coeficiente, name="sin(x)")) +
+  labs(y = "exp(x)",
+       title = paste("Coeficiente = ", coeficiente))
+
+```
+
+Por exemplo, aplicando a multiplicação dos valores da função $\sin(x)$ por um coeficiente com valor `r coeficiente`, (linha 4)
+os valores das duas funções irão se aproximar.
+Porém ao mesmo tempo eu preciso dividir a minha escala do eixo secundário pelo mesmo coeficiente (`r coeficiente`) para que os valores exibidos na escala sejam os antes da transformação (linha 7).
+
+A @fig-coeficiente é um exemplo completo de como utilizar o coeficiente para transformar os dados.
+
+Porém definir coeficientes manualmente é uma tarefa repetitiva e em alguns casos não muito intuitiva.
+Portanto podemos tentar definir o coeficiente de forma programática.
+
+# Calculando o coeficiente ideal
+
+Nos exemplos anteriores chegamos em um coeficiente razoável de forma manual, testando valores e chegamos no valor de `r coeficiente` como sendo bom o suficiente para a aplicação.
+
+Para calcularmos um coeficiente de forma programática podemos escrever uma função, que aceita todos os dados e nos retorna um valor, baseado em operações aritmméticas.
+
+
+```{r}
+#| code-fold: false
+
+calcular_coeficiente <- function(dados, var_1, var_2){
+    parametros <- dados |>
+      dplyr::summarise(
+        max_var_1 = max({{ var_1 }}),
+        min_var_1 = min({{ var_1 }}),
+        max_var_2 = max({{ var_2 }}),
+        min_var_2 = min({{ var_2 }})
+        )
+    
+    coeficiente <- (parametros$max_var_2 - parametros$min_var_2) /
+                   (parametros$max_var_1 - parametros$min_var_1)
+    return(coeficiente)
+      }
+
+coeficiente_calculado <- calcular_coeficiente(df, seno, exponencial)
+```
+
+Acima é demostrada uma função que calcula o coeficiente baseado nos valores máximos e mínimos das variáveis dadas a ela.
+O coeficiente calculado pela função tem o valor `r coeficiente_calculado` e se utilizado para refazer o gráfico percebe-se que as duas curvas se sobrepõem de forma mais normalizada.
+
+```{r}
+
+ggplot(df, aes(x = x)) +
+  geom_line(aes(y = seno * coeficiente_calculado), color = "firebrick", linewidth = 1) +
+  geom_line(aes(y = exponencial), color = "royalblue", linewidth = 1) +
+  scale_y_continuous(sec.axis = sec_axis(~ . / coeficiente_calculado, name="sin(x)")) +
+  labs(y = "exp(x)", title = paste("Coeficiente = ", coeficiente_calculado))
+
+```
+
+Porém o desafio é implementar o cálculo do coeficiente diretamente na construção do gráfico
+e também há o problema da ordem das variáveis na função.
+
+## Adequação da função de cálculo dos coeficientes
+
+Da forma que a função foi construída o cálculo do coeficiente é feito da seguinte forma:
+
+$$
+coef = \frac{\max (Var_2) - \min(Var_2)}{\max (Var_1) - \min(Var_1)}
+$$
+
+Portanto se os valores da $Var_2$ apresentarem uma amplitude maior do que a amplitude dos valores da $Var_1$ o valor do coeficiente será positivo enquanto o inverso irá resultar em um coeficiente maior que zero e menor que 1 ($0<coef<1$),
+o que resultaria no gráfico abaixo, logo, a ordem das variáveis é importante no momento de executar a função.
+
+```{r}
+# ordem das variáveis invertida
+coef2 <- calcular_coeficiente(df, exponencial, seno)
+
+ggplot(df, aes(x = x)) +
+  geom_line(aes(y = seno * coef2), color = "firebrick", linewidth = 1) +
+  geom_line(aes(y = exponencial), color = "royalblue", linewidth = 1) +
+  scale_y_continuous(sec.axis = sec_axis(~ . / coef2, name="sin(x)")) +
+  labs(y = "exp(x)", title = paste("Coeficiente = ", coef2))
+
+```
+
+Para resolver isso pode-se adicionar um bloco na função `calcular_coeficiente()` que verifica se $0<coef<1$ e inverter o valor se necessário, essa função nova será chamada: `calcular_coeficiente_smart()`.
+
+```{r}
+#| code-fold: false
+
+calcular_coeficiente_smart <- function(dados, var_1, var_2){
+    
+    parametros <- dados |>
+      dplyr::summarise(
+        max_var_1 = max( {{ var_1 }} ),
+        min_var_1 = min( {{ var_1 }} ),
+        max_var_2 = max( {{ var_2 }} ),
+        min_var_2 = min( {{ var_2 }} )
+        )
+
+    coeficiente <- (parametros$max_var_2 - parametros$min_var_2) /
+                   (parametros$max_var_1 - parametros$min_var_1)
+
+    if(coeficiente < 1 & coeficiente > 0){
+      coeficiente <- (1/coeficiente)
+      }
+    return(coeficiente)
+  }
+
+coeficientes <- list(
+
+# seno depois exponencial
+coeficiente_calculado_1 <- calcular_coeficiente_smart(df, seno, exponencial),
+
+# exponencial depois seno
+coeficiente_calculado_2 <- calcular_coeficiente_smart(df, exponencial, seno)
+)
+
+print(coeficientes)
+
+```
+
+Agora independente da ordem das variáveis passadas à função o coeficiente calculado será sempre o valor esperado.
+Mas ainda falta implementar isso diretamente no gráfico.
+
+# Implementação dos coeficientes no gráfico
+
+O que está faltando agora para finalizar o processo é criar uma função única para criar o gráfico com dois eixos.
+É possível fazer isso através de uma função única onde são passados o dataframe e as duas variáveis como argumentos e o *output*
+seria o gráfico completo.
+
+## Uma função que faz todas as operações automaticamente
+
+Nessa função também deve se implementar o cálculo do coeficiente de forma a melhorar a legibilidade e tornar mais fácil para o usuário utilizar a função.
+Para criar essa função, o usar o código já escrito para calcular o coeficiente será usado.
+
+```{r}
+#| code-fold: false
+
+two_y_axis_plot <- function(df, x, var_1, var_2){
+
+  parametros <- df |>
+    dplyr::summarise(
+      max_var_1 = max( {{ var_1 }} ),
+      min_var_1 = min( {{ var_1 }} ),
+      max_var_2 = max( {{ var_2 }} ),
+      min_var_2 = min( {{ var_2 }} )
+        )
+
+    coeficiente <- (parametros$max_var_2 - parametros$min_var_2) /
+                   (parametros$max_var_1 - parametros$min_var_1)
+
+    if(coeficiente < 1 & coeficiente > 0){
+      coeficiente <- (1/coeficiente)
+      }
+
+plot <- df |> 
+    ggplot(aes({{ x }})) +
+    geom_line(aes(y = {{ var_1 }} * coeficiente), color = "firebrick") +
+    geom_line(aes(y = {{ var_2 }}), color = "royalblue") +
+    scale_y_continuous(
+      sec.axis = sec_axis(
+        ~ . / coeficiente,
+        name = "sin(x)"
+        )
+      ) +
+    labs(
+      y = "exp(x)",
+      title = "two_y_axis_plot()",
+      subtitle = paste("Coeficiente = ", round(coeficiente, 2)))
+
+return(plot)
+}
+```
+
+```{r}
+#| fig-cap: Executando a função criada acima com os argumentos necessários
+
+two_y_axis_plot(df, x, seno, exponencial)
+```
+
+A função criada retorna automaticamente o gráfico com os dois eixos, com nomes e cores predefinidas
+mas com a o coeficiente calculado adequadamente.
+É possível transformar as customizações do gráfico em argumentos da função
+(como cores das linhas ou até que tipo de `geom` deverá ser usado),
+porém o aumento da complexidade da função não é o principal a se explorar no momento.
+
+O que pode se explorar é que da mesma forma que foi criado um eixo y secundário,
+também pode ser criado um eixo x secundário, exatamente da mesma forma.
+Inclusive, é possível utilizar a função que foi criada para o gráfico de dois eixos y
+e adicionar novos elementos ao gráfico
+como linhas de referência usando `geom_vline` e `geom_hline`.
+
+```{r}
+#| fig-cap: Adição do eixo x secundário e linhas de referência
+#| label: final-customizations
+
+two_y_axis_plot(df, x, seno, exponencial) + 
+  scale_x_continuous(
+    breaks = c(0:7),
+    sec.axis = sec_axis(~  . / pi,
+      name = "radian(x)",
+      labels = scales::label_number(suffix = "\U03C0")
+    )
+  ) +
+  geom_vline(xintercept = c(pi/2, pi), lty = "dotted") +
+  geom_hline(yintercept = 0, lty = "dashed") + 
+  theme_bw() +
+  theme(panel.grid = element_blank())
+
+```
+

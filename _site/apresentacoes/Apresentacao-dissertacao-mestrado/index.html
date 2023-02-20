@@ -7,9 +7,9 @@
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.535">
+  <meta name="generator" content="quarto-1.2.313">
 
   <meta name="author" content="Lucas Chagas Lima do Carmo">
   <meta name="dcterms.date" content="2020-03-16">
@@ -22,74 +22,15 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
     }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
@@ -416,20 +357,31 @@
       margin-right: 0; 
     }
   </style>
-  <script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-  <link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 </head>
-<body>
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="center">
+<section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Cosmetic emulsion physical stability screening by means of rheology</h1>
   <p class="subtitle">Master‚Äôs Dissertation Defense</p>
-  <p class="author">Lucas Chagas Lima do Carmo</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Lucas Chagas Lima do Carmo 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:msclucaslima@gmail.com">msclucaslima@gmail.com</a>
+</div>
+        <p class="quarto-title-affiliation">
+            Federal University of Paran√°
+          </p>
+    </div>
+</div>
+
   <p class="date">2020-03-16</p>
 </section>
-
 <section id="acknowledgements" class="slide level2">
 <h2>Acknowledgements</h2>
 </section>
@@ -457,52 +409,7 @@
 <section id="cosmetic-industry" class="slide level2">
 <h2>Cosmetic Industry</h2>
 
-<img data-src="index_files/figure-revealjs/abihpec-plot-1.png" width="3000" class="r-stretch quarto-figure-center"><p class="caption">Ex-factory revenue of the cosmetic industry since 2006</p></section>
-<section id="cosmetic-industry-ojs" class="slide level2">
-<h2>Cosmetic Industry OJS</h2>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="94" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 93;"><span id="cb1-94"><a href="#cb1-94"></a>width <span class="op">=</span> <span class="dv">1800</span></span>
-<span id="cb1-95"><a href="#cb1-95"></a>height <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb1-96"><a href="#cb1-96"></a></span>
-<span id="cb1-97"><a href="#cb1-97"></a>data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data.csv"</span>)<span class="op">.</span><span class="fu">csv</span>({ <span class="dt">typed</span><span class="op">:</span> <span class="kw">true</span> })</span>
-<span id="cb1-98"><a href="#cb1-98"></a></span>
-<span id="cb1-99"><a href="#cb1-99"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb1-100"><a href="#cb1-100"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb1-101"><a href="#cb1-101"></a>        Plot<span class="op">.</span><span class="fu">barY</span>(</span>
-<span id="cb1-102"><a href="#cb1-102"></a>            data<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span><span class="st">"ano"</span><span class="op">,</span><span class="dt">y</span><span class="op">:</span><span class="st">"value"</span><span class="op">,</span><span class="dt">fill</span><span class="op">:</span><span class="st">"Country"</span>}</span>
-<span id="cb1-103"><a href="#cb1-103"></a>        )</span>
-<span id="cb1-104"><a href="#cb1-104"></a>    ]</span>
-<span id="cb1-105"><a href="#cb1-105"></a>})</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-1" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-2" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-3" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-4" data-nodetype="expression">
-
-</div>
-</div>
-</div>
-</div>
-<p><span class="citation" data-cites="abihpec2018">(<a href="#/ref-abihpec2018" role="doc-biblioref" onclick="return false;">ABIHPEC 2018</a>)</span></p>
+<img data-src="index_files/figure-revealjs/abihpec-plot-1.png" class="margin-caption r-stretch quarto-figure-center" width="3000"><p class="caption">Ex-factory revenue of the cosmetic industry since 2006</p><p><span class="citation" data-cites="abihpec2018">(<a href="#/section" role="doc-biblioref" onclick="">ABIHPEC 2018</a>)</span></p>
 </section>
 <section id="classic-stability-studies" class="slide level2">
 <h2>‚ÄúClassic‚Äù Stability Studies</h2>
@@ -1019,28 +926,21 @@ ABIHPEC. 2018. <span>‚ÄúPanorama Do Setor de Higiene Pessoal, Perfumaria e Cosm√
         ]
       });
     </script>
-    <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"width = 1800\nheight = 1000\n\ndata = FileAttachment(\"data.csv\").csv({ typed: true })\n\nPlot.plot({\n    marks: [\n        Plot.barY(\n            data, {x:\"ano\",y:\"value\",fill:\"Country\"}\n        )\n    ]\n})\n\n"}]}
-    </script>
-    <script type="module">
-    window._ojs.paths.runtimeToDoc = "..\..\apresentacoes\Apresentacao-dissertacao-mestrado";
-    window._ojs.paths.runtimeToRoot = "..\..";
-    window._ojs.paths.docToRoot = "..\..";
-    window._ojs.selfContained = false;
-    window._ojs.runtime.interpretFromScriptTags();
-    </script>
     
     <script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
       (function () {
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          // dispatch for htmlwidgets
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
           const event = window.document.createEvent("Event");
           event.initEvent("slideenter", true, true);
           window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
 
           // dispatch for shiny
           if (window.jQuery) {
@@ -1051,13 +951,6 @@ ABIHPEC. 2018. <span>‚ÄúPanorama Do Setor de Higiene Pessoal, Perfumaria e Cosm√
               window.jQuery(currentSlide).trigger("shown");
             }
           }
-        }
-
-        // hookup for reveal
-        if (window.Reveal) {
-          window.Reveal.addEventListener("slidechanged", function(event) {
-            fireSlideChanged(event.previousSlide, event.currentSlide);
-          });
         }
 
         // hookup for slidy
@@ -1073,6 +966,24 @@ ABIHPEC. 2018. <span>‚ÄúPanorama Do Setor de Higiene Pessoal, Perfumaria e Cosm√
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
       const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
@@ -1091,7 +1002,24 @@ ABIHPEC. 2018. <span>‚ÄúPanorama Do Setor de Higiene Pessoal, Perfumaria e Cosm√
         button.classList.add('code-copy-button-checked');
         var currentTitle = button.getAttribute("title");
         button.setAttribute("title", "Copiado!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copiado!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
         setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
           button.setAttribute("title", currentTitle);
           button.classList.remove('code-copy-button-checked');
         }, 1000);
@@ -1121,31 +1049,50 @@ ABIHPEC. 2018. <span>‚ÄúPanorama Do Setor de Higiene Pessoal, Perfumaria e Cosm√
       for (var i=0; i<noterefs.length; i++) {
         const ref = noterefs[i];
         tippyHover(ref, function() {
-          let href = ref.getAttribute('href');
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
           return note.innerHTML;
         });
       }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
       var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
       for (var i=0; i<bibliorefs.length; i++) {
         const ref = bibliorefs[i];
-        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-        tippyHover(ref, function() {
-          var popup = window.document.createElement('div');
-          cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
-            }
-            popup.appendChild(citeDiv);
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
           });
-          return popup.innerHTML;
-        });
+        }
       }
     });
     </script>

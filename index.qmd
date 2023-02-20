@@ -6,6 +6,23 @@ date-format: "DD - MM - YYYY"
 
 ---
 
-Aqui é a página inicial do site.
+::: {.grid}
+::: {.g-col-lg-4 .g-col-12}
 
-Colocar fotos e links para outras páginas e sites.
+Nesta coluna 1 você irá ser direcionada para o blog
+
+:::
+
+::: {.g-col-lg-4 .g-col-12}
+
+Nesta coluna 2 você irá ser direcionado para as apresentações
+
+:::
+
+::: {.g-col-lg-4 .g-col-12}
+
+Na coluna 3 você irá ser direcionado para alguma outra coisa talvez os sites e links
+
+:::
+
+:::

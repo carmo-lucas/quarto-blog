@@ -50,8 +50,6 @@ abihpec_data <- tibble(
         values_to = "value"
     )
 
-write_csv(abihpec_data, "data.csv")
-
 ggplot(data = abihpec_data) +
     geom_col(
         aes(
@@ -86,24 +84,6 @@ ggplot(data = abihpec_data) +
         legend.position = c(0.01, 0.99),
         legend.justification = c(0, 1)
     )
-```
-
-## Cosmetic Industry OJS
-
-```{ojs}
-width = 1800
-height = 1000
-
-data = FileAttachment("data.csv").csv({ typed: true })
-
-Plot.plot({
-    marks: [
-        Plot.barY(
-            data, {x:"ano",y:"value",fill:"Country"}
-        )
-    ]
-})
-
 ```
 
 

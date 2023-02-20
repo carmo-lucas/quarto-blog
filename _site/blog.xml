@@ -9,8 +9,337 @@
 <link>https://www.lucascarmo.com.br/blog.html</link>
 <atom:link href="https://www.lucascarmo.com.br/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-0.9.535</generator>
-<lastBuildDate>Thu, 14 Jul 2022 03:00:00 GMT</lastBuildDate>
+<generator>quarto-1.2.313</generator>
+<lastBuildDate>Sat, 11 Feb 2023 03:00:00 GMT</lastBuildDate>
+<item>
+  <title>Como criar eixos secundários no ggplot2</title>
+  <dc:creator>Lucas Carmo</dc:creator>
+  <link>https://www.lucascarmo.com.br/posts/eixos-secundarios/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="tldr" class="level1">
+<h1>tl;dr</h1>
+</section>
+<section id="o-que-é-um-eixo-secundário" class="level1">
+<h1>O que é um eixo secundário?</h1>
+<p>Eixos secundários são comuns em gráficos para comparar duas ou mais variáveis dependentes ao longo de uma terceira variável independente. São úteis para a visualização de monitoramento de várias métricas com unidades diferentes ou para a comparação de duas variáveis que não são necessariamente relacionadas ou estão na mesma grandeza.</p>
+<p>Alguns dos <em>softwares</em> de planilha que tem funcionalidades para criação de gráficos mais acessíveis possuem em seus menus a opção de adicionar um eixo y secundário.</p>
+</section>
+<section id="como-fazer-eixos-secundários-no-ggplot2" class="level1">
+<h1>Como fazer eixos secundários no ggplot2?</h1>
+<p>A documentação oficial do <code>ggplot2::</code> dá alguns exemplos simples de como criar um eixo secundário <code>y</code> ou <code>x</code> (<a href="https://ggplot2.tidyverse.org/reference/sec_axis.html">Specify a secondary axis</a>)</p>
+<p>Porém a documentação não abrange todas as funcionalidades possíveis então nessa postagem vou buscar explorar mais as possibilidades de configurações de eixos secundários.</p>
+</section>
+<section id="gráfico-exemplo" class="level1 page-columns page-full">
+<h1>Gráfico exemplo</h1>
+<div class="cell page-columns page-full">
+<details>
+<summary><code>Code</code></summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">dataframe <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(</span>
+<span id="cb1-4">  <span class="at" style="color: #657422;">x =</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">10</span>,</span>
+<span id="cb1-5">  <span class="at" style="color: #657422;">y =</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">10</span> <span class="sc" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;">rnorm</span>(<span class="dv" style="color: #AD0000;">10</span>, <span class="at" style="color: #657422;">mean =</span> <span class="dv" style="color: #AD0000;">4</span>, <span class="at" style="color: #657422;">sd =</span> <span class="dv" style="color: #AD0000;">2</span>)</span>
+<span id="cb1-6">)</span>
+<span id="cb1-7"></span>
+<span id="cb1-8"></span>
+<span id="cb1-9">p <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="at" style="color: #657422;">data =</span> dataframe) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-10">        <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> x, <span class="at" style="color: #657422;">y =</span> y) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-11">        <span class="fu" style="color: #4758AB;">geom_point</span>()</span>
+<span id="cb1-12"></span>
+<span id="cb1-13">p</span></code></pre></div>
+</details>
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://www.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/gráfico-base-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Gráfico base criado com valores aleatórios.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>O gráfico acima é (<code>p</code>) é apenas a base para as próximas customizações.</p>
+<p>De acordo com os exemplos na documentação, basta adicionar a função para configurar a escala do eixo y (ou x) ao gráfico original e com o argumento <code>sex.axis</code> especificar as configurações do segundo eixo. Usando <code>dup_axis()</code> como valor para o argumento, apenas será duplicado o eixo y do lado esquerdo para o direito. Porém usando o valor <code>sec.axis()</code></p>
+<div id="fig-sec-axis" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<details>
+<summary><code>Code</code></summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1">p <span class="sc" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">dup_axis</span>())</span>
+<span id="cb2-2">p <span class="sc" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;">~</span> <span class="fu" style="color: #4758AB;">log10</span>(.), <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"log(y)"</span>))</span></code></pre></div>
+</details>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-sec-axis-1" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://www.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-1.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">(a) dup_axis()</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-sec-axis-2" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://www.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-2.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">(b) sec_axis(~ log10(y))</figcaption><p></p>
+</figure>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figura&nbsp;1: Adição de eixos y secundários no lado direito.</figcaption><p></p>
+</figure>
+</div>
+<p>Veja que ao criar um eixo secundário usando <code>sec_axis()</code> é possível aplicar uma transformação na escala do eixo. No exemplo acima foi aplicado a transformação <img src="https://latex.codecogs.com/png.latex?%5Clog_%7B10%7D%20y"> porem podem ser aplicadas outras transformações lineares, como multiplicação, exponenciação, soma, divisão etc.</p>
+</section>
+<section id="exemplo-mais-complexo" class="level1 page-columns page-full">
+<h1>Exemplo mais complexo</h1>
+<p>Nos exemplos acima apenas criei um gráfico com os dois eixos mas sem os dados relacionados ao eixo y do lado direito portanto abaixo irei especificar melhor os usos dos dois eixos.</p>
+<div class="cell page-columns page-full">
+<details>
+<summary><code>Code</code></summary>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1">x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="at" style="color: #657422;">from =</span> <span class="dv" style="color: #AD0000;">0</span>, <span class="at" style="color: #657422;">to =</span> <span class="dv" style="color: #AD0000;">2</span><span class="sc" style="color: #5E5E5E;">*</span>pi , <span class="at" style="color: #657422;">by =</span> <span class="fl" style="color: #AD0000;">0.05</span>)</span>
+<span id="cb3-2"></span>
+<span id="cb3-3">df <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(</span>
+<span id="cb3-4">  <span class="at" style="color: #657422;">x =</span> x,</span>
+<span id="cb3-5">  <span class="at" style="color: #657422;">seno =</span> <span class="fu" style="color: #4758AB;">sin</span>(x),</span>
+<span id="cb3-6">  <span class="at" style="color: #657422;">exponencial =</span> <span class="fu" style="color: #4758AB;">exp</span>(x)</span>
+<span id="cb3-7">)</span>
+<span id="cb3-8"></span>
+<span id="cb3-9">p <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">ggplot</span>(df, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> x)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-10">        <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> seno), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"firebrick"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-11">        <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> exponencial), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"royalblue"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb3-12">        <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"sin x"</span>)</span>
+<span id="cb3-13"></span>
+<span id="cb3-14">p</span></code></pre></div>
+</details>
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://www.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Função seno vs função exponencial</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Acima se observa um gráfico com duas linhas, uma representando, uma função seno (vermelho), e outra função exponencial (azul), porém mal se percebe a “ondulação” da função seno por estar com uma amplitude aparente tão pequena em relação à função exponencial. Nesses casos que se é interessante utilizar o eixo secundário para comparar a variação entre as duas séries de dados.</p>
+<p>Porém só criar o eixo secundário não significa que os dados irão automaticamente ser mapeados à nova escala criada. Como assim?</p>
+<p>Os valores dos dados e os valores da escala são independentes. Para que eles sejam</p>
+<p>Isso precisa ser feito ‘manualmente’, portanto é necessário transformar os dados de uma das séries de dados através de uma transformação linear.</p>
+<div class="cell page-columns page-full">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1">coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">2500</span></span>
+<span id="cb4-2"></span>
+<span id="cb4-3"><span class="fu" style="color: #4758AB;">ggplot</span>(df, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> x)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> seno <span class="sc" style="color: #5E5E5E;">*</span> coeficiente), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"firebrick"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> exponencial), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"royalblue"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-6">  <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;">~</span> . <span class="sc" style="color: #5E5E5E;">/</span> coeficiente, <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"sin(x)"</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb4-7">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"exp(x)"</span>,</span>
+<span id="cb4-8">       <span class="at" style="color: #657422;">title =</span> <span class="fu" style="color: #4758AB;">paste</span>(<span class="st" style="color: #20794D;">"Coeficiente = "</span>, coeficiente))</span></code></pre></div>
+<div class="cell-output-display page-columns page-full">
+<div id="fig-coeficiente" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://www.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-coeficiente-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Figura&nbsp;2: Utilização de um coeficiente com valor constante para transformar os dados e a escala do eixo secundário.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Por exemplo, aplicando a multiplicação dos valores da função <img src="https://latex.codecogs.com/png.latex?%5Csin(x)"> por um coeficiente com valor 2500, (linha 4) os valores das duas funções irão se aproximar. Porém ao mesmo tempo eu preciso dividir a minha escala do eixo secundário pelo mesmo coeficiente (2500) para que os valores exibidos na escala sejam os antes da transformação (linha 7).</p>
+<p>A Figura&nbsp;2 é um exemplo completo de como utilizar o coeficiente para transformar os dados.</p>
+<p>Porém definir coeficientes manualmente é uma tarefa repetitiva e em alguns casos não muito intuitiva. Portanto podemos tentar definir o coeficiente de forma programática.</p>
+</section>
+<section id="calculando-o-coeficiente-ideal" class="level1">
+<h1>Calculando o coeficiente ideal</h1>
+<p>Nos exemplos anteriores chegamos em um coeficiente razoável de forma manual, testando valores e chegamos no valor de 2500 como sendo bom o suficiente para a aplicação.</p>
+<p>Para calcularmos um coeficiente de forma programática podemos escrever uma função, que aceita todos os dados e nos retorna um valor, baseado em operações aritmméticas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1">calcular_coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(dados, var_1, var_2){</span>
+<span id="cb5-2">    parametros <span class="ot" style="color: #003B4F;">&lt;-</span> dados <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb5-3">      dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">summarise</span>(</span>
+<span id="cb5-4">        <span class="at" style="color: #657422;">max_var_1 =</span> <span class="fu" style="color: #4758AB;">max</span>({{ var_1 }}),</span>
+<span id="cb5-5">        <span class="at" style="color: #657422;">min_var_1 =</span> <span class="fu" style="color: #4758AB;">min</span>({{ var_1 }}),</span>
+<span id="cb5-6">        <span class="at" style="color: #657422;">max_var_2 =</span> <span class="fu" style="color: #4758AB;">max</span>({{ var_2 }}),</span>
+<span id="cb5-7">        <span class="at" style="color: #657422;">min_var_2 =</span> <span class="fu" style="color: #4758AB;">min</span>({{ var_2 }})</span>
+<span id="cb5-8">        )</span>
+<span id="cb5-9">    </span>
+<span id="cb5-10">    coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_2 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_2) <span class="sc" style="color: #5E5E5E;">/</span></span>
+<span id="cb5-11">                   (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_1 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_1)</span>
+<span id="cb5-12">    <span class="fu" style="color: #4758AB;">return</span>(coeficiente)</span>
+<span id="cb5-13">      }</span>
+<span id="cb5-14"></span>
+<span id="cb5-15">coeficiente_calculado <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">calcular_coeficiente</span>(df, seno, exponencial)</span></code></pre></div>
+</div>
+<p>Acima é demostrada uma função que calcula o coeficiente baseado nos valores máximos e mínimos das variáveis dadas a ela. O coeficiente calculado pela função tem o valor 258.5442863 e se utilizado para refazer o gráfico percebe-se que as duas curvas se sobrepõem de forma mais normalizada.</p>
+<div class="cell">
+<details>
+<summary><code>Code</code></summary>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">ggplot</span>(df, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> x)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> seno <span class="sc" style="color: #5E5E5E;">*</span> coeficiente_calculado), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"firebrick"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> exponencial), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"royalblue"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-4">  <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;">~</span> . <span class="sc" style="color: #5E5E5E;">/</span> coeficiente_calculado, <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"sin(x)"</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb6-5">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"exp(x)"</span>, <span class="at" style="color: #657422;">title =</span> <span class="fu" style="color: #4758AB;">paste</span>(<span class="st" style="color: #20794D;">"Coeficiente = "</span>, coeficiente_calculado))</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://www.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Porém o desafio é implementar o cálculo do coeficiente diretamente na construção do gráfico e também há o problema da ordem das variáveis na função.</p>
+<section id="adequação-da-função-de-cálculo-dos-coeficientes" class="level2">
+<h2 class="anchored" data-anchor-id="adequação-da-função-de-cálculo-dos-coeficientes">Adequação da função de cálculo dos coeficientes</h2>
+<p>Da forma que a função foi construída o cálculo do coeficiente é feito da seguinte forma:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Acoef%20=%20%5Cfrac%7B%5Cmax%20(Var_2)%20-%20%5Cmin(Var_2)%7D%7B%5Cmax%20(Var_1)%20-%20%5Cmin(Var_1)%7D%0A"></p>
+<p>Portanto se os valores da <img src="https://latex.codecogs.com/png.latex?Var_2"> apresentarem uma amplitude maior do que a amplitude dos valores da <img src="https://latex.codecogs.com/png.latex?Var_1"> o valor do coeficiente será positivo enquanto o inverso irá resultar em um coeficiente maior que zero e menor que 1 (<img src="https://latex.codecogs.com/png.latex?0%3Ccoef%3C1">), o que resultaria no gráfico abaixo, logo, a ordem das variáveis é importante no momento de executar a função.</p>
+<div class="cell">
+<details>
+<summary><code>Code</code></summary>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;"># ordem das variáveis invertida</span></span>
+<span id="cb7-2">coef2 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">calcular_coeficiente</span>(df, exponencial, seno)</span>
+<span id="cb7-3"></span>
+<span id="cb7-4"><span class="fu" style="color: #4758AB;">ggplot</span>(df, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> x)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-5">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> seno <span class="sc" style="color: #5E5E5E;">*</span> coef2), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"firebrick"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-6">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> exponencial), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"royalblue"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-7">  <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;">~</span> . <span class="sc" style="color: #5E5E5E;">/</span> coef2, <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"sin(x)"</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"exp(x)"</span>, <span class="at" style="color: #657422;">title =</span> <span class="fu" style="color: #4758AB;">paste</span>(<span class="st" style="color: #20794D;">"Coeficiente = "</span>, coef2))</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="https://www.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Para resolver isso pode-se adicionar um bloco na função <code>calcular_coeficiente()</code> que verifica se <img src="https://latex.codecogs.com/png.latex?0%3Ccoef%3C1"> e inverter o valor se necessário, essa função nova será chamada: <code>calcular_coeficiente_smart()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1">calcular_coeficiente_smart <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(dados, var_1, var_2){</span>
+<span id="cb8-2">    </span>
+<span id="cb8-3">    parametros <span class="ot" style="color: #003B4F;">&lt;-</span> dados <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb8-4">      dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">summarise</span>(</span>
+<span id="cb8-5">        <span class="at" style="color: #657422;">max_var_1 =</span> <span class="fu" style="color: #4758AB;">max</span>( {{ var_1 }} ),</span>
+<span id="cb8-6">        <span class="at" style="color: #657422;">min_var_1 =</span> <span class="fu" style="color: #4758AB;">min</span>( {{ var_1 }} ),</span>
+<span id="cb8-7">        <span class="at" style="color: #657422;">max_var_2 =</span> <span class="fu" style="color: #4758AB;">max</span>( {{ var_2 }} ),</span>
+<span id="cb8-8">        <span class="at" style="color: #657422;">min_var_2 =</span> <span class="fu" style="color: #4758AB;">min</span>( {{ var_2 }} )</span>
+<span id="cb8-9">        )</span>
+<span id="cb8-10"></span>
+<span id="cb8-11">    coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_2 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_2) <span class="sc" style="color: #5E5E5E;">/</span></span>
+<span id="cb8-12">                   (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_1 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_1)</span>
+<span id="cb8-13"></span>
+<span id="cb8-14">    <span class="cf" style="color: #003B4F;">if</span>(coeficiente <span class="sc" style="color: #5E5E5E;">&lt;</span> <span class="dv" style="color: #AD0000;">1</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> coeficiente <span class="sc" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">0</span>){</span>
+<span id="cb8-15">      coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> (<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">/</span>coeficiente)</span>
+<span id="cb8-16">      }</span>
+<span id="cb8-17">    <span class="fu" style="color: #4758AB;">return</span>(coeficiente)</span>
+<span id="cb8-18">  }</span>
+<span id="cb8-19"></span>
+<span id="cb8-20">coeficientes <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">list</span>(</span>
+<span id="cb8-21"></span>
+<span id="cb8-22"><span class="co" style="color: #5E5E5E;"># seno depois exponencial</span></span>
+<span id="cb8-23">coeficiente_calculado_1 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">calcular_coeficiente_smart</span>(df, seno, exponencial),</span>
+<span id="cb8-24"></span>
+<span id="cb8-25"><span class="co" style="color: #5E5E5E;"># exponencial depois seno</span></span>
+<span id="cb8-26">coeficiente_calculado_2 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">calcular_coeficiente_smart</span>(df, exponencial, seno)</span>
+<span id="cb8-27">)</span>
+<span id="cb8-28"></span>
+<span id="cb8-29"><span class="fu" style="color: #4758AB;">print</span>(coeficientes)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 258.5443
+
+[[2]]
+[1] 258.5443</code></pre>
+</div>
+</div>
+<p>Agora independente da ordem das variáveis passadas à função o coeficiente calculado será sempre o valor esperado. Mas ainda falta implementar isso diretamente no gráfico.</p>
+</section>
+</section>
+<section id="implementação-dos-coeficientes-no-gráfico" class="level1 page-columns page-full">
+<h1>Implementação dos coeficientes no gráfico</h1>
+<p>O que está faltando agora para finalizar o processo é criar uma função única para criar o gráfico com dois eixos. É possível fazer isso através de uma função única onde são passados o dataframe e as duas variáveis como argumentos e o <em>output</em> seria o gráfico completo.</p>
+<section id="uma-função-que-faz-todas-as-operações-automaticamente" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="uma-função-que-faz-todas-as-operações-automaticamente">Uma função que faz todas as operações automaticamente</h2>
+<p>Nessa função também deve se implementar o cálculo do coeficiente de forma a melhorar a legibilidade e tornar mais fácil para o usuário utilizar a função. Para criar essa função, o usar o código já escrito para calcular o coeficiente será usado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1">two_y_axis_plot <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(df, x, var_1, var_2){</span>
+<span id="cb10-2"></span>
+<span id="cb10-3">  parametros <span class="ot" style="color: #003B4F;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
+<span id="cb10-4">    dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">summarise</span>(</span>
+<span id="cb10-5">      <span class="at" style="color: #657422;">max_var_1 =</span> <span class="fu" style="color: #4758AB;">max</span>( {{ var_1 }} ),</span>
+<span id="cb10-6">      <span class="at" style="color: #657422;">min_var_1 =</span> <span class="fu" style="color: #4758AB;">min</span>( {{ var_1 }} ),</span>
+<span id="cb10-7">      <span class="at" style="color: #657422;">max_var_2 =</span> <span class="fu" style="color: #4758AB;">max</span>( {{ var_2 }} ),</span>
+<span id="cb10-8">      <span class="at" style="color: #657422;">min_var_2 =</span> <span class="fu" style="color: #4758AB;">min</span>( {{ var_2 }} )</span>
+<span id="cb10-9">        )</span>
+<span id="cb10-10"></span>
+<span id="cb10-11">    coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_2 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_2) <span class="sc" style="color: #5E5E5E;">/</span></span>
+<span id="cb10-12">                   (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_1 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_1)</span>
+<span id="cb10-13"></span>
+<span id="cb10-14">    <span class="cf" style="color: #003B4F;">if</span>(coeficiente <span class="sc" style="color: #5E5E5E;">&lt;</span> <span class="dv" style="color: #AD0000;">1</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> coeficiente <span class="sc" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">0</span>){</span>
+<span id="cb10-15">      coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> (<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">/</span>coeficiente)</span>
+<span id="cb10-16">      }</span>
+<span id="cb10-17"></span>
+<span id="cb10-18">plot <span class="ot" style="color: #003B4F;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
+<span id="cb10-19">    <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>({{ x }})) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-20">    <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> {{ var_1 }} <span class="sc" style="color: #5E5E5E;">*</span> coeficiente), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"firebrick"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-21">    <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> {{ var_2 }}), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"royalblue"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-22">    <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(</span>
+<span id="cb10-23">      <span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(</span>
+<span id="cb10-24">        <span class="sc" style="color: #5E5E5E;">~</span> . <span class="sc" style="color: #5E5E5E;">/</span> coeficiente,</span>
+<span id="cb10-25">        <span class="at" style="color: #657422;">name =</span> <span class="st" style="color: #20794D;">"sin(x)"</span></span>
+<span id="cb10-26">        )</span>
+<span id="cb10-27">      ) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-28">    <span class="fu" style="color: #4758AB;">labs</span>(</span>
+<span id="cb10-29">      <span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"exp(x)"</span>,</span>
+<span id="cb10-30">      <span class="at" style="color: #657422;">title =</span> <span class="st" style="color: #20794D;">"two_y_axis_plot()"</span>,</span>
+<span id="cb10-31">      <span class="at" style="color: #657422;">subtitle =</span> <span class="fu" style="color: #4758AB;">paste</span>(<span class="st" style="color: #20794D;">"Coeficiente = "</span>, <span class="fu" style="color: #4758AB;">round</span>(coeficiente, <span class="dv" style="color: #AD0000;">2</span>)))</span>
+<span id="cb10-32"></span>
+<span id="cb10-33"><span class="fu" style="color: #4758AB;">return</span>(plot)</span>
+<span id="cb10-34">}</span></code></pre></div>
+</div>
+<div class="cell page-columns page-full">
+<details>
+<summary><code>Code</code></summary>
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;">two_y_axis_plot</span>(df, x, seno, exponencial)</span></code></pre></div>
+</details>
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://www.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Executando a função criada acima com os argumentos necessários</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A função criada retorna automaticamente o gráfico com os dois eixos, com nomes e cores predefinidas mas com a o coeficiente calculado adequadamente. É possível transformar as customizações do gráfico em argumentos da função (como cores das linhas ou até que tipo de <code>geom</code> deverá ser usado), porém o aumento da complexidade da função não é o principal a se explorar no momento.</p>
+<p>O que pode se explorar é que da mesma forma que foi criado um eixo y secundário, também pode ser criado um eixo x secundário, exatamente da mesma forma. Inclusive, é possível utilizar a função que foi criada para o gráfico de dois eixos y e adicionar novos elementos ao gráfico como linhas de referência usando <code>geom_vline</code> e <code>geom_hline</code>.</p>
+<div class="cell page-columns page-full">
+<details>
+<summary><code>Code</code></summary>
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;">two_y_axis_plot</span>(df, x, seno, exponencial) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb12-2">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(</span>
+<span id="cb12-3">    <span class="at" style="color: #657422;">breaks =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">7</span>),</span>
+<span id="cb12-4">    <span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;">~</span>  . <span class="sc" style="color: #5E5E5E;">/</span> pi,</span>
+<span id="cb12-5">      <span class="at" style="color: #657422;">name =</span> <span class="st" style="color: #20794D;">"radian(x)"</span>,</span>
+<span id="cb12-6">      <span class="at" style="color: #657422;">labels =</span> scales<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">label_number</span>(<span class="at" style="color: #657422;">suffix =</span> <span class="st" style="color: #20794D;">"\U03C0"</span>)</span>
+<span id="cb12-7">    )</span>
+<span id="cb12-8">  ) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-9">  <span class="fu" style="color: #4758AB;">geom_vline</span>(<span class="at" style="color: #657422;">xintercept =</span> <span class="fu" style="color: #4758AB;">c</span>(pi<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">2</span>, pi), <span class="at" style="color: #657422;">lty =</span> <span class="st" style="color: #20794D;">"dotted"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-10">  <span class="fu" style="color: #4758AB;">geom_hline</span>(<span class="at" style="color: #657422;">yintercept =</span> <span class="dv" style="color: #AD0000;">0</span>, <span class="at" style="color: #657422;">lty =</span> <span class="st" style="color: #20794D;">"dashed"</span>) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb12-11">  <span class="fu" style="color: #4758AB;">theme_bw</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-12">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">panel.grid =</span> <span class="fu" style="color: #4758AB;">element_blank</span>())</span></code></pre></div>
+</details>
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="https://www.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/final-customizations-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption margin-caption">Adição do eixo x secundário e linhas de referência</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>ggplot2</category>
+  <category>dataviz</category>
+  <guid>https://www.lucascarmo.com.br/posts/eixos-secundarios/index.html</guid>
+  <pubDate>Sat, 11 Feb 2023 03:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Usando o PowerToys para criar tarefas no ClickUp</title>
   <dc:creator>Lucas Carmo</dc:creator>
@@ -44,59 +373,70 @@
 <p>A referência que eu usei para este script é de um <a href="https://www.youtube.com/watch?v=UVUd9_k9C6A&amp;t=20735s">vídeo</a> que explica como criar scripts e funções e demonstra como torná-los executáveis.</p>
 <p>Eu aprendi que para que um script seja executável, é necessário que o arquivo seja salvo com a extensão <code>.ps1m</code> o que o identifica como sendo um módulo do powershell e também deve estar salvo no diretório <code>%user%\Documents\WindowsPowerShell\Modules\MeuModulo</code>. É importante também garantir que a pasta e o nome do arquivo sejam iguais.</p>
 <p>Este script contém a seguinte função <code>task</code>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>MeuModulo.ps1m</strong></pre>
+</div>
 <div id="lst-taskFunction" class="listing">
-<p>Listing 1: Função para Criar Tarefa</p>
-<div class="sourceCode" id="lst-taskFunction" data-lst-cap="Função para Criar Tarefa" style="background: #f1f3f5;"><pre class="sourceCode numberSource powershell number-lines code-with-copy"><code class="sourceCode powershell"><span id="lst-taskFunction-1"><span class="co" style="color: #5E5E5E;"># MeuModulo.ps1m</span></span>
-<span id="lst-taskFunction-2"></span>
-<span id="lst-taskFunction-3"><span class="kw" style="color: #003B4F;">function</span> task <span class="op" style="color: #5E5E5E;">{</span></span>
-<span id="lst-taskFunction-4"><span class="op" style="color: #5E5E5E;">[</span>CmdletBinding<span class="op" style="color: #5E5E5E;">()]</span></span>
-<span id="lst-taskFunction-5"><span class="kw" style="color: #003B4F;">param</span><span class="op" style="color: #5E5E5E;">(</span></span>
-<span id="lst-taskFunction-6">    <span class="op" style="color: #5E5E5E;">[</span>Parameter<span class="op" style="color: #5E5E5E;">(</span>Mandatory<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">$True</span><span class="op" style="color: #5E5E5E;">)]</span></span>
-<span id="lst-taskFunction-7">    <span class="va" style="color: #111111;">$nome</span> <span class="op" style="color: #5E5E5E;">=</span> $1<span class="op" style="color: #5E5E5E;">,</span></span>
-<span id="lst-taskFunction-8">    <span class="va" style="color: #111111;">$prioridade</span> <span class="op" style="color: #5E5E5E;">=</span> $2</span>
-<span id="lst-taskFunction-9">  <span class="op" style="color: #5E5E5E;">)</span></span>
-<span id="lst-taskFunction-10"></span>
-<span id="lst-taskFunction-11"><span class="va" style="color: #111111;">$json</span> <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"{</span></span>
-<span id="lst-taskFunction-12">    <span class="st" style="color: #20794D;">""</span>name<span class="st" style="color: #20794D;">""</span><span class="op" style="color: #5E5E5E;">:</span> <span class="st" style="color: #20794D;">""</span><span class="va" style="color: #111111;">$nome</span><span class="st" style="color: #20794D;">""</span><span class="op" style="color: #5E5E5E;">,</span></span>
-<span id="lst-taskFunction-13">    <span class="st" style="color: #20794D;">""</span>priority<span class="st" style="color: #20794D;">""</span><span class="op" style="color: #5E5E5E;">:</span> <span class="va" style="color: #111111;">$prioridade</span></span>
-<span id="lst-taskFunction-14"><span class="op" style="color: #5E5E5E;">}</span><span class="st" style="color: #20794D;">"</span></span>
-<span id="lst-taskFunction-15"></span>
-<span id="lst-taskFunction-16"><span class="fu" style="color: #4758AB;">Out-File</span> <span class="op" style="color: #5E5E5E;">-</span>InputObject <span class="va" style="color: #111111;">$json</span> <span class="op" style="color: #5E5E5E;">-</span>FilePath <span class="st" style="color: #20794D;">"~\Automations.json"</span> <span class="op" style="color: #5E5E5E;">-</span>Encoding utf8</span>
-<span id="lst-taskFunction-17"><span class="kw" style="color: #003B4F;">exit</span></span>
-<span id="lst-taskFunction-18"><span class="op" style="color: #5E5E5E;">}</span></span></code></pre></div>
+<p>Listing&nbsp;1: Função para Criar Tarefa</p>
+<div class="sourceCode" id="lst-taskFunction" data-lst-cap="Função para Criar Tarefa" style="background: #f1f3f5;"><pre class="sourceCode numberSource powershell number-lines code-with-copy"><code class="sourceCode powershell"><span id="lst-taskFunction-1"><span class="kw" style="color: #003B4F;">function</span> task <span class="op" style="color: #5E5E5E;">{</span></span>
+<span id="lst-taskFunction-2"><span class="op" style="color: #5E5E5E;">[</span>CmdletBinding<span class="op" style="color: #5E5E5E;">()]</span></span>
+<span id="lst-taskFunction-3"><span class="kw" style="color: #003B4F;">param</span><span class="op" style="color: #5E5E5E;">(</span></span>
+<span id="lst-taskFunction-4">    <span class="op" style="color: #5E5E5E;">[</span>Parameter<span class="op" style="color: #5E5E5E;">(</span>Mandatory<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">$True</span><span class="op" style="color: #5E5E5E;">)]</span></span>
+<span id="lst-taskFunction-5">    <span class="va" style="color: #111111;">$nome</span> <span class="op" style="color: #5E5E5E;">=</span> $1<span class="op" style="color: #5E5E5E;">,</span></span>
+<span id="lst-taskFunction-6">    <span class="va" style="color: #111111;">$prioridade</span> <span class="op" style="color: #5E5E5E;">=</span> $2</span>
+<span id="lst-taskFunction-7">  <span class="op" style="color: #5E5E5E;">)</span></span>
+<span id="lst-taskFunction-8"></span>
+<span id="lst-taskFunction-9"><span class="va" style="color: #111111;">$json</span> <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"{</span></span>
+<span id="lst-taskFunction-10">    <span class="st" style="color: #20794D;">""</span>name<span class="st" style="color: #20794D;">""</span><span class="op" style="color: #5E5E5E;">:</span> <span class="st" style="color: #20794D;">""</span><span class="va" style="color: #111111;">$nome</span><span class="st" style="color: #20794D;">""</span><span class="op" style="color: #5E5E5E;">,</span></span>
+<span id="lst-taskFunction-11">    <span class="st" style="color: #20794D;">""</span>priority<span class="st" style="color: #20794D;">""</span><span class="op" style="color: #5E5E5E;">:</span> <span class="va" style="color: #111111;">$prioridade</span></span>
+<span id="lst-taskFunction-12"><span class="op" style="color: #5E5E5E;">}</span><span class="st" style="color: #20794D;">"</span></span>
+<span id="lst-taskFunction-13"></span>
+<span id="lst-taskFunction-14"><span class="fu" style="color: #4758AB;">Out-File</span> <span class="op" style="color: #5E5E5E;">-</span>InputObject <span class="va" style="color: #111111;">$json</span> <span class="op" style="color: #5E5E5E;">-</span>FilePath <span class="st" style="color: #20794D;">"~\Automations.json"</span> <span class="op" style="color: #5E5E5E;">-</span>Encoding utf8</span>
+<span id="lst-taskFunction-15"><span class="kw" style="color: #003B4F;">exit</span></span>
+<span id="lst-taskFunction-16"><span class="op" style="color: #5E5E5E;">}</span></span></code></pre></div>
+</div>
 </div>
 <p>A função <code>task</code> aceita dois argumentos; o nome e prioridade da tarefa e salva-os em um arquivo que será usado como uma forma de cache para a execução das etapas seguintes do workflow. Este arquivo é formatado no modelo <code>json</code> para que sejam facilmente lidas pelo <a href="https://www.n8n.io">n8n</a> posteriormente.</p>
 <p>Assim que o arquivo <code>json</code> é criado, o <a href="https://www.n8n.io">n8n</a> inicia a automação que foi configurada e manda as informações para o ClickUp.</p>
 <p>O arquivo criado pela função tem esta estrutura:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="er" style="color: #AD0000;">//</span> <span class="er" style="color: #AD0000;">Automations.json</span></span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;">{</span></span>
-<span id="cb1-3">  <span class="dt" style="color: #AD0000;">"name"</span><span class="fu" style="color: #4758AB;">:</span> <span class="st" style="color: #20794D;">"Aqui vai o nome da tarefa a ser criada"</span><span class="fu" style="color: #4758AB;">,</span> </span>
-<span id="cb1-4">  <span class="dt" style="color: #AD0000;">"priority"</span><span class="fu" style="color: #4758AB;">:</span> <span class="dv" style="color: #AD0000;">1</span></span>
-<span id="cb1-5"><span class="fu" style="color: #4758AB;">}</span></span></code></pre></div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Automations.json</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;">{</span></span>
+<span id="cb1-2">  <span class="dt" style="color: #AD0000;">"name"</span><span class="fu" style="color: #4758AB;">:</span> <span class="st" style="color: #20794D;">"Aqui vai o nome da tarefa a ser criada"</span><span class="fu" style="color: #4758AB;">,</span> </span>
+<span id="cb1-3">  <span class="dt" style="color: #AD0000;">"priority"</span><span class="fu" style="color: #4758AB;">:</span> <span class="dv" style="color: #AD0000;">1</span></span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;">}</span></span></code></pre></div>
+</div>
 <p>Até aí tudo certo mas como que eu faço para executar esta função?</p>
 </section>
 </section>
-<section id="resolvendo-as-questões-do-powertoys-run" class="level1">
+<section id="resolvendo-as-questões-do-powertoys-run" class="level1 page-columns page-full">
 <h1>Resolvendo as questões do PowerToys Run</h1>
 <p>O PowerToys Run é capaz de executar commandos no prompt <code>cmd</code> automaticamente através da sua interface usando <code>&gt;</code> como prefixo.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://www.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" class="img-fluid figure-img" alt="screenshot a interface do powertoys run"></p>
-<p></p><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Prompt do PowerToys Run</figcaption><p></p>
 </figure>
 </div>
 <p>Porém como eu escrevi a função em <code>ps1</code>, ela não é executável através do prompt <code>cmd</code>, portanto deve-se configurar o powertoys para utilizar o prompt do powershell como default. Isso é feito através da modificação do arquivo <code>ShellPluginSettings.json</code> localizado em <code>%localappdata%\Microsoft\PowerToys\PowerToys Run\Settings\Plugins\Microsoft.Plugin.Shell</code>. Onde a configuração para <code>Shell</code> deve ser alterada de 2 para 1.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><span class="er" style="color: #AD0000;">#</span> <span class="er" style="color: #AD0000;">ShellPluginSettings.json</span></span>
-<span id="cb2-2"><span class="fu" style="color: #4758AB;">{</span></span>
-<span id="cb2-3">  <span class="dt" style="color: #AD0000;">"Shell"</span><span class="fu" style="color: #4758AB;">:</span> <span class="dv" style="color: #AD0000;">1</span><span class="fu" style="color: #4758AB;">,</span> <span class="er" style="color: #AD0000;">\\</span> <span class="er" style="color: #AD0000;">Mudar</span> <span class="er" style="color: #AD0000;">de</span> <span class="er" style="color: #AD0000;">2</span> <span class="er" style="color: #AD0000;">para</span> <span class="er" style="color: #AD0000;">1</span></span>
-<span id="cb2-4">  <span class="dt" style="color: #AD0000;">"ReplaceWinR"</span><span class="fu" style="color: #4758AB;">:</span> <span class="kw" style="color: #003B4F;">false</span><span class="fu" style="color: #4758AB;">,</span></span>
-<span id="cb2-5">  <span class="dt" style="color: #AD0000;">"LeaveShellOpen"</span><span class="fu" style="color: #4758AB;">:</span> <span class="kw" style="color: #003B4F;">false</span><span class="fu" style="color: #4758AB;">,</span></span>
-<span id="cb2-6">  <span class="dt" style="color: #AD0000;">"RunAsAdministrator"</span><span class="fu" style="color: #4758AB;">:</span> <span class="kw" style="color: #003B4F;">false</span><span class="fu" style="color: #4758AB;">,</span></span>
-<span id="cb2-7">  <span class="dt" style="color: #AD0000;">"Count"</span><span class="fu" style="color: #4758AB;">:</span> <span class="fu" style="color: #4758AB;">{}</span></span>
-<span id="cb2-8"><span class="fu" style="color: #4758AB;">}</span></span></code></pre></div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>ShellPluginSettings.json</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><span class="fu" style="color: #4758AB;">{</span></span>
+<span id="cb2-2">  <span class="dt" style="color: #AD0000;">"Shell"</span><span class="fu" style="color: #4758AB;">:</span> <span class="dv" style="color: #AD0000;">1</span><span class="fu" style="color: #4758AB;">,</span> <span class="er" style="color: #AD0000;">\\</span> <span class="er" style="color: #AD0000;">Mudar</span> <span class="er" style="color: #AD0000;">de</span> <span class="er" style="color: #AD0000;">2</span> <span class="er" style="color: #AD0000;">para</span> <span class="er" style="color: #AD0000;">1</span></span>
+<span id="cb2-3">  <span class="dt" style="color: #AD0000;">"ReplaceWinR"</span><span class="fu" style="color: #4758AB;">:</span> <span class="kw" style="color: #003B4F;">false</span><span class="fu" style="color: #4758AB;">,</span></span>
+<span id="cb2-4">  <span class="dt" style="color: #AD0000;">"LeaveShellOpen"</span><span class="fu" style="color: #4758AB;">:</span> <span class="kw" style="color: #003B4F;">false</span><span class="fu" style="color: #4758AB;">,</span></span>
+<span id="cb2-5">  <span class="dt" style="color: #AD0000;">"RunAsAdministrator"</span><span class="fu" style="color: #4758AB;">:</span> <span class="kw" style="color: #003B4F;">false</span><span class="fu" style="color: #4758AB;">,</span></span>
+<span id="cb2-6">  <span class="dt" style="color: #AD0000;">"Count"</span><span class="fu" style="color: #4758AB;">:</span> <span class="fu" style="color: #4758AB;">{}</span></span>
+<span id="cb2-7"><span class="fu" style="color: #4758AB;">}</span></span></code></pre></div>
+</div>
 <p>Para que a alteração tenha efeito, feche o PowerToys, mude a configuração e depois abra-o novamente. A desvantagem de usar o shell do powershell é que ele não é fechado automaticamente por isso eu inseri <code>exit</code> na linha 17 de Listing&nbsp;1.</p>
 </section>
-<section id="como-configurar-o-workflow-do-n8n" class="level1">
+<section id="como-configurar-o-workflow-do-n8n" class="level1 page-columns page-full">
 <h1>Como configurar o workflow do <a href="https://www.n8n.io">n8n</a>?</h1>
 <p>Tendo finalizado as etapas acima é necessário configura um workflow do <a href="https://www.n8n.io">n8n</a> para a criação da tarefa. De forma simplificada o workflow deverá ter 4 nodes:</p>
 <ol type="1">
@@ -105,10 +445,10 @@
 <li>Converte arquivo para json</li>
 <li>Envia informações contidas no arquivo para o ClickUp</li>
 </ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
 <p><img src="https://www.lucascarmo.com.br/posts/powertoys-run/n8nexample.png" class="img-fluid figure-img" alt="screenshot da interface de um exemplo de workflow do n8n"></p>
-<p></p><p></p>
+<p></p><figcaption class="figure-caption margin-caption">Exemplo de workflow do n8n</figcaption><p></p>
 </figure>
 </div>
 <p>Adicionalmente podem ser adicionados nodes para tratamento de erros ou com lógica de condicionais mas isso vou deixar para outro post.</p>
@@ -124,6 +464,78 @@
   <guid>https://www.lucascarmo.com.br/posts/powertoys-run/index.html</guid>
   <pubDate>Thu, 14 Jul 2022 03:00:00 GMT</pubDate>
   <media:content url="https://www.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" medium="image" type="image/png" height="45" width="144"/>
+</item>
+<item>
+  <title>Primeira postagem</title>
+  <dc:creator>Lucas Carmo</dc:creator>
+  <link>https://www.lucascarmo.com.br/posts/primeira-postagem/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="intro" class="level1">
+<h1>Intro</h1>
+<p>Esta é a primeira vez que eu estou usando o <code>quarto</code> para escrita de blogs.</p>
+<div class="cell">
+<details>
+<summary><code>Code</code></summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1">x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"lucas"</span></span>
+<span id="cb1-2"></span>
+<span id="cb1-3">imprimir_nome <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(nome) <span class="fu" style="color: #4758AB;">print</span>(x)</span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">imprimir_nome</span>(x)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "lucas"</code></pre>
+</div>
+</div>
+</section>
+<section id="equações" class="level1">
+<h1>Equações</h1>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5CLaTeX%20"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%20e%20=%20mc%5E2"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Calpha%7D%7B%5Cbeta%7D"></p>
+<p>Primeira postagem</p>
+<p>Uma primeira impressão do quarto e quais as minhas intenções</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Dica
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>callout com <code>collapse="true"</code> é a melhor forma de escrever callouts que não ficam ocupando muito espaço</p>
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true">Lucas</a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false">Flávia</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
+<p>Lucas isso etc e aquilo</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" aria-labelledby="tabset-1-2-tab">
+<p>Fulano ciclano beltrano</p>
+<p>Maybe i’ll try some equations</p>
+</div>
+</div>
+</div>
+<p><img src="https://latex.codecogs.com/png.latex?%20%5Ceta%20=%20%5Cfrac%7B%5Ctau%7D%7B%5Cdot%5Cgamma%7D%20"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>blog</category>
+  <category>teste</category>
+  <guid>https://www.lucascarmo.com.br/posts/primeira-postagem/index.html</guid>
+  <pubDate>Tue, 31 May 2022 03:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

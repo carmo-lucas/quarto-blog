@@ -1,9 +1,9 @@
 project:
   type: website
+  output-dir: docs
   preview:
     port: 4200
     browser: false
-
 website:
   cookie-consent:
     express: true
@@ -26,12 +26,11 @@ website:
         href: https://linkedin.com/in/lucas-carmo-ba4351b8/
   page-footer:
     border: true
-    left: "Copyright 2022, Lucas Carmo" 
+    left: "Copyright 2023, Lucas Carmo" 
 format:
   html:
     theme: 
-      light: sandstone
-    css: styles.css
+      light: [cosmo, mystyle.scss]
     code-overflow: scroll
     code-copy: true
     code-fold: true

@@ -1,17 +1,17 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Sobre",
+    "objectID": "apresentacoes.html",
+    "href": "apresentacoes.html",
+    "title": "apresentações",
     "section": "",
-    "text": "About this blog"
+    "text": "Aula 6 - Organizando suas análises\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n28 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAula 5 - Gráficos com ggplot2\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n22 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAula 3 - Manipulando dataframes e gráficos\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n05 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nAula 2 - Funções e Manipulação de Objetos\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n30 - 09 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nAula 1 - Instalação e introdução ao R\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n22 - 09 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nCosmetic emulsion physical stability screening by means of rheology\n\n\nMaster’s Dissertation Defense\n\n\n\nLucas Chagas Lima do Carmo\n\n\n16 - 03 - 2020\n\n\n\n\n\n\n\n\nSem matches"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "home",
+    "objectID": "posts/powertoys-run/index.html",
+    "href": "posts/powertoys-run/index.html",
+    "title": "Usando o PowerToys para criar tarefas no ClickUp",
     "section": "",
-    "text": "Colocar fotos e links para outras páginas e sites."
+    "text": "Este artigo descreve como utilizar o um software da microsoft chamado PowerToys Run para manipular informações no ClickUp."
   },
   {
     "objectID": "posts/powertoys-run/index.html#mas-o-que-é-o-powertoys",
@@ -25,602 +25,623 @@
     "href": "posts/powertoys-run/index.html#mas-o-que-é-n8n",
     "title": "Usando o PowerToys para criar tarefas no ClickUp",
     "section": "Mas o que é n8n?",
-    "text": "Mas o que é n8n?\nO n8n é um software que serve para criação de workflows baseados em nódulos (nodes). Cada node recebe dados de um ou mais nodes, processa-o e repassa para um ou mais nodes, ou seja, o dado inicial é processado através de várias etapas para que seja criada um dado final, geralmente, mas não necessariamente, com a intenção de gerar conhecimento.\n\nEu nunca aprendi powershell então tive que ir atrás de referências de como criar uma função nesta linguagem que me permitisse passar o nome e a prioridade de uma nova tarefa.\nA referência que eu usei para este script é de um vídeo que explica como criar scripts e funções e demonstra como torná-los executáveis.\nEu aprendi que para que um script seja executável, é necessário que o arquivo seja salvo com a extensão .ps1m o que o identifica como sendo um módulo do powershell e também deve estar salvo no diretório %user%\\Documents\\WindowsPowerShell\\Modules\\MeuModulo. É importante também garantir que a pasta e o nome do arquivo sejam iguais.\nEste script contém a seguinte função task:\n\nListing 1: Função para Criar Tarefa\n# MeuModulo.ps1m\n\nfunction task {\n[CmdletBinding()]\nparam(\n    [Parameter(Mandatory=$True)]\n    $nome = $1,\n    $prioridade = $2\n  )\n\n$json = \"{\n    \"\"name\"\": \"\"$nome\"\",\n    \"\"priority\"\": $prioridade\n}\"\n\nOut-File -InputObject $json -FilePath \"~\\Automations.json\" -Encoding utf8\nexit\n}\n\nA função task aceita dois argumentos; o nome e prioridade da tarefa e salva-os em um arquivo que será usado como uma forma de cache para a execução das etapas seguintes do workflow. Este arquivo é formatado no modelo json para que sejam facilmente lidas pelo n8n posteriormente.\nAssim que o arquivo json é criado, o n8n inicia a automação que foi configurada e manda as informações para o ClickUp.\nO arquivo criado pela função tem esta estrutura:\n// Automations.json\n{\n  \"name\": \"Aqui vai o nome da tarefa a ser criada\", \n  \"priority\": 1\n}\nAté aí tudo certo mas como que eu faço para executar esta função?"
+    "text": "Mas o que é n8n?\nO n8n é um software que serve para criação de workflows baseados em nódulos (nodes). Cada node recebe dados de um ou mais nodes, processa-o e repassa para um ou mais nodes, ou seja, o dado inicial é processado através de várias etapas para que seja criada um dado final, geralmente, mas não necessariamente, com a intenção de gerar conhecimento.\n\nEu nunca aprendi powershell então tive que ir atrás de referências de como criar uma função nesta linguagem que me permitisse passar o nome e a prioridade de uma nova tarefa.\nA referência que eu usei para este script é de um vídeo que explica como criar scripts e funções e demonstra como torná-los executáveis.\nEu aprendi que para que um script seja executável, é necessário que o arquivo seja salvo com a extensão .ps1m o que o identifica como sendo um módulo do powershell e também deve estar salvo no diretório %user%\\Documents\\WindowsPowerShell\\Modules\\MeuModulo. É importante também garantir que a pasta e o nome do arquivo sejam iguais.\nEste script contém a seguinte função task:\n\n\nMeuModulo.ps1m\n\n\nListing 1: Função para Criar Tarefa\nfunction task {\n[CmdletBinding()]\nparam(\n    [Parameter(Mandatory=$True)]\n    $nome = $1,\n    $prioridade = $2\n  )\n\n$json = \"{\n    \"\"name\"\": \"\"$nome\"\",\n    \"\"priority\"\": $prioridade\n}\"\n\nOut-File -InputObject $json -FilePath \"~\\Automations.json\" -Encoding utf8\nexit\n}\n\n\nA função task aceita dois argumentos; o nome e prioridade da tarefa e salva-os em um arquivo que será usado como uma forma de cache para a execução das etapas seguintes do workflow. Este arquivo é formatado no modelo json para que sejam facilmente lidas pelo n8n posteriormente.\nAssim que o arquivo json é criado, o n8n inicia a automação que foi configurada e manda as informações para o ClickUp.\nO arquivo criado pela função tem esta estrutura:\n\n\nAutomations.json\n\n{\n  \"name\": \"Aqui vai o nome da tarefa a ser criada\", \n  \"priority\": 1\n}\n\nAté aí tudo certo mas como que eu faço para executar esta função?"
   },
   {
-    "objectID": "posts/powertoys-run/index.html",
-    "href": "posts/powertoys-run/index.html",
-    "title": "Usando o PowerToys para criar tarefas no ClickUp",
-    "section": "",
-    "text": "Este artigo descreve como utilizar o um software da microsoft chamado PowerToys Run para manipular informações no ClickUp."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#acknowledgements",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#acknowledgements",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements"
   },
   {
-    "objectID": "posts/presentation/index.html#getting-up",
-    "href": "posts/presentation/index.html#getting-up",
-    "title": "Habits",
-    "section": "Getting up",
-    "text": "Getting up\n\nTurn off alarm\nGet out of bed"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#table-of-contents",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#table-of-contents",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Table of Contents",
+    "text": "Table of Contents\n\nIntroduction\nObjectives\nMaterials & Methods\nResults and Discussion\n\n“Classic” methods of stability assessment\nInfluence of oil content on rheology\nInfluence of time on rheology\nRheological thermal analysis\n\nFinal Considerations"
   },
   {
-    "objectID": "posts/presentation/index.html#going-to-sleep",
-    "href": "posts/presentation/index.html#going-to-sleep",
-    "title": "Habits",
-    "section": "Going to sleep",
-    "text": "Going to sleep\n\nGet in bed\nCount sheep"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-industry",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-industry",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Cosmetic Industry",
+    "text": "Cosmetic Industry\n\nEx-factory revenue of the cosmetic industry since 2006(ABIHPEC 2018)"
   },
   {
-    "objectID": "apresentacoes.html",
-    "href": "apresentacoes.html",
-    "title": "apresentações",
-    "section": "",
-    "text": "Lucas C. L. do Carmo\n\n\n28 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n22 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n05 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n30 - 09 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n22 - 09 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nMaster’s Dissertation Defense\n\n\n\nLucas Chagas Lima do Carmo\n\n\n16 - 03 - 2020\n\n\n\n\n\n\n\n\nSem matches"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-industry-ojs",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-industry-ojs",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Cosmetic Industry OJS",
+    "text": "Cosmetic Industry OJS\n\nwidth = 1800\nheight = 1000\n\ndata = FileAttachment(\"data.csv\").csv({ typed: true })\n\nPlot.plot({\n    marks: [\n        Plot.barY(\n            data, {x:\"ano\",y:\"value\",fill:\"Country\"}\n        )\n    ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(ABIHPEC 2018)"
   },
   {
-    "objectID": "index.html#será-que-markdown-dentro-de-divs-funciona",
-    "href": "index.html#será-que-markdown-dentro-de-divs-funciona",
-    "title": "home",
-    "section": "Será que markdown dentro de divs funciona?",
-    "text": "Será que markdown dentro de divs funciona?\nThis column takes 1/3 of the page"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#classic-stability-studies",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#classic-stability-studies",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "“Classic” Stability Studies",
+    "text": "“Classic” Stability Studies"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "blog",
-    "section": "",
-    "text": "Ordenar por\n       Default\n         \n          Título\n        \n         \n          Data - Mais antigo\n        \n         \n          Data - Mais novo\n        \n         \n          Autor\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n\n\n14 - 07 - 2022\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsions",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsions",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Emulsions",
+    "text": "Emulsions"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#vantagens",
-    "href": "apresentacoes/Aula1/index.html#vantagens",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Vantagens",
-    "text": "Vantagens\n\n\nÉ de graça\nMuito utilizado no meio acadêmico\nopen source o que significa que qualquer pessoa pode fazer modificações e extensões (inclusive você!!)\nAnálises podem ser revisadas e seus erros corrigidos facilmente\nUsando rmarkdown:: não é mais necessário copiar e colar dados e tabelas de outros softwares para o Word."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsion-types",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsion-types",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Emulsion Types",
+    "text": "Emulsion Types"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#desvantagens",
-    "href": "apresentacoes/Aula1/index.html#desvantagens",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Desvantagens",
-    "text": "Desvantagens\n\nCurva de aprendizado pode ser íngrime\nTudo ( grande maioria) é feito na linha de comando\nDomínio de inglês é quase um pre-requisito"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Colloid Stability - 1",
+    "text": "Colloid Stability - 1"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#mais-listas",
-    "href": "apresentacoes/Aula1/index.html#mais-listas",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Mais listas",
-    "text": "Mais listas\n\nlista_2 <- list(\n    \"abc\",\n    list(\n        \"elemento\" = 10,\n        \"matriz_lista\" = matrix(c(1,2,3,4,5,8), ncol = 2),\n        \"vetor_lista\" = c(1,6,4,4,5,7,7)\n    )\n)"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Colloid Stability - 2",
+    "text": "Colloid Stability - 2"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#mais-listas-1",
-    "href": "apresentacoes/Aula1/index.html#mais-listas-1",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Mais listas",
-    "text": "Mais listas\n\nlista_2\n\n[[1]]\n[1] \"abc\"\n\n[[2]]\n[[2]]$elemento\n[1] 10\n\n[[2]]$matriz_lista\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    8\n\n[[2]]$vetor_lista\n[1] 1 6 4 4 5 7 7"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Colloid Stability - 3",
+    "text": "Colloid Stability - 3"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#condicionais-continuação",
-    "href": "apresentacoes/Aula1/index.html#condicionais-continuação",
-    "title": "Aula 1",
-    "section": "Condicionais (continuação)",
-    "text": "Condicionais (continuação)\n\nn_ligacoes_carbono <- 3\n\nif (n_ligacoes_carbono > 4) {\n    warning(\"O Carbono não pode ter mais que 4 ligações\")\n} else {#<<\n    message(\"Número de ligações do carbono OK\")\n}"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---4",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---4",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Colloid Stability - 4",
+    "text": "Colloid Stability - 4"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#loop-do-tipo-for",
-    "href": "apresentacoes/Aula1/index.html#loop-do-tipo-for",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Loop do tipo for",
-    "text": "Loop do tipo for\n\n\n\nfor (i in 1:10) {\n    print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n[1] 6\n[1] 7\n[1] 8\n[1] 9\n[1] 10\n\n\n\npara (elemento na sequência 1 a 10){\n    imprima(elemento)\n}"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---5",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---5",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Colloid Stability - 5",
+    "text": "Colloid Stability - 5"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#vantagens-.incremental",
-    "href": "apresentacoes/Aula1/index.html#vantagens-.incremental",
-    "title": "Aula 1",
-    "section": "Vantagens .incremental}",
-    "text": "Vantagens .incremental}\n\nÉ de graça\nMuito utilizado no meio acadêmico\nopen source o que significa que qualquer pessoa pode fazer modificações e extensões (inclusive você!!)\nAnálises podem ser revisadas e seus erros corrigidos facilmente\nUsando rmarkdown:: não é mais necessário copiar e colar dados e tabelas de outros softwares para o Word."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---6",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---6",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Colloid Stability - 6",
+    "text": "Colloid Stability - 6"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#por-que-usar-o-r",
-    "href": "apresentacoes/Aula1/index.html#por-que-usar-o-r",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Por que usar o R?",
-    "text": "Por que usar o R?"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---7",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---7",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Colloid Stability - 7",
+    "text": "Colloid Stability - 7"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#por-que-não-usar-o-r",
-    "href": "apresentacoes/Aula1/index.html#por-que-não-usar-o-r",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Por que não usar o R?",
-    "text": "Por que não usar o R?"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---8",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---8",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Colloid Stability - 8",
+    "text": "Colloid Stability - 8"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#instalação",
-    "href": "apresentacoes/Aula1/index.html#instalação",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Instalação",
-    "text": "Instalação\nInstale primeiro o R através do link abaixo:\nR\nDepois instale o RStudio\nR Studio"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#destabilisation-mechanisms",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#destabilisation-mechanisms",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Destabilisation Mechanisms",
+    "text": "Destabilisation Mechanisms"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#como-usar-o-rstudio",
-    "href": "apresentacoes/Aula1/index.html#como-usar-o-rstudio",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Como usar o RStudio",
-    "text": "Como usar o RStudio"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-cream-structure---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-cream-structure---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Cosmetic Cream Structure - 1",
+    "text": "Cosmetic Cream Structure - 1"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#funcionalidade-do-r",
-    "href": "apresentacoes/Aula1/index.html#funcionalidade-do-r",
-    "title": "Aula 1",
-    "section": "Funcionalidade do R",
-    "text": "Funcionalidade do R\nA principal funcionalidade do R é ser uma calculadora.\n\n1 + 2\n\n[1] 3\n\n10^6 / 10^7\n\n[1] 0.1\n\n2 + 8 * 2 #<<\n\n[1] 18\n\n\nUma calculadora que obedece a ordem de operações"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-cream-structure---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-cream-structure---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Cosmetic Cream Structure - 2",
+    "text": "Cosmetic Cream Structure - 2"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#vantagens-em-relação-a-uma-calculadora",
-    "href": "apresentacoes/Aula1/index.html#vantagens-em-relação-a-uma-calculadora",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Vantagens em relação a uma calculadora",
-    "text": "Vantagens em relação a uma calculadora\nÉ possível criar variáveis (objetos) que armazenam os valores de cálculos já feitos.\n\n# armazena o resultado da operação \n# em um objeto chamado \"resultado\"\nresultado <- 70 * 7 \n\n\n# retorna o valor do objeto criado\nresultado\n\n[1] 490"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheology - 1",
+    "text": "Rheology - 1"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#tipos-de-dados-classes",
-    "href": "apresentacoes/Aula1/index.html#tipos-de-dados-classes",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Tipos de dados (classes)",
-    "text": "Tipos de dados (classes)\n\nNuméricos:\n\nDecimais (numeric)\nInteiros (Integer)\n\nTexto (Character ou caracteres)\nFatores\nLógicos (TRUE, FALSE)\nComplexo (3 + 2i)\nNA, NaN e NULL\nRaw"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheology - 2",
+    "text": "Rheology - 2"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#tipos-de-objetos",
-    "href": "apresentacoes/Aula1/index.html#tipos-de-objetos",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Tipos de objetos",
-    "text": "Tipos de objetos\nObjetos são as estruturas onde você armazena os resultados das operações ou qualquer valor que seja necessário para o trabalho que será realizado.\n\nVetores\nMatrizes\nListas\nDataframes\nFórmulas\nFunções"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheology - 3",
+    "text": "Rheology - 3"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#vetores",
-    "href": "apresentacoes/Aula1/index.html#vetores",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Vetores",
-    "text": "Vetores\nVetores são objetos que podem conter apenas um tipo de dado\n\nvetor_1 <- c(1,4,8,345,7567)\n\nvetor_2 <- c(\"abc\", 76, \"nove\", FALSE, \"9\")\n\n\nvetor_1\n\n[1]    1    4    8  345 7567\n\nvetor_2\n\n[1] \"abc\"   \"76\"    \"nove\"  \"FALSE\" \"9\"    \n\nclass(vetor_2)\n\n[1] \"character\"\n\n\nNão é possível representar a string “abc” como um número, portanto todos os elementos são convertidos para o tipo (classe) character"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---4",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---4",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheology - 4",
+    "text": "Rheology - 4"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#matrizes",
-    "href": "apresentacoes/Aula1/index.html#matrizes",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Matrizes",
-    "text": "Matrizes\nMatrizes são como vetores porém bidimensionais:\n\nmatriz <- matrix(c(1,4,7,10), ncol = 2, byrow = TRUE)\n\nmatriz\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    7   10\n\n\n\\[\nmatriz =\n\\begin{bmatrix}\n1 & 4 \\\\\n7 & 10 \\\\\n\\end{bmatrix}\n\\]"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---5",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---5",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheology - 5",
+    "text": "Rheology - 5"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#listas",
-    "href": "apresentacoes/Aula1/index.html#listas",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Listas",
-    "text": "Listas\nListas são objetos mais complexos que aceitam vários tipos de dados em um mesmo objeto\n\nlista <- list(\"a\", 45, TRUE, \"texto longo\")\nlista\n\n[[1]]\n[1] \"a\"\n\n[[2]]\n[1] 45\n\n[[3]]\n[1] TRUE\n\n[[4]]\n[1] \"texto longo\"\n\n\nÉ possível colocar outros objetos dentro de listas, assim como vetores e matrizes."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---6",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---6",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheology - 6",
+    "text": "Rheology - 6"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#dataframes",
-    "href": "apresentacoes/Aula1/index.html#dataframes",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Dataframes",
-    "text": "Dataframes\nDataframes são as conhecidas tabelas. Objetos com linhas e colunas e estrutura retangular.\n\n\n\ntabela <- data.frame(\n    x = 1:6,\n    y = c(12, 3, 2, 5.1, 4.5, 0.05),\n    z = rep(c(\"a\",\"b\"), 3)\n)\n\n\n\n\n  x     y z\n1 1 12.00 a\n2 2  3.00 b\n3 3  2.00 a\n4 4  5.10 b\n5 5  4.50 a\n6 6  0.05 b"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---7",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---7",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheology - 7",
+    "text": "Rheology - 7"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#selecionando-elementos-vetores",
-    "href": "apresentacoes/Aula1/index.html#selecionando-elementos-vetores",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Selecionando elementos (vetores)",
-    "text": "Selecionando elementos (vetores)\nFrequentemente é necessário se selecionar os elementos de dentro de vetores, matrizes, dataframes, e listas e fazemos isso usando o operador [].\nCada elemento dos objetos contém um índice por exemplo:\n\nelementos <- c(\"indice 1\", \"indice 2\", \"indice 3\")\n\nelementos[1]\n\n[1] \"indice 1\"\n\nelementos[c(2,3)]\n\n[1] \"indice 2\" \"indice 3\"\n\nelementos[-3] # seleciona todos menos o terceiro elemento\n\n[1] \"indice 1\" \"indice 2\""
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---8",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---8",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheology - 8",
+    "text": "Rheology - 8"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#selecionando-elementos-matrizes",
-    "href": "apresentacoes/Aula1/index.html#selecionando-elementos-matrizes",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Selecionando elementos (matrizes)",
-    "text": "Selecionando elementos (matrizes)\n\nmatriz\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    7   10\n\nmatriz[1,2] # [linha, coluna]\n\n[1] 4\n\nmatriz[ ,1] # apenas a primeira coluna\n\n[1] 1 7\n\nmatriz[2, ] # apenas a segunda coluna\n\n[1]  7 10"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheological Thermal Analysis - 1",
+    "text": "Rheological Thermal Analysis - 1"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#funções-e-fórmulas",
-    "href": "apresentacoes/Aula1/index.html#funções-e-fórmulas",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Funções e Fórmulas",
-    "text": "Funções e Fórmulas\nFunções e fórmulas são tipos de objetos mais avançado e iremos discutí-los nas próximas aulas."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheological Thermal Analysis - 2",
+    "text": "Rheological Thermal Analysis - 2"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#operadores-aritméticos",
-    "href": "apresentacoes/Aula1/index.html#operadores-aritméticos",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Operadores Aritméticos",
-    "text": "Operadores Aritméticos\nTemos os operadores aritméticos como já mostrados anteriormente.\n\n\n\n\n\n\n\n\nOperador\nDescrição\nExemplo\n\n\n\n\n+\nAdição\n4 + 5 = 9\n\n\n-\nSubtração\n9 - 5 = 4\n\n\n*\nMultiplicação\n3 * 4 = 12\n\n\n/\nDivisão\n90 / 3 = 30\n\n\n^ ou **\nExponenciação\n10^2 = 100\n\n\nX %% Y\nModulus (restante inteiro da divisão de x por y)\n15 %% 2 = 1\n\n\nX %/% Y\nDivisão de número inteiro\n5 %/% 2 = 2"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheological Thermal Analysis - 3",
+    "text": "Rheological Thermal Analysis - 3"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#operadores-lógicos",
-    "href": "apresentacoes/Aula1/index.html#operadores-lógicos",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Operadores Lógicos",
-    "text": "Operadores Lógicos\nOs operadores lógicos são operadores de equalidade ou inequalidade que retornam valores TRUE ou FALSE (verdadeiro ou falso).\n\n\n\nOperador\nDescrição\nExemplo\n\n\n\n\n>, <\nMaior que, menor que\n1 > 2 = FALSE\n\n\n>=, <=\nMaior ou igual, menor ou igual\n22 >= 22 = TRUE\n\n\n==\nExatamente igual\n3 == 3 = TRUE\n\n\n!=\nNão igual a\n3 != 4 = TRUE\n\n\n!x\nNegação\n15 %% 2 = 1\n\n\nx | y\nx OU y\n4 |  12 < 10 = TRUE\n\n\nx & y\nx E y\n4 & 12 < 10 = FALSE\n\n\nisTRUE(x)\nTesta se x é TRUE"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-variables",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-variables",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Rheological Variables",
+    "text": "Rheological Variables"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#condicionais",
-    "href": "apresentacoes/Aula1/index.html#condicionais",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Condicionais",
-    "text": "Condicionais\nHá a possibilidade de executar operações ou não dependendo da condição expressada.\nse (condição for TRUE){\n    Executar o código aqui dentro\n}\n\nn_ligacoes_carbono <- 5\n\nif (n_ligacoes_carbono > 4) {\n    warning(\"O Carbono não pode ter mais que 4 ligações\")\n}\n\nCondicionais (continuação)\n\nn_ligacoes_carbono <- 3\n\nif (n_ligacoes_carbono > 4) {\n    warning(\"O Carbono não pode ter mais que 4 ligações\")\n} else {#<<\n    message(\"Número de ligações do carbono OK\")\n}"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#objectives-1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#objectives-1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Objectives",
+    "text": "Objectives"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#estruturas-de-repetição",
-    "href": "apresentacoes/Aula1/index.html#estruturas-de-repetição",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Estruturas de repetição",
-    "text": "Estruturas de repetição"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#proposal",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#proposal",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Proposal",
+    "text": "Proposal"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#for-loop",
-    "href": "apresentacoes/Aula1/index.html#for-loop",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "for loop",
-    "text": "for loop\n\n\n\nfrutas <- c(\"banana\", \"maçã\", \"ameixa\")\n\nfor (fruta in frutas) {\n    print(fruta)\n}\n\n[1] \"banana\"\n[1] \"maçã\"\n[1] \"ameixa\"\n\n\n\n\ncores <- c(\"amarela\",\"vermelha\")\n\nfor (fruta in frutas) {\n    for (cor in cores) {\n        print(paste(\"Tal\",fruta,\"é\",cor))\n    }\n}\n\n[1] \"Tal banana é amarela\"\n[1] \"Tal banana é vermelha\"\n[1] \"Tal maçã é amarela\"\n[1] \"Tal maçã é vermelha\"\n[1] \"Tal ameixa é amarela\"\n[1] \"Tal ameixa é vermelha\""
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cream-composition",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cream-composition",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Cream Composition",
+    "text": "Cream Composition"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#while-loop",
-    "href": "apresentacoes/Aula1/index.html#while-loop",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "while loop",
-    "text": "while loop\nLoops while se repetem até que a expressão avaliada seja FALSE.\n\n\n\ni <- 1\n\nwhile (i < 6) {\n    print(paste(\"Iteração\",i))\n    i <- i + 1\n}\n\n[1] \"Iteração 1\"\n[1] \"Iteração 2\"\n[1] \"Iteração 3\"\n[1] \"Iteração 4\"\n[1] \"Iteração 5\"\n\n\n\natribuindo valor de 1 a i\n\nenquanto (i menor que 6){\n    imprima (Iteração i)\n    adicione 1 a i\n}"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Emulsification - 1",
+    "text": "Emulsification - 1"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#resumo-da-aula",
-    "href": "apresentacoes/Aula1/index.html#resumo-da-aula",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Resumo da aula",
-    "text": "Resumo da aula\n\nInstalamos o R e o RStudio\nAprendemos quais são os tipos de dados (classes) básicos do R\nAprendemos o que são objetos e como atribuir valores a eles\n\nVetores, Matrizes, Listas, Dataframes, Fórmulas, Funções\n\nAprendemos a selecionar elementos dos objetos\nAprendemos a usar alguns operadores aritméticos e lógicos\nAprendemos a usar estruturas de condição if e if else\nAprendemos a escrever um for loop e um while loop\n\n\n\nlucas carmo/apresentações"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Emulsification - 2",
+    "text": "Emulsification - 2"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#funcionalidades-do-r",
-    "href": "apresentacoes/Aula1/index.html#funcionalidades-do-r",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Funcionalidades do R",
-    "text": "Funcionalidades do R\nA funcionalidade mais básica do R é ser uma calculadora.\n\n1 + 2\n\n[1] 3\n\n10^6 / 10^7\n\n[1] 0.1\n\n2 + 8 * 2 #<<\n\n[1] 18\n\n\nUma calculadora que obedece a ordem de operações"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Emulsification - 3",
+    "text": "Emulsification - 3"
   },
   {
-    "objectID": "apresentacoes/Aula1/index.html#criando-objetos",
-    "href": "apresentacoes/Aula1/index.html#criando-objetos",
-    "title": "Aula 1 - Instalação e introdução ao R",
-    "section": "Criando Objetos",
-    "text": "Criando Objetos\nPara criar um objeto você deve seguir a seguinte sintaxe:\nnome_do_objeto <- valor atribuído ao objeto\nRegras:\n\nNome do objeto não pode iniciar com um número;\nNome do objeto não pode ter espaços ou caracteres especiais (%, $, &, +, -);\nDeve ser descritivo mas não muito longo."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---4",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---4",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Emulsification - 4",
+    "text": "Emulsification - 4"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#anteriormente",
-    "href": "apresentacoes/Aula 2/index.html#anteriormente",
-    "title": "Aula 2",
-    "section": "Anteriormente…",
-    "text": "Anteriormente…\n\nAprendemos sobre classes de dados;\nAprendemos sobre estruturas de dados (objetos);\nAprendemos a selecionar elementos de objetos;\nComeçamos a aprender o RStudio"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#formulas",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#formulas",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Formulas",
+    "text": "Formulas"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#hoje",
-    "href": "apresentacoes/Aula 2/index.html#hoje",
-    "title": "Aula 2",
-    "section": "Hoje…",
-    "text": "Hoje…\n\nComo transformar e criar novos objetos usando operações matemáticas\nComo usar scripts com o formato .R.\nO que são funções e como usá-las\nImportando dados para o R / RStudio"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#methods",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#methods",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Methods",
+    "text": "Methods"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#algumas-dicas",
-    "href": "apresentacoes/Aula 2/index.html#algumas-dicas",
-    "title": "Aula 2",
-    "section": "Algumas dicas:",
-    "text": "Algumas dicas:\n\n“Tem um símbolo de + aparecendo no meu console o que eu faço?”\nSe você apertar a seta para cima enquanto o console está selecionado você reescreve o último comando.\nExistem alguns objetos já existentes no R como:\n\nletters: alfabeto em letras minúsculas;\npi: \\(\\pi\\);\ncars: dataframe contendo dados de velocidade e distância até pararem;\niris: dataframe contendo comprimento de pétalas e sépalas"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#macroscopic-evaluation---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#macroscopic-evaluation---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Macroscopic Evaluation - 1",
+    "text": "Macroscopic Evaluation - 1"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#o-que-falta-descobrir",
-    "href": "apresentacoes/Aula 2/index.html#o-que-falta-descobrir",
-    "title": "Aula 2",
-    "section": "O que falta descobrir?",
-    "text": "O que falta descobrir?\nÉ possível adicionar elementos em um objeto através do seu índice\n\nx <- c(9,6,3) # contém 3 elementos\n\nx\n\n[1] 9 6 3\n\nx[4] <- 1 # adicionando um elemento na quarta posição\n\nx\n\n[1] 9 6 3 1\n\n\nTambém é possivel sobrescrever elementos dessa forma em matrizes e listas usando as formas de indicar a posição de cada tipo de objeto."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#macroscopic-evaluation---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#macroscopic-evaluation---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Macroscopic Evaluation - 2",
+    "text": "Macroscopic Evaluation - 2"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#criando-novas-colunas-de-um-dataframe",
-    "href": "apresentacoes/Aula 2/index.html#criando-novas-colunas-de-um-dataframe",
-    "title": "Aula 2",
-    "section": "Criando novas colunas de um dataframe",
-    "text": "Criando novas colunas de um dataframe\nDataframes são tabelas cujas colunas tem que ter o mesmo número de linhas sempre.\nPara selecionar uma coluna podemos usar a sintaxe tabela$nome_da_coluna o que retorna um vetor.\nEx.\n\ntbl <- data.frame(\n    col_1 = 1:10,\n    col_2 = letters[1:10]\n)\n\ntbl$col_2\n\n [1] \"a\" \"b\" \"c\" \"d\" \"e\" \"f\" \"g\" \"h\" \"i\" \"j\""
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "pH Evaluation Over Time - 1",
+    "text": "pH Evaluation Over Time - 1"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#criando-nova-coluna-em-tabela-existente",
-    "href": "apresentacoes/Aula 2/index.html#criando-nova-coluna-em-tabela-existente",
-    "title": "Aula 2",
-    "section": "Criando nova coluna em tabela existente",
-    "text": "Criando nova coluna em tabela existente\n\n\n\ntbl\n\n   col_1 col_2\n1      1     a\n2      2     b\n3      3     c\n4      4     d\n5      5     e\n6      6     f\n7      7     g\n8      8     h\n9      9     i\n10    10     j\n\n\n\n\ntbl$col_3 <- LETTERS[1:10] #<<\n\ntbl\n\n   col_1 col_2 col_3\n1      1     a     A\n2      2     b     B\n3      3     c     C\n4      4     d     D\n5      5     e     E\n6      6     f     F\n7      7     g     G\n8      8     h     H\n9      9     i     I\n10    10     j     J"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "pH Evaluation Over Time - 2",
+    "text": "pH Evaluation Over Time - 2"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#criando-uma-outra-coluna-usando-operações-aritméticas",
-    "href": "apresentacoes/Aula 2/index.html#criando-uma-outra-coluna-usando-operações-aritméticas",
-    "title": "Aula 2",
-    "section": "Criando uma outra coluna usando operações aritméticas",
-    "text": "Criando uma outra coluna usando operações aritméticas\n\n\n\ntbl\n\n   col_1 col_2 col_3\n1      1     a     A\n2      2     b     B\n3      3     c     C\n4      4     d     D\n5      5     e     E\n6      6     f     F\n7      7     g     G\n8      8     h     H\n9      9     i     I\n10    10     j     J\n\n\n\n\ntbl$col_4 <- tbl$col_1 ** 4 #<<\n\ntbl\n\n   col_1 col_2 col_3 col_4\n1      1     a     A     1\n2      2     b     B    16\n3      3     c     C    81\n4      4     d     D   256\n5      5     e     E   625\n6      6     f     F  1296\n7      7     g     G  2401\n8      8     h     H  4096\n9      9     i     I  6561\n10    10     j     J 10000"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "pH Evaluation Over Time - 3",
+    "text": "pH Evaluation Over Time - 3"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#operações-vetorizadas",
-    "href": "apresentacoes/Aula 2/index.html#operações-vetorizadas",
-    "title": "Aula 2",
-    "section": "Operações vetorizadas",
-    "text": "Operações vetorizadas\nO R aplica estes operadores matemáticos de forma vetorizada o que significa que eu posso fazer soma, multiplicação e outras operações facilmente.\n\n\n\na <- c(1,5,10,15)\n\na + 2\n\n[1]  3  7 12 17\n\na * 2 \n\n[1]  2 10 20 30\n\n\n\n\nb <- c(1,2,3,4)\n\na + b\n\n[1]  2  7 13 19\n\na * b\n\n[1]  1 10 30 60"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---4",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---4",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "pH Evaluation Over Time - 4",
+    "text": "pH Evaluation Over Time - 4"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#vetores-de-comprimentos-diferentes",
-    "href": "apresentacoes/Aula 2/index.html#vetores-de-comprimentos-diferentes",
-    "title": "Aula 2",
-    "section": "Vetores de comprimentos diferentes",
-    "text": "Vetores de comprimentos diferentes\n\nc <- c(1,5)\n\nd <- c(10, 20, 30)\n\nc * d \n\n[1]  10 100  30\n\nc + d\n\n[1] 11 25 31\n\n\n\nf <- c(1, 10, 100, 1000)\n\nc * f \n\n[1]    1   50  100 5000"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Microscopy 10X Magnification - 1",
+    "text": "Microscopy 10X Magnification - 1"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#operadores-lógicos",
-    "href": "apresentacoes/Aula 2/index.html#operadores-lógicos",
-    "title": "Aula 2",
-    "section": "Operadores Lógicos",
-    "text": "Operadores Lógicos\nOs operadores lógicos são operadores de equalidade ou inequalidade que retornam valores TRUE ou FALSE (verdadeiro ou falso).\n\n\n\n\n\n\n\n\nOperador\nDescrição\nExemplo\n\n\n\n\n>, <\nMaior que, menor que\n1 > 2 = FALSE\n\n\n>=, <=\nMaior ou igual, menor ou igual\n22 >= 22 = TRUE\n\n\n==\nExatamente igual\n3 == 3 = TRUE\n\n\n!=\nNão igual a\n3 != 4 = TRUE\n\n\n!\nNegação\nretorna o oposto do que o procede\n\n\nx ∣ y\nx OU y\n4 ∣  12 < 10 = TRUE\n\n\nx & y\nx E y\n4 & 12 < 10 = FALSE\n\n\nisTRUE(x)\nTesta se x é TRUE"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Microscopy 10X Magnification - 2",
+    "text": "Microscopy 10X Magnification - 2"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#operadores-lógicos-também-são-aplicados-de-forma-vetorizada",
-    "href": "apresentacoes/Aula 2/index.html#operadores-lógicos-também-são-aplicados-de-forma-vetorizada",
-    "title": "Aula 2",
-    "section": "Operadores lógicos também são aplicados de forma vetorizada",
-    "text": "Operadores lógicos também são aplicados de forma vetorizada\n\na\n\n[1]  1  5 10 15\n\na > 5\n\n[1] FALSE FALSE  TRUE  TRUE\n\na >= 5\n\n[1] FALSE  TRUE  TRUE  TRUE\n\na == 5\n\n[1] FALSE  TRUE FALSE FALSE"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Microscopy 10X Magnification - 3",
+    "text": "Microscopy 10X Magnification - 3"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#usando-vetores-lógicos-para-selecionar-valores-dentro-de-objetos",
-    "href": "apresentacoes/Aula 2/index.html#usando-vetores-lógicos-para-selecionar-valores-dentro-de-objetos",
-    "title": "Aula 2",
-    "section": "Usando vetores lógicos para selecionar valores dentro de objetos",
-    "text": "Usando vetores lógicos para selecionar valores dentro de objetos\n\na\n\n[1]  1  5 10 15\n\na > 3 # retorna vetor lógico com resultado da expressão\n\n[1] FALSE  TRUE  TRUE  TRUE\n\na[a > 3]\n\n[1]  5 10 15"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Microscopy 40X Magnification - 1",
+    "text": "Microscopy 40X Magnification - 1"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#para-matrizes",
-    "href": "apresentacoes/Aula 2/index.html#para-matrizes",
-    "title": "Aula 2",
-    "section": "Para Matrizes",
-    "text": "Para Matrizes\n\nm <- matrix(a, ncol = 2)\n\nm\n\n     [,1] [,2]\n[1,]    1   10\n[2,]    5   15\n\nm > 4\n\n      [,1] [,2]\n[1,] FALSE TRUE\n[2,]  TRUE TRUE\n\nm[m > 4]\n\n[1]  5 10 15"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Microscopy 40X Magnification - 2",
+    "text": "Microscopy 40X Magnification - 2"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#para-dataframes",
-    "href": "apresentacoes/Aula 2/index.html#para-dataframes",
-    "title": "Aula 2",
-    "section": "Para Dataframes",
-    "text": "Para Dataframes\n\ntbl <- data.frame(\n    nome = c(\"Lucas\", \"Robson\", \"Marta\"),\n    idade = c(28, 44, 12)\n)\n\n\n\n\ntbl$idade > 30\n\n[1] FALSE  TRUE FALSE\n\n\n\ntbl[\"idade\"] > 30\n\n     idade\n[1,] FALSE\n[2,]  TRUE\n[3,] FALSE\n\n\n\n\ntbl[tbl[\"idade\"] > 30]\n\n[1] \"Robson\" \"44\"    \n\n\n\n\n\n\nHá formas menos confusas de fazer isto."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Microscopy 40X Magnification - 3",
+    "text": "Microscopy 40X Magnification - 3"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#funções",
-    "href": "apresentacoes/Aula 2/index.html#funções",
-    "title": "Aula 2",
-    "section": "Funções",
-    "text": "Funções"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Polarized Light Microscopy - 1",
+    "text": "Polarized Light Microscopy - 1"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#o-que-são-funções",
-    "href": "apresentacoes/Aula 2/index.html#o-que-são-funções",
-    "title": "Aula 2",
-    "section": "O que são funções?",
-    "text": "O que são funções?\nFunção é um termo genérico que representa uma abstração de código.\nMas o que isso significa?\n\n\n\\(Maths:\\)\n\\(f(x) = 3x + 9\\)\n\\(f(3) = 18\\)\n\nCódigo:\n\nf <- function(x) {\n    3 * x + 9\n}\n\nf(3)\n\n[1] 18\n\n\n\n\nJá usamos diversas funções na aula anterior como:\n\nc() serve para combinar vários elementos em um vetor\nlist() serve para criar listas\ndata.frame() serve para criar dataframes\n\n\nFazer meio que uma piadinha que eu to fazendo eles perder tempo."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Polarized Light Microscopy - 2",
+    "text": "Polarized Light Microscopy - 2"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#como-escrever-funções",
-    "href": "apresentacoes/Aula 2/index.html#como-escrever-funções",
-    "title": "Aula 2",
-    "section": "Como escrever funções?",
-    "text": "Como escrever funções?\n\nnome_da_função <- function(arg1, arg2, arg3, ...){\n    expressão a ser realizada\n}\n\nEx.\n\ncongratular <- function(nome, idade){ # arg1 nome, arg2 idade\n    return(paste(\"Parabéns\",nome,\"pelos seus\",idade,\"anos de vida!\"))\n}\n\ncongratular(\"Mateus\", 43)\n\n[1] \"Parabéns Mateus pelos seus 43 anos de vida!\""
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Polarized Light Microscopy - 3",
+    "text": "Polarized Light Microscopy - 3"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#usando-outros-princípios-para-criar-funções-mais-úteis",
-    "href": "apresentacoes/Aula 2/index.html#usando-outros-princípios-para-criar-funções-mais-úteis",
-    "title": "Aula 2",
-    "section": "Usando outros princípios para criar funções mais úteis",
-    "text": "Usando outros princípios para criar funções mais úteis\nSoma de elementos dentro de um vetor:\n\\[soma = X_1 + X_2 + X_3 + X_4 + \\ldots + X_n\\]\n\\[\\sum_{i=1}^n X_i\\]\nExercício\nComo escrever uma função que faça isso?\n\nsoma <- function(x){\n    # o que colocar aqui dentro?\n}"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Fraunhofer Diffraction Sizing - 1",
+    "text": "Fraunhofer Diffraction Sizing - 1"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#solução",
-    "href": "apresentacoes/Aula 2/index.html#solução",
-    "title": "Aula 2",
-    "section": "Solução",
-    "text": "Solução\n\nsoma <- function(x){\n    sigma <- 0\n    for (i in seq_along(x)) {\n        sigma <- sigma + x[i]\n    }\n    return(sigma)\n}\n\na\n\n[1]  1  5 10 15\n\nsoma(a)\n\n[1] 31"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Fraunhofer Diffraction Sizing - 2",
+    "text": "Fraunhofer Diffraction Sizing - 2"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#explicação",
-    "href": "apresentacoes/Aula 2/index.html#explicação",
-    "title": "Aula 2",
-    "section": "Explicação",
-    "text": "Explicação\nExercício\nEscrevam a função media().\n\\[\\bar X = \\frac{1}{N}\\sum_{i=1}^n X_i\\]\n\nmedia <- function(x){\n    \n}\n\n\nExplicar como escrever a função soma usando o loop for. Pode não ser a forma mais otimizada."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Fraunhofer Diffraction Sizing - 3",
+    "text": "Fraunhofer Diffraction Sizing - 3"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#funções-úteis",
-    "href": "apresentacoes/Aula 2/index.html#funções-úteis",
-    "title": "Aula 2",
-    "section": "Funções úteis",
-    "text": "Funções úteis\n\nlenght(x): retorna o comprimento do objeto x\nseq(): cria uma sequência de números\nrep(): repete elementos de um vetor várias vezes\nas.numerical(): converte elementos para números (quando possível)\nas.character(): converte elementos para caracteres (quando possível)\nas.logical(): converte elementos para valores lógicos (quando possível)\nprint(): imprime o objeto no console\npaste(): cola objetos de forma vetorizada\nls(): lista os objetos criados\nrm(x): remove objeto x"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---4",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---4",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Fraunhofer Diffraction Sizing - 4",
+    "text": "Fraunhofer Diffraction Sizing - 4"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#funções-matemáticas-úteis",
-    "href": "apresentacoes/Aula 2/index.html#funções-matemáticas-úteis",
-    "title": "Aula 2",
-    "section": "Funções matemáticas úteis",
-    "text": "Funções matemáticas úteis\n\nround(x, n): arredonda x para n casas decimais\nsignif(x, n): arredonda x para n números significativos\nfloor(x): arredonda para o número inteiro mais baixo\nceiling(x): arredonda para o número inteiro mais alto\nmax(x): retorna máximo valor no vetor\nmin(x): retorna mínimo valor no vetor\nlog(x): log na base \\(e\\)\nlog10(x): log base 10\nexp(x): \\(e^x\\)\nsin(), cos(), tan(): ângulos dados em radianos."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---5",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---5",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Fraunhofer Diffraction Sizing - 5",
+    "text": "Fraunhofer Diffraction Sizing - 5"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#exemplos",
-    "href": "apresentacoes/Aula 2/index.html#exemplos",
-    "title": "Aula 2",
-    "section": "Exemplos",
-    "text": "Exemplos\n\n\n\nsignif(pi, 2)\n\n[1] 3.1\n\nfloor(pi)\n\n[1] 3\n\nceiling(pi)\n\n[1] 4\n\nsin(pi/6)\n\n[1] 0.5\n\n\n\n\nx <- c(22/7, 87/21, 9/1.339)\n\nsignif(x, 3)\n\n[1] 3.14 4.14 6.72\n\nfloor(x)\n\n[1] 3 4 6\n\nceiling(x)\n\n[1] 4 5 7\n\nround( sin(x), 2 )\n\n[1]  0.00 -0.84  0.42"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#droplet-size-over-time",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#droplet-size-over-time",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Droplet Size Over Time",
+    "text": "Droplet Size Over Time"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#pacotes",
-    "href": "apresentacoes/Aula 2/index.html#pacotes",
-    "title": "Aula 2",
-    "section": "Pacotes",
-    "text": "Pacotes\nSabemos escrever as nossas próprias funções agora mas como iniciantes podemos ter muitos problemas em implementá-las em programas mais complexos.\nO que são pacotes?\nPacotes são coleções de funções escritas por terceiros. Existem pacotes para construir gráficos (ggplot2::), para manipular texto (stringr::), reportar resultados (rmarkdown::) e quimiometria (chemometrics::).\nTambém existem pacotes que extendem a funcionalidade de pacotes por exemplo o patchwork:: que serve para criar figuras com múltiplos gráficos."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#amplitude-sweeps",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#amplitude-sweeps",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Amplitude sweeps",
+    "text": "Amplitude sweeps"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#pacotes-1",
-    "href": "apresentacoes/Aula 2/index.html#pacotes-1",
-    "title": "Aula 2",
-    "section": "Pacotes (…)",
-    "text": "Pacotes (…)\nO termo mais comum para pacotes é library ou seja, uma biblioteca de funções que você pode importar para o seu ambiente de trabalho para facilitar sua vida.\nO R em si próprio possui algumas libraries por padrão: stats::, base::, methods::, utils:: e outras."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#linear-viscoelasticity-region",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#linear-viscoelasticity-region",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Linear Viscoelasticity Region",
+    "text": "Linear Viscoelasticity Region"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#resumindo",
-    "href": "apresentacoes/Aula 2/index.html#resumindo",
-    "title": "Aula 2",
-    "section": "Resumindo:",
-    "text": "Resumindo:"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-stress",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-stress",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Yield Stress",
+    "text": "Yield Stress"
   },
   {
-    "objectID": "apresentacoes/Aula 2/index.html#nesta-aula",
-    "href": "apresentacoes/Aula 2/index.html#nesta-aula",
-    "title": "Aula 2",
-    "section": "Nesta aula",
-    "text": "Nesta aula\n\nAprendemos a selecionar elementos de vetores baseado em condições lógicas\nAprendemos que o R executa operações de forma vetorizada\nAprendemos o que são funções e como escrevê-las\nAprendemos o que são pacotes:\n\nInstalação de pacotes\nImportando funções de pacotes\n\n\n\n\n\nlucas carmo / apresentações"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cohesive-energy",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cohesive-energy",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Cohesive Energy",
+    "text": "Cohesive Energy"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#anteriormente",
-    "href": "apresentacoes/Aula 3/index.html#anteriormente",
-    "title": "Aula 3",
-    "section": "Anteriormente…",
-    "text": "Anteriormente…\n\nComo manipular objetos\nComo adicionar colunas novas a um dataframe\nComo escrever funções e por que usá-las\nComo usar scripts"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Frequency Sweeps",
+    "text": "Frequency Sweeps"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#importando-dados-para-o-ambiente-de-trabalho",
-    "href": "apresentacoes/Aula 3/index.html#importando-dados-para-o-ambiente-de-trabalho",
-    "title": "Aula 3",
-    "section": "Importando dados para o ambiente de trabalho",
-    "text": "Importando dados para o ambiente de trabalho\nAgora que sabemos o que funções são e mais ou menos como elas funcionam, podemos usá-las em nosso benefício.\nPodemos importar dados do Excel1, de arquivos de texto armazenados no computador, Google Drive2, e direto da internet ou fazendo conexões com bancos de dados usando pacotes como DBI::\n\n\n1 não recomendado\n2 usando o pacote googlesheets::"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#complex-viscosity",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#complex-viscosity",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Complex Viscosity",
+    "text": "Complex Viscosity"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#importando-dados-do-computador",
-    "href": "apresentacoes/Aula 3/index.html#importando-dados-do-computador",
-    "title": "Aula 3",
-    "section": "Importando dados do computador",
-    "text": "Importando dados do computador\nPara importar dados do computador recomenda-se que estejam no formato .csv ou .txt ou algum outro tipo de formato de texto.\nPara importar os dados usamos as funções da família read_*() ou seja:\n\ninstall.packages(\"readr\") # ou melhor install.packages(\"tidyverse\")\n\nlibrary(readr) # ou melhor library(tidyverse)\n\nread_csv(file = \"Pasta/para/Arquivo.csv\") # aspas importam\n\nNão se esqueça de atribuir o resultado desta função a um objeto com um nome significativo.\nEx:\n\ncalibracao_HPLC <- read_csv(\"Pasta/para/Arquivo.csv\")"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-stress-over-time",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-stress-over-time",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Yield Stress Over Time",
+    "text": "Yield Stress Over Time"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#componentes-do-tidyverse",
-    "href": "apresentacoes/Aula 3/index.html#componentes-do-tidyverse",
-    "title": "Aula 3",
-    "section": "Componentes do tidyverse",
-    "text": "Componentes do tidyverse"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Frequency Sweeps Over Time - 1",
+    "text": "Frequency Sweeps Over Time - 1"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#importando-dados-com-readr",
-    "href": "apresentacoes/Aula 3/index.html#importando-dados-com-readr",
-    "title": "Aula 3",
-    "section": "Importando Dados com readr::",
-    "text": "Importando Dados com readr::"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Frequency Sweeps Over Time - 2",
+    "text": "Frequency Sweeps Over Time - 2"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#tidyr",
-    "href": "apresentacoes/Aula 3/index.html#tidyr",
-    "title": "Aula 3",
-    "section": "tidyr::",
-    "text": "tidyr::\nO tidyr é um pacote que serve para organizar as tabelas em um formato específico: o formato tidy.\nO formato tidy é um formato de dados usado em bancos de dados e é a melhor forma de organizar os dados para se fazer operações estatísticas no R e construir gráficos."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Frequency Sweeps Over Time - 3",
+    "text": "Frequency Sweeps Over Time - 3"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#gramática-de-gráficos",
-    "href": "apresentacoes/Aula 3/index.html#gramática-de-gráficos",
-    "title": "Aula 3",
-    "section": "Gramática de gráficos",
-    "text": "Gramática de gráficos\nOs elementos dos gráficos são:\n\n\n\n\n\n\n\n\nElementos\nFunção\no que faz:\n\n\n\n\nDados\nggplot()\nInicializa o gráfico\n\n\nEstéticas\naes(x = , y = )\nMapeia variáveis aos elementros gráficos\n\n\nGeoms, stats\ngeom_point()\nDesenha os elementos (pontos, linhas)\n\n\nRótulos\nlabs()\nMuda os rótulos dos eixos e título\n\n\nCoordenadas\ncoord_trans()\nMuda coordenadas do gráfico\n\n\nEscalas\nscale_color_*()\nModifica os elementos gráficos\n\n\nFacetas\nfacet_wrap()\nSepara os dados em subgráficos\n\n\nTemas\ntheme_bw()\nModifica os elementos dos eixos e outros"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---4",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---4",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Frequency Sweeps Over Time - 4",
+    "text": "Frequency Sweeps Over Time - 4"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#nosso-primeiro-gráfico",
-    "href": "apresentacoes/Aula 3/index.html#nosso-primeiro-gráfico",
-    "title": "Aula 3",
-    "section": "Nosso primeiro gráfico",
-    "text": "Nosso primeiro gráfico\nVamos usar o dataset mpg para fazer este gráfico:\n\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#crossover-frequency-over-time",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#crossover-frequency-over-time",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Crossover Frequency Over Time",
+    "text": "Crossover Frequency Over Time"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#hoje",
-    "href": "apresentacoes/Aula 3/index.html#hoje",
-    "title": "Aula 3",
-    "section": "Hoje…",
-    "text": "Hoje…\n\n\n\nIntrodução ao tidyverse\n\nreadr::\ntibble::\ntidyr::\ndplyr::\nggplot2::\noutros no futuro\n\n\n\n\nComo manipular dados de uma tabela\n\nComo organizar os variáveis\nFormatos de dados wide e long\nGráficos"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsion-gelled-structure",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsion-gelled-structure",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Emulsion Gelled Structure",
+    "text": "Emulsion Gelled Structure"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#inicializando",
-    "href": "apresentacoes/Aula 3/index.html#inicializando",
-    "title": "Aula 3",
-    "section": "Inicializando",
-    "text": "Inicializando\n\n\n\nplot <- ggplot(mpg)"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Moduli vs. Temperature - 1",
+    "text": "Moduli vs. Temperature - 1"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#mapeando-variáveis",
-    "href": "apresentacoes/Aula 3/index.html#mapeando-variáveis",
-    "title": "Aula 3",
-    "section": "Mapeando variáveis",
-    "text": "Mapeando variáveis\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) #<<"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Moduli vs. Temperature - 2",
+    "text": "Moduli vs. Temperature - 2"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#adicionando-os-geoms",
-    "href": "apresentacoes/Aula 3/index.html#adicionando-os-geoms",
-    "title": "Aula 3",
-    "section": "Adicionando os geoms",
-    "text": "Adicionando os geoms\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() #<<"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Moduli vs. Temperature - 3",
+    "text": "Moduli vs. Temperature - 3"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#adicionando-rótulos",
-    "href": "apresentacoes/Aula 3/index.html#adicionando-rótulos",
-    "title": "Aula 3",
-    "section": "Adicionando rótulos",
-    "text": "Adicionando rótulos\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") #<<"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Moduli vs. Time - 1",
+    "text": "Moduli vs. Time - 1"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#read_",
-    "href": "apresentacoes/Aula 3/index.html#read_",
-    "title": "Aula 3",
-    "section": "read_*()",
-    "text": "read_*()\nExistem outras funções da família read_*(), para ler arquivos de texto cuja separação entre colunas não é , e sim ; (muito comum em países onde o ponto decimal é a vírgula) e arquivos onde a separação são espaços em branco ou outro tipo de caractere. Estas são:\n\nread_csv(): serve para ler arquivos com , como separador de colunas e . como decimal\nread_csv2(): serve para ler arquivos com ; como separador de colunas e , como decimal\nread_delim(): lê arquivos que tem TAB como separador de colunas\n\n\\(\\ldots\\)\n\nComo exercício digite ?read_*() no console e leia a documentação desta família de funções.\nPesquise quais os argumentos são importantes para uso da função."
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Moduli vs. Time - 2",
+    "text": "Moduli vs. Time - 2"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#wide-data-e-long-data",
-    "href": "apresentacoes/Aula 3/index.html#wide-data-e-long-data",
-    "title": "Aula 3",
-    "section": "Wide data e long data",
-    "text": "Wide data e long data\n\n\n\n\ntbl <- tibble(\n  \"Pais\" = c(\"Brasil\", \"Argentina\"),\n  \"1999\" = c(0.5, 0.69),\n  \"2000\" = c(0.6, 0.98),\n  \"2001\" = c(0.71, 0.96)\n)\n\n\n\ntbl\n\n# A tibble: 2 × 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Moduli vs. Time - 3",
+    "text": "Moduli vs. Time - 3"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#transformando-a-tabela-para-formato-long",
-    "href": "apresentacoes/Aula 3/index.html#transformando-a-tabela-para-formato-long",
-    "title": "Aula 3",
-    "section": "Transformando a tabela para formato long",
-    "text": "Transformando a tabela para formato long\n\ntbl\n\n# A tibble: 2 × 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96\n\n\n\ntbl_long <- \n  pivot_longer(data = tbl, # quais os dados vou usar\n               cols = -Pais, # quais colunas quero transformar\n               names_to = \"Ano\", # nomes das colunas vão para...\n               values_to = \"Valor\") # valores vão para coluna ...\n\n\n\n       Pais  Ano Valor\n1    Brasil 1999  0.50\n2    Brasil 2000  0.60\n3    Brasil 2001  0.71\n4 Argentina 1999  0.69\n5 Argentina 2000  0.98\n6 Argentina 2001  0.96"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1",
+    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#e-agora-podemos-usar-os-dados-para-fazer-gráficos",
-    "href": "apresentacoes/Aula 3/index.html#e-agora-podemos-usar-os-dados-para-fazer-gráficos",
-    "title": "Aula 3",
-    "section": "E agora podemos usar os dados para fazer gráficos",
-    "text": "E agora podemos usar os dados para fazer gráficos\n\nlibrary(ggplot2) #<<\n\nggplot(tbl_long, aes(x = Ano, y = Valor)) + \n  geom_point()\n\n\n\n\n\n\n\n\nO que é ggplot(tbl_long ...) ??\n\nVamos voltar um pouco e aprender sobre os outros pacotes e os elementos de um gráfico do ggplot2::"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 2",
+    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 2"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#mudando-coordenadas",
-    "href": "apresentacoes/Aula 3/index.html#mudando-coordenadas",
-    "title": "Aula 3",
-    "section": "Mudando coordenadas",
-    "text": "Mudando coordenadas\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() #<<"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---3",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---3",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 3",
+    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 3"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#modificando-as-escalas",
-    "href": "apresentacoes/Aula 3/index.html#modificando-as-escalas",
-    "title": "Aula 3",
-    "section": "Modificando as escalas",
-    "text": "Modificando as escalas\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() #<<"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---4",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---4",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 4",
+    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 4"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#subdividindo-gráfico",
-    "href": "apresentacoes/Aula 3/index.html#subdividindo-gráfico",
-    "title": "Aula 3",
-    "section": "Subdividindo gráfico",
-    "text": "Subdividindo gráfico\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() +\n  facet_wrap(~cyl)#<<"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---5",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---5",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 5",
+    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 5"
   },
   {
-    "objectID": "apresentacoes/Aula 3/index.html#modificando-o-tema",
-    "href": "apresentacoes/Aula 3/index.html#modificando-o-tema",
-    "title": "Aula 3",
-    "section": "Modificando o tema",
-    "text": "Modificando o tema\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() +\n  facet_wrap(~cyl) +\n  theme_minimal() #<<"
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#distribution-of-xi-values",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#distribution-of-xi-values",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Distribution of \\(\\Xi\\) values",
+    "text": "Distribution of \\(\\Xi\\) values"
+  },
+  {
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#alpha-comparison-between-formulas",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#alpha-comparison-between-formulas",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "\\(\\alpha\\) Comparison Between Formulas",
+    "text": "\\(\\alpha\\) Comparison Between Formulas"
+  },
+  {
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#final-considerations---1",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#final-considerations---1",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Final Considerations - 1",
+    "text": "Final Considerations - 1"
+  },
+  {
+    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#final-considerations---2",
+    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#final-considerations---2",
+    "title": "Cosmetic emulsion physical stability screening by means of rheology",
+    "section": "Final Considerations - 2",
+    "text": "Final Considerations - 2"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#anteriormente",
@@ -683,21 +704,21 @@
     "href": "apresentacoes/Aula3/index.html#wide-data-e-long-data",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Wide data e long data",
-    "text": "Wide data e long data\n\n\n\n\ntbl <- tibble(\n  \"Pais\" = c(\"Brasil\", \"Argentina\"),\n  \"1999\" = c(0.5, 0.69),\n  \"2000\" = c(0.6, 0.98),\n  \"2001\" = c(0.71, 0.96)\n)\n\n\n\ntbl\n\n# A tibble: 2 x 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96"
+    "text": "Wide data e long data\n\n\n\n\ntbl <- tibble(\n  \"Pais\" = c(\"Brasil\", \"Argentina\"),\n  \"1999\" = c(0.5, 0.69),\n  \"2000\" = c(0.6, 0.98),\n  \"2001\" = c(0.71, 0.96)\n)\n\n\n\ntbl\n\n# A tibble: 2 × 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#transformando-a-tabela-para-formato-long",
     "href": "apresentacoes/Aula3/index.html#transformando-a-tabela-para-formato-long",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Transformando a tabela para formato long",
-    "text": "Transformando a tabela para formato long\n\ntbl\n\n# A tibble: 2 x 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96\n\n\n\ntbl_long <- \n  pivot_longer(data = tbl, # quais os dados vou usar\n               cols = -Pais, # quais colunas quero transformar\n               names_to = \"Ano\", # nomes das colunas vão para...\n               values_to = \"Valor\") # valores vão para coluna ...\n\n\n\n       Pais  Ano Valor\n1    Brasil 1999  0.50\n2    Brasil 2000  0.60\n3    Brasil 2001  0.71\n4 Argentina 1999  0.69\n5 Argentina 2000  0.98\n6 Argentina 2001  0.96"
+    "text": "Transformando a tabela para formato long\n\ntbl\n\n# A tibble: 2 × 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96\n\n\n\ntbl_long <- \n  pivot_longer(data = tbl, # quais os dados vou usar\n               cols = -Pais, # quais colunas quero transformar\n               names_to = \"Ano\", # nomes das colunas vão para...\n               values_to = \"Valor\") # valores vão para coluna ...\n\n\n\n       Pais  Ano Valor\n1    Brasil 1999  0.50\n2    Brasil 2000  0.60\n3    Brasil 2001  0.71\n4 Argentina 1999  0.69\n5 Argentina 2000  0.98\n6 Argentina 2001  0.96"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#e-agora-podemos-usar-os-dados-para-fazer-gráficos",
     "href": "apresentacoes/Aula3/index.html#e-agora-podemos-usar-os-dados-para-fazer-gráficos",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "E agora podemos usar os dados para fazer gráficos",
-    "text": "E agora podemos usar os dados para fazer gráficos\n\nlibrary(ggplot2) #<<\n\nggplot(tbl_long, aes(x = Ano, y = Valor)) + \n  geom_point()\n\n\n\n\n\n\n\n\nO que é ggplot(tbl_long ...) ??\n\nVamos voltar um pouco e aprender sobre os outros pacotes e os elementos de um gráfico do ggplot2::"
+    "text": "E agora podemos usar os dados para fazer gráficos\n\nlibrary(ggplot2) #<<\n\nggplot(tbl_long, aes(x = Ano, y = Valor)) + \n  geom_point()\n\n\nO que é ggplot(tbl_long ...) ??\n\nVamos voltar um pouco e aprender sobre os outros pacotes e os elementos de um gráfico do ggplot2::"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#gramática-de-gráficos",
@@ -711,7 +732,7 @@
     "href": "apresentacoes/Aula3/index.html#nosso-primeiro-gráfico",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Nosso primeiro gráfico",
-    "text": "Nosso primeiro gráfico\nVamos usar o dataset mpg para fazer este gráfico:\n\n\n# A tibble: 234 x 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto~ f        18    29 p     comp~\n 2 audi         a4           1.8  1999     4 manu~ f        21    29 p     comp~\n 3 audi         a4           2    2008     4 manu~ f        20    31 p     comp~\n 4 audi         a4           2    2008     4 auto~ f        21    30 p     comp~\n 5 audi         a4           2.8  1999     6 auto~ f        16    26 p     comp~\n 6 audi         a4           2.8  1999     6 manu~ f        18    26 p     comp~\n 7 audi         a4           3.1  2008     6 auto~ f        18    27 p     comp~\n 8 audi         a4 quattro   1.8  1999     4 manu~ 4        18    26 p     comp~\n 9 audi         a4 quattro   1.8  1999     4 auto~ 4        16    25 p     comp~\n10 audi         a4 quattro   2    2008     4 manu~ 4        20    28 p     comp~\n# ... with 224 more rows"
+    "text": "Nosso primeiro gráfico\nVamos usar o dataset mpg para fazer este gráfico:\n\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#inicializando",
@@ -952,102 +973,11 @@
     "text": "Anteriormente…\n\nIntrodução ao ggplot2 (Aula 3)\nWorkshop de importação e transformação de dados (Aula 4)"
   },
   {
-    "objectID": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos",
-    "href": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "Exemplos de geoms coletivos",
-    "text": "Exemplos de geoms coletivos"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos-2",
-    "href": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos-2",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "Exemplos de geoms coletivos (2)",
-    "text": "Exemplos de geoms coletivos (2)"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos",
-    "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "Sobrescrevendo mapeamentos estéticos",
-    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = cyl) + #<<\n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + #<<\n  geom_point()"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
-    "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "Sobrescrevendo mapeamentos estéticos",
-    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + #<<\n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy) + \n  geom_point(col = \"blue\") #<<"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#extensões",
-    "href": "apresentacoes/Aula5/index.html#extensões",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "Extensões",
-    "text": "Extensões\nExistem extensões que adicionam outros temas, geoms, stats, tipos de gráficos, escalas de cores, gráficos interativos e muito mais ao ggplot2. Alguns dos principais são:\n\ngganimate:: facilita a criação animações de gráficos e exporta em .gif ou formato de vídeo.\nggforce:: adiciona outros geoms e outros tipos de facet\npatchwork:: facilita a combinação de vários gráficos em uma só imagem\nggrepel:: automaticamente posiciona elementos de geom_text() para que não fiquem sobrepostos\ngghighlight:: facilita que dados sejam destacados nos gráficos\nggtext:: facilita formatação de textos dos gráficos\nggthemes:: importa vários temas distintos\nggpmisc:: adiciona várias funcionalidades variadas\nggpubr:: importa funções que facilitam a construção de gráficos prontos para publicação\nesquisse:: interface gráfica para criação de gráficos"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#gganimate",
-    "href": "apresentacoes/Aula5/index.html#gganimate",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "gganimate",
-    "text": "gganimate\n\nlibrary(gapminder)\nlibrary(gganimate)\n\nggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +\n  geom_point(alpha = 0.7, show.legend = FALSE) +\n  scale_colour_manual(values = country_colors) +\n  scale_size(range = c(2, 12)) +\n  scale_x_log10() +\n  facet_wrap(~continent) +\n  # Here comes the gganimate specific bits\n  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +\n  transition_time(year) +\n  ease_aes('linear')"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#ggforce",
-    "href": "apresentacoes/Aula5/index.html#ggforce",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "ggforce",
-    "text": "ggforce"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#ggrepel",
-    "href": "apresentacoes/Aula5/index.html#ggrepel",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "ggrepel",
-    "text": "ggrepel"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#ggtext",
-    "href": "apresentacoes/Aula5/index.html#ggtext",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "ggtext",
-    "text": "ggtext"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#como-salvar-gráficos",
-    "href": "apresentacoes/Aula5/index.html#como-salvar-gráficos",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "Como salvar gráficos?",
-    "text": "Como salvar gráficos?"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#como-salvar-gráficos-1",
-    "href": "apresentacoes/Aula5/index.html#como-salvar-gráficos-1",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "Como salvar gráficos?",
-    "text": "Como salvar gráficos?"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#como-salvar-gráficos-2",
-    "href": "apresentacoes/Aula5/index.html#como-salvar-gráficos-2",
-    "title": "Aula 5 - Gráficos com ggplot2",
-    "section": "Como salvar gráficos?",
-    "text": "Como salvar gráficos?\nA forma mais “adequada” de se salvar gráficos é usando a função ggsave().\n\nggsave(\n  plot = grafico,\n  filename = \"grafico-1.png\",\n  device = \"png\",\n  path = \"pasta-de-graficos\",\n  width = 16,\n  height = 12,\n  units = \"cm\",\n  dpi = 600\n)\n\n\n\nlucas carmo / apresentações"
-  },
-  {
     "objectID": "apresentacoes/Aula5/index.html#hoje",
     "href": "apresentacoes/Aula5/index.html#hoje",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Hoje…",
     "text": "Hoje…\n\nQuais os geoms do ggplot2\nComo modificar escalas\n\nEscalas de cor\nEscalas de formas de pontos\nEscalas de tipos de linhas\nEscalas dos eixos\n\nComo adicionar média, desvios e barras de erro diretamente\nComo modificar temas dos gráficos\nExtensões do ggplot2\nComo salvar os gráficos"
-  },
-  {
-    "objectID": "apresentacoes/Aula5/index.html#geoms",
-    "href": "apresentacoes/Aula5/index.html#geoms",
-    "title": "Aula 5",
-    "section": "geoms",
-    "text": "geoms"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#geoms-básicos",
@@ -1078,6 +1008,20 @@
     "text": "geoms coletivos\nOs geoms coletivos são elementos gráficos que agrupam os dados de alguma forma ou que aplicam alguma transformação matemática/estatística para exemplificar algum grau de incerteza ou mostrar a ditribuição dos dados.\nNesta categoria temos:\n\ngeom_histogram(), geom_freqpoly()\ngeom_boxplot()\ngeom_violin()\ngeom_density(), geom_density_2d()\ngeom_smooth(),\ngeom_linerange()"
   },
   {
+    "objectID": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos",
+    "href": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Exemplos de geoms coletivos",
+    "text": "Exemplos de geoms coletivos"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos-2",
+    "href": "apresentacoes/Aula5/index.html#exemplos-de-geoms-coletivos-2",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Exemplos de geoms coletivos (2)",
+    "text": "Exemplos de geoms coletivos (2)"
+  },
+  {
     "objectID": "apresentacoes/Aula5/index.html#outros-geoms",
     "href": "apresentacoes/Aula5/index.html#outros-geoms",
     "title": "Aula 5 - Gráficos com ggplot2",
@@ -1097,6 +1041,20 @@
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Estéticas",
     "text": "Estéticas\nNa primeira aula de ggplot2 eu expliquei que as estéticas do gráfico, (eixo x, eixo y, cor, tipo de linha, tamanho de ponto etc) são mapeadas aos dados que são passados à função ggplot.\nÉ possível customizar a escala do mapeamento através das funções scale_*_*() ou sobrescrever as estéticas manualmente."
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos",
+    "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Sobrescrevendo mapeamentos estéticos",
+    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = cyl) + #<<\n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + #<<\n  geom_point()"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
+    "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Sobrescrevendo mapeamentos estéticos",
+    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + #<<\n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy) + \n  geom_point(col = \"blue\") #<<"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#mudando-escalas",
@@ -1162,11 +1120,60 @@
     "text": "Elementos do tema"
   },
   {
-    "objectID": "apresentacoes/Aula5/index.html#extensões-do-ggplot2",
-    "href": "apresentacoes/Aula5/index.html#extensões-do-ggplot2",
-    "title": "Aula 5",
-    "section": "Extensões do ggplot2",
-    "text": "Extensões do ggplot2"
+    "objectID": "apresentacoes/Aula5/index.html#extensões",
+    "href": "apresentacoes/Aula5/index.html#extensões",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Extensões",
+    "text": "Extensões\nExistem extensões que adicionam outros temas, geoms, stats, tipos de gráficos, escalas de cores, gráficos interativos e muito mais ao ggplot2. Alguns dos principais são:\n\ngganimate:: facilita a criação animações de gráficos e exporta em .gif ou formato de vídeo.\nggforce:: adiciona outros geoms e outros tipos de facet\npatchwork:: facilita a combinação de vários gráficos em uma só imagem\nggrepel:: automaticamente posiciona elementos de geom_text() para que não fiquem sobrepostos\ngghighlight:: facilita que dados sejam destacados nos gráficos\nggtext:: facilita formatação de textos dos gráficos\nggthemes:: importa vários temas distintos\nggpmisc:: adiciona várias funcionalidades variadas\nggpubr:: importa funções que facilitam a construção de gráficos prontos para publicação\nesquisse:: interface gráfica para criação de gráficos"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#gganimate",
+    "href": "apresentacoes/Aula5/index.html#gganimate",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "gganimate",
+    "text": "gganimate\n\nlibrary(gapminder)\nlibrary(gganimate)\n\nggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +\n  geom_point(alpha = 0.7, show.legend = FALSE) +\n  scale_colour_manual(values = country_colors) +\n  scale_size(range = c(2, 12)) +\n  scale_x_log10() +\n  facet_wrap(~continent) +\n  # Here comes the gganimate specific bits\n  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +\n  transition_time(year) +\n  ease_aes('linear')"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#ggforce",
+    "href": "apresentacoes/Aula5/index.html#ggforce",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "ggforce",
+    "text": "ggforce"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#ggrepel",
+    "href": "apresentacoes/Aula5/index.html#ggrepel",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "ggrepel",
+    "text": "ggrepel"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#ggtext",
+    "href": "apresentacoes/Aula5/index.html#ggtext",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "ggtext",
+    "text": "ggtext"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#como-salvar-gráficos",
+    "href": "apresentacoes/Aula5/index.html#como-salvar-gráficos",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Como salvar gráficos?",
+    "text": "Como salvar gráficos?"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#como-salvar-gráficos-1",
+    "href": "apresentacoes/Aula5/index.html#como-salvar-gráficos-1",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Como salvar gráficos?",
+    "text": "Como salvar gráficos?"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#como-salvar-gráficos-2",
+    "href": "apresentacoes/Aula5/index.html#como-salvar-gráficos-2",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Como salvar gráficos?",
+    "text": "Como salvar gráficos?\nA forma mais “adequada” de se salvar gráficos é usando a função ggsave().\n\nggsave(\n  plot = grafico,\n  filename = \"grafico-1.png\",\n  device = \"png\",\n  path = \"pasta-de-graficos\",\n  width = 16,\n  height = 12,\n  units = \"cm\",\n  dpi = 600\n)\n\n\n\nlucas carmo / apresentações"
   },
   {
     "objectID": "apresentacoes/Aula6/index.html#anteriormente",
@@ -1281,1081 +1288,248 @@
     "text": "Exemplo de um projeto ruim"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#a",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#a",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "A",
-    "text": "A\n\n\nlucas carmo/apresentações"
+    "objectID": "apresentacoes/Aula1/index.html#por-que-usar-o-r",
+    "href": "apresentacoes/Aula1/index.html#por-que-usar-o-r",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Por que usar o R?",
+    "text": "Por que usar o R?"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#acknowledgements",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#acknowledgements",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements"
+    "objectID": "apresentacoes/Aula1/index.html#vantagens",
+    "href": "apresentacoes/Aula1/index.html#vantagens",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Vantagens",
+    "text": "Vantagens\n\n\nÉ de graça\nMuito utilizado no meio acadêmico\nopen source o que significa que qualquer pessoa pode fazer modificações e extensões (inclusive você!!)\nAnálises podem ser revisadas e seus erros corrigidos facilmente\nUsando rmarkdown:: não é mais necessário copiar e colar dados e tabelas de outros softwares para o Word."
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#table-of-contents",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#table-of-contents",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Table of Contents",
-    "text": "Table of Contents\n\nIntroduction\nObjectives\nMaterials & Methods\nResults and Discussion\n\n“Classic” methods of stability assessment\nInfluence of oil content on rheology\nInfluence of time on rheology\nRheological thermal analysis\n\nFinal Considerations"
+    "objectID": "apresentacoes/Aula1/index.html#por-que-não-usar-o-r",
+    "href": "apresentacoes/Aula1/index.html#por-que-não-usar-o-r",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Por que não usar o R?",
+    "text": "Por que não usar o R?"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-industry",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-industry",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Cosmetic Industry",
-    "text": "Cosmetic Industry\n\nEx-factory revenue of the cosmetic industry since 2006"
+    "objectID": "apresentacoes/Aula1/index.html#desvantagens",
+    "href": "apresentacoes/Aula1/index.html#desvantagens",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Desvantagens",
+    "text": "Desvantagens\n\nCurva de aprendizado pode ser íngrime\nTudo ( grande maioria) é feito na linha de comando\nDomínio de inglês é quase um pre-requisito"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#section",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#section",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "$",
-    "text": "$\n\n\nlucas carmo/apresentações"
+    "objectID": "apresentacoes/Aula1/index.html#instalação",
+    "href": "apresentacoes/Aula1/index.html#instalação",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Instalação",
+    "text": "Instalação\nInstale primeiro o R através do link abaixo:\nR\nDepois instale o RStudio\nR Studio"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#classic-stability-studies",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#classic-stability-studies",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "“Classic” Stability Studies",
-    "text": "“Classic” Stability Studies"
+    "objectID": "apresentacoes/Aula1/index.html#como-usar-o-rstudio",
+    "href": "apresentacoes/Aula1/index.html#como-usar-o-rstudio",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Como usar o RStudio",
+    "text": "Como usar o RStudio"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsions",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsions",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsions",
-    "text": "Emulsions"
+    "objectID": "apresentacoes/Aula1/index.html#funcionalidades-do-r",
+    "href": "apresentacoes/Aula1/index.html#funcionalidades-do-r",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Funcionalidades do R",
+    "text": "Funcionalidades do R\nA funcionalidade mais básica do R é ser uma calculadora.\n\n1 + 2\n\n[1] 3\n\n10^6 / 10^7\n\n[1] 0.1\n\n2 + 8 * 2 #<<\n\n[1] 18\n\n\nUma calculadora que obedece a ordem de operações"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsion-types",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsion-types",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsion Types",
-    "text": "Emulsion Types"
+    "objectID": "apresentacoes/Aula1/index.html#vantagens-em-relação-a-uma-calculadora",
+    "href": "apresentacoes/Aula1/index.html#vantagens-em-relação-a-uma-calculadora",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Vantagens em relação a uma calculadora",
+    "text": "Vantagens em relação a uma calculadora\nÉ possível criar variáveis (objetos) que armazenam os valores de cálculos já feitos.\n\n# armazena o resultado da operação \n# em um objeto chamado \"resultado\"\nresultado <- 70 * 7 \n\n\n# retorna o valor do objeto criado\nresultado\n\n[1] 490"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability",
-    "text": "Colloid Stability\n\n\nlucas carmo/apresentações"
+    "objectID": "apresentacoes/Aula1/index.html#tipos-de-dados-classes",
+    "href": "apresentacoes/Aula1/index.html#tipos-de-dados-classes",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Tipos de dados (classes)",
+    "text": "Tipos de dados (classes)\n\nNuméricos:\n\nDecimais (numeric)\nInteiros (Integer)\n\nTexto (Character ou caracteres)\nFatores\nLógicos (TRUE, FALSE)\nComplexo (3 + 2i)\nNA, NaN e NULL\nRaw"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability",
-    "text": "Colloid Stability\n\n\nlucas carmo/apresentações"
+    "objectID": "apresentacoes/Aula1/index.html#tipos-de-objetos",
+    "href": "apresentacoes/Aula1/index.html#tipos-de-objetos",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Tipos de objetos",
+    "text": "Tipos de objetos\nObjetos são as estruturas onde você armazena os resultados das operações ou qualquer valor que seja necessário para o trabalho que será realizado.\n\nVetores\nMatrizes\nListas\nDataframes\nFórmulas\nFunções"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability-2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability-2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability",
-    "text": "Colloid Stability\n\n\nlucas carmo/apresentações"
+    "objectID": "apresentacoes/Aula1/index.html#criando-objetos",
+    "href": "apresentacoes/Aula1/index.html#criando-objetos",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Criando Objetos",
+    "text": "Criando Objetos\nPara criar um objeto você deve seguir a seguinte sintaxe:\nnome_do_objeto <- valor atribuído ao objeto\nRegras:\n\nNome do objeto não pode iniciar com um número;\nNome do objeto não pode ter espaços ou caracteres especiais (%, $, &, +, -);\nDeve ser descritivo mas não muito longo."
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 1",
-    "text": "Colloid Stability - 1"
+    "objectID": "apresentacoes/Aula1/index.html#vetores",
+    "href": "apresentacoes/Aula1/index.html#vetores",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Vetores",
+    "text": "Vetores\nVetores são objetos que podem conter apenas um tipo de dado\n\nvetor_1 <- c(1,4,8,345,7567)\n\nvetor_2 <- c(\"abc\", 76, \"nove\", FALSE, \"9\")\n\n\nvetor_1\n\n[1]    1    4    8  345 7567\n\nvetor_2\n\n[1] \"abc\"   \"76\"    \"nove\"  \"FALSE\" \"9\"    \n\nclass(vetor_2)\n\n[1] \"character\"\n\n\nNão é possível representar a string “abc” como um número, portanto todos os elementos são convertidos para o tipo (classe) character"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 2",
-    "text": "Colloid Stability - 2"
+    "objectID": "apresentacoes/Aula1/index.html#matrizes",
+    "href": "apresentacoes/Aula1/index.html#matrizes",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Matrizes",
+    "text": "Matrizes\nMatrizes são como vetores porém bidimensionais:\n\nmatriz <- matrix(c(1,4,7,10), ncol = 2, byrow = TRUE)\n\nmatriz\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    7   10\n\n\n\\[\nmatriz =\n\\begin{bmatrix}\n1 & 4 \\\\\n7 & 10 \\\\\n\\end{bmatrix}\n\\]"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 3",
-    "text": "Colloid Stability - 3"
+    "objectID": "apresentacoes/Aula1/index.html#listas",
+    "href": "apresentacoes/Aula1/index.html#listas",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Listas",
+    "text": "Listas\nListas são objetos mais complexos que aceitam vários tipos de dados em um mesmo objeto\n\nlista <- list(\"a\", 45, TRUE, \"texto longo\")\nlista\n\n[[1]]\n[1] \"a\"\n\n[[2]]\n[1] 45\n\n[[3]]\n[1] TRUE\n\n[[4]]\n[1] \"texto longo\"\n\n\nÉ possível colocar outros objetos dentro de listas, assim como vetores e matrizes."
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 3",
-    "text": "Colloid Stability - 3"
+    "objectID": "apresentacoes/Aula1/index.html#mais-listas",
+    "href": "apresentacoes/Aula1/index.html#mais-listas",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Mais listas",
+    "text": "Mais listas\n\nlista_2 <- list(\n    \"abc\",\n    list(\n        \"elemento\" = 10,\n        \"matriz_lista\" = matrix(c(1,2,3,4,5,8), ncol = 2),\n        \"vetor_lista\" = c(1,6,4,4,5,7,7)\n    )\n)"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3-2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3-2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 3",
-    "text": "Colloid Stability - 3\n\n\nlucas carmo/apresentações"
+    "objectID": "apresentacoes/Aula1/index.html#mais-listas-1",
+    "href": "apresentacoes/Aula1/index.html#mais-listas-1",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Mais listas",
+    "text": "Mais listas\n\nlista_2\n\n[[1]]\n[1] \"abc\"\n\n[[2]]\n[[2]]$elemento\n[1] 10\n\n[[2]]$matriz_lista\n     [,1] [,2]\n[1,]    1    4\n[2,]    2    5\n[3,]    3    8\n\n[[2]]$vetor_lista\n[1] 1 6 4 4 5 7 7"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3-3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3-3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 3",
-    "text": "Colloid Stability - 3\n\n\nlucas carmo/apresentações"
+    "objectID": "apresentacoes/Aula1/index.html#dataframes",
+    "href": "apresentacoes/Aula1/index.html#dataframes",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Dataframes",
+    "text": "Dataframes\nDataframes são as conhecidas tabelas. Objetos com linhas e colunas e estrutura retangular.\n\n\n\ntabela <- data.frame(\n    x = 1:6,\n    y = c(12, 3, 2, 5.1, 4.5, 0.05),\n    z = rep(c(\"a\",\"b\"), 3)\n)\n\n\n\n\n  x     y z\n1 1 12.00 a\n2 2  3.00 b\n3 3  2.00 a\n4 4  5.10 b\n5 5  4.50 a\n6 6  0.05 b"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3-4",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---3-4",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 3",
-    "text": "Colloid Stability - 3\n\n\nlucas carmo/apresentações"
+    "objectID": "apresentacoes/Aula1/index.html#selecionando-elementos-vetores",
+    "href": "apresentacoes/Aula1/index.html#selecionando-elementos-vetores",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Selecionando elementos (vetores)",
+    "text": "Selecionando elementos (vetores)\nFrequentemente é necessário se selecionar os elementos de dentro de vetores, matrizes, dataframes, e listas e fazemos isso usando o operador [].\nCada elemento dos objetos contém um índice por exemplo:\n\nelementos <- c(\"indice 1\", \"indice 2\", \"indice 3\")\n\nelementos[1]\n\n[1] \"indice 1\"\n\nelementos[c(2,3)]\n\n[1] \"indice 2\" \"indice 3\"\n\nelementos[-3] # seleciona todos menos o terceiro elemento\n\n[1] \"indice 1\" \"indice 2\""
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---4",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---4",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 4",
-    "text": "Colloid Stability - 4"
+    "objectID": "apresentacoes/Aula1/index.html#selecionando-elementos-matrizes",
+    "href": "apresentacoes/Aula1/index.html#selecionando-elementos-matrizes",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Selecionando elementos (matrizes)",
+    "text": "Selecionando elementos (matrizes)\n\nmatriz\n\n     [,1] [,2]\n[1,]    1    4\n[2,]    7   10\n\nmatriz[1,2] # [linha, coluna]\n\n[1] 4\n\nmatriz[ ,1] # apenas a primeira coluna\n\n[1] 1 7\n\nmatriz[2, ] # apenas a segunda coluna\n\n[1]  7 10"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---5",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---5",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 5",
-    "text": "Colloid Stability - 5"
+    "objectID": "apresentacoes/Aula1/index.html#funções-e-fórmulas",
+    "href": "apresentacoes/Aula1/index.html#funções-e-fórmulas",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Funções e Fórmulas",
+    "text": "Funções e Fórmulas\nFunções e fórmulas são tipos de objetos mais avançado e iremos discutí-los nas próximas aulas."
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---6",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---6",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 6",
-    "text": "Colloid Stability - 6"
+    "objectID": "apresentacoes/Aula1/index.html#operadores-aritméticos",
+    "href": "apresentacoes/Aula1/index.html#operadores-aritméticos",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Operadores Aritméticos",
+    "text": "Operadores Aritméticos\nTemos os operadores aritméticos como já mostrados anteriormente.\n\n\n\n\n\n\n\n\nOperador\nDescrição\nExemplo\n\n\n\n\n+\nAdição\n4 + 5 = 9\n\n\n-\nSubtração\n9 - 5 = 4\n\n\n*\nMultiplicação\n3 * 4 = 12\n\n\n/\nDivisão\n90 / 3 = 30\n\n\n^ ou **\nExponenciação\n10^2 = 100\n\n\nX %% Y\nModulus (restante inteiro da divisão de x por y)\n15 %% 2 = 1\n\n\nX %/% Y\nDivisão de número inteiro\n5 %/% 2 = 2"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---7",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---7",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 7",
-    "text": "Colloid Stability - 7"
+    "objectID": "apresentacoes/Aula1/index.html#operadores-lógicos",
+    "href": "apresentacoes/Aula1/index.html#operadores-lógicos",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Operadores Lógicos",
+    "text": "Operadores Lógicos\nOs operadores lógicos são operadores de equalidade ou inequalidade que retornam valores TRUE ou FALSE (verdadeiro ou falso).\n\n\n\nOperador\nDescrição\nExemplo\n\n\n\n\n>, <\nMaior que, menor que\n1 > 2 = FALSE\n\n\n>=, <=\nMaior ou igual, menor ou igual\n22 >= 22 = TRUE\n\n\n==\nExatamente igual\n3 == 3 = TRUE\n\n\n!=\nNão igual a\n3 != 4 = TRUE\n\n\n!x\nNegação\n15 %% 2 = 1\n\n\nx | y\nx OU y\n4 |  12 < 10 = TRUE\n\n\nx & y\nx E y\n4 & 12 < 10 = FALSE\n\n\nisTRUE(x)\nTesta se x é TRUE"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---8",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#colloid-stability---8",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Colloid Stability - 8",
-    "text": "Colloid Stability - 8"
+    "objectID": "apresentacoes/Aula1/index.html#condicionais",
+    "href": "apresentacoes/Aula1/index.html#condicionais",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Condicionais",
+    "text": "Condicionais\nHá a possibilidade de executar operações ou não dependendo da condição expressada.\nse (condição for TRUE){\n    Executar o código aqui dentro\n}\n\nn_ligacoes_carbono <- 5\n\nif (n_ligacoes_carbono > 4) {\n    warning(\"O Carbono não pode ter mais que 4 ligações\")\n}\n\nCondicionais (continuação)\n\nn_ligacoes_carbono <- 3\n\nif (n_ligacoes_carbono > 4) {\n    warning(\"O Carbono não pode ter mais que 4 ligações\")\n} else {#<<\n    message(\"Número de ligações do carbono OK\")\n}"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#destabilisation-mechanisms",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#destabilisation-mechanisms",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Destabilisation Mechanisms",
-    "text": "Destabilisation Mechanisms"
+    "objectID": "apresentacoes/Aula1/index.html#estruturas-de-repetição",
+    "href": "apresentacoes/Aula1/index.html#estruturas-de-repetição",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Estruturas de repetição",
+    "text": "Estruturas de repetição"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-cream-structure",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-cream-structure",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Cosmetic Cream Structure",
-    "text": "Cosmetic Cream Structure\n\n\nlucas carmo/apresentações"
+    "objectID": "apresentacoes/Aula1/index.html#loop-do-tipo-for",
+    "href": "apresentacoes/Aula1/index.html#loop-do-tipo-for",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Loop do tipo for",
+    "text": "Loop do tipo for\n\n\n\nfor (i in 1:10) {\n    print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n[1] 6\n[1] 7\n[1] 8\n[1] 9\n[1] 10\n\n\n\npara (elemento na sequência 1 a 10){\n    imprima(elemento)\n}"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-cream-structure---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-cream-structure---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Cosmetic Cream Structure - 1",
-    "text": "Cosmetic Cream Structure - 1"
+    "objectID": "apresentacoes/Aula1/index.html#for-loop",
+    "href": "apresentacoes/Aula1/index.html#for-loop",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "for loop",
+    "text": "for loop\n\n\n\nfrutas <- c(\"banana\", \"maçã\", \"ameixa\")\n\nfor (fruta in frutas) {\n    print(fruta)\n}\n\n[1] \"banana\"\n[1] \"maçã\"\n[1] \"ameixa\"\n\n\n\n\ncores <- c(\"amarela\",\"vermelha\")\n\nfor (fruta in frutas) {\n    for (cor in cores) {\n        print(paste(\"Tal\",fruta,\"é\",cor))\n    }\n}\n\n[1] \"Tal banana é amarela\"\n[1] \"Tal banana é vermelha\"\n[1] \"Tal maçã é amarela\"\n[1] \"Tal maçã é vermelha\"\n[1] \"Tal ameixa é amarela\"\n[1] \"Tal ameixa é vermelha\""
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-cream-structure---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-cream-structure---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Cosmetic Cream Structure - 2",
-    "text": "Cosmetic Cream Structure - 2"
+    "objectID": "apresentacoes/Aula1/index.html#while-loop",
+    "href": "apresentacoes/Aula1/index.html#while-loop",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "while loop",
+    "text": "while loop\nLoops while se repetem até que a expressão avaliada seja FALSE.\n\n\n\ni <- 1\n\nwhile (i < 6) {\n    print(paste(\"Iteração\",i))\n    i <- i + 1\n}\n\n[1] \"Iteração 1\"\n[1] \"Iteração 2\"\n[1] \"Iteração 3\"\n[1] \"Iteração 4\"\n[1] \"Iteração 5\"\n\n\n\natribuindo valor de 1 a i\n\nenquanto (i menor que 6){\n    imprima (Iteração i)\n    adicione 1 a i\n}"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology",
-    "text": "Rheology\n\n\nlucas carmo/apresentações"
+    "objectID": "apresentacoes/Aula1/index.html#resumo-da-aula",
+    "href": "apresentacoes/Aula1/index.html#resumo-da-aula",
+    "title": "Aula 1 - Instalação e introdução ao R",
+    "section": "Resumo da aula",
+    "text": "Resumo da aula\n\nInstalamos o R e o RStudio\nAprendemos quais são os tipos de dados (classes) básicos do R\nAprendemos o que são objetos e como atribuir valores a eles\n\nVetores, Matrizes, Listas, Dataframes, Fórmulas, Funções\n\nAprendemos a selecionar elementos dos objetos\nAprendemos a usar alguns operadores aritméticos e lógicos\nAprendemos a usar estruturas de condição if e if else\nAprendemos a escrever um for loop e um while loop\n\n\n\nlucas carmo/apresentações"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rhe",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rhe",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "rhe",
-    "text": "rhe\n\n\nlucas carmo/apresentações"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "home",
+    "section": "",
+    "text": "Nesta coluna 1 você irá ser direcionada para o blog\n\n\nNesta coluna 2 você irá ser direcionado para as apresentações\n\n\nNa coluna 3 você irá ser direcionado para alguma outra coisa talvez os sites e links"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology",
-    "text": "Rheology\n\n\nlucas carmo/apresentações"
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "sobre",
+    "section": "",
+    "text": "About this blog"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology--1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology--1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology -1",
-    "text": "Rheology -1"
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "blog",
+    "section": "",
+    "text": "Ordenar por\n       Default\n         \n          Título\n        \n         \n          Data - Mais antigo\n        \n         \n          Data - Mais novo\n        \n         \n          Autor\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\nComo criar eixos secundários no ggplot2\n\n\n\n\n\n\n\nggplot2\n\n\ndataviz\n\n\n\n\n\n\n\n\n\n\n\n11 - 02 - 2023\n\n\nLucas Carmo\n\n\n\n\n\n\n  \n\n\n\n\nUsando o PowerToys para criar tarefas no ClickUp\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n\n\n14 - 07 - 2022\n\n\nLucas Carmo\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPrimeira postagem\n\n\nUma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\nblog\n\n\nteste\n\n\n\n\n\n\n\n\n\n\n\n31 - 05 - 2022\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology - 1",
-    "text": "Rheology - 1"
+    "objectID": "posts/powertoys-run copy/index.html",
+    "href": "posts/powertoys-run copy/index.html",
+    "title": "Como criar eixos secundários no ggplot2",
+    "section": "",
+    "text": "tl;dr\n\n\nO que é um eixo secundário?\nEixos secundários são comuns em gráficos para comparar duas ou mais variáveis dependentes ao longo de uma terceira variável independente. São úteis para a visualização de monitoramento de várias métricas com unidades diferentes ou para a comparação de duas variáveis que não são necessariamente relacionadas ou estão na mesma grandeza.\nAlguns dos softwares de planilha que tem funcionalidades para criação de gráficos mais acessíveis possuem em seus menus a opção de adicionar um eixo y secundário.\n\n\nComo fazer eixos secundários no ggplot2?\nA documentação oficial do ggplot2:: dá alguns exemplos simples de como criar um eixo secundário y ou x (Specify a secondary axis)\nPorém a documentação não abrange todas as funcionalidades possíveis então nessa postagem vou buscar explorar mais as possibilidades de configurações de eixos secundários."
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology - 2",
-    "text": "Rheology - 2"
+    "objectID": "posts/eixos-secundarios/index.html#adequação-da-função-de-cálculo-dos-coeficientes",
+    "href": "posts/eixos-secundarios/index.html#adequação-da-função-de-cálculo-dos-coeficientes",
+    "title": "Como criar eixos secundários no ggplot2",
+    "section": "Adequação da função de cálculo dos coeficientes",
+    "text": "Adequação da função de cálculo dos coeficientes\nDa forma que a função foi construída o cálculo do coeficiente é feito da seguinte forma:\n\ncoef = \\frac{\\max (Var_2) - \\min(Var_2)}{\\max (Var_1) - \\min(Var_1)}\n\nPortanto se os valores da Var_2 apresentarem uma amplitude maior do que a amplitude dos valores da Var_1 o valor do coeficiente será positivo enquanto o inverso irá resultar em um coeficiente maior que zero e menor que 1 (0<coef<1), o que resultaria no gráfico abaixo, logo, a ordem das variáveis é importante no momento de executar a função.\n\n\nCode\n# ordem das variáveis invertida\ncoef2 <- calcular_coeficiente(df, exponencial, seno)\n\nggplot(df, aes(x = x)) +\n  geom_line(aes(y = seno * coef2), color = \"firebrick\", linewidth = 1) +\n  geom_line(aes(y = exponencial), color = \"royalblue\", linewidth = 1) +\n  scale_y_continuous(sec.axis = sec_axis(~ . / coef2, name=\"sin(x)\")) +\n  labs(y = \"exp(x)\", title = paste(\"Coeficiente = \", coef2))\n\n\n\n\n\nPara resolver isso pode-se adicionar um bloco na função calcular_coeficiente() que verifica se 0<coef<1 e inverter o valor se necessário, essa função nova será chamada: calcular_coeficiente_smart().\n\ncalcular_coeficiente_smart <- function(dados, var_1, var_2){\n    \n    parametros <- dados |>\n      dplyr::summarise(\n        max_var_1 = max( {{ var_1 }} ),\n        min_var_1 = min( {{ var_1 }} ),\n        max_var_2 = max( {{ var_2 }} ),\n        min_var_2 = min( {{ var_2 }} )\n        )\n\n    coeficiente <- (parametros$max_var_2 - parametros$min_var_2) /\n                   (parametros$max_var_1 - parametros$min_var_1)\n\n    if(coeficiente < 1 & coeficiente > 0){\n      coeficiente <- (1/coeficiente)\n      }\n    return(coeficiente)\n  }\n\ncoeficientes <- list(\n\n# seno depois exponencial\ncoeficiente_calculado_1 <- calcular_coeficiente_smart(df, seno, exponencial),\n\n# exponencial depois seno\ncoeficiente_calculado_2 <- calcular_coeficiente_smart(df, exponencial, seno)\n)\n\nprint(coeficientes)\n\n[[1]]\n[1] 258.5443\n\n[[2]]\n[1] 258.5443\n\n\nAgora independente da ordem das variáveis passadas à função o coeficiente calculado será sempre o valor esperado. Mas ainda falta implementar isso diretamente no gráfico."
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology - 3",
-    "text": "Rheology - 3"
+    "objectID": "posts/eixos-secundarios/index.html#uma-função-que-faz-todas-as-operações-automaticamente",
+    "href": "posts/eixos-secundarios/index.html#uma-função-que-faz-todas-as-operações-automaticamente",
+    "title": "Como criar eixos secundários no ggplot2",
+    "section": "Uma função que faz todas as operações automaticamente",
+    "text": "Uma função que faz todas as operações automaticamente\nNessa função também deve se implementar o cálculo do coeficiente de forma a melhorar a legibilidade e tornar mais fácil para o usuário utilizar a função. Para criar essa função, o usar o código já escrito para calcular o coeficiente será usado.\n\ntwo_y_axis_plot <- function(df, x, var_1, var_2){\n\n  parametros <- df |>\n    dplyr::summarise(\n      max_var_1 = max( {{ var_1 }} ),\n      min_var_1 = min( {{ var_1 }} ),\n      max_var_2 = max( {{ var_2 }} ),\n      min_var_2 = min( {{ var_2 }} )\n        )\n\n    coeficiente <- (parametros$max_var_2 - parametros$min_var_2) /\n                   (parametros$max_var_1 - parametros$min_var_1)\n\n    if(coeficiente < 1 & coeficiente > 0){\n      coeficiente <- (1/coeficiente)\n      }\n\nplot <- df |> \n    ggplot(aes({{ x }})) +\n    geom_line(aes(y = {{ var_1 }} * coeficiente), color = \"firebrick\") +\n    geom_line(aes(y = {{ var_2 }}), color = \"royalblue\") +\n    scale_y_continuous(\n      sec.axis = sec_axis(\n        ~ . / coeficiente,\n        name = \"sin(x)\"\n        )\n      ) +\n    labs(\n      y = \"exp(x)\",\n      title = \"two_y_axis_plot()\",\n      subtitle = paste(\"Coeficiente = \", round(coeficiente, 2)))\n\nreturn(plot)\n}\n\n\n\nCode\ntwo_y_axis_plot(df, x, seno, exponencial)\n\n\n\n\n\nExecutando a função criada acima com os argumentos necessários\n\n\n\n\nA função criada retorna automaticamente o gráfico com os dois eixos, com nomes e cores predefinidas mas com a o coeficiente calculado adequadamente. É possível transformar as customizações do gráfico em argumentos da função (como cores das linhas ou até que tipo de geom deverá ser usado), porém o aumento da complexidade da função não é o principal a se explorar no momento.\nO que pode se explorar é que da mesma forma que foi criado um eixo y secundário, também pode ser criado um eixo x secundário, exatamente da mesma forma. Inclusive, é possível utilizar a função que foi criada para o gráfico de dois eixos y e adicionar novos elementos ao gráfico como linhas de referência usando geom_vline e geom_hline.\n\n\nCode\ntwo_y_axis_plot(df, x, seno, exponencial) + \n  scale_x_continuous(\n    breaks = c(0:7),\n    sec.axis = sec_axis(~  . / pi,\n      name = \"radian(x)\",\n      labels = scales::label_number(suffix = \"\\U03C0\")\n    )\n  ) +\n  geom_vline(xintercept = c(pi/2, pi), lty = \"dotted\") +\n  geom_hline(yintercept = 0, lty = \"dashed\") + \n  theme_bw() +\n  theme(panel.grid = element_blank())\n\n\n\n\n\nAdição do eixo x secundário e linhas de referência"
   },
   {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---4",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---4",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology - 4",
-    "text": "Rheology - 4"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---5",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---5",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology - 5",
-    "text": "Rheology - 5"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---6",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---6",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology - 6",
-    "text": "Rheology - 6"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---2-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---2-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology - 2",
-    "text": "Rheology - 2\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---7",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---7",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology - 7",
-    "text": "Rheology - 7"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---8",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheology---8",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheology - 8",
-    "text": "Rheology - 8"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheological Thermal Analysis",
-    "text": "Rheological Thermal Analysis\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheological Thermal Analysis - 1",
-    "text": "Rheological Thermal Analysis - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheological Thermal Analysis - 2",
-    "text": "Rheological Thermal Analysis - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---1-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---1-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheological Thermal Analysis - 1",
-    "text": "Rheological Thermal Analysis - 1\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-thermal-analysis---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheological Thermal Analysis - 3",
-    "text": "Rheological Thermal Analysis - 3"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-variables",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#rheological-variables",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Rheological Variables",
-    "text": "Rheological Variables"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#objectives-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#objectives-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Objectives",
-    "text": "Objectives"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#proposal",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#proposal",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Proposal",
-    "text": "Proposal"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cream-composition",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cream-composition",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Cream Composition",
-    "text": "Cream Composition"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsificatioin",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsificatioin",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsificatioin",
-    "text": "Emulsificatioin\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsification",
-    "text": "Emulsification"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsification",
-    "text": "Emulsification"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification-2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification-2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsification",
-    "text": "Emulsification"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification-3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification-3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsification",
-    "text": "Emulsification\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsification - 1",
-    "text": "Emulsification - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---1-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---1-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsification - 1",
-    "text": "Emulsification - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---1-2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---1-2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsification - 1",
-    "text": "Emulsification - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---1-3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---1-3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsification - 1",
-    "text": "Emulsification - 1\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsification - 2",
-    "text": "Emulsification - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsification - 3",
-    "text": "Emulsification - 3"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---4",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsification---4",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsification - 4",
-    "text": "Emulsification - 4"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#formulas",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#formulas",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Formulas",
-    "text": "Formulas"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#methods",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#methods",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Methods",
-    "text": "Methods"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#macroscopic-evaluation",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#macroscopic-evaluation",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Macroscopic Evaluation",
-    "text": "Macroscopic Evaluation\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#macroscopic-evaluation---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#macroscopic-evaluation---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Macroscopic Evaluation - 1",
-    "text": "Macroscopic Evaluation - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#macroscopic-evaluation---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#macroscopic-evaluation---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Macroscopic Evaluation - 2",
-    "text": "Macroscopic Evaluation - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "pH Evaluation Over Time",
-    "text": "pH Evaluation Over Time\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time--",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time--",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "pH Evaluation Over Time -",
-    "text": "pH Evaluation Over Time -\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "pH Evaluation Over Time - 1",
-    "text": "pH Evaluation Over Time - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "pH Evaluation Over Time - 2",
-    "text": "pH Evaluation Over Time - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "pH Evaluation Over Time - 3",
-    "text": "pH Evaluation Over Time - 3"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---4",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#ph-evaluation-over-time---4",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "pH Evaluation Over Time - 4",
-    "text": "pH Evaluation Over Time - 4"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Microscopy 10",
-    "text": "Microscopy 10\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Microscopy 10X Magnification",
-    "text": "Microscopy 10X Magnification\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Microscopy 10X Magnification - 1",
-    "text": "Microscopy 10X Magnification - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---1-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---1-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Microscopy 10X Magnification - 1",
-    "text": "Microscopy 10X Magnification - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---1-2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---1-2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Microscopy 10X Magnification - 1",
-    "text": "Microscopy 10X Magnification - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Microscopy 10X Magnification - 2",
-    "text": "Microscopy 10X Magnification - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Microscopy 10X Magnification - 3",
-    "text": "Microscopy 10X Magnification - 3"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---1-3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-10x-magnification---1-3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Microscopy 10X Magnification - 1",
-    "text": "Microscopy 10X Magnification - 1\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Microscopy 40X Magnification - 1",
-    "text": "Microscopy 40X Magnification - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Microscopy 40X Magnification - 2",
-    "text": "Microscopy 40X Magnification - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#microscopy-40x-magnification---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Microscopy 40X Magnification - 3",
-    "text": "Microscopy 40X Magnification - 3"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Polarized Light Microscopy",
-    "text": "Polarized Light Microscopy\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Polarized Light Microscopy",
-    "text": "Polarized Light Microscopy\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy-2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy-2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Polarized Light Microscopy",
-    "text": "Polarized Light Microscopy\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy--1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy--1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Polarized Light Microscopy -1",
-    "text": "Polarized Light Microscopy -1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Polarized Light Microscopy - 1",
-    "text": "Polarized Light Microscopy - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Polarized Light Microscopy - 2",
-    "text": "Polarized Light Microscopy - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#polarized-light-microscopy---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Polarized Light Microscopy - 3",
-    "text": "Polarized Light Microscopy - 3"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraun",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraun",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Fraun",
-    "text": "Fraun\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Fraunhofer Diffraction Sizing - 1",
-    "text": "Fraunhofer Diffraction Sizing - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing--",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing--",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Fraunhofer Diffraction Sizing -",
-    "text": "Fraunhofer Diffraction Sizing -"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Fraunhofer Diffraction Sizing - 2",
-    "text": "Fraunhofer Diffraction Sizing - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Fraunhofer Diffraction Sizing - 3",
-    "text": "Fraunhofer Diffraction Sizing - 3"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---4",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---4",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Fraunhofer Diffraction Sizing - 4",
-    "text": "Fraunhofer Diffraction Sizing - 4"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---5",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#fraunhofer-diffraction-sizing---5",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Fraunhofer Diffraction Sizing - 5",
-    "text": "Fraunhofer Diffraction Sizing - 5"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#droplet-size-over-time",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#droplet-size-over-time",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Droplet Size Over Time",
-    "text": "Droplet Size Over Time"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#amplitude",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#amplitude",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Amplitude",
-    "text": "Amplitude\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#amplitude-sweeps",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#amplitude-sweeps",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Amplitude sweeps",
-    "text": "Amplitude sweeps"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#linear-vi",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#linear-vi",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Linear Vi",
-    "text": "Linear Vi\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#linear-viscoelasticity-region",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#linear-viscoelasticity-region",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Linear Viscoelasticity Region",
-    "text": "Linear Viscoelasticity Region"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-stress",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-stress",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Yield Stress",
-    "text": "Yield Stress"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cohesive-energy",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cohesive-energy",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Cohesive Energy",
-    "text": "Cohesive Energy"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Frequency Sweeps",
-    "text": "Frequency Sweeps"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#complex-viscotis",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#complex-viscotis",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Complex Viscotis",
-    "text": "Complex Viscotis\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#complex-viscosity",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#complex-viscosity",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Complex Viscosity",
-    "text": "Complex Viscosity"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-strees",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-strees",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Yield Strees",
-    "text": "Yield Strees\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-stress-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-stress-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Yield Stress",
-    "text": "Yield Stress\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-stress-over-time",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#yield-stress-over-time",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Yield Stress Over Time",
-    "text": "Yield Stress Over Time"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Frequency Sweeps Over Time",
-    "text": "Frequency Sweeps Over Time\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Frequency Sweeps Over Time - 1",
-    "text": "Frequency Sweeps Over Time - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---1-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---1-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Frequency Sweeps Over Time - 1",
-    "text": "Frequency Sweeps Over Time - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---1-2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---1-2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Frequency Sweeps Over Time - 1",
-    "text": "Frequency Sweeps Over Time - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---1-3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---1-3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Frequency Sweeps Over Time - 1",
-    "text": "Frequency Sweeps Over Time - 1\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---4",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---4",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Frequency Sweeps Over Time - 4",
-    "text": "Frequency Sweeps Over Time - 4"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Frequency Sweeps Over Time - 2",
-    "text": "Frequency Sweeps Over Time - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#frequency-sweeps-over-time---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Frequency Sweeps Over Time - 3",
-    "text": "Frequency Sweeps Over Time - 3"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#crossover-frequency-over-time",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#crossover-frequency-over-time",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Crossover Frequency Over Time",
-    "text": "Crossover Frequency Over Time"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsion-gelled-structure",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#emulsion-gelled-structure",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Emulsion Gelled Structure",
-    "text": "Emulsion Gelled Structure"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Moduli vs. Temperature",
-    "text": "Moduli vs. Temperature\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Moduli vs. Temperature - 1",
-    "text": "Moduli vs. Temperature - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Moduli vs. Temperature - 2",
-    "text": "Moduli vs. Temperature - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-temperature---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Moduli vs. Temperature - 3",
-    "text": "Moduli vs. Temperature - 3"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Moduli vs",
-    "text": "Moduli vs\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Moduli vs. Time - 1",
-    "text": "Moduli vs. Time - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Moduli vs. Time - 2",
-    "text": "Moduli vs. Time - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#moduli-vs.-time---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Moduli vs. Time - 3",
-    "text": "Moduli vs. Time - 3"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "calculating",
-    "text": "calculating\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "calculating \\(\\alpha\\)",
-    "text": "calculating \\(\\alpha\\)\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "calculating \\(\\alpha\\) and ",
-    "text": "calculating \\(\\alpha\\) and \n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-k",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-k",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "calculating \\(\\alpha\\) and \\(\\K\\)",
-    "text": "calculating \\(\\alpha\\) and \\(\\K\\)\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-ksp",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-ksp",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "calculating \\(\\alpha\\) and \\(\\Ksp\\)",
-    "text": "calculating \\(\\alpha\\) and \\(\\Ksp\\)\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-ksi",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-ksi",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Ksi\\)",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Ksi\\)\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\)",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\)\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi--",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi--",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) -",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) -\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1-2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1-2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1-calculating-alpha-and-xi---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1-calculating-alpha-and-xi---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1## Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1## Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1-3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1-3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1-4",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---1-4",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 1\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 2",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---3",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---3",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 3",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 3"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---4",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---4",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 4",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 4"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---5",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#calculating-alpha-and-xi---5",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 5",
-    "text": "Calculating \\(\\alpha\\) and \\(\\Xi\\) - 5"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#distribution-of-values",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#distribution-of-values",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Distribution of values",
-    "text": "Distribution of values\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#distribution-of-xi-values",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#distribution-of-xi-values",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Distribution of \\(\\Xi\\) values",
-    "text": "Distribution of \\(\\Xi\\) values"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#alpha-compasir",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#alpha-compasir",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "\\(\\alpha\\) Compasir",
-    "text": "\\(\\alpha\\) Compasir\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#alpha-comparison-between-formulas",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#alpha-comparison-between-formulas",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "\\(\\alpha\\) Comparison Between Formulas",
-    "text": "\\(\\alpha\\) Comparison Between Formulas"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#final-considerations-1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#final-considerations-1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Final Considerations",
-    "text": "Final Considerations\n\n\nlucas carmo/apresentações"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#final-considerations---1",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#final-considerations---1",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Final Considerations - 1",
-    "text": "Final Considerations - 1"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#final-considerations---2",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#final-considerations---2",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Final Considerations - 2",
-    "text": "Final Considerations - 2"
-  },
-  {
-    "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-industry-ojs",
-    "href": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#cosmetic-industry-ojs",
-    "title": "Cosmetic emulsion physical stability screening by means of rheology",
-    "section": "Cosmetic Industry OJS",
-    "text": "Cosmetic Industry OJS\n\nwidth = 1800\nheight = 1000\n\ndata = FileAttachment(\"data.csv\").csv({ typed: true })\n\nPlot.plot({\n    marks: [\n        Plot.barY(\n            data, {x:\"ano\",y:\"value\",fill:\"Country\"}\n        )\n    ]\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n(ABIHPEC 2018)"
+    "objectID": "posts/primeira-postagem/index.html",
+    "href": "posts/primeira-postagem/index.html",
+    "title": "Primeira postagem",
+    "section": "",
+    "text": "Intro\nEsta é a primeira vez que eu estou usando o quarto para escrita de blogs.\n\n\nCode\nx <- \"lucas\"\n\nimprimir_nome <- function(nome) print(x)\n\nimprimir_nome(x)\n\n\n[1] \"lucas\"\n\n\n\n\nEquações\n\\[ \\LaTeX \\]\n\\[ e = mc^2\\]\n\\(\\frac{\\alpha}{\\beta}\\)\nPrimeira postagem\nUma primeira impressão do quarto e quais as minhas intenções\n\n\n\n\n\n\nDica\n\n\n\n\n\ncallout com collapse=\"true\" é a melhor forma de escrever callouts que não ficam ocupando muito espaço\n\n\n\n\nLucasFlávia\n\n\nLucas isso etc e aquilo\n\n\nFulano ciclano beltrano\nMaybe i’ll try some equations\n\n\n\n\\[ \\eta = \\frac{\\tau}{\\dot\\gamma} \\]"
   }
 ]

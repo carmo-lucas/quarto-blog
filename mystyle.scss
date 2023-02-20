@@ -1,0 +1,36 @@
+/*-- scss:defaults --*/
+
+// Fonts
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Fira+Sans&family=Merriweather:ital,wght@1,700&family=Source+Sans+Pro:wght@300&display=swap');
+
+$font-family-mono: 'Fira Mono', monospace;
+$font-family-sans: 'Fira Sans', sans-serif;
+$font-family-serif: 'Merriweather', serif;
+$font-family-heading: 'Source Sans Pro', sans-serif;
+
+// Colors
+$accent: #2780e3;
+
+
+// Base document colors
+//$navbar-bg: $light-primary; // navbar
+//$navbar-fg: $light-secondary; // navbar foreground elements
+//$navbar-hl: $accent1; // highlight color when hovering over navbar links
+//$body-bg: $light-bg; // page background 
+//$body-color: $light-text; // page text 
+//$footer-bg: $accent1; // footer 
+//$link-color: $accent1; // hyperlinks 
+
+// Inline code
+//$code-bg: $code-background; // inline code background color
+$code-color: $accent; // inline code text color
+
+// Code blocks
+//$code-block-bg: $code-background; // code block background color
+//$code-block-border-left: royalblue; // code block border
+//$btn-code-copy-color-active: $accent1;
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-heading;
+}

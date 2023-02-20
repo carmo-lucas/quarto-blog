@@ -60,9 +60,7 @@ o que o identifica como sendo um módulo do powershell e também deve estar salv
 
 Este script contém a seguinte função `task`:
 
-```{.powershell #lst-taskFunction lst-cap="Função para Criar Tarefa"}
-# MeuModulo.ps1m
-
+```{.powershell #lst-taskFunction lst-cap="Função para Criar Tarefa" filename="MeuModulo.ps1m"}
 function task {
 [CmdletBinding()]
 param(
@@ -79,7 +77,6 @@ $json = "{
 Out-File -InputObject $json -FilePath "~\Automations.json" -Encoding utf8
 exit
 }
-
 ```
 
 
@@ -91,8 +88,7 @@ Assim que o arquivo `json` é criado, o [n8n](https://www.n8n.io) inicia a autom
 
 O arquivo criado pela função tem esta estrutura:
 
-```json
-// Automations.json
+```{.json filename="Automations.json"}
 {
   "name": "Aqui vai o nome da tarefa a ser criada", 
   "priority": 1
@@ -114,8 +110,7 @@ Isso é feito através da modificação do arquivo `ShellPluginSettings.json` lo
 `%localappdata%\Microsoft\PowerToys\PowerToys Run\Settings\Plugins\Microsoft.Plugin.Shell`.
 Onde a configuração para `Shell` deve ser alterada de 2 para 1.
 
-```json
-# ShellPluginSettings.json
+```{.json filename="ShellPluginSettings.json"} 
 {
   "Shell": 1, \\ Mudar de 2 para 1
   "ReplaceWinR": false,

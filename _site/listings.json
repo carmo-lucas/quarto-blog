@@ -1,11 +1,5 @@
 [
   {
-    "listing": "/index.html",
-    "items": [
-      "/posts/powertoys-run/index.html"
-    ]
-  },
-  {
     "listing": "/apresentacoes.html",
     "items": [
       "/apresentacoes/Aula6/index.html",
@@ -19,7 +13,9 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/powertoys-run/index.html"
+      "/posts/eixos-secundarios/index.html",
+      "/posts/powertoys-run/index.html",
+      "/posts/primeira-postagem/index.html"
     ]
   }
 ]

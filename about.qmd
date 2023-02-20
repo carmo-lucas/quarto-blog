@@ -1,5 +1,5 @@
 ---
-title: "Sobre"
+title: "sobre"
 image: profile.jpg
 about:
   template: trestles
@@ -16,4 +16,4 @@ about:
 
 ---
 
-About this blog
+
