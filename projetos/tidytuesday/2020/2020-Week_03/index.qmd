@@ -1,5 +1,5 @@
 ---
-title: titytuesday 2020 Semana 03
+title: tidytuesday 2020 Semana 03
 subtitle: Passwords
 author: Lucas Carmo
 date: 2020-01-14
