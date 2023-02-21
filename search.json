@@ -690,14 +690,14 @@
     "href": "apresentacoes/Aula3/index.html#importando-dados-do-computador",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Importando dados do computador",
-    "text": "Importando dados do computador\nPara importar dados do computador recomenda-se que estejam no formato .csv ou .txt ou algum outro tipo de formato de texto.\nPara importar os dados usamos as funções da família read_*() ou seja:\n\ninstall.packages(\"readr\") # ou melhor install.packages(\"tidyverse\")\n\nlibrary(readr) # ou melhor library(tidyverse)\n\nread_csv(file = \"Pasta/para/Arquivo.csv\") # aspas importam\n\nNão se esqueça de atribuir o resultado desta função a um objeto com um nome significativo.\nEx:\n\ncalibracao_HPLC <- read_csv(\"Pasta/para/Arquivo.csv\")"
+    "text": "Importando dados do computador\nPara importar dados do computador recomenda-se que estejam no formato .csv ou .txt ou algum outro tipo de formato de texto.\nPara importar os dados usamos as funções da família read_*() ou seja:\n\ninstall.packages(\"readr\") # ou melhor install.packages(\"tidyverse\")\n\nlibrary(readr) # ou melhor library(tidyverse)\n\nread_csv(file = \"Pasta/para/Arquivo.csv\") # aspas importam\n\n\n\n\n\n\n\nImportante\n\n\nNão se esqueça de atribuir o resultado desta função a um objeto com um nome significativo.\n\ncalibracao_HPLC <- read_csv(\"Pasta/para/Arquivo.csv\")"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#read_",
     "href": "apresentacoes/Aula3/index.html#read_",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "read_*()",
-    "text": "read_*()\nExistem outras funções da família read_*(), para ler arquivos de texto cuja separação entre colunas não é , e sim ; (muito comum em países onde o ponto decimal é a vírgula) e arquivos onde a separação são espaços em branco ou outro tipo de caractere. Estas são:\n\nread_csv(): serve para ler arquivos com , como separador de colunas e . como decimal\nread_csv2(): serve para ler arquivos com ; como separador de colunas e , como decimal\nread_delim(): lê arquivos que tem TAB como separador de colunas\n\n\\(\\ldots\\)\n\nComo exercício digite ?read_*() no console e leia a documentação desta família de funções.\nPesquise quais os argumentos são importantes para uso da função."
+    "text": "read_*()\nExistem outras funções da família read_*(), para ler arquivos de texto cuja separação entre colunas não é , e sim ; (muito comum em países onde o ponto decimal é a vírgula) e arquivos onde a separação são espaços em branco ou outro tipo de caractere. Estas são:\n\nread_csv(): serve para ler arquivos com , como separador de colunas e . como decimal\nread_csv2(): arquivos com ; como separador e , como decimal\nread_delim(): TAB, ou outros como separador de colunas\n\n\nComo exercício digite ?read_*() no console e leia a documentação desta família de funções.\nPesquise quais os argumentos são importantes para uso da função."
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#tidyr",
@@ -711,21 +711,21 @@
     "href": "apresentacoes/Aula3/index.html#wide-data-e-long-data",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Wide data e long data",
-    "text": "Wide data e long data\n\n\n\n\ntbl <- tibble(\n  \"Pais\" = c(\"Brasil\", \"Argentina\"),\n  \"1999\" = c(0.5, 0.69),\n  \"2000\" = c(0.6, 0.98),\n  \"2001\" = c(0.71, 0.96)\n)\n\n\n\ntbl\n\n# A tibble: 2 × 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96"
+    "text": "Wide data e long data\n\n\n\n\ntbl <- data.frame(\n  \"Pais\" = c(\"Brasil\", \"Argentina\"),\n  \"1999\" = c(0.5, 0.69),\n  \"2000\" = c(0.6, 0.98),\n  \"2001\" = c(0.71, 0.96)\n)\n\n\n\ngt(tbl)\n\n\n\n\n\n  \n  \n    \n      Pais\n      X1999\n      X2000\n      X2001\n    \n  \n  \n    Brasil\n0.50\n0.60\n0.71\n    Argentina\n0.69\n0.98\n0.96"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#transformando-a-tabela-para-formato-long",
     "href": "apresentacoes/Aula3/index.html#transformando-a-tabela-para-formato-long",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Transformando a tabela para formato long",
-    "text": "Transformando a tabela para formato long\n\ntbl\n\n# A tibble: 2 × 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96\n\n\n\ntbl_long <- \n  pivot_longer(data = tbl, # quais os dados vou usar\n               cols = -Pais, # quais colunas quero transformar\n               names_to = \"Ano\", # nomes das colunas vão para...\n               values_to = \"Valor\") # valores vão para coluna ...\n\n\n\n       Pais  Ano Valor\n1    Brasil 1999  0.50\n2    Brasil 2000  0.60\n3    Brasil 2001  0.71\n4 Argentina 1999  0.69\n5 Argentina 2000  0.98\n6 Argentina 2001  0.96"
+    "text": "Transformando a tabela para formato long\n\n\n\ngt(tbl)\n\n\n\n\n\n  \n  \n    \n      Pais\n      X1999\n      X2000\n      X2001\n    \n  \n  \n    Brasil\n0.50\n0.60\n0.71\n    Argentina\n0.69\n0.98\n0.96\n  \n  \n  \n\n\n\n\n\n\ntbl_long <- pivot_longer(\n  data = tbl,          # quais os dados vou usar\n  cols = -Pais,        # quais colunas quero transformar\n  names_to = \"Ano\",    # nomes das colunas vão para...\n  values_to = \"Valor\") # valores vão para coluna ...\n\ngt(tbl_long)\n\n\n\n\n\n  \n  \n    \n      Pais\n      Ano\n      Valor\n    \n  \n  \n    Brasil\nX1999\n0.50\n    Brasil\nX2000\n0.60\n    Brasil\nX2001\n0.71\n    Argentina\nX1999\n0.69\n    Argentina\nX2000\n0.98\n    Argentina\nX2001\n0.96"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#e-agora-podemos-usar-os-dados-para-fazer-gráficos",
     "href": "apresentacoes/Aula3/index.html#e-agora-podemos-usar-os-dados-para-fazer-gráficos",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "E agora podemos usar os dados para fazer gráficos",
-    "text": "E agora podemos usar os dados para fazer gráficos\n\nlibrary(ggplot2) #<<\n\nggplot(tbl_long, aes(x = Ano, y = Valor)) + \n  geom_point()\n\n\nO que é ggplot(tbl_long ...) ??\n\nVamos voltar um pouco e aprender sobre os outros pacotes e os elementos de um gráfico do ggplot2::"
+    "text": "E agora podemos usar os dados para fazer gráficos\n\nlibrary(ggplot2)\n\nggplot(tbl_long, aes(x = Ano, y = Valor)) + geom_point()\n\n\nO que é ggplot(tbl_long ...) ??\n\nVamos voltar um pouco e aprender sobre os outros pacotes e os elementos de um gráfico do ggplot2::"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#gramática-de-gráficos",
@@ -735,11 +735,74 @@
     "text": "Gramática de gráficos\nOs elementos dos gráficos são:\n\n\n\n\n\n\n\n\nElementos\nFunção\no que faz:\n\n\n\n\nDados\nggplot()\nInicializa o gráfico\n\n\nEstéticas\naes(x = , y = )\nMapeia variáveis aos elementros gráficos\n\n\nGeoms, stats\ngeom_point()\nDesenha os elementos (pontos, linhas)\n\n\nRótulos\nlabs()\nMuda os rótulos dos eixos e título\n\n\nCoordenadas\ncoord_trans()\nMuda coordenadas do gráfico\n\n\nEscalas\nscale_color_*()\nModifica os elementos gráficos\n\n\nFacetas\nfacet_wrap()\nSepara os dados em subgráficos\n\n\nTemas\ntheme_bw()\nModifica os elementos dos eixos e outros"
   },
   {
+    "objectID": "apresentacoes/Aula3/index.html#camadas",
+    "href": "apresentacoes/Aula3/index.html#camadas",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-1",
+    "href": "apresentacoes/Aula3/index.html#camadas-1",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-2",
+    "href": "apresentacoes/Aula3/index.html#camadas-2",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-3",
+    "href": "apresentacoes/Aula3/index.html#camadas-3",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-4",
+    "href": "apresentacoes/Aula3/index.html#camadas-4",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-5",
+    "href": "apresentacoes/Aula3/index.html#camadas-5",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-6",
+    "href": "apresentacoes/Aula3/index.html#camadas-6",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-7",
+    "href": "apresentacoes/Aula3/index.html#camadas-7",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-8",
+    "href": "apresentacoes/Aula3/index.html#camadas-8",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
     "objectID": "apresentacoes/Aula3/index.html#nosso-primeiro-gráfico",
     "href": "apresentacoes/Aula3/index.html#nosso-primeiro-gráfico",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Nosso primeiro gráfico",
-    "text": "Nosso primeiro gráfico\nVamos usar o dataset mpg para fazer este gráfico:\n\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows"
+    "text": "Nosso primeiro gráfico\nVamos usar o dataset mpg para fazer este gráfico:\n\nlibrary(tidyverse)\ngt(head(mpg))\n\n\n\n\n\n  \n  \n    \n      manufacturer\n      model\n      displ\n      year\n      cyl\n      trans\n      drv\n      cty\n      hwy\n      fl\n      class\n    \n  \n  \n    audi\na4\n1.8\n1999\n4\nauto(l5)\nf\n18\n29\np\ncompact\n    audi\na4\n1.8\n1999\n4\nmanual(m5)\nf\n21\n29\np\ncompact\n    audi\na4\n2.0\n2008\n4\nmanual(m6)\nf\n20\n31\np\ncompact\n    audi\na4\n2.0\n2008\n4\nauto(av)\nf\n21\n30\np\ncompact\n    audi\na4\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\ncompact\n    audi\na4\n2.8\n1999\n6\nmanual(m5)\nf\n18\n26\np\ncompact"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#inicializando",
@@ -753,49 +816,49 @@
     "href": "apresentacoes/Aula3/index.html#mapeando-variáveis",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Mapeando variáveis",
-    "text": "Mapeando variáveis\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) #<<"
+    "text": "Mapeando variáveis\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl)"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#adicionando-os-geoms",
     "href": "apresentacoes/Aula3/index.html#adicionando-os-geoms",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Adicionando os geoms",
-    "text": "Adicionando os geoms\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() #<<"
+    "text": "Adicionando os geoms\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point()"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#adicionando-rótulos",
     "href": "apresentacoes/Aula3/index.html#adicionando-rótulos",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Adicionando rótulos",
-    "text": "Adicionando rótulos\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") #<<"
+    "text": "Adicionando rótulos\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\")"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#mudando-coordenadas",
     "href": "apresentacoes/Aula3/index.html#mudando-coordenadas",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Mudando coordenadas",
-    "text": "Mudando coordenadas\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() #<<"
+    "text": "Mudando coordenadas\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar()"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#modificando-as-escalas",
     "href": "apresentacoes/Aula3/index.html#modificando-as-escalas",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Modificando as escalas",
-    "text": "Modificando as escalas\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() #<<"
+    "text": "Modificando as escalas\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c()"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#subdividindo-gráfico",
     "href": "apresentacoes/Aula3/index.html#subdividindo-gráfico",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Subdividindo gráfico",
-    "text": "Subdividindo gráfico\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() +\n  facet_wrap(~cyl)#<<"
+    "text": "Subdividindo gráfico\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() +\n  facet_wrap(~cyl)"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#modificando-o-tema",
     "href": "apresentacoes/Aula3/index.html#modificando-o-tema",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Modificando o tema",
-    "text": "Modificando o tema\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() +\n  facet_wrap(~cyl) +\n  theme_minimal() #<<"
+    "text": "Modificando o tema\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() +\n  facet_wrap(~cyl) +\n  theme_minimal()"
   },
   {
     "objectID": "apresentacoes/Aula2/index.html#anteriormente",
@@ -1054,21 +1117,21 @@
     "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Sobrescrevendo mapeamentos estéticos",
-    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = cyl) + #<<\n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + #<<\n  geom_point()"
+    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = cyl) + \n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + \n  geom_point()"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
     "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Sobrescrevendo mapeamentos estéticos",
-    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + #<<\n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy) + \n  geom_point(col = \"blue\") #<<"
+    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + \n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy) + \n  geom_point(col = \"blue\")"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#mudando-escalas",
     "href": "apresentacoes/Aula5/index.html#mudando-escalas",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Mudando escalas",
-    "text": "Mudando escalas\n\n\n\nggplot(mpg) + \n  aes(displ, hwy,\n      col = cyl,\n      shape = drv) + \n  geom_point(size = 3) +\n  scale_color_gradient( #<<\n    low = \"grey25\", \n    high = \"firebrick\") +\n  scale_shape_manual( #<<\n    values = c(2,4,1))"
+    "text": "Mudando escalas\n\n\n\nggplot(mpg) + \n  aes(displ, hwy,\n      col = cyl,\n      shape = drv) + \n  geom_point(size = 3) +\n  scale_color_gradient( \n    low = \"grey25\", \n    high = \"firebrick\") +\n  scale_shape_manual( \n    values = c(2,4,1))"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#referência-de-tipos-de-pontos-e-linhas",
@@ -1089,7 +1152,7 @@
     "href": "apresentacoes/Aula5/index.html#modificando-escala-dos-eixos",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Modificando escala dos eixos",
-    "text": "Modificando escala dos eixos\n\n\n\nggplot(mpg) +\n  aes(displ,hwy) +\n  geom_point() +\n  scale_x_log10(#<<\n    limits = c(0.5,10),\n    breaks = c(1,10),\n    labels = c(\"um\", \"dez\")\n  ) + \n  scale_y_sqrt( #<<\n    breaks = c(max(mpg$hwy), \n               min(mpg$hwy), \n               mean(mpg$hwy)),\n    labels = scales::dollar,\n    expand = c(0,0)\n  )"
+    "text": "Modificando escala dos eixos\n\n\n\nggplot(mpg) +\n  aes(displ,hwy) +\n  geom_point() +\n  scale_x_log10(\n    limits = c(0.5,10),\n    breaks = c(1,10),\n    labels = c(\"um\", \"dez\")\n  ) + \n  scale_y_sqrt( \n    breaks = c(max(mpg$hwy), \n               min(mpg$hwy), \n               mean(mpg$hwy)),\n    labels = scales::dollar,\n    expand = c(0,0)\n  )"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#adicionando-resumos-estatísticos",

@@ -458,31 +458,41 @@ Lucas C. L. do Carmo
 </section>
 <section id="componentes-do-tidyverse" class="slide level2">
 <h2>Componentes do <code>tidyverse</code></h2>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="images/readr.png" style="width:20.0%"></p>
-</div>
-<div class="cell-output-display">
-<p><img data-src="images/tidyr.png" style="width:20.0%"></p>
-</div>
-<div class="cell-output-display">
-<p><img data-src="images/tibble.png" style="width:20.0%"></p>
-</div>
-</div>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
 <p><img data-src="images/readr.png"></p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="images/dplyr.png" style="width:20.0%"></p>
 </div>
-<div class="cell-output-display">
-<p><img data-src="images/ggplot2.png" style="width:20.0%"></p>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/tidyr.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/dplyr.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/tibble.png"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/ggplot2.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/stringr.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/forcats.png"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/purrr.png"></p>
+</div>
 </div>
 </div>
 </section>
 <section id="importando-dados-com-readr" class="slide level2">
 <h2>Importando Dados com <code>readr::</code></h2>
 
-<img data-src="images/readr.png" style="width:50.0%" class="r-stretch"></section>
+<img data-src="images/readr.png" class="r-stretch"></section>
 <section id="importando-dados-para-o-ambiente-de-trabalho" class="slide level2">
 <h2>Importando dados para o ambiente de trabalho</h2>
 <p>Agora que sabemos o que funções são e mais ou menos como elas funcionam, podemos usá-las em nosso benefício.</p>
@@ -503,10 +513,21 @@ Lucas C. L. do Carmo
 <span id="cb1-4"><a href="#cb1-4"></a></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"Pasta/para/Arquivo.csv"</span>) <span class="co"># aspas importam</span></span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="callout callout-important callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Importante</strong></p>
+</div>
+<div class="callout-content">
 <p>Não se esqueça de atribuir o resultado desta função a um objeto com um nome significativo.</p>
-<p><strong>Ex:</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>calibracao_HPLC <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Pasta/para/Arquivo.csv"</span>)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="read_" class="slide level2">
@@ -514,10 +535,9 @@ Lucas C. L. do Carmo
 <p>Existem outras funções da família <code>read_*()</code>, para ler arquivos de texto cuja separação entre colunas não é <code>,</code> e sim <code>;</code> (muito comum em países onde o ponto decimal é a vírgula) e arquivos onde a separação são espaços em branco ou outro tipo de caractere. Estas são:</p>
 <ul>
 <li><code>read_csv()</code>: serve para ler arquivos com <code>,</code> como separador de colunas e <code>.</code> como decimal</li>
-<li><code>read_csv2()</code>: serve para ler arquivos com <code>;</code> como separador de colunas e <code>,</code> como decimal</li>
-<li><code>read_delim()</code>: lê arquivos que tem <code>TAB</code> como separador de colunas</li>
+<li><code>read_csv2()</code>: arquivos com <code>;</code> como separador e <code>,</code> como decimal</li>
+<li><code>read_delim()</code>: <code>TAB</code>, ou outros como separador de colunas</li>
 </ul>
-<p><span class="math inline">\(\ldots\)</span></p>
 <ol type="1">
 <li>Como exercício digite <code>?read_*()</code> no console e leia a documentação desta família de funções.</li>
 <li>Pesquise quais os argumentos são importantes para uso da função.</li>
@@ -528,14 +548,14 @@ Lucas C. L. do Carmo
 <p>O <code>tidyr</code> é um pacote que serve para organizar as tabelas em um formato específico: o formato <em>tidy</em>.</p>
 <p>O formato <em>tidy</em> é um formato de dados usado em bancos de dados e é a melhor forma de organizar os dados para se fazer operações estatísticas no <code>R</code> e construir gráficos.</p>
 
-<img data-src="images/tidy-data.png" style="width:100.0%" class="r-stretch"></section>
+<img data-src="images/tidy-data.png" class="center r-stretch"></section>
 <section id="wide-data-e-long-data" class="slide level2">
 <h2><em>Wide data</em> e <em>long data</em></h2>
 
-<img data-src="images/pivot_longer_wider.png" style="width:100.0%" class="r-stretch"><div class="columns">
+<img data-src="images/pivot_longer_wider.png" class="r-stretch"><div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="st">"Pais"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Brasil"</span>, <span class="st">"Argentina"</span>),</span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="st">"1999"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.69</span>),</span>
 <span id="cb3-4"><a href="#cb3-4"></a>  <span class="st">"2000"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.6</span>, <span class="fl">0.98</span>),</span>
@@ -544,13 +564,444 @@ Lucas C. L. do Carmo
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>tbl</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-  Pais      `1999` `2000` `2001`
-  &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-1 Brasil      0.5    0.6    0.71
-2 Argentina   0.69   0.98   0.96</code></pre>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">gt</span>(tbl)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="ddoqihlhwd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#ddoqihlhwd) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#ddoqihlhwd) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ddoqihlhwd) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#ddoqihlhwd) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#ddoqihlhwd) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#ddoqihlhwd) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#ddoqihlhwd) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ddoqihlhwd) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#ddoqihlhwd) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#ddoqihlhwd) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#ddoqihlhwd) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#ddoqihlhwd) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#ddoqihlhwd) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#ddoqihlhwd) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#ddoqihlhwd) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#ddoqihlhwd) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#ddoqihlhwd) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#ddoqihlhwd) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ddoqihlhwd) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#ddoqihlhwd) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#ddoqihlhwd) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ddoqihlhwd) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#ddoqihlhwd) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#ddoqihlhwd) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#ddoqihlhwd) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ddoqihlhwd) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#ddoqihlhwd) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#ddoqihlhwd) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#ddoqihlhwd) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ddoqihlhwd) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ddoqihlhwd) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#ddoqihlhwd) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#ddoqihlhwd) .gt_left {
+  text-align: left;
+}
+
+:where(#ddoqihlhwd) .gt_center {
+  text-align: center;
+}
+
+:where(#ddoqihlhwd) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#ddoqihlhwd) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#ddoqihlhwd) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#ddoqihlhwd) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#ddoqihlhwd) .gt_super {
+  font-size: 65%;
+}
+
+:where(#ddoqihlhwd) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#ddoqihlhwd) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#ddoqihlhwd) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#ddoqihlhwd) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#ddoqihlhwd) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#ddoqihlhwd) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#ddoqihlhwd) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Pais">Pais</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="X1999">X1999</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="X2000">X2000</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="X2001">X2001</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Pais" class="gt_row gt_left">Brasil</td>
+<td headers="X1999" class="gt_row gt_right">0.50</td>
+<td headers="X2000" class="gt_row gt_right">0.60</td>
+<td headers="X2001" class="gt_row gt_right">0.71</td></tr>
+    <tr><td headers="Pais" class="gt_row gt_left">Argentina</td>
+<td headers="X1999" class="gt_row gt_right">0.69</td>
+<td headers="X2000" class="gt_row gt_right">0.98</td>
+<td headers="X2001" class="gt_row gt_right">0.96</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -558,45 +1009,918 @@ Lucas C. L. do Carmo
 </section>
 <section id="transformando-a-tabela-para-formato-long" class="slide level2">
 <h2>Transformando a tabela para formato <em>long</em></h2>
+<div class="columns">
+<div class="column" style="width:40%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>tbl</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-  Pais      `1999` `2000` `2001`
-  &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-1 Brasil      0.5    0.6    0.71
-2 Argentina   0.69   0.98   0.96</code></pre>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">gt</span>(tbl)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="mqalqygzsi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#mqalqygzsi) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#mqalqygzsi) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#mqalqygzsi) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#mqalqygzsi) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#mqalqygzsi) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#mqalqygzsi) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#mqalqygzsi) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#mqalqygzsi) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#mqalqygzsi) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#mqalqygzsi) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#mqalqygzsi) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#mqalqygzsi) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#mqalqygzsi) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#mqalqygzsi) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#mqalqygzsi) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#mqalqygzsi) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#mqalqygzsi) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#mqalqygzsi) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#mqalqygzsi) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#mqalqygzsi) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#mqalqygzsi) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#mqalqygzsi) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#mqalqygzsi) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#mqalqygzsi) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#mqalqygzsi) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#mqalqygzsi) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#mqalqygzsi) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#mqalqygzsi) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#mqalqygzsi) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#mqalqygzsi) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#mqalqygzsi) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#mqalqygzsi) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#mqalqygzsi) .gt_left {
+  text-align: left;
+}
+
+:where(#mqalqygzsi) .gt_center {
+  text-align: center;
+}
+
+:where(#mqalqygzsi) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#mqalqygzsi) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#mqalqygzsi) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#mqalqygzsi) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#mqalqygzsi) .gt_super {
+  font-size: 65%;
+}
+
+:where(#mqalqygzsi) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#mqalqygzsi) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#mqalqygzsi) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#mqalqygzsi) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#mqalqygzsi) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#mqalqygzsi) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#mqalqygzsi) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Pais">Pais</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="X1999">X1999</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="X2000">X2000</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="X2001">X2001</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Pais" class="gt_row gt_left">Brasil</td>
+<td headers="X1999" class="gt_row gt_right">0.50</td>
+<td headers="X2000" class="gt_row gt_right">0.60</td>
+<td headers="X2001" class="gt_row gt_right">0.71</td></tr>
+    <tr><td headers="Pais" class="gt_row gt_left">Argentina</td>
+<td headers="X1999" class="gt_row gt_right">0.69</td>
+<td headers="X2000" class="gt_row gt_right">0.98</td>
+<td headers="X2001" class="gt_row gt_right">0.96</td></tr>
+  </tbody>
+  
+  
+</table>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>tbl_long <span class="ot">&lt;-</span> </span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">pivot_longer</span>(<span class="at">data =</span> tbl, <span class="co"># quais os dados vou usar</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>               <span class="at">cols =</span> <span class="sc">-</span>Pais, <span class="co"># quais colunas quero transformar</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>               <span class="at">names_to =</span> <span class="st">"Ano"</span>, <span class="co"># nomes das colunas vão para...</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>               <span class="at">values_to =</span> <span class="st">"Valor"</span>) <span class="co"># valores vão para coluna ...</span></span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</div><div class="column fragment" style="width:60%;">
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>       Pais  Ano Valor
-1    Brasil 1999  0.50
-2    Brasil 2000  0.60
-3    Brasil 2001  0.71
-4 Argentina 1999  0.69
-5 Argentina 2000  0.98
-6 Argentina 2001  0.96</code></pre>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>tbl_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="at">data =</span> tbl,          <span class="co"># quais os dados vou usar</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">cols =</span> <span class="sc">-</span>Pais,        <span class="co"># quais colunas quero transformar</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="at">names_to =</span> <span class="st">"Ano"</span>,    <span class="co"># nomes das colunas vão para...</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="at">values_to =</span> <span class="st">"Valor"</span>) <span class="co"># valores vão para coluna ...</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="fu">gt</span>(tbl_long)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="eqtwlyssjz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#eqtwlyssjz) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#eqtwlyssjz) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#eqtwlyssjz) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#eqtwlyssjz) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#eqtwlyssjz) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#eqtwlyssjz) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#eqtwlyssjz) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#eqtwlyssjz) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#eqtwlyssjz) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#eqtwlyssjz) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#eqtwlyssjz) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#eqtwlyssjz) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#eqtwlyssjz) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#eqtwlyssjz) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#eqtwlyssjz) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#eqtwlyssjz) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#eqtwlyssjz) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#eqtwlyssjz) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#eqtwlyssjz) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#eqtwlyssjz) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#eqtwlyssjz) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#eqtwlyssjz) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#eqtwlyssjz) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#eqtwlyssjz) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#eqtwlyssjz) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#eqtwlyssjz) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#eqtwlyssjz) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#eqtwlyssjz) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#eqtwlyssjz) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#eqtwlyssjz) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#eqtwlyssjz) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#eqtwlyssjz) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#eqtwlyssjz) .gt_left {
+  text-align: left;
+}
+
+:where(#eqtwlyssjz) .gt_center {
+  text-align: center;
+}
+
+:where(#eqtwlyssjz) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#eqtwlyssjz) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#eqtwlyssjz) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#eqtwlyssjz) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#eqtwlyssjz) .gt_super {
+  font-size: 65%;
+}
+
+:where(#eqtwlyssjz) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#eqtwlyssjz) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#eqtwlyssjz) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#eqtwlyssjz) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#eqtwlyssjz) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#eqtwlyssjz) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#eqtwlyssjz) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Pais">Pais</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Ano">Ano</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Valor">Valor</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Pais" class="gt_row gt_left">Brasil</td>
+<td headers="Ano" class="gt_row gt_left">X1999</td>
+<td headers="Valor" class="gt_row gt_right">0.50</td></tr>
+    <tr><td headers="Pais" class="gt_row gt_left">Brasil</td>
+<td headers="Ano" class="gt_row gt_left">X2000</td>
+<td headers="Valor" class="gt_row gt_right">0.60</td></tr>
+    <tr><td headers="Pais" class="gt_row gt_left">Brasil</td>
+<td headers="Ano" class="gt_row gt_left">X2001</td>
+<td headers="Valor" class="gt_row gt_right">0.71</td></tr>
+    <tr><td headers="Pais" class="gt_row gt_left">Argentina</td>
+<td headers="Ano" class="gt_row gt_left">X1999</td>
+<td headers="Valor" class="gt_row gt_right">0.69</td></tr>
+    <tr><td headers="Pais" class="gt_row gt_left">Argentina</td>
+<td headers="Ano" class="gt_row gt_left">X2000</td>
+<td headers="Valor" class="gt_row gt_right">0.98</td></tr>
+    <tr><td headers="Pais" class="gt_row gt_left">Argentina</td>
+<td headers="Ano" class="gt_row gt_left">X2001</td>
+<td headers="Valor" class="gt_row gt_right">0.96</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
 <section id="e-agora-podemos-usar-os-dados-para-fazer-gráficos" class="slide level2">
 <h2>E agora podemos usar os dados para fazer gráficos</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(ggplot2) <span class="co">#&lt;&lt;</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">ggplot</span>(tbl_long, <span class="fu">aes</span>(<span class="at">x =</span> Ano, <span class="at">y =</span> Valor)) <span class="sc">+</span> </span>
-<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">ggplot</span>(tbl_long, <span class="fu">aes</span>(<span class="at">x =</span> Ano, <span class="at">y =</span> Valor)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="index_files/figure-revealjs/unnamed-chunk-14-1.png" width="2400" class="r-stretch quarto-figure-center"><p>O que é <code>ggplot(tbl_long ...)</code> ??</p>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-8-1.png" width="3000" class="r-stretch"><p><span class="fragment">O que é <code>ggplot(tbl_long ...)</code> ??</span></p>
 <aside class="notes">
 <p>Vamos voltar um pouco e aprender sobre os outros pacotes e os elementos de um gráfico do <code>ggplot2::</code></p>
 <style type="text/css">
@@ -612,11 +1936,11 @@ Lucas C. L. do Carmo
       }</style></aside>
 </section>
 <section>
-<section id="section" class="title-slide slide level1 center">
-<h1></h1>
+<section id="ggplot" class="title-slide slide level1 center">
+<h1><code>ggplot</code></h1>
 
-<img data-src="images/ggplot2.png" style="width:50.0%" class="r-stretch"></section>
-<section id="gramática-de-gráficos" class="slide level2">
+<img data-src="images/ggplot2.png" class="center r-stretch"></section>
+<section id="gramática-de-gráficos" class="slide level2 scrollable">
 <h2>Gramática de gráficos</h2>
 <p>Os elementos dos gráficos são:</p>
 <table>
@@ -675,85 +1999,565 @@ Lucas C. L. do Carmo
 </tr>
 </tbody>
 </table>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="images/Camadas1.png" style="width:78.0%"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="images/Camadas2.png" style="width:78.0%"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="images/Camadas3.png" style="width:78.0%"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="images/Camadas4.png" style="width:78.0%"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="images/Camadas5.png" style="width:78.0%"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="images/Camadas6.png" style="width:78.0%"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="images/Camadas7.png" style="width:78.0%"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="images/Camadas8.png" style="width:78.0%"></p>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="images/Camadas9.png" style="width:78.0%"></p>
-</div>
-</div>
 </section>
+<section id="camadas" class="slide level2">
+<h2>Camadas</h2>
+
+<img data-src="images/Camadas1.png" class="r-stretch"></section>
+<section id="camadas-1" class="slide level2">
+<h2>Camadas</h2>
+
+<img data-src="images/Camadas2.png" class="r-stretch"></section>
+<section id="camadas-2" class="slide level2">
+<h2>Camadas</h2>
+
+<img data-src="images/Camadas3.png" class="r-stretch"></section>
+<section id="camadas-3" class="slide level2">
+<h2>Camadas</h2>
+
+<img data-src="images/Camadas4.png" class="r-stretch"></section>
+<section id="camadas-4" class="slide level2">
+<h2>Camadas</h2>
+
+<img data-src="images/Camadas5.png" class="r-stretch"></section>
+<section id="camadas-5" class="slide level2">
+<h2>Camadas</h2>
+
+<img data-src="images/Camadas6.png" class="r-stretch"></section>
+<section id="camadas-6" class="slide level2">
+<h2>Camadas</h2>
+
+<img data-src="images/Camadas7.png" class="r-stretch"></section>
+<section id="camadas-7" class="slide level2">
+<h2>Camadas</h2>
+
+<img data-src="images/Camadas8.png" class="r-stretch"></section>
+<section id="camadas-8" class="slide level2">
+<h2>Camadas</h2>
+
+<img data-src="images/Camadas9.png" class="r-stretch"></section>
 <section id="nosso-primeiro-gráfico" class="slide level2">
 <h2>Nosso primeiro gráfico</h2>
 <p>Vamos usar o dataset <code>mpg</code> para fazer este gráfico:</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 234 × 11
-   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class
-   &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
- 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…
- 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…
- 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…
- 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…
- 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…
- 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…
- 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…
- 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…
- 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…
-10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…
-# … with 224 more rows</code></pre>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">gt</span>(<span class="fu">head</span>(mpg))</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div id="pwxrkevvfl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+:where(#pwxrkevvfl) .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+:where(#pwxrkevvfl) .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#pwxrkevvfl) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#pwxrkevvfl) .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+:where(#pwxrkevvfl) .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+:where(#pwxrkevvfl) .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#pwxrkevvfl) .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#pwxrkevvfl) .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+:where(#pwxrkevvfl) .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+:where(#pwxrkevvfl) .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+:where(#pwxrkevvfl) .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+:where(#pwxrkevvfl) .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+:where(#pwxrkevvfl) .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+:where(#pwxrkevvfl) .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+:where(#pwxrkevvfl) .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+:where(#pwxrkevvfl) .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+:where(#pwxrkevvfl) .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+:where(#pwxrkevvfl) .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#pwxrkevvfl) .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+:where(#pwxrkevvfl) .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+:where(#pwxrkevvfl) .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#pwxrkevvfl) .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+:where(#pwxrkevvfl) .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+:where(#pwxrkevvfl) .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#pwxrkevvfl) .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#pwxrkevvfl) .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+:where(#pwxrkevvfl) .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+:where(#pwxrkevvfl) .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#pwxrkevvfl) .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#pwxrkevvfl) .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#pwxrkevvfl) .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+:where(#pwxrkevvfl) .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+:where(#pwxrkevvfl) .gt_left {
+  text-align: left;
+}
+
+:where(#pwxrkevvfl) .gt_center {
+  text-align: center;
+}
+
+:where(#pwxrkevvfl) .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(#pwxrkevvfl) .gt_font_normal {
+  font-weight: normal;
+}
+
+:where(#pwxrkevvfl) .gt_font_bold {
+  font-weight: bold;
+}
+
+:where(#pwxrkevvfl) .gt_font_italic {
+  font-style: italic;
+}
+
+:where(#pwxrkevvfl) .gt_super {
+  font-size: 65%;
+}
+
+:where(#pwxrkevvfl) .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+:where(#pwxrkevvfl) .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+:where(#pwxrkevvfl) .gt_indent_1 {
+  text-indent: 5px;
+}
+
+:where(#pwxrkevvfl) .gt_indent_2 {
+  text-indent: 10px;
+}
+
+:where(#pwxrkevvfl) .gt_indent_3 {
+  text-indent: 15px;
+}
+
+:where(#pwxrkevvfl) .gt_indent_4 {
+  text-indent: 20px;
+}
+
+:where(#pwxrkevvfl) .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="manufacturer">manufacturer</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="model">model</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="displ">displ</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="year">year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="cyl">cyl</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="trans">trans</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="drv">drv</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="cty">cty</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="hwy">hwy</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="fl">fl</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="class">class</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="manufacturer" class="gt_row gt_left">audi</td>
+<td headers="model" class="gt_row gt_left">a4</td>
+<td headers="displ" class="gt_row gt_right">1.8</td>
+<td headers="year" class="gt_row gt_right">1999</td>
+<td headers="cyl" class="gt_row gt_right">4</td>
+<td headers="trans" class="gt_row gt_left">auto(l5)</td>
+<td headers="drv" class="gt_row gt_left">f</td>
+<td headers="cty" class="gt_row gt_right">18</td>
+<td headers="hwy" class="gt_row gt_right">29</td>
+<td headers="fl" class="gt_row gt_left">p</td>
+<td headers="class" class="gt_row gt_left">compact</td></tr>
+    <tr><td headers="manufacturer" class="gt_row gt_left">audi</td>
+<td headers="model" class="gt_row gt_left">a4</td>
+<td headers="displ" class="gt_row gt_right">1.8</td>
+<td headers="year" class="gt_row gt_right">1999</td>
+<td headers="cyl" class="gt_row gt_right">4</td>
+<td headers="trans" class="gt_row gt_left">manual(m5)</td>
+<td headers="drv" class="gt_row gt_left">f</td>
+<td headers="cty" class="gt_row gt_right">21</td>
+<td headers="hwy" class="gt_row gt_right">29</td>
+<td headers="fl" class="gt_row gt_left">p</td>
+<td headers="class" class="gt_row gt_left">compact</td></tr>
+    <tr><td headers="manufacturer" class="gt_row gt_left">audi</td>
+<td headers="model" class="gt_row gt_left">a4</td>
+<td headers="displ" class="gt_row gt_right">2.0</td>
+<td headers="year" class="gt_row gt_right">2008</td>
+<td headers="cyl" class="gt_row gt_right">4</td>
+<td headers="trans" class="gt_row gt_left">manual(m6)</td>
+<td headers="drv" class="gt_row gt_left">f</td>
+<td headers="cty" class="gt_row gt_right">20</td>
+<td headers="hwy" class="gt_row gt_right">31</td>
+<td headers="fl" class="gt_row gt_left">p</td>
+<td headers="class" class="gt_row gt_left">compact</td></tr>
+    <tr><td headers="manufacturer" class="gt_row gt_left">audi</td>
+<td headers="model" class="gt_row gt_left">a4</td>
+<td headers="displ" class="gt_row gt_right">2.0</td>
+<td headers="year" class="gt_row gt_right">2008</td>
+<td headers="cyl" class="gt_row gt_right">4</td>
+<td headers="trans" class="gt_row gt_left">auto(av)</td>
+<td headers="drv" class="gt_row gt_left">f</td>
+<td headers="cty" class="gt_row gt_right">21</td>
+<td headers="hwy" class="gt_row gt_right">30</td>
+<td headers="fl" class="gt_row gt_left">p</td>
+<td headers="class" class="gt_row gt_left">compact</td></tr>
+    <tr><td headers="manufacturer" class="gt_row gt_left">audi</td>
+<td headers="model" class="gt_row gt_left">a4</td>
+<td headers="displ" class="gt_row gt_right">2.8</td>
+<td headers="year" class="gt_row gt_right">1999</td>
+<td headers="cyl" class="gt_row gt_right">6</td>
+<td headers="trans" class="gt_row gt_left">auto(l5)</td>
+<td headers="drv" class="gt_row gt_left">f</td>
+<td headers="cty" class="gt_row gt_right">16</td>
+<td headers="hwy" class="gt_row gt_right">26</td>
+<td headers="fl" class="gt_row gt_left">p</td>
+<td headers="class" class="gt_row gt_left">compact</td></tr>
+    <tr><td headers="manufacturer" class="gt_row gt_left">audi</td>
+<td headers="model" class="gt_row gt_left">a4</td>
+<td headers="displ" class="gt_row gt_right">2.8</td>
+<td headers="year" class="gt_row gt_right">1999</td>
+<td headers="cyl" class="gt_row gt_right">6</td>
+<td headers="trans" class="gt_row gt_left">manual(m5)</td>
+<td headers="drv" class="gt_row gt_left">f</td>
+<td headers="cty" class="gt_row gt_right">18</td>
+<td headers="hwy" class="gt_row gt_right">26</td>
+<td headers="fl" class="gt_row gt_left">p</td>
+<td headers="class" class="gt_row gt_left">compact</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
 </div>
 </div>
 </section>
 <section id="inicializando" class="slide level2">
 <h2>Inicializando</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-27-1.png" width="3000"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-11-1.png" width="3000"></p>
 </div>
 </div>
 </div>
@@ -762,17 +2566,17 @@ Lucas C. L. do Carmo
 <section id="mapeando-variáveis" class="slide level2">
 <h2>Mapeando variáveis</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
-<span id="cb13-3"><a href="#cb13-3"></a>      <span class="at">y =</span> hwy,</span>
-<span id="cb13-4"><a href="#cb13-4"></a>      <span class="at">col =</span> cyl) <span class="co">#&lt;&lt;</span></span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>      <span class="at">y =</span> hwy,</span>
+<span id="cb10-4"><a href="#cb10-4"></a>      <span class="at">col =</span> cyl)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-29-1.png" width="3000"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-13-1.png" width="3000"></p>
 </div>
 </div>
 </div>
@@ -781,18 +2585,18 @@ Lucas C. L. do Carmo
 <section id="adicionando-os-geoms" class="slide level2">
 <h2>Adicionando os geoms</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
-<span id="cb14-3"><a href="#cb14-3"></a>      <span class="at">y =</span> hwy,</span>
-<span id="cb14-4"><a href="#cb14-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">geom_point</span>() <span class="co">#&lt;&lt;</span></span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
+<span id="cb11-3"><a href="#cb11-3"></a>      <span class="at">y =</span> hwy,</span>
+<span id="cb11-4"><a href="#cb11-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-31-1.png" width="3000"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-15-1.png" width="3000"></p>
 </div>
 </div>
 </div>
@@ -801,19 +2605,19 @@ Lucas C. L. do Carmo
 <section id="adicionando-rótulos" class="slide level2">
 <h2>Adicionando rótulos</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
-<span id="cb15-3"><a href="#cb15-3"></a>      <span class="at">y =</span> hwy,</span>
-<span id="cb15-4"><a href="#cb15-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Título"</span>) <span class="co">#&lt;&lt;</span></span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
+<span id="cb12-3"><a href="#cb12-3"></a>      <span class="at">y =</span> hwy,</span>
+<span id="cb12-4"><a href="#cb12-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Título"</span>)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-33-1.png" width="3000"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-17-1.png" width="3000"></p>
 </div>
 </div>
 </div>
@@ -822,20 +2626,20 @@ Lucas C. L. do Carmo
 <section id="mudando-coordenadas" class="slide level2">
 <h2>Mudando coordenadas</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
-<span id="cb16-3"><a href="#cb16-3"></a>      <span class="at">y =</span> hwy,</span>
-<span id="cb16-4"><a href="#cb16-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Título"</span>) <span class="sc">+</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">coord_polar</span>() <span class="co">#&lt;&lt;</span></span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
+<span id="cb13-3"><a href="#cb13-3"></a>      <span class="at">y =</span> hwy,</span>
+<span id="cb13-4"><a href="#cb13-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Título"</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">coord_polar</span>()</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-35-1.png" width="3000"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-19-1.png" width="3000"></p>
 </div>
 </div>
 </div>
@@ -844,21 +2648,21 @@ Lucas C. L. do Carmo
 <section id="modificando-as-escalas" class="slide level2">
 <h2>Modificando as escalas</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
-<span id="cb17-3"><a href="#cb17-3"></a>      <span class="at">y =</span> hwy,</span>
-<span id="cb17-4"><a href="#cb17-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Título"</span>) <span class="sc">+</span></span>
-<span id="cb17-7"><a href="#cb17-7"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb17-8"><a href="#cb17-8"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="co">#&lt;&lt;</span></span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
+<span id="cb14-3"><a href="#cb14-3"></a>      <span class="at">y =</span> hwy,</span>
+<span id="cb14-4"><a href="#cb14-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Título"</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8"></a>  <span class="fu">scale_color_viridis_c</span>() </span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-37-1.png" width="3000"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-21-1.png" width="3000"></p>
 </div>
 </div>
 </div>
@@ -867,22 +2671,22 @@ Lucas C. L. do Carmo
 <section id="subdividindo-gráfico" class="slide level2">
 <h2>Subdividindo gráfico</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
-<span id="cb18-3"><a href="#cb18-3"></a>      <span class="at">y =</span> hwy,</span>
-<span id="cb18-4"><a href="#cb18-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb18-6"><a href="#cb18-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Título"</span>) <span class="sc">+</span></span>
-<span id="cb18-7"><a href="#cb18-7"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb18-9"><a href="#cb18-9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>cyl)<span class="co">#&lt;&lt;</span></span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
+<span id="cb15-3"><a href="#cb15-3"></a>      <span class="at">y =</span> hwy,</span>
+<span id="cb15-4"><a href="#cb15-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Título"</span>) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>cyl)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:65%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-39-1.png" width="3000"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-23-1.png" width="3000"></p>
 </div>
 </div>
 </div>
@@ -891,23 +2695,23 @@ Lucas C. L. do Carmo
 <section id="modificando-o-tema" class="slide level2">
 <h2>Modificando o tema</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
-<span id="cb19-3"><a href="#cb19-3"></a>      <span class="at">y =</span> hwy,</span>
-<span id="cb19-4"><a href="#cb19-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb19-6"><a href="#cb19-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Título"</span>) <span class="sc">+</span></span>
-<span id="cb19-7"><a href="#cb19-7"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
-<span id="cb19-8"><a href="#cb19-8"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
-<span id="cb19-9"><a href="#cb19-9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>cyl) <span class="sc">+</span></span>
-<span id="cb19-10"><a href="#cb19-10"></a>  <span class="fu">theme_minimal</span>() <span class="co">#&lt;&lt;</span></span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>plot <span class="ot">&lt;-</span> plot <span class="sc">+</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
+<span id="cb16-3"><a href="#cb16-3"></a>      <span class="at">y =</span> hwy,</span>
+<span id="cb16-4"><a href="#cb16-4"></a>      <span class="at">col =</span> cyl) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Título"</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">coord_polar</span>() <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>cyl) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="index_files/figure-revealjs/unnamed-chunk-41-1.png" width="3000"></p>
+<p><img data-src="index_files/figure-revealjs/unnamed-chunk-25-1.png" width="3000"></p>
 </div>
 </div>
 </div>
@@ -915,8 +2719,11 @@ Lucas C. L. do Carmo
 </section>
 <section class="slide level2">
 
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>plot <span class="sc">+</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<img data-src="index_files/figure-revealjs/unnamed-chunk-42-1.png" width="3000" class="r-stretch"></section></section>
+</div>
+<img data-src="index_files/figure-revealjs/unnamed-chunk-26-1.png" width="3000" class="r-stretch"></section></section>
 <section id="fim" class="title-slide slide level1 center">
 <h1>FIM</h1>
 
@@ -1101,9 +2908,9 @@ Lucas C. L. do Carmo
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1920,
+        width: 1600,
 
-        height: 1080,
+        height: 900,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
