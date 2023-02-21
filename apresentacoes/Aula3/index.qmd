@@ -2,8 +2,13 @@
 title: "Aula 3 - Manipulando dataframes e gráficos"
 subtitle: ""
 author: "Lucas C. L. do Carmo"
-date: "2020-10-05"
+date: 2020-10-05
+execute: 
+  echo: false
+  freeze: true
 image: thumbnail.png
+fig-align: center
+fig-asp: 1
 format: 
   revealjs:
     theme: default
@@ -12,6 +17,7 @@ format:
 
 ```{r, include=FALSE}
 library(tidyverse)
+library(gt)
 
 theme_present <- function(){
   theme_gray(base_size = 20)
@@ -56,23 +62,29 @@ knitr::opts_chunk$set(comment = "", fig.retina = 2, message = FALSE, warning=FAL
 
 ## Componentes do `tidyverse`
 
-```{r, echo=FALSE, out.width="20%"}
-knitr::include_graphics(path = c("images/readr.png", "images/tidyr.png", "images/tibble.png"))
+::: {layout-ncol=4}
 
-```
+![](images/readr.png)
 
-![](images/readr.png) 
+![](images/tidyr.png)
 
-```{r, echo=FALSE, out.width="20%"}
-knitr::include_graphics(path = c("images/dplyr.png", "images/ggplot2.png"))
-```
+![](images/dplyr.png)
+
+![](images/tibble.png)
+
+![](images/ggplot2.png)
+
+![](images/stringr.png)
+
+![](images/forcats.png)
+
+![](images/purrr.png)
+
+:::
 
 ## Importando Dados com `readr::`
 
-```{r, echo = FALSE, out.width="50%"}
-knitr::include_graphics(path = c("images/readr.png"))
-```
-
+![](images/readr.png)
 
 ## Importando dados para o ambiente de trabalho
 
@@ -94,7 +106,7 @@ Para importar dados do computador recomenda-se que estejam no formato `.csv` ou 
 
 Para importar os dados usamos as funções da família `read_*()` ou seja:
 
-```{r, eval=F}
+```{r, eval=FALSE}
 install.packages("readr") # ou melhor install.packages("tidyverse")
 
 library(readr) # ou melhor library(tidyverse)
@@ -102,13 +114,13 @@ library(readr) # ou melhor library(tidyverse)
 read_csv(file = "Pasta/para/Arquivo.csv") # aspas importam
 ```
 
+:::{.fragment .callout-important}
+
 Não se esqueça de atribuir o resultado desta função a um objeto com um nome significativo.
-
-__Ex:__
-
 ```{r, eval=FALSE}
 calibracao_HPLC <- read_csv("Pasta/para/Arquivo.csv")
 ```
+:::
 
 ## `read_*()`
 
@@ -116,10 +128,9 @@ Existem outras funções da família `read_*()`, para ler arquivos de texto cuja
 Estas são:
 
 + `read_csv()`: serve para ler arquivos com `,` como separador de colunas e `.` como decimal
-+ `read_csv2()`: serve para ler arquivos com `;` como separador de colunas e `,` como decimal
-+ `read_delim()`: lê arquivos que tem `TAB` como separador de colunas
++ `read_csv2()`: arquivos com `;` como separador e `,` como decimal
++ `read_delim()`: `TAB`, ou outros como separador de colunas
 
-$\ldots$ 
 
 1. Como exercício digite `?read_*()` no console e leia a documentação desta família de funções.
 2. Pesquise quais os argumentos são importantes para uso da função.
@@ -131,21 +142,21 @@ O `tidyr` é um pacote que serve para organizar as tabelas em um formato especí
 
 O formato *tidy* é um formato de dados usado em bancos de dados e é a melhor forma de organizar os dados para se fazer operações estatísticas no `R` e construir gráficos.
 
-```{r, echo = FALSE, out.width="100%"}
-knitr::include_graphics("images/tidy-data.png")
-```
+
+![](images/tidy-data.png){.center}
+
 
 ## *Wide data* e *long data*
 
-```{r, echo = FALSE, out.width="100%"}
-knitr::include_graphics("images/pivot_longer_wider.png")
-```
+![](images/pivot_longer_wider.png)
+
 
 ::::{.columns}
+
 :::{.column width="50%"} 
 ```{r}
 
-tbl <- tibble(
+tbl <- data.frame(
   "Pais" = c("Brasil", "Argentina"),
   "1999" = c(0.5, 0.69),
   "2000" = c(0.6, 0.98),
@@ -157,54 +168,67 @@ tbl <- tibble(
 :::{.column width="50%"} 
 
 ```{r}
-tbl
+gt(tbl)
 ```
 :::
+
 ::::
+
+
+
 
 ## Transformando a tabela para formato *long* 
 
+::::{.columns}
+
+:::{.column width="40%"}
+
 ```{r}
-tbl
+gt(tbl)
 ```
 
+:::
+
+:::{.column width="60%" .fragment}
 
 ```{r}
-tbl_long <- 
-  pivot_longer(data = tbl, # quais os dados vou usar
-               cols = -Pais, # quais colunas quero transformar
-               names_to = "Ano", # nomes das colunas vão para...
-               values_to = "Valor") # valores vão para coluna ...
+tbl_long <- pivot_longer(
+  data = tbl,          # quais os dados vou usar
+  cols = -Pais,        # quais colunas quero transformar
+  names_to = "Ano",    # nomes das colunas vão para...
+  values_to = "Valor") # valores vão para coluna ...
 
+gt(tbl_long)
 ```
 
-```{r echo=FALSE}
-as.data.frame(tbl_long)
-```
+:::
+
+::::
+
+
+
+
 
 ## E agora podemos usar os dados para fazer gráficos
 
-```{r, fig.height=4, fig.width=8, fig.align="center"}
-library(ggplot2) #<<
+```{r}
+library(ggplot2)
 
-ggplot(tbl_long, aes(x = Ano, y = Valor)) + 
-  geom_point()
+ggplot(tbl_long, aes(x = Ano, y = Valor)) + geom_point()
 ```
 
-O que é `ggplot(tbl_long ...)` ??
+[O que é `ggplot(tbl_long ...)` ??]{.fragment}
 
 :::{.notes}
 
 Vamos voltar um pouco e aprender sobre os outros pacotes e os elementos de um gráfico do `ggplot2::`
 :::
 
-#
+# `ggplot`
 
-```{r, out.width="50%", echo=FALSE}
-knitr::include_graphics("images/ggplot2.png")
-```
+![](images/ggplot2.png){.center}
 
-## Gramática de gráficos
+## Gramática de gráficos{.scrollable}
 
 Os elementos dos gráficos são:
 
@@ -220,73 +244,70 @@ Os elementos dos gráficos são:
 |Temas       |`theme_bw()`     |Modifica os elementos dos eixos e outros
 
 
+## Camadas
 
-```{r, echo = FALSE, out.width="78%"}
-knitr::include_graphics("images/Camadas1.png")
-```
+![](images/Camadas1.png)
 
+## Camadas
 
-```{r, echo = FALSE,out.width="78%"}
-knitr::include_graphics("images/Camadas2.png")
-```
+![](images/Camadas2.png)
 
+## Camadas
 
-```{r, echo = FALSE,out.width="78%"}
-knitr::include_graphics("images/Camadas3.png")
-```
+![](images/Camadas3.png)
 
+## Camadas
 
-```{r, echo = FALSE,out.width="78%"}
-knitr::include_graphics("images/Camadas4.png")
-```
+![](images/Camadas4.png)
 
-```{r, echo = FALSE,out.width="78%"}
-knitr::include_graphics("images/Camadas5.png")
-```
+## Camadas
 
+![](images/Camadas5.png)
 
-```{r, echo = FALSE,out.width="78%"}
-knitr::include_graphics("images/Camadas6.png")
-```
+## Camadas
 
+![](images/Camadas6.png)
 
-```{r, echo = FALSE,out.width="78%"}
-knitr::include_graphics("images/Camadas7.png")
-```
+## Camadas
 
+![](images/Camadas7.png)
 
-```{r, echo = FALSE,out.width="78%"}
-knitr::include_graphics("images/Camadas8.png")
-```
+## Camadas
 
+![](images/Camadas8.png)
 
-```{r, echo = FALSE,out.width="78%"}
-knitr::include_graphics("images/Camadas9.png")
-```
+## Camadas
+
+![](images/Camadas9.png)
+
 
 ## Nosso primeiro gráfico
 
 Vamos usar o dataset `mpg` para fazer este gráfico:
 
-```{r, echo=FALSE}
+```{r}
 library(tidyverse)
-
-mpg
+gt(head(mpg))
 ```
 
 ## Inicializando
 
 ::::{.columns}
-:::{.column width="50%"} 
+:::{.column width="35%"} 
 ```{r}
+
 plot <- ggplot(mpg)
+
 ```
 :::
 
-:::{.column width="50%"} 
+:::{.column width="65%"} 
 ```{r, echo=FALSE}
+
 plot
+
 ```
+
 :::
 ::::
 
@@ -295,17 +316,17 @@ plot
 
 
 ::::{.columns}
-:::{.column width="50%"} 
+:::{.column width="35%"} 
 ```{r,}
 plot <- plot + 
   aes(x = displ,
       y = hwy,
-      col = cyl) #<<
+      col = cyl)
 ```
 :::
 
-:::{.column width="50%"} 
-```{r, echo=FALSE,}
+:::{.column width="65%"} 
+```{r, echo=FALSE}
 plot
 ```
 :::
@@ -315,17 +336,17 @@ plot
 ## Adicionando os geoms
 
 ::::{.columns}
-:::{.column width="50%"} 
-```{r,}
+:::{.column width="35%"} 
+```{r}
 plot <- plot + 
   aes(x = displ,
       y = hwy,
       col = cyl) +
-  geom_point() #<<
+  geom_point()
 ```
 :::
 
-:::{.column width="50%"} 
+:::{.column width="65%"} 
 ```{r, echo=FALSE}
 plot
 ```
@@ -336,18 +357,20 @@ plot
 ## Adicionando rótulos
 
 ::::{.columns}
-:::{.column width="50%"} 
-```{r,message=FALSE}
+
+:::{.column width="35%"} 
+
+```{r}
 plot <- plot + 
   aes(x = displ,
       y = hwy,
       col = cyl) +
   geom_point() +
-  labs(title = "Título") #<<
+  labs(title = "Título")
 ```
 :::
 
-:::{.column width="50%"} 
+:::{.column width="65%"} 
 ```{r, echo=FALSE}
 plot
 ```
@@ -357,7 +380,9 @@ plot
 ## Mudando coordenadas
 
 ::::{.columns}
-:::{.column width="50%"} 
+
+:::{.column width="35%"} 
+
 ```{r}
 plot <- plot + 
   aes(x = displ,
@@ -365,11 +390,11 @@ plot <- plot +
       col = cyl) +
   geom_point() +
   labs(title = "Título") +
-  coord_polar() #<<
+  coord_polar()
 ```
 :::
 
-:::{.column width="50%"} 
+:::{.column width="65%"} 
 ```{r, echo=FALSE}
 plot
 ```
@@ -379,7 +404,7 @@ plot
 ## Modificando as escalas
 
 ::::{.columns}
-:::{.column width="50%"} 
+:::{.column width="35%"} 
 ```{r}
 plot <- plot + 
   aes(x = displ,
@@ -388,11 +413,11 @@ plot <- plot +
   geom_point() +
   labs(title = "Título") +
   coord_polar() +
-  scale_color_viridis_c() #<<
+  scale_color_viridis_c() 
 ```
 :::
 
-:::{.column width="50%"} 
+:::{.column width="65%"} 
 ```{r, echo=FALSE}
 plot
 ```
@@ -403,7 +428,7 @@ plot
 ## Subdividindo gráfico
 
 ::::{.columns}
-:::{.column width="50%"} 
+:::{.column width="35%"} 
 ```{r}
 plot <- plot + 
   aes(x = displ,
@@ -413,11 +438,11 @@ plot <- plot +
   labs(title = "Título") +
   coord_polar() +
   scale_color_viridis_c() +
-  facet_wrap(~cyl)#<<
+  facet_wrap(~cyl)
 ```
 :::
 
-:::{.column width="50%"} 
+:::{.column width="65%"} 
 ```{r, echo=FALSE}
 plot
 ```
@@ -427,7 +452,7 @@ plot
 ## Modificando o tema
 
 ::::{.columns}
-:::{.column width="50%"} 
+:::{.column width="35%"} 
 ```{r}
 plot <- plot + 
   aes(x = displ,
@@ -438,7 +463,7 @@ plot <- plot +
   coord_polar() +
   scale_color_viridis_c() +
   facet_wrap(~cyl) +
-  theme_minimal() #<<
+  theme_minimal()
 ```
 :::
 
@@ -451,9 +476,8 @@ plot
 
 ---
 
-```{r, echo = FALSE}
-plot +
-  theme_minimal(base_size = 22)
+```{r}
+plot + theme_minimal(base_size = 16)
 ```
 
 

@@ -690,14 +690,14 @@
     "href": "apresentacoes/Aula3/index.html#importando-dados-do-computador",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Importando dados do computador",
-    "text": "Importando dados do computador\nPara importar dados do computador recomenda-se que estejam no formato .csv ou .txt ou algum outro tipo de formato de texto.\nPara importar os dados usamos as funções da família read_*() ou seja:\n\ninstall.packages(\"readr\") # ou melhor install.packages(\"tidyverse\")\n\nlibrary(readr) # ou melhor library(tidyverse)\n\nread_csv(file = \"Pasta/para/Arquivo.csv\") # aspas importam\n\nNão se esqueça de atribuir o resultado desta função a um objeto com um nome significativo.\nEx:\n\ncalibracao_HPLC <- read_csv(\"Pasta/para/Arquivo.csv\")"
+    "text": "Importando dados do computador\nPara importar dados do computador recomenda-se que estejam no formato .csv ou .txt ou algum outro tipo de formato de texto.\nPara importar os dados usamos as funções da família read_*() ou seja:\n\ninstall.packages(\"readr\") # ou melhor install.packages(\"tidyverse\")\n\nlibrary(readr) # ou melhor library(tidyverse)\n\nread_csv(file = \"Pasta/para/Arquivo.csv\") # aspas importam\n\n\n\n\n\n\n\nImportante\n\n\nNão se esqueça de atribuir o resultado desta função a um objeto com um nome significativo.\n\ncalibracao_HPLC <- read_csv(\"Pasta/para/Arquivo.csv\")"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#read_",
     "href": "apresentacoes/Aula3/index.html#read_",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "read_*()",
-    "text": "read_*()\nExistem outras funções da família read_*(), para ler arquivos de texto cuja separação entre colunas não é , e sim ; (muito comum em países onde o ponto decimal é a vírgula) e arquivos onde a separação são espaços em branco ou outro tipo de caractere. Estas são:\n\nread_csv(): serve para ler arquivos com , como separador de colunas e . como decimal\nread_csv2(): serve para ler arquivos com ; como separador de colunas e , como decimal\nread_delim(): lê arquivos que tem TAB como separador de colunas\n\n\\(\\ldots\\)\n\nComo exercício digite ?read_*() no console e leia a documentação desta família de funções.\nPesquise quais os argumentos são importantes para uso da função."
+    "text": "read_*()\nExistem outras funções da família read_*(), para ler arquivos de texto cuja separação entre colunas não é , e sim ; (muito comum em países onde o ponto decimal é a vírgula) e arquivos onde a separação são espaços em branco ou outro tipo de caractere. Estas são:\n\nread_csv(): serve para ler arquivos com , como separador de colunas e . como decimal\nread_csv2(): arquivos com ; como separador e , como decimal\nread_delim(): TAB, ou outros como separador de colunas\n\n\nComo exercício digite ?read_*() no console e leia a documentação desta família de funções.\nPesquise quais os argumentos são importantes para uso da função."
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#tidyr",
@@ -711,21 +711,21 @@
     "href": "apresentacoes/Aula3/index.html#wide-data-e-long-data",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Wide data e long data",
-    "text": "Wide data e long data\n\n\n\n\ntbl <- tibble(\n  \"Pais\" = c(\"Brasil\", \"Argentina\"),\n  \"1999\" = c(0.5, 0.69),\n  \"2000\" = c(0.6, 0.98),\n  \"2001\" = c(0.71, 0.96)\n)\n\n\n\ntbl\n\n# A tibble: 2 × 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96"
+    "text": "Wide data e long data\n\n\n\n\ntbl <- data.frame(\n  \"Pais\" = c(\"Brasil\", \"Argentina\"),\n  \"1999\" = c(0.5, 0.69),\n  \"2000\" = c(0.6, 0.98),\n  \"2001\" = c(0.71, 0.96)\n)\n\n\n\ngt(tbl)\n\n\n\n\n\n  \n  \n    \n      Pais\n      X1999\n      X2000\n      X2001\n    \n  \n  \n    Brasil\n0.50\n0.60\n0.71\n    Argentina\n0.69\n0.98\n0.96"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#transformando-a-tabela-para-formato-long",
     "href": "apresentacoes/Aula3/index.html#transformando-a-tabela-para-formato-long",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Transformando a tabela para formato long",
-    "text": "Transformando a tabela para formato long\n\ntbl\n\n# A tibble: 2 × 4\n  Pais      `1999` `2000` `2001`\n  <chr>      <dbl>  <dbl>  <dbl>\n1 Brasil      0.5    0.6    0.71\n2 Argentina   0.69   0.98   0.96\n\n\n\ntbl_long <- \n  pivot_longer(data = tbl, # quais os dados vou usar\n               cols = -Pais, # quais colunas quero transformar\n               names_to = \"Ano\", # nomes das colunas vão para...\n               values_to = \"Valor\") # valores vão para coluna ...\n\n\n\n       Pais  Ano Valor\n1    Brasil 1999  0.50\n2    Brasil 2000  0.60\n3    Brasil 2001  0.71\n4 Argentina 1999  0.69\n5 Argentina 2000  0.98\n6 Argentina 2001  0.96"
+    "text": "Transformando a tabela para formato long\n\n\n\ngt(tbl)\n\n\n\n\n\n  \n  \n    \n      Pais\n      X1999\n      X2000\n      X2001\n    \n  \n  \n    Brasil\n0.50\n0.60\n0.71\n    Argentina\n0.69\n0.98\n0.96\n  \n  \n  \n\n\n\n\n\n\ntbl_long <- pivot_longer(\n  data = tbl,          # quais os dados vou usar\n  cols = -Pais,        # quais colunas quero transformar\n  names_to = \"Ano\",    # nomes das colunas vão para...\n  values_to = \"Valor\") # valores vão para coluna ...\n\ngt(tbl_long)\n\n\n\n\n\n  \n  \n    \n      Pais\n      Ano\n      Valor\n    \n  \n  \n    Brasil\nX1999\n0.50\n    Brasil\nX2000\n0.60\n    Brasil\nX2001\n0.71\n    Argentina\nX1999\n0.69\n    Argentina\nX2000\n0.98\n    Argentina\nX2001\n0.96"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#e-agora-podemos-usar-os-dados-para-fazer-gráficos",
     "href": "apresentacoes/Aula3/index.html#e-agora-podemos-usar-os-dados-para-fazer-gráficos",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "E agora podemos usar os dados para fazer gráficos",
-    "text": "E agora podemos usar os dados para fazer gráficos\n\nlibrary(ggplot2) #<<\n\nggplot(tbl_long, aes(x = Ano, y = Valor)) + \n  geom_point()\n\n\nO que é ggplot(tbl_long ...) ??\n\nVamos voltar um pouco e aprender sobre os outros pacotes e os elementos de um gráfico do ggplot2::"
+    "text": "E agora podemos usar os dados para fazer gráficos\n\nlibrary(ggplot2)\n\nggplot(tbl_long, aes(x = Ano, y = Valor)) + geom_point()\n\n\nO que é ggplot(tbl_long ...) ??\n\nVamos voltar um pouco e aprender sobre os outros pacotes e os elementos de um gráfico do ggplot2::"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#gramática-de-gráficos",
@@ -739,7 +739,7 @@
     "href": "apresentacoes/Aula3/index.html#nosso-primeiro-gráfico",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Nosso primeiro gráfico",
-    "text": "Nosso primeiro gráfico\nVamos usar o dataset mpg para fazer este gráfico:\n\n\n# A tibble: 234 × 11\n   manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class\n   <chr>        <chr>      <dbl> <int> <int> <chr> <chr> <int> <int> <chr> <chr>\n 1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…\n 2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…\n 3 audi         a4           2    2008     4 manu… f        20    31 p     comp…\n 4 audi         a4           2    2008     4 auto… f        21    30 p     comp…\n 5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…\n 6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…\n 7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…\n 8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…\n 9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…\n10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…\n# … with 224 more rows"
+    "text": "Nosso primeiro gráfico\nVamos usar o dataset mpg para fazer este gráfico:\n\nlibrary(tidyverse)\ngt(head(mpg))\n\n\n\n\n\n  \n  \n    \n      manufacturer\n      model\n      displ\n      year\n      cyl\n      trans\n      drv\n      cty\n      hwy\n      fl\n      class\n    \n  \n  \n    audi\na4\n1.8\n1999\n4\nauto(l5)\nf\n18\n29\np\ncompact\n    audi\na4\n1.8\n1999\n4\nmanual(m5)\nf\n21\n29\np\ncompact\n    audi\na4\n2.0\n2008\n4\nmanual(m6)\nf\n20\n31\np\ncompact\n    audi\na4\n2.0\n2008\n4\nauto(av)\nf\n21\n30\np\ncompact\n    audi\na4\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\ncompact\n    audi\na4\n2.8\n1999\n6\nmanual(m5)\nf\n18\n26\np\ncompact"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#inicializando",
@@ -753,49 +753,49 @@
     "href": "apresentacoes/Aula3/index.html#mapeando-variáveis",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Mapeando variáveis",
-    "text": "Mapeando variáveis\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) #<<"
+    "text": "Mapeando variáveis\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl)"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#adicionando-os-geoms",
     "href": "apresentacoes/Aula3/index.html#adicionando-os-geoms",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Adicionando os geoms",
-    "text": "Adicionando os geoms\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() #<<"
+    "text": "Adicionando os geoms\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point()"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#adicionando-rótulos",
     "href": "apresentacoes/Aula3/index.html#adicionando-rótulos",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Adicionando rótulos",
-    "text": "Adicionando rótulos\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") #<<"
+    "text": "Adicionando rótulos\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\")"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#mudando-coordenadas",
     "href": "apresentacoes/Aula3/index.html#mudando-coordenadas",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Mudando coordenadas",
-    "text": "Mudando coordenadas\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() #<<"
+    "text": "Mudando coordenadas\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar()"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#modificando-as-escalas",
     "href": "apresentacoes/Aula3/index.html#modificando-as-escalas",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Modificando as escalas",
-    "text": "Modificando as escalas\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() #<<"
+    "text": "Modificando as escalas\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c()"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#subdividindo-gráfico",
     "href": "apresentacoes/Aula3/index.html#subdividindo-gráfico",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Subdividindo gráfico",
-    "text": "Subdividindo gráfico\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() +\n  facet_wrap(~cyl)#<<"
+    "text": "Subdividindo gráfico\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() +\n  facet_wrap(~cyl)"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#modificando-o-tema",
     "href": "apresentacoes/Aula3/index.html#modificando-o-tema",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Modificando o tema",
-    "text": "Modificando o tema\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() +\n  facet_wrap(~cyl) +\n  theme_minimal() #<<"
+    "text": "Modificando o tema\n\n\n\nplot <- plot + \n  aes(x = displ,\n      y = hwy,\n      col = cyl) +\n  geom_point() +\n  labs(title = \"Título\") +\n  coord_polar() +\n  scale_color_viridis_c() +\n  facet_wrap(~cyl) +\n  theme_minimal()"
   },
   {
     "objectID": "apresentacoes/Aula2/index.html#anteriormente",
@@ -1054,21 +1054,21 @@
     "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Sobrescrevendo mapeamentos estéticos",
-    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = cyl) + #<<\n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + #<<\n  geom_point()"
+    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = cyl) + \n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + \n  geom_point()"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
     "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Sobrescrevendo mapeamentos estéticos",
-    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + #<<\n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy) + \n  geom_point(col = \"blue\") #<<"
+    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + \n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy) + \n  geom_point(col = \"blue\")"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#mudando-escalas",
     "href": "apresentacoes/Aula5/index.html#mudando-escalas",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Mudando escalas",
-    "text": "Mudando escalas\n\n\n\nggplot(mpg) + \n  aes(displ, hwy,\n      col = cyl,\n      shape = drv) + \n  geom_point(size = 3) +\n  scale_color_gradient( #<<\n    low = \"grey25\", \n    high = \"firebrick\") +\n  scale_shape_manual( #<<\n    values = c(2,4,1))"
+    "text": "Mudando escalas\n\n\n\nggplot(mpg) + \n  aes(displ, hwy,\n      col = cyl,\n      shape = drv) + \n  geom_point(size = 3) +\n  scale_color_gradient( \n    low = \"grey25\", \n    high = \"firebrick\") +\n  scale_shape_manual( \n    values = c(2,4,1))"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#referência-de-tipos-de-pontos-e-linhas",
@@ -1089,7 +1089,7 @@
     "href": "apresentacoes/Aula5/index.html#modificando-escala-dos-eixos",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Modificando escala dos eixos",
-    "text": "Modificando escala dos eixos\n\n\n\nggplot(mpg) +\n  aes(displ,hwy) +\n  geom_point() +\n  scale_x_log10(#<<\n    limits = c(0.5,10),\n    breaks = c(1,10),\n    labels = c(\"um\", \"dez\")\n  ) + \n  scale_y_sqrt( #<<\n    breaks = c(max(mpg$hwy), \n               min(mpg$hwy), \n               mean(mpg$hwy)),\n    labels = scales::dollar,\n    expand = c(0,0)\n  )"
+    "text": "Modificando escala dos eixos\n\n\n\nggplot(mpg) +\n  aes(displ,hwy) +\n  geom_point() +\n  scale_x_log10(\n    limits = c(0.5,10),\n    breaks = c(1,10),\n    labels = c(\"um\", \"dez\")\n  ) + \n  scale_y_sqrt( \n    breaks = c(max(mpg$hwy), \n               min(mpg$hwy), \n               mean(mpg$hwy)),\n    labels = scales::dollar,\n    expand = c(0,0)\n  )"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#adicionando-resumos-estatísticos",
@@ -1495,7 +1495,7 @@
     "href": "projetos.html",
     "title": "projetos",
     "section": "",
-    "text": "Data\n\n\nTítulo\n\n\nSubtítulo\n\n\n\n\n\n\n07 - 06 - 2022\n\n\ntidytuesday 2022 Semana 23\n\n\nPride Corporate Accountability Project\n\n\n\n\n14 - 01 - 2020\n\n\ntitytuesday 2020 Semana 03\n\n\nPasswords\n\n\n\n\n07 - 01 - 2020\n\n\ntidytuesday 2020 Semana 02\n\n\nAustralian Fires\n\n\n\n\n\n\nSem matches"
+    "text": "Data\n\n\nTítulo\n\n\nSubtítulo\n\n\n\n\n\n\n07 - 06 - 2022\n\n\ntidytuesday 2022 Semana 23\n\n\nPride Corporate Accountability Project\n\n\n\n\n14 - 01 - 2020\n\n\ntidytuesday 2020 Semana 03\n\n\nPasswords\n\n\n\n\n07 - 01 - 2020\n\n\ntidytuesday 2020 Semana 02\n\n\nAustralian Fires\n\n\n\n\n\n\nSem matches"
   },
   {
     "objectID": "index.html",
@@ -1512,18 +1512,18 @@
     "text": "Setup\n\nlibrary(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.1      ✔ purrr   1.0.1 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.5.0 \n✔ readr   2.1.3      ✔ forcats 0.5.2 \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\nlibrary(rvest)\n\n\nAttaching package: 'rvest'\n\nThe following object is masked from 'package:readr':\n\n    guess_encoding\n\nlibrary(ggsvg)\nlibrary(colorspace)\nlibrary(glue)\nlibrary(ggtext)\nlibrary(ragg)\n\n\n\nFunctions\n\nagora <- function() {\n    x <- format(Sys.time(), \"%Y-%m-%d %H%M%S\")\n    return(x)\n}\n\nparse_svg <- function(x) {\n    # Function that parses svg files into text.\n    svg_string <- paste(\n        readLines(x),\n        collapse = \"\\n\"\n    )\n    return(svg_string)\n}\n\n\n\nRead data\n\npride_aggregates <-\n    readr::read_csv(\n        \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-06-07/pride_aggregates.csv\"\n    ) %>%\n    janitor::clean_names()\n\nRows: 31 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): Company\ndbl (3): Total Contributed, # of Politicians Contributed to, # of States Whe...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nfortune_aggregates <-\n    readr::read_csv(\n        \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-06-07/fortune_aggregates.csv\"\n    ) %>%\n    janitor::clean_names()\n\nRows: 117 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): Company\ndbl (3): Total Contributed, # of Politicians Contributed to, # of States Whe...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nstatic_list <-\n    readr::read_csv(\n        \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-06-07/static_list.csv\"\n    ) %>%\n    janitor::clean_names()\n\nRows: 126 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): Company\ndbl (3): Amount Contributed Across States, # of Politicians Contributed to, ...\nlgl (2): Pride?, HRC Business Pledge\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\npride_sponsors <-\n    readr::read_csv(\n        \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-06-07/pride_sponsors.csv\"\n    ) %>%\n    janitor::clean_names()\n\nRows: 364 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (5): Company, Pride Event Sponsored, Sponsorship Amount, where available...\ndbl (1): Year\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\ncorp_by_politician <-\n    readr::read_csv(\n        \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-06-07/corp_by_politician.csv\"\n    ) %>%\n    janitor::clean_names()\n\nRows: 103 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (3): Politician, Title, State\ndbl (1): SUM of Amount\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\ndonors <-\n    readr::read_csv(\n        \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-06-07/donors.csv\"\n    ) %>%\n    janitor::clean_names()\n\nRows: 5497 Columns: 5\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Donor Name, \"True\" Donor - Pride Sponsor Match Only, Pride and Spon...\nlgl (1): \"True\" Donor - Fortune Match Only\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n\nAnalysis\n\nsaturated_palette <- c(\n    \"#fe0000\",\n    \"#fe8d00\",\n    \"#ffee00\",\n    \"#018114\",\n    \"#014cff\",\n    \"#8a018c\"\n)\n\ndesaturated <- darken(saturated_palette, amount = .45)\n\npath <- here::here('projetos','tidytuesday','2022','2022-Week_23')\n\n\n# List svg files from the directory\npath_logos <- dir(path,\n    pattern = \"*.svg\",\n    full.names = TRUE,\n)\n\n# Create an object that contains the svg text of the logos\nimage_logos <- map(path_logos, parse_svg)\n\n# Company names in the correct order for later matching\ncompany_names <- c(\"Amazon\", \"AT&T\", \"Comcast\", \"FedEx\", \"State Farm\", \"Toyota\")\n\n# Set names for the logos\nnames(image_logos) <- company_names\n\n# Create a dataframe with the information\nlogos_df <- bind_rows(image_logos) %>%\n    pivot_longer(1:6) %>%\n    rename(\"company\" = name)\n\n\n\nBinds columns\n\ndf <- pride_aggregates %>%\n    select(company, total_contributed) %>%\n    head(6) %>%\n    mutate(companies = fct_reorder(company, total_contributed)) %>%\n    bind_cols(\"saturated\" = saturated_palette) %>%\n    left_join(logos_df)\n\nJoining, by = \"company\"\n\np <- ggplot() +\n    geom_col(\n        aes(\n            x = df$companies,\n            y = Inf,\n            fill = desaturated\n        ),\n        width = 1\n    ) +\n    geom_col(\n        data = df,\n        aes(\n            x = companies,\n            y = total_contributed,\n            fill = saturated\n        ),\n        width = 1\n    ) +\n    geom_point_svg(\n        data = df,\n        aes(\n            x = companies,\n            y = total_contributed + 80000,\n            svg = value\n        ),\n        size = 20,\n        hjust = .7\n    ) +\n        geom_text(\n            data = df,\n            aes(\n                x = companies,\n                y = total_contributed - 5000,\n                label = paste0(\"U$\", round(total_contributed / 1e3, 0), \" K\")\n            ),\n            color = \"white\",\n            hjust = 1,\n            size = 5\n        ) +\n    scale_fill_identity() +\n        coord_flip() +\n        labs(title = \"Companies that donated money to PRIDE\") +\n        theme_void()\n\np"
   },
   {
-    "objectID": "projetos/tidytuesday/2020/2020 Week 02/index.html",
-    "href": "projetos/tidytuesday/2020/2020 Week 02/index.html",
-    "title": "tidytuesday 2020 Semana 02",
-    "section": "",
-    "text": "library(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.1      ✔ purrr   1.0.1 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.5.0 \n✔ readr   2.1.3      ✔ forcats 0.5.2 \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\nlibrary(here)\n\nhere() starts at /Users/lucas/Dev/quarto-blog\n\nlibrary(lubridate)\n\nLoading required package: timechange\n\nAttaching package: 'lubridate'\n\nThe following objects are masked from 'package:base':\n\n    date, intersect, setdiff, union\n\n\n\nData\n\ntemperature <-\n    readr::read_csv(\n        \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/temperature.csv\"\n    )\n\nRows: 528278 Columns: 5\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): city_name, temp_type, site_name\ndbl  (1): temperature\ndate (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n\nWrangle\n\ncity_temp <- temperature %>%\n    filter(\n        city_name %in% c(\"MELBOURNE\", \"PERTH\", \"SYDNEY\", \"BRISBANE\"),\n        date >= as_date(\"1970-01-01\"),\n        date < as_date(\"2019-01-01\")\n    ) %>%\n    group_by(city_name,\n        year = year(date),\n        month = month(date, label = TRUE)\n    ) %>%\n    summarise(temp = mean(temperature, na.rm = TRUE))\n\n`summarise()` has grouped output by 'city_name', 'year'. You can override using\nthe `.groups` argument.\n\n\n\n\nPlot\n\n#| fig-column: screen-inset\n\nggplot(city_temp, aes(\n    x = year,\n    y = forcats::fct_rev(month),\n    fill = temp\n    )\n) +\n    geom_raster() +\n    scale_fill_viridis_c(option = \"inferno\") +\n    theme_minimal() +\n    theme(\n        text = element_text(family = \"Fira Sans\"),\n        panel.grid = element_blank(),\n        plot.caption = element_text(hjust = 0)\n    ) +\n    facet_wrap(~city_name) +\n    labs(\n        title = \"Australian Cities Temperature Over Time\",\n        subtitle = \"Melbourne has lower mean temperatures in comparison\",\n        y = \"\",\n        x = \"\",\n        fill = \"Average \\ntemperature \\n(°C)\",\n        caption =\n            \"Data: Australian Bureau of Meteorology\\nVis: Lucas C. L. do Carmo\"\n    )"
-  },
-  {
-    "objectID": "projetos/tidytuesday/2020/2020 Week 03/index.html",
-    "href": "projetos/tidytuesday/2020/2020 Week 03/index.html",
-    "title": "titytuesday 2020 Semana 03",
+    "objectID": "projetos/tidytuesday/2020/2020-Week_03/index.html",
+    "href": "projetos/tidytuesday/2020/2020-Week_03/index.html",
+    "title": "tidytuesday 2020 Semana 03",
     "section": "",
     "text": "library(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.1      ✔ purrr   1.0.1 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.5.0 \n✔ readr   2.1.3      ✔ forcats 0.5.2 \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\nlibrary(stringr)\nlibrary(janitor)\n\n\nAttaching package: 'janitor'\n\nThe following objects are masked from 'package:stats':\n\n    chisq.test, fisher.test\n\n\n\nData\n\npasswords <-\n    readr::read_csv(\n        \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-14/passwords.csv\"\n    ) %>%\n    remove_empty(\"rows\")\n\nRows: 507 Columns: 9\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (3): password, category, time_unit\ndbl (6): rank, value, offline_crack_sec, rank_alt, strength, font_size\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n\nWrangle\n\npass <- passwords %>%\n    mutate(char_category = case_when(\n        str_detect(.$password, pattern = \"^[a-z]+$\") ~ \"Only Lowercase\",\n        str_detect(.$password, pattern = \"^[0-9]+$\") ~ \"Only Numeric\",\n        str_detect(.$password, pattern = \"[:alnum:]\") ~ \"Alphanumeric\",\n        str_detect(.$password, pattern = \"[:punct:]\") ~ \"With Punctuation\",\n    )) %>%\n    select(password, char_category, strength)\n\n\n\nPlot\n\nggplot(pass, aes(\n    x = char_category,\n    y = strength,\n    color = char_category\n)) +\n    geom_violin(fill = NA) +\n    geom_jitter(width = 0.1, alpha = 0.3, size = 0.8) +\n    theme(\n        panel.background = element_rect(fill = \"#132124\", color = NULL),\n        panel.grid = element_blank(),\n        panel.border = element_blank(),\n        legend.position = \"none\",\n        text = element_text(family = \"Fira Code\", color = \"white\"),\n        axis.text = element_text(color = \"white\"),\n        plot.title = element_text(lineheight = 1),\n        plot.background = element_rect(fill = \"#132125\", color = NULL),\n        plot.caption = element_text(hjust = 0)\n    ) +\n    scale_color_manual(values = c(\"#d33682\", \"#268bd2\", \"#2aa198\")) +\n    coord_flip() +\n    labs(\n        y = \"\\nStrength\",\n        x = \"\",\n        title = \"Top 500 passwords do not \\nfollow security recommendations\",\n        caption = \"\\nData: Information is beautiful | Viz: @carmo_lcl\"\n    ) +\n    annotate(\n        geom = \"text\", x = 2, y = 20,\n        label = \n        \"Passwords containing only letters \\n\n        or words are not as strong and more \\n\n        frequent than passwords containing \\n\n        a combination of these elements\",\n        family = \"Courier\", color = \"white\", hjust = \"left\", size = 3\n    )"
+  },
+  {
+    "objectID": "projetos/tidytuesday/2020/2020-Week_02/index.html",
+    "href": "projetos/tidytuesday/2020/2020-Week_02/index.html",
+    "title": "tidytuesday 2020 Semana 02",
+    "section": "",
+    "text": "library(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.1      ✔ purrr   1.0.1 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.5.0 \n✔ readr   2.1.3      ✔ forcats 0.5.2 \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\nlibrary(here)\n\nhere() starts at /Users/lucas/Dev/quarto-blog\n\nlibrary(lubridate)\n\nLoading required package: timechange\n\nAttaching package: 'lubridate'\n\nThe following objects are masked from 'package:base':\n\n    date, intersect, setdiff, union\n\n\n\nData\n\ntemperature <-\n    readr::read_csv(\n        \"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-07/temperature.csv\"\n    )\n\nRows: 528278 Columns: 5\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (3): city_name, temp_type, site_name\ndbl  (1): temperature\ndate (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\n\nWrangle\n\ncity_temp <- temperature %>%\n    filter(\n        city_name %in% c(\"MELBOURNE\", \"PERTH\", \"SYDNEY\", \"BRISBANE\"),\n        date >= as_date(\"1970-01-01\"),\n        date < as_date(\"2019-01-01\")\n    ) %>%\n    group_by(city_name,\n        year = year(date),\n        month = month(date, label = TRUE)\n    ) %>%\n    summarise(temp = mean(temperature, na.rm = TRUE))\n\n`summarise()` has grouped output by 'city_name', 'year'. You can override using\nthe `.groups` argument.\n\n\n\n\nPlot\n\nggplot(city_temp, aes(\n    x = year,\n    y = forcats::fct_rev(month),\n    fill = temp\n    )\n) +\n    geom_raster() +\n    scale_fill_viridis_c(option = \"inferno\") +\n    theme_minimal() +\n    theme(\n        text = element_text(family = \"Fira Sans\"),\n        panel.grid = element_blank(),\n        plot.caption = element_text(hjust = 0)\n    ) +\n    facet_wrap(~city_name) +\n    labs(\n        title = \"Australian Cities Temperature Over Time\",\n        subtitle = \"Melbourne has lower mean temperatures in comparison\",\n        y = \"\",\n        x = \"\",\n        fill = \"Average \\ntemperature \\n(°C)\",\n        caption =\n            \"Data: Australian Bureau of Meteorology\\nVis: Lucas C. L. do Carmo\"\n    )"
   },
   {
     "objectID": "blog.html",
@@ -1531,5 +1531,89 @@
     "title": "blog",
     "section": "",
     "text": "Ordenar por\n       Default\n         \n          Título\n        \n         \n          Data - Mais antigo\n        \n         \n          Data - Mais novo\n        \n         \n          Autor\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\nComo criar eixos secundários no ggplot2\n\n\n\n\n\n\n\nggplot2\n\n\ndataviz\n\n\n\n\n\n\n\n\n\n\n\n11 - 02 - 2023\n\n\nLucas Carmo\n\n\n\n\n\n\n  \n\n\n\n\nUsando o PowerToys para criar tarefas no ClickUp\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n\n\n14 - 07 - 2022\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#section",
+    "href": "apresentacoes/Aula3/index.html#section",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "",
+    "text": "Não se esqueça de atribuir o resultado desta função a um objeto com um nome significativo.\nEx:\n\ncalibracao_HPLC <- read_csv(\"Pasta/para/Arquivo.csv\")"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas",
+    "href": "apresentacoes/Aula3/index.html#camadas",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-1",
+    "href": "apresentacoes/Aula3/index.html#camadas-1",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-2",
+    "href": "apresentacoes/Aula3/index.html#camadas-2",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-3",
+    "href": "apresentacoes/Aula3/index.html#camadas-3",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-4",
+    "href": "apresentacoes/Aula3/index.html#camadas-4",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-5",
+    "href": "apresentacoes/Aula3/index.html#camadas-5",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-6",
+    "href": "apresentacoes/Aula3/index.html#camadas-6",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-7",
+    "href": "apresentacoes/Aula3/index.html#camadas-7",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula3/index.html#camadas-8",
+    "href": "apresentacoes/Aula3/index.html#camadas-8",
+    "title": "Aula 3 - Manipulando dataframes e gráficos",
+    "section": "Camadas",
+    "text": "Camadas"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#video-aula",
+    "href": "apresentacoes/Aula5/index.html#video-aula",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "Video Aula",
+    "text": "Video Aula"
+  },
+  {
+    "objectID": "apresentacoes/Aula5/index.html#background-iframehttpswww.youtube.comembedvmx_arukrgo-back",
+    "href": "apresentacoes/Aula5/index.html#background-iframehttpswww.youtube.comembedvmx_arukrgo-back",
+    "title": "Aula 5 - Gráficos com ggplot2",
+    "section": "{background-iframe=“https://www.youtube.com/embed/vMx_ARUkRGo” back}",
+    "text": "{background-iframe=“https://www.youtube.com/embed/vMx_ARUkRGo” back}"
   }
 ]
