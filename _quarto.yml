@@ -8,18 +8,16 @@ website:
   cookie-consent:
     express: true
   reader-mode: true
-  site-url: "https://www.lucascarmo.com.br"
+  site-url: "https://blog.lucascarmo.com.br"
   title: "lucas carmo"
   navbar:
     left:
     - blog.qmd
-    - about.qmd
     - apresentacoes.qmd
+    - projetos.qmd
     right:
       - icon: youtube
         href: https://www.youtube.com/channel/UC2t8dH8YZhnhDMQFteI0Crw
-      - icon: github
-        href: https://github.com/carmo-lucas
       - icon: twitter
         href: https://twitter.com/carmo_lcl
       - icon: linkedin
@@ -27,12 +25,15 @@ website:
   page-footer:
     border: true
     left: "Copyright 2023, Lucas Carmo" 
+    right:
+      - icon: github
+        href: https://github.com/carmo-lucas
 format:
   html:
     theme: 
       light: [cosmo, mystyle.scss]
     code-overflow: scroll
-    code-copy: true
+    code-copy: hover
     code-fold: true
     code-line-numbers: true
 execute:

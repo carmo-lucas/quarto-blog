@@ -1,0 +1,13 @@
+---
+title: "projetos"
+listing:
+    sort: "date desc"
+    sort-ui: false
+    fields: [date, title, subtitle]
+    type: table
+    contents: "projetos"
+page-layout: full
+title-block-banner: false
+date-format: "DD - MM - YYYY"
+---
+

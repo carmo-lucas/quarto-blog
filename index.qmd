@@ -6,22 +6,42 @@ date-format: "DD - MM - YYYY"
 
 ---
 
+
 ::: {.grid}
-::: {.g-col-lg-4 .g-col-12}
 
-Nesta coluna 1 você irá ser direcionada para o blog
+::: {.g-col-4}
+
+## [{{< fa book >}}](blog.qmd) Blog
+
+Meu blog está iniciando e há muitas postagens que ainda estão apenas na minha cabeça.
+Porém, pelo menos uma vez por semana pretendo escrever algo relacionado a R ou 
+a alguma outra ferramenta.
+
+[Postagens](blog.qmd){.btn .btn-primary}
 
 :::
 
-::: {.g-col-lg-4 .g-col-12}
+::: {.g-col-4}
 
-Nesta coluna 2 você irá ser direcionado para as apresentações
+## [{{< fa display >}}](apresentacoes.qmd) Apresentações
+
+Por algum tempo tentei dar aulas de R para colegas do mestrado, nesta seção você poderá
+encontrar as aulas que ministrei junto com os slides.
+Estão em processo de atualização.
+
+[Apresentações](apresentacoes.qmd){.btn .btn-primary}
 
 :::
 
-::: {.g-col-lg-4 .g-col-12}
+::: {.g-col-4}
 
-Na coluna 3 você irá ser direcionado para alguma outra coisa talvez os sites e links
+## [{{< fa diagram-project >}}](projetos.qmd) Projetos
+
+Aqui você encontra alguns de meus projetos que podem ou não estar acabados.
+Vou procurar manter o projeto do [tidytuesday](https://github.com/rfordatascience/tidytuesday)
+atualizado nesta seção, assim como outros projetos de desenvolvimento.
+
+[Projetos](projetos.qmd){.btn .btn-primary}
 
 :::
 
