@@ -10,6 +10,5 @@ listing:
     contents: "apresentacoes"
 page-layout: full
 title-block-banner: false
-date-format: "DD - MM - YYYY"
 ---
 

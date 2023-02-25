@@ -31,7 +31,7 @@ website:
 format:
   html:
     theme: 
-      light: [cosmo, mystyle.scss]
+      light: [flatly, mystyle.scss]
     code-overflow: scroll
     code-copy: hover
     code-fold: true
@@ -40,4 +40,4 @@ execute:
   freeze: auto
 language: _pt-BR-personalizado.yml
 smooth-scroll: true
-date-format: 'DD - MMM - YYYY'
+date-format: "YYYY - MM - DD"

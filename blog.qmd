@@ -3,7 +3,6 @@ title: "blog"
 page-layout: full
 image-shape: rounded
 title-block-banner: false
-date-format: "DD - MM - YYYY"
 listing:
   contents: posts
   sort: "date desc"

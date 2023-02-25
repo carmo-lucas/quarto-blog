@@ -8,6 +8,6 @@ listing:
     contents: "projetos"
 page-layout: full
 title-block-banner: false
-date-format: "DD - MM - YYYY"
+
 ---
 

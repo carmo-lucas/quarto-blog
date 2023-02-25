@@ -1,47 +1,72 @@
 ---
-title: "home"
+title: ""
 page-layout: full
 title-block-banner: false
-date-format: "DD - MM - YYYY"
 ---
 
+<div class='grid'>
 
-::: {.grid}
+<div class="g-col-12 g-col-lg-4">
 
-::: {.g-col-4}
+<div class='card h-100' style='max-width: 600px;'>
+<img src='https://images.unsplash.com/photo-1550592704-6c76defa9985?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80' class='card-img-top img-fluid'>
+<div class='card-body'>
 
-## [{{< fa book >}}](blog.qmd) Blog
+<h2 class='card-title'> {{< fa book >}} Blog</h2>
 
+<p class='card-text'>
 Meu blog está iniciando e há muitas postagens que ainda estão apenas na minha cabeça.
 Porém, pelo menos uma vez por semana pretendo escrever algo relacionado a R ou 
 a alguma outra ferramenta.
+</p>
 
-[Postagens](blog.qmd){.btn .btn-primary}
 
-:::
+</div>
+<div class='card-footer bg-light'>
+<a href='blog.qmd'>Postagens</a>
+</div>
+</div>
+</div>
 
-::: {.g-col-4}
 
-## [{{< fa display >}}](apresentacoes.qmd) Apresentações
+<div class="g-col-12 g-col-lg-4">
 
-Por algum tempo tentei dar aulas de R para colegas do mestrado, nesta seção você poderá
+<div class='card h-100' style='max-width: 600px;'>
+<img src='https://images.unsplash.com/photo-1554752191-343d87d6c28f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3008&q=80' class='card-img-top img-fluid'>
+<div class='card-body'>
+
+<h2 class='card-title'> {{< fa display >}} Apresentações</h2>
+
+<p>Por algum tempo tentei dar aulas de R para colegas do mestrado, nesta seção você poderá
 encontrar as aulas que ministrei junto com os slides.
 Estão em processo de atualização.
+</p>
 
-[Apresentações](apresentacoes.qmd){.btn .btn-primary}
 
-:::
+</div>
+<div class='card-footer bg-light'>
+<a href='apresentacoes.qmd'>Apresentações</a>
+</div>
+</div>
+</div>
 
-::: {.g-col-4}
+<div class="g-col-12 g-col-lg-4">
 
-## [{{< fa diagram-project >}}](projetos.qmd) Projetos
-
+<div class='card h-100' style='max-width: 600px;'>
+<img src='https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2338&q=80' class='card-img-top img-fluid'>
+<div class='card-body'>
+<h2 class='card-title'> {{< fa diagram-project >}} Projetos</h2>
+<p class='card-text'>
 Aqui você encontra alguns de meus projetos que podem ou não estar acabados.
 Vou procurar manter o projeto do [tidytuesday](https://github.com/rfordatascience/tidytuesday)
 atualizado nesta seção, assim como outros projetos de desenvolvimento.
+</p>
 
-[Projetos](projetos.qmd){.btn .btn-primary}
+</div>
+<div class='card-footer bg-light'>
+<a href='projetos.qmd'>Projetos</a>
+</div>
+</div>
+</div>
+</div>
 
-:::
-
-:::
