@@ -8,7 +8,7 @@ website:
   cookie-consent:
     express: true
   reader-mode: true
-  site-url: "https://blog.lucascarmo.com.br"
+  site-url: "https://lucascarmo.com.br"
   title: "lucas carmo"
   navbar:
     left:

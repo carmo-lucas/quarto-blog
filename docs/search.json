@@ -1594,26 +1594,5 @@
     "title": "blog",
     "section": "",
     "text": "Ordenar por\n       Default\n         \n          Título\n        \n         \n          Data - Mais antigo\n        \n         \n          Data - Mais novo\n        \n         \n          Autor\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\nComo criar eixos secundários no ggplot2\n\n\n\n\n\n\n\nggplot2\n\n\ndataviz\n\n\n\n\n\n\n\n\n\n\n\n2023 - 02 - 11\n\n\nLucas Carmo\n\n\n\n\n\n\n  \n\n\n\n\nUsando o PowerToys para criar tarefas no ClickUp\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n\n\n2022 - 07 - 14\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
-  },
-  {
-    "objectID": "index.html#fa-book-blog",
-    "href": "index.html#fa-book-blog",
-    "title": "lucas carmo",
-    "section": " Blog",
-    "text": "Blog\nMeu blog está iniciando e há muitas postagens que ainda estão apenas na minha cabeça. Porém, pelo menos uma vez por semana pretendo escrever algo relacionado a R ou a alguma outra ferramenta.\nPostagens"
-  },
-  {
-    "objectID": "index.html#fa-display-apresentações",
-    "href": "index.html#fa-display-apresentações",
-    "title": "lucas carmo",
-    "section": " Apresentações",
-    "text": "Apresentações\nPor algum tempo tentei dar aulas de R para colegas do mestrado, nesta seção você poderá encontrar as aulas que ministrei junto com os slides. Estão em processo de atualização.\nApresentações"
-  },
-  {
-    "objectID": "index.html#fa-diagram-project-projetos",
-    "href": "index.html#fa-diagram-project-projetos",
-    "title": "lucas carmo",
-    "section": " Projetos",
-    "text": "Projetos\nAqui você encontra alguns de meus projetos que podem ou não estar acabados. Vou procurar manter o projeto do tidytuesday atualizado nesta seção, assim como outros projetos de desenvolvimento.\nProjetos"
   }
 ]
