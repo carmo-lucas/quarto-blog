@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>lucas carmo</title>
-<link>https://blog.lucascarmo.com.br/blog.html</link>
-<atom:link href="https://blog.lucascarmo.com.br/blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://lucascarmo.com.br/blog.html</link>
+<atom:link href="https://lucascarmo.com.br/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.2.313</generator>
 <lastBuildDate>Sat, 11 Feb 2023 03:00:00 GMT</lastBuildDate>
 <item>
   <title>Como criar eixos secundários no ggplot2</title>
   <dc:creator>Lucas Carmo</dc:creator>
-  <link>https://blog.lucascarmo.com.br/posts/eixos-secundarios/index.html</link>
+  <link>https://lucascarmo.com.br/posts/eixos-secundarios/index.html</link>
   <description><![CDATA[ 
 
 
@@ -55,7 +55,7 @@
 <div class="cell-output-display page-columns page-full">
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
-<p><img src="https://blog.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/gráfico-base-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/gráfico-base-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption margin-caption">Gráfico base criado com valores aleatórios.</figcaption><p></p>
 </figure>
 </div>
@@ -73,7 +73,7 @@
 <div class="cell-output-display">
 <div id="fig-sec-axis-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://blog.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-1.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
+<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-1.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
 <p></p><figcaption class="figure-caption">(a) dup_axis()</figcaption><p></p>
 </figure>
 </div>
@@ -81,7 +81,7 @@
 <div class="cell-output-display">
 <div id="fig-sec-axis-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://blog.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-2.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
+<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-2.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
 <p></p><figcaption class="figure-caption">(b) sec_axis(~ log10(y))</figcaption><p></p>
 </figure>
 </div>
@@ -115,7 +115,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://blog.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Função seno vs função exponencial</figcaption><p></p>
 </figure>
 </div>
@@ -137,7 +137,7 @@
 <div class="cell-output-display">
 <div id="fig-coeficiente" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="https://blog.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-coeficiente-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-coeficiente-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Figura&nbsp;2: Utilização de um coeficiente com valor constante para transformar os dados e a escala do eixo secundário.</figcaption><p></p>
 </figure>
 </div>
@@ -179,7 +179,7 @@
 <span id="cb6-5">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"exp(x)"</span>, <span class="at" style="color: #657422;">title =</span> <span class="fu" style="color: #4758AB;">paste</span>(<span class="st" style="color: #20794D;">"Coeficiente = "</span>, coeficiente_calculado))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://blog.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Porém o desafio é implementar o cálculo do coeficiente diretamente na construção do gráfico e também há o problema da ordem das variáveis na função.</p>
@@ -201,7 +201,7 @@
 <span id="cb7-8">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"exp(x)"</span>, <span class="at" style="color: #657422;">title =</span> <span class="fu" style="color: #4758AB;">paste</span>(<span class="st" style="color: #20794D;">"Coeficiente = "</span>, coef2))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://blog.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Para resolver isso pode-se adicionar um bloco na função <code>calcular_coeficiente()</code> que verifica se <img src="https://latex.codecogs.com/png.latex?0%3Ccoef%3C1"> e inverter o valor se necessário, essa função nova será chamada: <code>calcular_coeficiente_smart()</code>.</p>
@@ -296,7 +296,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://blog.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Executando a função criada acima com os argumentos necessários</figcaption><p></p>
 </figure>
 </div>
@@ -323,7 +323,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://blog.lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/final-customizations-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/final-customizations-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Adição do eixo x secundário e linhas de referência</figcaption><p></p>
 </figure>
 </div>
@@ -337,13 +337,13 @@
  ]]></description>
   <category>ggplot2</category>
   <category>dataviz</category>
-  <guid>https://blog.lucascarmo.com.br/posts/eixos-secundarios/index.html</guid>
+  <guid>https://lucascarmo.com.br/posts/eixos-secundarios/index.html</guid>
   <pubDate>Sat, 11 Feb 2023 03:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Usando o PowerToys para criar tarefas no ClickUp</title>
   <dc:creator>Lucas Carmo</dc:creator>
-  <link>https://blog.lucascarmo.com.br/posts/powertoys-run/index.html</link>
+  <link>https://lucascarmo.com.br/posts/powertoys-run/index.html</link>
   <description><![CDATA[ 
 
 
@@ -417,7 +417,7 @@
 <p>O PowerToys Run é capaz de executar commandos no prompt <code>cmd</code> automaticamente através da sua interface usando <code>&gt;</code> como prefixo.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://blog.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" class="img-fluid figure-img" alt="screenshot a interface do powertoys run"></p>
+<p><img src="https://lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" class="img-fluid figure-img" alt="screenshot a interface do powertoys run"></p>
 <p></p><figcaption class="figure-caption">Prompt do PowerToys Run</figcaption><p></p>
 </figure>
 </div>
@@ -447,7 +447,7 @@
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://blog.lucascarmo.com.br/posts/powertoys-run/n8nexample.png" class="img-fluid figure-img" alt="screenshot da interface de um exemplo de workflow do n8n"></p>
+<p><img src="https://lucascarmo.com.br/posts/powertoys-run/n8nexample.png" class="img-fluid figure-img" alt="screenshot da interface de um exemplo de workflow do n8n"></p>
 <p></p><figcaption class="figure-caption">Exemplo de workflow do n8n</figcaption><p></p>
 </figure>
 </div>
@@ -461,9 +461,9 @@
   <category>powertoys</category>
   <category>n8n</category>
   <category>clickup</category>
-  <guid>https://blog.lucascarmo.com.br/posts/powertoys-run/index.html</guid>
+  <guid>https://lucascarmo.com.br/posts/powertoys-run/index.html</guid>
   <pubDate>Thu, 14 Jul 2022 03:00:00 GMT</pubDate>
-  <media:content url="https://blog.lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" medium="image" type="image/png" height="45" width="144"/>
+  <media:content url="https://lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" medium="image" type="image/png" height="45" width="144"/>
 </item>
 </channel>
 </rss>
