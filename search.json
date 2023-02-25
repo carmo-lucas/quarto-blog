@@ -4,7 +4,7 @@
     "href": "apresentacoes.html",
     "title": "apresentações",
     "section": "",
-    "text": "Aula 6 - Organizando suas análises\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n28 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAula 5 - Gráficos com ggplot2\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n22 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAula 3 - Manipulando dataframes e gráficos\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n05 - 10 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nAula 2 - Funções e Manipulação de Objetos\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n30 - 09 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nAula 1 - Instalação e introdução ao R\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n22 - 09 - 2020\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nCosmetic emulsion physical stability screening by means of rheology\n\n\nMaster’s Dissertation Defense\n\n\n\nLucas Chagas Lima do Carmo\n\n\n16 - 03 - 2020\n\n\n\n\n\n\n\n\nSem matches"
+    "text": "Aula 6 - Organizando suas análises\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n2020 - 10 - 28\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAula 5 - Gráficos com ggplot2\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n2020 - 10 - 22\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAula 3 - Manipulando dataframes e gráficos\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n2020 - 10 - 05\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nAula 2 - Funções e Manipulação de Objetos\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n2020 - 09 - 30\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nAula 1 - Instalação e introdução ao R\n\n\n\n\n\n\nLucas C. L. do Carmo\n\n\n2020 - 09 - 22\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nCosmetic emulsion physical stability screening by means of rheology\n\n\nMaster’s Dissertation Defense\n\n\n\nLucas Chagas Lima do Carmo\n\n\n2020 - 03 - 16\n\n\n\n\n\n\n\n\nSem matches"
   },
   {
     "objectID": "posts/eixos-secundarios/index.html#adequação-da-função-de-cálculo-dos-coeficientes",
@@ -1558,14 +1558,14 @@
     "href": "projetos.html",
     "title": "projetos",
     "section": "",
-    "text": "Data\n\n\nTítulo\n\n\nSubtítulo\n\n\n\n\n\n\n07 - 06 - 2022\n\n\ntidytuesday 2022 Semana 23\n\n\nPride Corporate Accountability Project\n\n\n\n\n14 - 01 - 2020\n\n\ntidytuesday 2020 Semana 03\n\n\nPasswords\n\n\n\n\n07 - 01 - 2020\n\n\ntidytuesday 2020 Semana 02\n\n\nAustralian Fires\n\n\n\n\n\n\nSem matches"
+    "text": "Data\n\n\nTítulo\n\n\nSubtítulo\n\n\n\n\n\n\n2022 - 06 - 07\n\n\ntidytuesday 2022 Semana 23\n\n\nPride Corporate Accountability Project\n\n\n\n\n2020 - 01 - 14\n\n\ntidytuesday 2020 Semana 03\n\n\nPasswords\n\n\n\n\n2020 - 01 - 07\n\n\ntidytuesday 2020 Semana 02\n\n\nAustralian Fires\n\n\n\n\n\n\nSem matches"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "home",
+    "title": "lucas carmo",
     "section": "",
-    "text": "Meu blog está iniciando e há muitas postagens que ainda estão apenas na minha cabeça. Porém, pelo menos uma vez por semana pretendo escrever algo relacionado a R ou a alguma outra ferramenta.\nPostagens\n\n\n\nPor algum tempo tentei dar aulas de R para colegas do mestrado, nesta seção você poderá encontrar as aulas que ministrei junto com os slides. Estão em processo de atualização.\nApresentações\n\n\n\nAqui você encontra alguns de meus projetos que podem ou não estar acabados. Vou procurar manter o projeto do tidytuesday atualizado nesta seção, assim como outros projetos de desenvolvimento.\nProjetos"
+    "text": "Blog\n\n\nMeu blog está iniciando e há muitas postagens que ainda estão apenas na minha cabeça. Porém, pelo menos uma vez por semana pretendo escrever algo relacionado a R ou a alguma outra ferramenta.\n\n\n\nPostagens\n\n\n\n\n\n\n\n\n Apresentações\n\n\nPor algum tempo tentei dar aulas de R para colegas do mestrado, nesta seção você poderá encontrar as aulas que ministrei junto com os slides. Estão em processo de atualização.\n\n\n\nApresentações\n\n\n\n\n\n\n\n\n Projetos\n\n\nAqui você encontra alguns de meus projetos que podem ou não estar acabados. Vou procurar manter o projeto do tidytuesday atualizado nesta seção, assim como outros projetos de desenvolvimento.\n\n\n\nProjetos"
   },
   {
     "objectID": "projetos/tidytuesday/2022/2022-Week_23/index.html",
@@ -1593,6 +1593,6 @@
     "href": "blog.html",
     "title": "blog",
     "section": "",
-    "text": "Ordenar por\n       Default\n         \n          Título\n        \n         \n          Data - Mais antigo\n        \n         \n          Data - Mais novo\n        \n         \n          Autor\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\nComo criar eixos secundários no ggplot2\n\n\n\n\n\n\n\nggplot2\n\n\ndataviz\n\n\n\n\n\n\n\n\n\n\n\n11 - 02 - 2023\n\n\nLucas Carmo\n\n\n\n\n\n\n  \n\n\n\n\nUsando o PowerToys para criar tarefas no ClickUp\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n\n\n14 - 07 - 2022\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
+    "text": "Ordenar por\n       Default\n         \n          Título\n        \n         \n          Data - Mais antigo\n        \n         \n          Data - Mais novo\n        \n         \n          Autor\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\n\nComo criar eixos secundários no ggplot2\n\n\n\n\n\n\n\nggplot2\n\n\ndataviz\n\n\n\n\n\n\n\n\n\n\n\n2023 - 02 - 11\n\n\nLucas Carmo\n\n\n\n\n\n\n  \n\n\n\n\nUsando o PowerToys para criar tarefas no ClickUp\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n\n\n2022 - 07 - 14\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
   }
 ]
