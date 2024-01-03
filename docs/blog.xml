@@ -9,7 +9,7 @@
 <link>https://lucascarmo.com.br/blog.html</link>
 <atom:link href="https://lucascarmo.com.br/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.2.313</generator>
+<generator>quarto-1.3.450</generator>
 <lastBuildDate>Sat, 11 Feb 2023 03:00:00 GMT</lastBuildDate>
 <item>
   <title>Como criar eixos secundários no ggplot2</title>
@@ -38,17 +38,71 @@
 <div class="cell page-columns page-full">
 <details>
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(ggplot2)</span>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
 <span id="cb1-2"></span>
-<span id="cb1-3">dataframe <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(</span>
-<span id="cb1-4">  <span class="at" style="color: #657422;">x =</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">10</span>,</span>
-<span id="cb1-5">  <span class="at" style="color: #657422;">y =</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">10</span> <span class="sc" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;">rnorm</span>(<span class="dv" style="color: #AD0000;">10</span>, <span class="at" style="color: #657422;">mean =</span> <span class="dv" style="color: #AD0000;">4</span>, <span class="at" style="color: #657422;">sd =</span> <span class="dv" style="color: #AD0000;">2</span>)</span>
+<span id="cb1-3">dataframe <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb1-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>,</span>
+<span id="cb1-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sd =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
 <span id="cb1-6">)</span>
 <span id="cb1-7"></span>
 <span id="cb1-8"></span>
-<span id="cb1-9">p <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="at" style="color: #657422;">data =</span> dataframe) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-10">        <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> x, <span class="at" style="color: #657422;">y =</span> y) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-11">        <span class="fu" style="color: #4758AB;">geom_point</span>()</span>
+<span id="cb1-9">p <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> dataframe) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-10">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> y) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-11">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>()</span>
 <span id="cb1-12"></span>
 <span id="cb1-13">p</span></code></pre></div>
 </details>
@@ -56,7 +110,7 @@
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/gráfico-base-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption margin-caption">Gráfico base criado com valores aleatórios.</figcaption><p></p>
+<figcaption class="figure-caption margin-caption">Gráfico base criado com valores aleatórios.</figcaption>
 </figure>
 </div>
 </div>
@@ -67,14 +121,38 @@
 <figure class="figure">
 <details>
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1">p <span class="sc" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">dup_axis</span>())</span>
-<span id="cb2-2">p <span class="sc" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;">~</span> <span class="fu" style="color: #4758AB;">log10</span>(.), <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"log(y)"</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1">p <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dup_axis</span>())</span>
+<span id="cb2-2">p <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">log10</span>(.), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"log(y)"</span>))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-sec-axis-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-1.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
-<p></p><figcaption class="figure-caption">(a) dup_axis()</figcaption><p></p>
+<figcaption class="figure-caption">(a) dup_axis()</figcaption>
 </figure>
 </div>
 </div>
@@ -82,11 +160,11 @@
 <div id="fig-sec-axis-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-2.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
-<p></p><figcaption class="figure-caption">(b) sec_axis(~ log10(y))</figcaption><p></p>
+<figcaption class="figure-caption">(b) sec_axis(~ log10(y))</figcaption>
 </figure>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figura&nbsp;1: Adição de eixos y secundários no lado direito.</figcaption><p></p>
+<figcaption class="figure-caption">Figura&nbsp;1: Adição de eixos y secundários no lado direito.</figcaption>
 </figure>
 </div>
 <p>Veja que ao criar um eixo secundário usando <code>sec_axis()</code> é possível aplicar uma transformação na escala do eixo. No exemplo acima foi aplicado a transformação <img src="https://latex.codecogs.com/png.latex?%5Clog_%7B10%7D%20y"> porem podem ser aplicadas outras transformações lineares, como multiplicação, exponenciação, soma, divisão etc.</p>
@@ -97,18 +175,98 @@
 <div class="cell">
 <details>
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1">x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="at" style="color: #657422;">from =</span> <span class="dv" style="color: #AD0000;">0</span>, <span class="at" style="color: #657422;">to =</span> <span class="dv" style="color: #AD0000;">2</span><span class="sc" style="color: #5E5E5E;">*</span>pi , <span class="at" style="color: #657422;">by =</span> <span class="fl" style="color: #AD0000;">0.05</span>)</span>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1">x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">from =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">to =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>pi , <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>)</span>
 <span id="cb3-2"></span>
-<span id="cb3-3">df <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(</span>
-<span id="cb3-4">  <span class="at" style="color: #657422;">x =</span> x,</span>
-<span id="cb3-5">  <span class="at" style="color: #657422;">seno =</span> <span class="fu" style="color: #4758AB;">sin</span>(x),</span>
-<span id="cb3-6">  <span class="at" style="color: #657422;">exponencial =</span> <span class="fu" style="color: #4758AB;">exp</span>(x)</span>
+<span id="cb3-3">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb3-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> x,</span>
+<span id="cb3-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">seno =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sin</span>(x),</span>
+<span id="cb3-6">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">exponencial =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">exp</span>(x)</span>
 <span id="cb3-7">)</span>
 <span id="cb3-8"></span>
-<span id="cb3-9">p <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">ggplot</span>(df, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> x)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb3-10">        <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> seno), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"firebrick"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb3-11">        <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> exponencial), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"royalblue"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb3-12">        <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"sin x"</span>)</span>
+<span id="cb3-9">p <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> x)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-10">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> seno), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"firebrick"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-11">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> exponencial), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"royalblue"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-12">        <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sin x"</span>)</span>
 <span id="cb3-13"></span>
 <span id="cb3-14">p</span></code></pre></div>
 </details>
@@ -116,7 +274,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Função seno vs função exponencial</figcaption><p></p>
+<figcaption class="figure-caption">Função seno vs função exponencial</figcaption>
 </figure>
 </div>
 </div>
@@ -126,19 +284,93 @@
 <p>Os valores dos dados e os valores da escala são independentes. Para que eles sejam</p>
 <p>Isso precisa ser feito ‘manualmente’, portanto é necessário transformar os dados de uma das séries de dados através de uma transformação linear.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1">coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">2500</span></span>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1">coeficiente <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2500</span></span>
 <span id="cb4-2"></span>
-<span id="cb4-3"><span class="fu" style="color: #4758AB;">ggplot</span>(df, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> x)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-4">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> seno <span class="sc" style="color: #5E5E5E;">*</span> coeficiente), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"firebrick"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-5">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> exponencial), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"royalblue"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-6">  <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;">~</span> . <span class="sc" style="color: #5E5E5E;">/</span> coeficiente, <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"sin(x)"</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb4-7">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"exp(x)"</span>,</span>
-<span id="cb4-8">       <span class="at" style="color: #657422;">title =</span> <span class="fu" style="color: #4758AB;">paste</span>(<span class="st" style="color: #20794D;">"Coeficiente = "</span>, coeficiente))</span></code></pre></div>
+<span id="cb4-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> x)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> seno <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> coeficiente), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"firebrick"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> exponencial), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"royalblue"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> . <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> coeficiente, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sin(x)"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"exp(x)"</span>,</span>
+<span id="cb4-8">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Coeficiente = "</span>, coeficiente))</span></code></pre></div>
 <div class="cell-output-display">
 <div id="fig-coeficiente" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-coeficiente-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figura&nbsp;2: Utilização de um coeficiente com valor constante para transformar os dados e a escala do eixo secundário.</figcaption><p></p>
+<figcaption class="figure-caption">Figura&nbsp;2: Utilização de um coeficiente com valor constante para transformar os dados e a escala do eixo secundário.</figcaption>
 </figure>
 </div>
 </div>
@@ -152,31 +384,151 @@
 <p>Nos exemplos anteriores chegamos em um coeficiente razoável de forma manual, testando valores e chegamos no valor de 2500 como sendo bom o suficiente para a aplicação.</p>
 <p>Para calcularmos um coeficiente de forma programática podemos escrever uma função, que aceita todos os dados e nos retorna um valor, baseado em operações aritmméticas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1">calcular_coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(dados, var_1, var_2){</span>
-<span id="cb5-2">    parametros <span class="ot" style="color: #003B4F;">&lt;-</span> dados <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
-<span id="cb5-3">      dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">summarise</span>(</span>
-<span id="cb5-4">        <span class="at" style="color: #657422;">max_var_1 =</span> <span class="fu" style="color: #4758AB;">max</span>({{ var_1 }}),</span>
-<span id="cb5-5">        <span class="at" style="color: #657422;">min_var_1 =</span> <span class="fu" style="color: #4758AB;">min</span>({{ var_1 }}),</span>
-<span id="cb5-6">        <span class="at" style="color: #657422;">max_var_2 =</span> <span class="fu" style="color: #4758AB;">max</span>({{ var_2 }}),</span>
-<span id="cb5-7">        <span class="at" style="color: #657422;">min_var_2 =</span> <span class="fu" style="color: #4758AB;">min</span>({{ var_2 }})</span>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1">calcular_coeficiente <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(dados, var_1, var_2){</span>
+<span id="cb5-2">    parametros <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dados <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb5-3">      dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb5-4">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">max_var_1 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>({{ var_1 }}),</span>
+<span id="cb5-5">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">min_var_1 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>({{ var_1 }}),</span>
+<span id="cb5-6">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">max_var_2 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>({{ var_2 }}),</span>
+<span id="cb5-7">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">min_var_2 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>({{ var_2 }})</span>
 <span id="cb5-8">        )</span>
 <span id="cb5-9">    </span>
-<span id="cb5-10">    coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_2 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_2) <span class="sc" style="color: #5E5E5E;">/</span></span>
-<span id="cb5-11">                   (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_1 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_1)</span>
-<span id="cb5-12">    <span class="fu" style="color: #4758AB;">return</span>(coeficiente)</span>
+<span id="cb5-10">    coeficiente <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> (parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>max_var_2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>min_var_2) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span></span>
+<span id="cb5-11">                   (parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>max_var_1 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>min_var_1)</span>
+<span id="cb5-12">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(coeficiente)</span>
 <span id="cb5-13">      }</span>
 <span id="cb5-14"></span>
-<span id="cb5-15">coeficiente_calculado <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">calcular_coeficiente</span>(df, seno, exponencial)</span></code></pre></div>
+<span id="cb5-15">coeficiente_calculado <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">calcular_coeficiente</span>(df, seno, exponencial)</span></code></pre></div>
 </div>
 <p>Acima é demostrada uma função que calcula o coeficiente baseado nos valores máximos e mínimos das variáveis dadas a ela. O coeficiente calculado pela função tem o valor 258.5442863 e se utilizado para refazer o gráfico percebe-se que as duas curvas se sobrepõem de forma mais normalizada.</p>
 <div class="cell">
 <details>
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">ggplot</span>(df, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> x)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-2">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> seno <span class="sc" style="color: #5E5E5E;">*</span> coeficiente_calculado), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"firebrick"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-3">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> exponencial), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"royalblue"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-4">  <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;">~</span> . <span class="sc" style="color: #5E5E5E;">/</span> coeficiente_calculado, <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"sin(x)"</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb6-5">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"exp(x)"</span>, <span class="at" style="color: #657422;">title =</span> <span class="fu" style="color: #4758AB;">paste</span>(<span class="st" style="color: #20794D;">"Coeficiente = "</span>, coeficiente_calculado))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> x)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> seno <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> coeficiente_calculado), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"firebrick"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> exponencial), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"royalblue"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> . <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> coeficiente_calculado, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sin(x)"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb6-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"exp(x)"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Coeficiente = "</span>, coeficiente_calculado))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
@@ -191,14 +543,90 @@
 <div class="cell">
 <details>
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;"># ordem das variáveis invertida</span></span>
-<span id="cb7-2">coef2 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">calcular_coeficiente</span>(df, exponencial, seno)</span>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ordem das variáveis invertida</span></span>
+<span id="cb7-2">coef2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">calcular_coeficiente</span>(df, exponencial, seno)</span>
 <span id="cb7-3"></span>
-<span id="cb7-4"><span class="fu" style="color: #4758AB;">ggplot</span>(df, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> x)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb7-5">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> seno <span class="sc" style="color: #5E5E5E;">*</span> coef2), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"firebrick"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb7-6">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> exponencial), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"royalblue"</span>, <span class="at" style="color: #657422;">linewidth =</span> <span class="dv" style="color: #AD0000;">1</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb7-7">  <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(<span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;">~</span> . <span class="sc" style="color: #5E5E5E;">/</span> coef2, <span class="at" style="color: #657422;">name=</span><span class="st" style="color: #20794D;">"sin(x)"</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb7-8">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"exp(x)"</span>, <span class="at" style="color: #657422;">title =</span> <span class="fu" style="color: #4758AB;">paste</span>(<span class="st" style="color: #20794D;">"Coeficiente = "</span>, coef2))</span></code></pre></div>
+<span id="cb7-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> x)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> seno <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> coef2), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"firebrick"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> exponencial), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"royalblue"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> . <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> coef2, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sin(x)"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"exp(x)"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Coeficiente = "</span>, coef2))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
@@ -206,35 +634,117 @@
 </div>
 <p>Para resolver isso pode-se adicionar um bloco na função <code>calcular_coeficiente()</code> que verifica se <img src="https://latex.codecogs.com/png.latex?0%3Ccoef%3C1"> e inverter o valor se necessário, essa função nova será chamada: <code>calcular_coeficiente_smart()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1">calcular_coeficiente_smart <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(dados, var_1, var_2){</span>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1">calcular_coeficiente_smart <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(dados, var_1, var_2){</span>
 <span id="cb8-2">    </span>
-<span id="cb8-3">    parametros <span class="ot" style="color: #003B4F;">&lt;-</span> dados <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
-<span id="cb8-4">      dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">summarise</span>(</span>
-<span id="cb8-5">        <span class="at" style="color: #657422;">max_var_1 =</span> <span class="fu" style="color: #4758AB;">max</span>( {{ var_1 }} ),</span>
-<span id="cb8-6">        <span class="at" style="color: #657422;">min_var_1 =</span> <span class="fu" style="color: #4758AB;">min</span>( {{ var_1 }} ),</span>
-<span id="cb8-7">        <span class="at" style="color: #657422;">max_var_2 =</span> <span class="fu" style="color: #4758AB;">max</span>( {{ var_2 }} ),</span>
-<span id="cb8-8">        <span class="at" style="color: #657422;">min_var_2 =</span> <span class="fu" style="color: #4758AB;">min</span>( {{ var_2 }} )</span>
+<span id="cb8-3">    parametros <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> dados <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb8-4">      dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb8-5">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">max_var_1 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>( {{ var_1 }} ),</span>
+<span id="cb8-6">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">min_var_1 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>( {{ var_1 }} ),</span>
+<span id="cb8-7">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">max_var_2 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>( {{ var_2 }} ),</span>
+<span id="cb8-8">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">min_var_2 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>( {{ var_2 }} )</span>
 <span id="cb8-9">        )</span>
 <span id="cb8-10"></span>
-<span id="cb8-11">    coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_2 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_2) <span class="sc" style="color: #5E5E5E;">/</span></span>
-<span id="cb8-12">                   (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_1 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_1)</span>
+<span id="cb8-11">    coeficiente <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> (parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>max_var_2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>min_var_2) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span></span>
+<span id="cb8-12">                   (parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>max_var_1 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>min_var_1)</span>
 <span id="cb8-13"></span>
-<span id="cb8-14">    <span class="cf" style="color: #003B4F;">if</span>(coeficiente <span class="sc" style="color: #5E5E5E;">&lt;</span> <span class="dv" style="color: #AD0000;">1</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> coeficiente <span class="sc" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">0</span>){</span>
-<span id="cb8-15">      coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> (<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">/</span>coeficiente)</span>
+<span id="cb8-14">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span>(coeficiente <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span> coeficiente <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>){</span>
+<span id="cb8-15">      coeficiente <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>coeficiente)</span>
 <span id="cb8-16">      }</span>
-<span id="cb8-17">    <span class="fu" style="color: #4758AB;">return</span>(coeficiente)</span>
+<span id="cb8-17">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(coeficiente)</span>
 <span id="cb8-18">  }</span>
 <span id="cb8-19"></span>
-<span id="cb8-20">coeficientes <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">list</span>(</span>
+<span id="cb8-20">coeficientes <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
 <span id="cb8-21"></span>
-<span id="cb8-22"><span class="co" style="color: #5E5E5E;"># seno depois exponencial</span></span>
-<span id="cb8-23">coeficiente_calculado_1 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">calcular_coeficiente_smart</span>(df, seno, exponencial),</span>
+<span id="cb8-22"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># seno depois exponencial</span></span>
+<span id="cb8-23">coeficiente_calculado_1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">calcular_coeficiente_smart</span>(df, seno, exponencial),</span>
 <span id="cb8-24"></span>
-<span id="cb8-25"><span class="co" style="color: #5E5E5E;"># exponencial depois seno</span></span>
-<span id="cb8-26">coeficiente_calculado_2 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">calcular_coeficiente_smart</span>(df, exponencial, seno)</span>
+<span id="cb8-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># exponencial depois seno</span></span>
+<span id="cb8-26">coeficiente_calculado_2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">calcular_coeficiente_smart</span>(df, exponencial, seno)</span>
 <span id="cb8-27">)</span>
 <span id="cb8-28"></span>
-<span id="cb8-29"><span class="fu" style="color: #4758AB;">print</span>(coeficientes)</span></code></pre></div>
+<span id="cb8-29"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(coeficientes)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 258.5443
@@ -253,51 +763,189 @@
 <h2 class="anchored" data-anchor-id="uma-função-que-faz-todas-as-operações-automaticamente">Uma função que faz todas as operações automaticamente</h2>
 <p>Nessa função também deve se implementar o cálculo do coeficiente de forma a melhorar a legibilidade e tornar mais fácil para o usuário utilizar a função. Para criar essa função, o usar o código já escrito para calcular o coeficiente será usado.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1">two_y_axis_plot <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(df, x, var_1, var_2){</span>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1">two_y_axis_plot <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(df, x, var_1, var_2){</span>
 <span id="cb10-2"></span>
-<span id="cb10-3">  parametros <span class="ot" style="color: #003B4F;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;">|&gt;</span></span>
-<span id="cb10-4">    dplyr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">summarise</span>(</span>
-<span id="cb10-5">      <span class="at" style="color: #657422;">max_var_1 =</span> <span class="fu" style="color: #4758AB;">max</span>( {{ var_1 }} ),</span>
-<span id="cb10-6">      <span class="at" style="color: #657422;">min_var_1 =</span> <span class="fu" style="color: #4758AB;">min</span>( {{ var_1 }} ),</span>
-<span id="cb10-7">      <span class="at" style="color: #657422;">max_var_2 =</span> <span class="fu" style="color: #4758AB;">max</span>( {{ var_2 }} ),</span>
-<span id="cb10-8">      <span class="at" style="color: #657422;">min_var_2 =</span> <span class="fu" style="color: #4758AB;">min</span>( {{ var_2 }} )</span>
+<span id="cb10-3">  parametros <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span></span>
+<span id="cb10-4">    dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">summarise</span>(</span>
+<span id="cb10-5">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">max_var_1 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>( {{ var_1 }} ),</span>
+<span id="cb10-6">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">min_var_1 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>( {{ var_1 }} ),</span>
+<span id="cb10-7">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">max_var_2 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>( {{ var_2 }} ),</span>
+<span id="cb10-8">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">min_var_2 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>( {{ var_2 }} )</span>
 <span id="cb10-9">        )</span>
 <span id="cb10-10"></span>
-<span id="cb10-11">    coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_2 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_2) <span class="sc" style="color: #5E5E5E;">/</span></span>
-<span id="cb10-12">                   (parametros<span class="sc" style="color: #5E5E5E;">$</span>max_var_1 <span class="sc" style="color: #5E5E5E;">-</span> parametros<span class="sc" style="color: #5E5E5E;">$</span>min_var_1)</span>
+<span id="cb10-11">    coeficiente <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> (parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>max_var_2 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>min_var_2) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span></span>
+<span id="cb10-12">                   (parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>max_var_1 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> parametros<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>min_var_1)</span>
 <span id="cb10-13"></span>
-<span id="cb10-14">    <span class="cf" style="color: #003B4F;">if</span>(coeficiente <span class="sc" style="color: #5E5E5E;">&lt;</span> <span class="dv" style="color: #AD0000;">1</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> coeficiente <span class="sc" style="color: #5E5E5E;">&gt;</span> <span class="dv" style="color: #AD0000;">0</span>){</span>
-<span id="cb10-15">      coeficiente <span class="ot" style="color: #003B4F;">&lt;-</span> (<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">/</span>coeficiente)</span>
+<span id="cb10-14">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span>(coeficiente <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span> coeficiente <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>){</span>
+<span id="cb10-15">      coeficiente <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>coeficiente)</span>
 <span id="cb10-16">      }</span>
 <span id="cb10-17"></span>
-<span id="cb10-18">plot <span class="ot" style="color: #003B4F;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;">|&gt;</span> </span>
-<span id="cb10-19">    <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>({{ x }})) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb10-20">    <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> {{ var_1 }} <span class="sc" style="color: #5E5E5E;">*</span> coeficiente), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"firebrick"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb10-21">    <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">y =</span> {{ var_2 }}), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"royalblue"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb10-22">    <span class="fu" style="color: #4758AB;">scale_y_continuous</span>(</span>
-<span id="cb10-23">      <span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(</span>
-<span id="cb10-24">        <span class="sc" style="color: #5E5E5E;">~</span> . <span class="sc" style="color: #5E5E5E;">/</span> coeficiente,</span>
-<span id="cb10-25">        <span class="at" style="color: #657422;">name =</span> <span class="st" style="color: #20794D;">"sin(x)"</span></span>
+<span id="cb10-18">plot <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> df <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb10-19">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>({{ x }})) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-20">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> {{ var_1 }} <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> coeficiente), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"firebrick"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-21">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> {{ var_2 }}), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"royalblue"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-22">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(</span>
+<span id="cb10-23">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sec_axis</span>(</span>
+<span id="cb10-24">        <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span> . <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> coeficiente,</span>
+<span id="cb10-25">        <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"sin(x)"</span></span>
 <span id="cb10-26">        )</span>
-<span id="cb10-27">      ) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb10-28">    <span class="fu" style="color: #4758AB;">labs</span>(</span>
-<span id="cb10-29">      <span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"exp(x)"</span>,</span>
-<span id="cb10-30">      <span class="at" style="color: #657422;">title =</span> <span class="st" style="color: #20794D;">"two_y_axis_plot()"</span>,</span>
-<span id="cb10-31">      <span class="at" style="color: #657422;">subtitle =</span> <span class="fu" style="color: #4758AB;">paste</span>(<span class="st" style="color: #20794D;">"Coeficiente = "</span>, <span class="fu" style="color: #4758AB;">round</span>(coeficiente, <span class="dv" style="color: #AD0000;">2</span>)))</span>
+<span id="cb10-27">      ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-28">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb10-29">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"exp(x)"</span>,</span>
+<span id="cb10-30">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"two_y_axis_plot()"</span>,</span>
+<span id="cb10-31">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Coeficiente = "</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">round</span>(coeficiente, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)))</span>
 <span id="cb10-32"></span>
-<span id="cb10-33"><span class="fu" style="color: #4758AB;">return</span>(plot)</span>
+<span id="cb10-33"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(plot)</span>
 <span id="cb10-34">}</span></code></pre></div>
 </div>
 <div class="cell">
 <details>
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;">two_y_axis_plot</span>(df, x, seno, exponencial)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">two_y_axis_plot</span>(df, x, seno, exponencial)</span></code></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Executando a função criada acima com os argumentos necessários</figcaption><p></p>
+<figcaption class="figure-caption">Executando a função criada acima com os argumentos necessários</figcaption>
 </figure>
 </div>
 </div>
@@ -307,24 +955,102 @@
 <div class="cell">
 <details>
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;">two_y_axis_plot</span>(df, x, seno, exponencial) <span class="sc" style="color: #5E5E5E;">+</span> </span>
-<span id="cb12-2">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(</span>
-<span id="cb12-3">    <span class="at" style="color: #657422;">breaks =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">7</span>),</span>
-<span id="cb12-4">    <span class="at" style="color: #657422;">sec.axis =</span> <span class="fu" style="color: #4758AB;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;">~</span>  . <span class="sc" style="color: #5E5E5E;">/</span> pi,</span>
-<span id="cb12-5">      <span class="at" style="color: #657422;">name =</span> <span class="st" style="color: #20794D;">"radian(x)"</span>,</span>
-<span id="cb12-6">      <span class="at" style="color: #657422;">labels =</span> scales<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">label_number</span>(<span class="at" style="color: #657422;">suffix =</span> <span class="st" style="color: #20794D;">"\U03C0"</span>)</span>
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">two_y_axis_plot</span>(df, x, seno, exponencial) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb12-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(</span>
+<span id="cb12-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>),</span>
+<span id="cb12-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sec.axis =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sec_axis</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">~</span>  . <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> pi,</span>
+<span id="cb12-5">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">name =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"radian(x)"</span>,</span>
+<span id="cb12-6">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">label_number</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">suffix =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"\U03C0"</span>)</span>
 <span id="cb12-7">    )</span>
-<span id="cb12-8">  ) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb12-9">  <span class="fu" style="color: #4758AB;">geom_vline</span>(<span class="at" style="color: #657422;">xintercept =</span> <span class="fu" style="color: #4758AB;">c</span>(pi<span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">2</span>, pi), <span class="at" style="color: #657422;">lty =</span> <span class="st" style="color: #20794D;">"dotted"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb12-10">  <span class="fu" style="color: #4758AB;">geom_hline</span>(<span class="at" style="color: #657422;">yintercept =</span> <span class="dv" style="color: #AD0000;">0</span>, <span class="at" style="color: #657422;">lty =</span> <span class="st" style="color: #20794D;">"dashed"</span>) <span class="sc" style="color: #5E5E5E;">+</span> </span>
-<span id="cb12-11">  <span class="fu" style="color: #4758AB;">theme_bw</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb12-12">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">panel.grid =</span> <span class="fu" style="color: #4758AB;">element_blank</span>())</span></code></pre></div>
+<span id="cb12-8">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb12-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_vline</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xintercept =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(pi<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, pi), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lty =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dotted"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb12-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_hline</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">yintercept =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lty =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dashed"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb12-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb12-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.grid =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_blank</span>())</span></code></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/final-customizations-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Adição do eixo x secundário e linhas de referência</figcaption><p></p>
+<figcaption class="figure-caption">Adição do eixo x secundário e linhas de referência</figcaption>
 </figure>
 </div>
 </div>
@@ -373,29 +1099,109 @@
 <p>A referência que eu usei para este script é de um <a href="https://www.youtube.com/watch?v=UVUd9_k9C6A&amp;t=20735s">vídeo</a> que explica como criar scripts e funções e demonstra como torná-los executáveis.</p>
 <p>Eu aprendi que para que um script seja executável, é necessário que o arquivo seja salvo com a extensão <code>.ps1m</code> o que o identifica como sendo um módulo do powershell e também deve estar salvo no diretório <code>%user%\Documents\WindowsPowerShell\Modules\MeuModulo</code>. É importante também garantir que a pasta e o nome do arquivo sejam iguais.</p>
 <p>Este script contém a seguinte função <code>task</code>:</p>
-<div class="code-with-filename">
+<div class="code-with-filename listing">
+<p>Listing&nbsp;1: Função para Criar Tarefa</p>
 <div class="code-with-filename-file">
 <pre><strong>MeuModulo.ps1m</strong></pre>
 </div>
-<div id="lst-taskFunction" class="listing">
-<p>Listing&nbsp;1: Função para Criar Tarefa</p>
-<div class="sourceCode" id="lst-taskFunction" data-lst-cap="Função para Criar Tarefa" style="background: #f1f3f5;"><pre class="sourceCode numberSource powershell number-lines code-with-copy"><code class="sourceCode powershell"><span id="lst-taskFunction-1"><span class="kw" style="color: #003B4F;">function</span> task <span class="op" style="color: #5E5E5E;">{</span></span>
-<span id="lst-taskFunction-2"><span class="op" style="color: #5E5E5E;">[</span>CmdletBinding<span class="op" style="color: #5E5E5E;">()]</span></span>
-<span id="lst-taskFunction-3"><span class="kw" style="color: #003B4F;">param</span><span class="op" style="color: #5E5E5E;">(</span></span>
-<span id="lst-taskFunction-4">    <span class="op" style="color: #5E5E5E;">[</span>Parameter<span class="op" style="color: #5E5E5E;">(</span>Mandatory<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">$True</span><span class="op" style="color: #5E5E5E;">)]</span></span>
-<span id="lst-taskFunction-5">    <span class="va" style="color: #111111;">$nome</span> <span class="op" style="color: #5E5E5E;">=</span> $1<span class="op" style="color: #5E5E5E;">,</span></span>
-<span id="lst-taskFunction-6">    <span class="va" style="color: #111111;">$prioridade</span> <span class="op" style="color: #5E5E5E;">=</span> $2</span>
-<span id="lst-taskFunction-7">  <span class="op" style="color: #5E5E5E;">)</span></span>
+<div class="sourceCode" id="lst-taskFunction" data-lst-cap="Função para Criar Tarefa" style="background: #f1f3f5;"><pre class="sourceCode numberSource powershell number-lines code-with-copy"><code class="sourceCode powershell"><span id="lst-taskFunction-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span> task <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="lst-taskFunction-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>CmdletBinding<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">()]</span></span>
+<span id="lst-taskFunction-3"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">param</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span></span>
+<span id="lst-taskFunction-4">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">[</span>Parameter<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span>Mandatory<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$True</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)]</span></span>
+<span id="lst-taskFunction-5">    <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$nome</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> $1<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="lst-taskFunction-6">    <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$prioridade</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> $2</span>
+<span id="lst-taskFunction-7">  <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span>
 <span id="lst-taskFunction-8"></span>
-<span id="lst-taskFunction-9"><span class="va" style="color: #111111;">$json</span> <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">"{</span></span>
-<span id="lst-taskFunction-10">    <span class="st" style="color: #20794D;">""</span>name<span class="st" style="color: #20794D;">""</span><span class="op" style="color: #5E5E5E;">:</span> <span class="st" style="color: #20794D;">""</span><span class="va" style="color: #111111;">$nome</span><span class="st" style="color: #20794D;">""</span><span class="op" style="color: #5E5E5E;">,</span></span>
-<span id="lst-taskFunction-11">    <span class="st" style="color: #20794D;">""</span>priority<span class="st" style="color: #20794D;">""</span><span class="op" style="color: #5E5E5E;">:</span> <span class="va" style="color: #111111;">$prioridade</span></span>
-<span id="lst-taskFunction-12"><span class="op" style="color: #5E5E5E;">}</span><span class="st" style="color: #20794D;">"</span></span>
+<span id="lst-taskFunction-9"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$json</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"{</span></span>
+<span id="lst-taskFunction-10">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>name<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$nome</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="lst-taskFunction-11">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>priority<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$prioridade</span></span>
+<span id="lst-taskFunction-12"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
 <span id="lst-taskFunction-13"></span>
-<span id="lst-taskFunction-14"><span class="fu" style="color: #4758AB;">Out-File</span> <span class="op" style="color: #5E5E5E;">-</span>InputObject <span class="va" style="color: #111111;">$json</span> <span class="op" style="color: #5E5E5E;">-</span>FilePath <span class="st" style="color: #20794D;">"~\Automations.json"</span> <span class="op" style="color: #5E5E5E;">-</span>Encoding utf8</span>
-<span id="lst-taskFunction-15"><span class="kw" style="color: #003B4F;">exit</span></span>
-<span id="lst-taskFunction-16"><span class="op" style="color: #5E5E5E;">}</span></span></code></pre></div>
-</div>
+<span id="lst-taskFunction-14"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Out-File</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>InputObject <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$json</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>FilePath <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"~\Automations.json"</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>Encoding utf8</span>
+<span id="lst-taskFunction-15"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">exit</span></span>
+<span id="lst-taskFunction-16"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
 </div>
 <p>A função <code>task</code> aceita dois argumentos; o nome e prioridade da tarefa e salva-os em um arquivo que será usado como uma forma de cache para a execução das etapas seguintes do workflow. Este arquivo é formatado no modelo <code>json</code> para que sejam facilmente lidas pelo <a href="https://www.n8n.io">n8n</a> posteriormente.</p>
 <p>Assim que o arquivo <code>json</code> é criado, o <a href="https://www.n8n.io">n8n</a> inicia a automação que foi configurada e manda as informações para o ClickUp.</p>
@@ -404,10 +1210,28 @@
 <div class="code-with-filename-file">
 <pre><strong>Automations.json</strong></pre>
 </div>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;">{</span></span>
-<span id="cb1-2">  <span class="dt" style="color: #AD0000;">"name"</span><span class="fu" style="color: #4758AB;">:</span> <span class="st" style="color: #20794D;">"Aqui vai o nome da tarefa a ser criada"</span><span class="fu" style="color: #4758AB;">,</span> </span>
-<span id="cb1-3">  <span class="dt" style="color: #AD0000;">"priority"</span><span class="fu" style="color: #4758AB;">:</span> <span class="dv" style="color: #AD0000;">1</span></span>
-<span id="cb1-4"><span class="fu" style="color: #4758AB;">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb1-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"name"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Aqui vai o nome da tarefa a ser criada"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> </span>
+<span id="cb1-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"priority"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
 </div>
 <p>Até aí tudo certo mas como que eu faço para executar esta função?</p>
 </section>
@@ -418,7 +1242,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" class="img-fluid figure-img" alt="screenshot a interface do powertoys run"></p>
-<p></p><figcaption class="figure-caption">Prompt do PowerToys Run</figcaption><p></p>
+<figcaption class="figure-caption">Prompt do PowerToys Run</figcaption>
 </figure>
 </div>
 <p>Porém como eu escrevi a função em <code>ps1</code>, ela não é executável através do prompt <code>cmd</code>, portanto deve-se configurar o powertoys para utilizar o prompt do powershell como default. Isso é feito através da modificação do arquivo <code>ShellPluginSettings.json</code> localizado em <code>%localappdata%\Microsoft\PowerToys\PowerToys Run\Settings\Plugins\Microsoft.Plugin.Shell</code>. Onde a configuração para <code>Shell</code> deve ser alterada de 2 para 1.</p>
@@ -426,13 +1250,67 @@
 <div class="code-with-filename-file">
 <pre><strong>ShellPluginSettings.json</strong></pre>
 </div>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><span class="fu" style="color: #4758AB;">{</span></span>
-<span id="cb2-2">  <span class="dt" style="color: #AD0000;">"Shell"</span><span class="fu" style="color: #4758AB;">:</span> <span class="dv" style="color: #AD0000;">1</span><span class="fu" style="color: #4758AB;">,</span> <span class="er" style="color: #AD0000;">\\</span> <span class="er" style="color: #AD0000;">Mudar</span> <span class="er" style="color: #AD0000;">de</span> <span class="er" style="color: #AD0000;">2</span> <span class="er" style="color: #AD0000;">para</span> <span class="er" style="color: #AD0000;">1</span></span>
-<span id="cb2-3">  <span class="dt" style="color: #AD0000;">"ReplaceWinR"</span><span class="fu" style="color: #4758AB;">:</span> <span class="kw" style="color: #003B4F;">false</span><span class="fu" style="color: #4758AB;">,</span></span>
-<span id="cb2-4">  <span class="dt" style="color: #AD0000;">"LeaveShellOpen"</span><span class="fu" style="color: #4758AB;">:</span> <span class="kw" style="color: #003B4F;">false</span><span class="fu" style="color: #4758AB;">,</span></span>
-<span id="cb2-5">  <span class="dt" style="color: #AD0000;">"RunAsAdministrator"</span><span class="fu" style="color: #4758AB;">:</span> <span class="kw" style="color: #003B4F;">false</span><span class="fu" style="color: #4758AB;">,</span></span>
-<span id="cb2-6">  <span class="dt" style="color: #AD0000;">"Count"</span><span class="fu" style="color: #4758AB;">:</span> <span class="fu" style="color: #4758AB;">{}</span></span>
-<span id="cb2-7"><span class="fu" style="color: #4758AB;">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb2-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"Shell"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span> <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\\</span> <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">Mudar</span> <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">de</span> <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">para</span> <span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb2-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"ReplaceWinR"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-4">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"LeaveShellOpen"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-5">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"RunAsAdministrator"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb2-6">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"Count"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{}</span></span>
+<span id="cb2-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
 </div>
 <p>Para que a alteração tenha efeito, feche o PowerToys, mude a configuração e depois abra-o novamente. A desvantagem de usar o shell do powershell é que ele não é fechado automaticamente por isso eu inseri <code>exit</code> na linha 17 de Listing&nbsp;1.</p>
 </section>
@@ -448,7 +1326,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/powertoys-run/n8nexample.png" class="img-fluid figure-img" alt="screenshot da interface de um exemplo de workflow do n8n"></p>
-<p></p><figcaption class="figure-caption">Exemplo de workflow do n8n</figcaption><p></p>
+<figcaption class="figure-caption">Exemplo de workflow do n8n</figcaption>
 </figure>
 </div>
 <p>Adicionalmente podem ser adicionados nodes para tratamento de erros ou com lógica de condicionais mas isso vou deixar para outro post.</p>
@@ -463,7 +1341,6 @@
   <category>clickup</category>
   <guid>https://lucascarmo.com.br/posts/powertoys-run/index.html</guid>
   <pubDate>Thu, 14 Jul 2022 03:00:00 GMT</pubDate>
-  <media:content url="https://lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" medium="image" type="image/png" height="45" width="144"/>
 </item>
 </channel>
 </rss>
