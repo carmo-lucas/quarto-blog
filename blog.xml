@@ -281,8 +281,8 @@ font-style: inherit;">"sin x"</span>)</span>
 </div>
 <p>Acima se observa um gráfico com duas linhas, uma representando, uma função seno (vermelho), e outra função exponencial (azul), porém mal se percebe a “ondulação” da função seno por estar com uma amplitude aparente tão pequena em relação à função exponencial. Nesses casos que se é interessante utilizar o eixo secundário para comparar a variação entre as duas séries de dados.</p>
 <p>Porém só criar o eixo secundário não significa que os dados irão automaticamente ser mapeados à nova escala criada. Como assim?</p>
-<p>Os valores dos dados e os valores da escala são independentes. Para que eles sejam</p>
-<p>Isso precisa ser feito ‘manualmente’, portanto é necessário transformar os dados de uma das séries de dados através de uma transformação linear.</p>
+<p>Os valores dos dados e os valores da escala são independentes, então é necessário que sejam transformados individualmente. Isso precisa ser feito ‘manualmente’, portanto é necessário transformar os dados de uma das séries de dados através de uma transformação linear.</p>
+<p>Esta transformação linear não é nada mais do que mapear os dados</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1">coeficiente <span class="ot" style="color: #003B4F;
 background-color: null;
