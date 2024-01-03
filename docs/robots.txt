@@ -1,1 +1,1 @@
-Sitemap: https://blog.lucascarmo.com.br/sitemap.xml
+Sitemap: https://lucascarmo.com.br/sitemap.xml
