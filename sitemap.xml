@@ -1,63 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lucascarmo.com.br/blog.html</loc>
-    <lastmod>2024-01-03T02:30:35.378Z</lastmod>
+    <loc>https://lucascarmo.com.br/projetos.html</loc>
+    <lastmod>2024-02-13T21:17:20.040Z</lastmod>
   </url>
   <url>
     <loc>https://lucascarmo.com.br/projetos/tidytuesday/2020/2020-Week_03/index.html</loc>
-    <lastmod>2024-01-03T02:30:33.730Z</lastmod>
+    <lastmod>2024-02-13T21:17:20.042Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lucascarmo.com.br/posts/importar-multiplos-csv/index.html</loc>
+    <lastmod>2024-02-28T00:01:07.569Z</lastmod>
   </url>
   <url>
     <loc>https://lucascarmo.com.br/index.html</loc>
-    <lastmod>2024-01-03T02:30:32.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lucascarmo.com.br/apresentacoes/Aula1/index.html</loc>
-    <lastmod>2024-01-03T02:30:31.039Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lucascarmo.com.br/apresentacoes/Aula5/index.html</loc>
-    <lastmod>2024-01-03T02:30:29.123Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lucascarmo.com.br/apresentacoes/Aula3/index.html</loc>
-    <lastmod>2024-01-03T02:30:26.676Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lucascarmo.com.br/posts/eixos-secundarios/index.html</loc>
-    <lastmod>2024-01-03T02:30:21.577Z</lastmod>
+    <lastmod>2024-02-13T21:17:20.035Z</lastmod>
   </url>
   <url>
     <loc>https://lucascarmo.com.br/apresentacoes.html</loc>
-    <lastmod>2024-01-03T02:30:17.901Z</lastmod>
+    <lastmod>2024-02-13T21:17:19.627Z</lastmod>
   </url>
   <url>
-    <loc>https://lucascarmo.com.br/posts/powertoys-run/index.html</loc>
-    <lastmod>2024-01-03T02:30:22.314Z</lastmod>
-  </url>
-  <url>
-    <loc>https://lucascarmo.com.br/apresentacoes/Apresentacao-dissertacao-mestrado/index.html</loc>
-    <lastmod>2024-01-03T02:30:24.228Z</lastmod>
+    <loc>https://lucascarmo.com.br/apresentacoes/Aula5/index.html</loc>
+    <lastmod>2024-02-13T21:17:19.664Z</lastmod>
   </url>
   <url>
     <loc>https://lucascarmo.com.br/apresentacoes/Aula2/index.html</loc>
-    <lastmod>2024-01-03T02:30:28.075Z</lastmod>
+    <lastmod>2024-02-13T21:17:19.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lucascarmo.com.br/apresentacoes/Apresentacao-dissertacao-mestrado/index.html</loc>
+    <lastmod>2024-02-13T21:17:19.629Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lucascarmo.com.br/apresentacoes/Aula1/index.html</loc>
+    <lastmod>2024-02-13T21:17:19.630Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lucascarmo.com.br/apresentacoes/Aula3/index.html</loc>
+    <lastmod>2024-02-13T21:17:19.661Z</lastmod>
   </url>
   <url>
     <loc>https://lucascarmo.com.br/apresentacoes/Aula6/index.html</loc>
-    <lastmod>2024-01-03T02:30:29.836Z</lastmod>
+    <lastmod>2024-02-13T21:17:19.740Z</lastmod>
   </url>
   <url>
-    <loc>https://lucascarmo.com.br/projetos.html</loc>
-    <lastmod>2024-01-03T02:30:31.498Z</lastmod>
+    <loc>https://lucascarmo.com.br/blog.html</loc>
+    <lastmod>2024-02-13T21:17:19.749Z</lastmod>
   </url>
   <url>
-    <loc>https://lucascarmo.com.br/projetos/tidytuesday/2022/2022-Week_23/index.html</loc>
-    <lastmod>2024-01-03T02:30:32.922Z</lastmod>
+    <loc>https://lucascarmo.com.br/posts/eixos-secundarios/index.html</loc>
+    <lastmod>2024-02-28T00:35:49.591Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lucascarmo.com.br/posts/powertoys-run/index.html</loc>
+    <lastmod>2024-02-13T21:17:20.037Z</lastmod>
   </url>
   <url>
     <loc>https://lucascarmo.com.br/projetos/tidytuesday/2020/2020-Week_02/index.html</loc>
-    <lastmod>2024-01-03T02:30:34.666Z</lastmod>
+    <lastmod>2024-02-13T21:17:20.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lucascarmo.com.br/projetos/tidytuesday/2022/2022-Week_23/index.html</loc>
+    <lastmod>2024-02-28T00:12:24.465Z</lastmod>
   </url>
 </urlset>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -82,7 +82,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Sem resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -91,6 +97,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "mais matches neste documento",
     "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Submeter",
     "search-label": "Search"
@@ -108,6 +115,8 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
@@ -117,15 +126,42 @@ cookieconsent.run({
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">lucas carmo</span>
     </a>
@@ -137,43 +173,43 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html" rel="" target="">
- <span class="menu-text">blog</span></a>
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../apresentacoes.html" rel="" target="">
- <span class="menu-text">apresentações</span></a>
+    <a class="nav-link" href="../../apresentacoes.html"> 
+<span class="menu-text">apresentações</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projetos.html" rel="" target="">
- <span class="menu-text">projetos</span></a>
+    <a class="nav-link" href="../../projetos.html"> 
+<span class="menu-text">projetos</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.youtube.com/channel/UC2t8dH8YZhnhDMQFteI0Crw" rel="" target=""><i class="bi bi-youtube" role="img">
+    <a class="nav-link" href="https://www.youtube.com/channel/UC2t8dH8YZhnhDMQFteI0Crw"> <i class="bi bi-youtube" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/carmo_lcl" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/carmo_lcl"> <i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://linkedin.com/in/lucas-carmo-ba4351b8/" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://linkedin.com/in/lucas-carmo-ba4351b8/"> <i class="bi bi-linkedin" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
   </div>
 </a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -222,8 +258,28 @@ cookieconsent.run({
 
 
 
+
 <section id="tldr" class="level1">
 <h1>tl;dr</h1>
+<p>Nesta postagem vou ensinar a gerar gráficos com dois eixos <code>y</code> ou dois eixos <code>x</code> como o abaixo:</p>
+<div class="cell">
+<details class="code-fold">
+<summary><code>Code</code></summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#| fig-cap: Exemplo de gráfico com dois eixos x e dois eixos y</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#| fig-cap-location: margin</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#| echo:false</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#| tidy:true</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a>example <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> mpg, <span class="fu">aes</span>(<span class="at">x =</span> displ , <span class="at">y =</span> hwy)) <span class="sc">+</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="fu">theme_bw</span>()<span class="sc">+</span> </span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="fu">scale_y_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> . <span class="sc">/</span><span class="dv">100</span>, <span class="at">name=</span><span class="st">"Y/100"</span>)) <span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="fu">scale_x_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> . <span class="sc">/</span><span class="dv">100</span>, <span class="at">name =</span><span class="st">"X/100"</span>)) <span class="sc">+</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Valor de X"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="at">y =</span> <span class="st">"Valor de Y"</span>)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="o-que-é-um-eixo-secundário" class="level1">
 <h1>O que é um eixo secundário?</h1>
@@ -238,58 +294,72 @@ cookieconsent.run({
 <section id="gráfico-exemplo" class="level1 page-columns page-full">
 <h1>Gráfico exemplo</h1>
 <div class="cell page-columns page-full">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>dataframe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
-<span id="cb1-6"><a href="#cb1-6"></a>)</span>
-<span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> dataframe) <span class="sc">+</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>        <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y) <span class="sc">+</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>        <span class="fu">geom_point</span>()</span>
-<span id="cb1-12"><a href="#cb1-12"></a></span>
-<span id="cb1-13"><a href="#cb1-13"></a>p</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-cap-location="margin"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>dataframe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>)</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> dataframe) <span class="sc">+</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>        <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>        <span class="fu">geom_point</span>()</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>p</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display page-columns page-full">
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
 <p><img src="index_files/figure-html/gráfico-base-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption margin-caption">Gráfico base criado com valores aleatórios.</figcaption>
+<figcaption class="margin-caption">Gráfico base criado com valores aleatórios.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>O gráfico acima é (<code>p</code>) é apenas a base para as próximas customizações.</p>
-<p>De acordo com os exemplos na documentação, basta adicionar a função para configurar a escala do eixo y (ou x) ao gráfico original e com o argumento <code>sex.axis</code> especificar as configurações do segundo eixo. Usando <code>dup_axis()</code> como valor para o argumento, apenas será duplicado o eixo y do lado esquerdo para o direito. Porém usando o valor <code>sec.axis()</code></p>
-<div id="fig-sec-axis" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<details>
+<p>De acordo com os exemplos na documentação, basta adicionar a função para configurar a escala do eixo y (ou x) ao gráfico original e com o argumento <code>sec.axis</code> especificar as configurações do segundo eixo. Usando <code>dup_axis()</code> como valor para o argumento, apenas será duplicado o eixo y do lado esquerdo para o direito. Porém usando o valor <code>sec.axis()</code></p>
+<div class="cell">
+<details class="code-fold">
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>p <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">dup_axis</span>())</span>
-<span id="cb2-2"><a href="#cb2-2"></a>p <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> <span class="fu">log10</span>(.), <span class="at">name=</span><span class="st">"log(y)"</span>))</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>p <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">dup_axis</span>())</span>
+<span id="cb3-2"><a href="#cb3-2"></a>p <span class="sc">+</span> <span class="fu">scale_y_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> <span class="fu">log10</span>(.), <span class="at">name=</span><span class="st">"log(y)"</span>))</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div id="fig-sec-axis" class="cell quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sec-axis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fig-sec-axis-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="index_files/figure-html/fig-sec-axis-1.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
-<figcaption class="figure-caption">(a) dup_axis()</figcaption>
+<div id="fig-sec-axis-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sec-axis-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-sec-axis-1.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sec-axis-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) dup_axis()
+</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
-<div id="fig-sec-axis-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="index_files/figure-html/fig-sec-axis-2.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
-<figcaption class="figure-caption">(b) sec_axis(~ log10(y))</figcaption>
+<div id="fig-sec-axis-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sec-axis-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-sec-axis-2.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sec-axis-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) sec_axis(~ log10(y))
+</figcaption>
 </figure>
 </div>
 </div>
-<figcaption class="figure-caption">Figura&nbsp;1: Adição de eixos y secundários no lado direito.</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sec-axis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Adição de eixos y secundários no lado direito.
+</figcaption>
 </figure>
+</div>
 </div>
 <p>Veja que ao criar um eixo secundário usando <code>sec_axis()</code> é possível aplicar uma transformação na escala do eixo. No exemplo acima foi aplicado a transformação <span class="math inline">\(\log_{10} y\)</span> porem podem ser aplicadas outras transformações lineares, como multiplicação, exponenciação, soma, divisão etc.</p>
 </section>
@@ -297,28 +367,28 @@ cookieconsent.run({
 <h1>Exemplo mais complexo</h1>
 <p>Nos exemplos acima apenas criei um gráfico com os dois eixos mas sem os dados relacionados ao eixo y do lado direito portanto abaixo irei especificar melhor os usos dos dois eixos.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">2</span><span class="sc">*</span>pi , <span class="at">by =</span> <span class="fl">0.05</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb3-4"><a href="#cb3-4"></a>  <span class="at">x =</span> x,</span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="at">seno =</span> <span class="fu">sin</span>(x),</span>
-<span id="cb3-6"><a href="#cb3-6"></a>  <span class="at">exponencial =</span> <span class="fu">exp</span>(x)</span>
-<span id="cb3-7"><a href="#cb3-7"></a>)</span>
-<span id="cb3-8"><a href="#cb3-8"></a></span>
-<span id="cb3-9"><a href="#cb3-9"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> seno), <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> exponencial), <span class="at">color =</span> <span class="st">"royalblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a>        <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"sin x"</span>)</span>
-<span id="cb3-13"><a href="#cb3-13"></a></span>
-<span id="cb3-14"><a href="#cb3-14"></a>p</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">0</span>, <span class="at">to =</span> <span class="dv">2</span><span class="sc">*</span>pi , <span class="at">by =</span> <span class="fl">0.05</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="at">x =</span> x,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="at">seno =</span> <span class="fu">sin</span>(x),</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="at">exponencial =</span> <span class="fu">exp</span>(x)</span>
+<span id="cb4-7"><a href="#cb4-7"></a>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> seno), <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>        <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> exponencial), <span class="at">color =</span> <span class="st">"royalblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>        <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"sin x"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13"></a></span>
+<span id="cb4-14"><a href="#cb4-14"></a>p</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Função seno vs função exponencial</figcaption>
+<figcaption>Função seno vs função exponencial</figcaption>
 </figure>
 </div>
 </div>
@@ -328,25 +398,29 @@ cookieconsent.run({
 <p>Os valores dos dados e os valores da escala são independentes, então é necessário que sejam transformados individualmente. Isso precisa ser feito ‘manualmente’, portanto é necessário transformar os dados de uma das séries de dados através de uma transformação linear.</p>
 <p>Esta transformação linear não é nada mais do que mapear os dados</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>coeficiente <span class="ot">&lt;-</span> <span class="dv">2500</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> seno <span class="sc">*</span> coeficiente), <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> exponencial), <span class="at">color =</span> <span class="st">"royalblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> . <span class="sc">/</span> coeficiente, <span class="at">name=</span><span class="st">"sin(x)"</span>)) <span class="sc">+</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"exp(x)"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8"></a>       <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Coeficiente = "</span>, coeficiente))</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>coeficiente <span class="ot">&lt;-</span> <span class="dv">2500</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> seno <span class="sc">*</span> coeficiente), <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> exponencial), <span class="at">color =</span> <span class="st">"royalblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> . <span class="sc">/</span> coeficiente, <span class="at">name=</span><span class="st">"sin(x)"</span>)) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"exp(x)"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8"></a>       <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Coeficiente = "</span>, coeficiente))</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="fig-coeficiente" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="index_files/figure-html/fig-coeficiente-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figura&nbsp;2: Utilização de um coeficiente com valor constante para transformar os dados e a escala do eixo secundário.</figcaption>
+<div id="fig-coeficiente" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-coeficiente-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-coeficiente-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coeficiente-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Utilização de um coeficiente com valor constante para transformar os dados e a escala do eixo secundário.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Por exemplo, aplicando a multiplicação dos valores da função <span class="math inline">\(\sin(x)\)</span> por um coeficiente com valor 2500, (linha 4) os valores das duas funções irão se aproximar. Porém ao mesmo tempo eu preciso dividir a minha escala do eixo secundário pelo mesmo coeficiente (2500) para que os valores exibidos na escala sejam os antes da transformação (linha 7).</p>
-<p>A <a href="#fig-coeficiente">Figura&nbsp;2</a> é um exemplo completo de como utilizar o coeficiente para transformar os dados.</p>
+<p>A <a href="#fig-coeficiente" class="quarto-xref">Figura&nbsp;2</a> é um exemplo completo de como utilizar o coeficiente para transformar os dados.</p>
 <p>Porém definir coeficientes manualmente é uma tarefa repetitiva e em alguns casos não muito intuitiva. Portanto podemos tentar definir o coeficiente de forma programática.</p>
 </section>
 <section id="calculando-o-coeficiente-ideal" class="level1">
@@ -354,37 +428,41 @@ cookieconsent.run({
 <p>Nos exemplos anteriores chegamos em um coeficiente razoável de forma manual, testando valores e chegamos no valor de 2500 como sendo bom o suficiente para a aplicação.</p>
 <p>Para calcularmos um coeficiente de forma programática podemos escrever uma função, que aceita todos os dados e nos retorna um valor, baseado em operações aritmméticas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>calcular_coeficiente <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, var_1, var_2){</span>
-<span id="cb5-2"><a href="#cb5-2"></a>    parametros <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>      dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
-<span id="cb5-4"><a href="#cb5-4"></a>        <span class="at">max_var_1 =</span> <span class="fu">max</span>({{ var_1 }}),</span>
-<span id="cb5-5"><a href="#cb5-5"></a>        <span class="at">min_var_1 =</span> <span class="fu">min</span>({{ var_1 }}),</span>
-<span id="cb5-6"><a href="#cb5-6"></a>        <span class="at">max_var_2 =</span> <span class="fu">max</span>({{ var_2 }}),</span>
-<span id="cb5-7"><a href="#cb5-7"></a>        <span class="at">min_var_2 =</span> <span class="fu">min</span>({{ var_2 }})</span>
-<span id="cb5-8"><a href="#cb5-8"></a>        )</span>
-<span id="cb5-9"><a href="#cb5-9"></a>    </span>
-<span id="cb5-10"><a href="#cb5-10"></a>    coeficiente <span class="ot">&lt;-</span> (parametros<span class="sc">$</span>max_var_2 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_2) <span class="sc">/</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>                   (parametros<span class="sc">$</span>max_var_1 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_1)</span>
-<span id="cb5-12"><a href="#cb5-12"></a>    <span class="fu">return</span>(coeficiente)</span>
-<span id="cb5-13"><a href="#cb5-13"></a>      }</span>
-<span id="cb5-14"><a href="#cb5-14"></a></span>
-<span id="cb5-15"><a href="#cb5-15"></a>coeficiente_calculado <span class="ot">&lt;-</span> <span class="fu">calcular_coeficiente</span>(df, seno, exponencial)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>calcular_coeficiente <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, var_1, var_2){</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    parametros <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>      dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb6-4"><a href="#cb6-4"></a>        <span class="at">max_var_1 =</span> <span class="fu">max</span>({{ var_1 }}),</span>
+<span id="cb6-5"><a href="#cb6-5"></a>        <span class="at">min_var_1 =</span> <span class="fu">min</span>({{ var_1 }}),</span>
+<span id="cb6-6"><a href="#cb6-6"></a>        <span class="at">max_var_2 =</span> <span class="fu">max</span>({{ var_2 }}),</span>
+<span id="cb6-7"><a href="#cb6-7"></a>        <span class="at">min_var_2 =</span> <span class="fu">min</span>({{ var_2 }})</span>
+<span id="cb6-8"><a href="#cb6-8"></a>        )</span>
+<span id="cb6-9"><a href="#cb6-9"></a>    </span>
+<span id="cb6-10"><a href="#cb6-10"></a>    coeficiente <span class="ot">&lt;-</span> (parametros<span class="sc">$</span>max_var_2 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_2) <span class="sc">/</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>                   (parametros<span class="sc">$</span>max_var_1 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_1)</span>
+<span id="cb6-12"><a href="#cb6-12"></a>    <span class="fu">return</span>(coeficiente)</span>
+<span id="cb6-13"><a href="#cb6-13"></a>      }</span>
+<span id="cb6-14"><a href="#cb6-14"></a></span>
+<span id="cb6-15"><a href="#cb6-15"></a>coeficiente_calculado <span class="ot">&lt;-</span> <span class="fu">calcular_coeficiente</span>(df, seno, exponencial)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Acima é demostrada uma função que calcula o coeficiente baseado nos valores máximos e mínimos das variáveis dadas a ela. O coeficiente calculado pela função tem o valor 258.5442863 e se utilizado para refazer o gráfico percebe-se que as duas curvas se sobrepõem de forma mais normalizada.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> seno <span class="sc">*</span> coeficiente_calculado), <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> exponencial), <span class="at">color =</span> <span class="st">"royalblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> . <span class="sc">/</span> coeficiente_calculado, <span class="at">name=</span><span class="st">"sin(x)"</span>)) <span class="sc">+</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"exp(x)"</span>, <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Coeficiente = "</span>, coeficiente_calculado))</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> seno <span class="sc">*</span> coeficiente_calculado), <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> exponencial), <span class="at">color =</span> <span class="st">"royalblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> . <span class="sc">/</span> coeficiente_calculado, <span class="at">name=</span><span class="st">"sin(x)"</span>)) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"exp(x)"</span>, <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Coeficiente = "</span>, coeficiente_calculado))</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>Porém o desafio é implementar o cálculo do coeficiente diretamente na construção do gráfico e também há o problema da ordem das variáveis na função.</p>
+</div>
+<p>Porém o desafio é implementar o cálculo do coeficiente diretamente na construção do gráfico e também há o problema da ordem das variáveis na função.P</p>
 <section id="adequação-da-função-de-cálculo-dos-coeficientes" class="level2">
 <h2 class="anchored" data-anchor-id="adequação-da-função-de-cálculo-dos-coeficientes">Adequação da função de cálculo dos coeficientes</h2>
 <p>Da forma que a função foi construída o cálculo do coeficiente é feito da seguinte forma:</p>
@@ -393,52 +471,56 @@ coef = \frac{\max (Var_2) - \min(Var_2)}{\max (Var_1) - \min(Var_1)}
 \]</span></p>
 <p>Portanto se os valores da <span class="math inline">\(Var_2\)</span> apresentarem uma amplitude maior do que a amplitude dos valores da <span class="math inline">\(Var_1\)</span> o valor do coeficiente será positivo enquanto o inverso irá resultar em um coeficiente maior que zero e menor que 1 (<span class="math inline">\(0&lt;coef&lt;1\)</span>), o que resultaria no gráfico abaixo, logo, a ordem das variáveis é importante no momento de executar a função.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># ordem das variáveis invertida</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>coef2 <span class="ot">&lt;-</span> <span class="fu">calcular_coeficiente</span>(df, exponencial, seno)</span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> seno <span class="sc">*</span> coef2), <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> exponencial), <span class="at">color =</span> <span class="st">"royalblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> . <span class="sc">/</span> coef2, <span class="at">name=</span><span class="st">"sin(x)"</span>)) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"exp(x)"</span>, <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Coeficiente = "</span>, coef2))</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># ordem das variáveis invertida</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>coef2 <span class="ot">&lt;-</span> <span class="fu">calcular_coeficiente</span>(df, exponencial, seno)</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x)) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> seno <span class="sc">*</span> coef2), <span class="at">color =</span> <span class="st">"firebrick"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> exponencial), <span class="at">color =</span> <span class="st">"royalblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span> . <span class="sc">/</span> coef2, <span class="at">name=</span><span class="st">"sin(x)"</span>)) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"exp(x)"</span>, <span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Coeficiente = "</span>, coef2))</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Para resolver isso pode-se adicionar um bloco na função <code>calcular_coeficiente()</code> que verifica se <span class="math inline">\(0&lt;coef&lt;1\)</span> e inverter o valor se necessário, essa função nova será chamada: <code>calcular_coeficiente_smart()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>calcular_coeficiente_smart <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, var_1, var_2){</span>
-<span id="cb8-2"><a href="#cb8-2"></a>    </span>
-<span id="cb8-3"><a href="#cb8-3"></a>    parametros <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>      dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
-<span id="cb8-5"><a href="#cb8-5"></a>        <span class="at">max_var_1 =</span> <span class="fu">max</span>( {{ var_1 }} ),</span>
-<span id="cb8-6"><a href="#cb8-6"></a>        <span class="at">min_var_1 =</span> <span class="fu">min</span>( {{ var_1 }} ),</span>
-<span id="cb8-7"><a href="#cb8-7"></a>        <span class="at">max_var_2 =</span> <span class="fu">max</span>( {{ var_2 }} ),</span>
-<span id="cb8-8"><a href="#cb8-8"></a>        <span class="at">min_var_2 =</span> <span class="fu">min</span>( {{ var_2 }} )</span>
-<span id="cb8-9"><a href="#cb8-9"></a>        )</span>
-<span id="cb8-10"><a href="#cb8-10"></a></span>
-<span id="cb8-11"><a href="#cb8-11"></a>    coeficiente <span class="ot">&lt;-</span> (parametros<span class="sc">$</span>max_var_2 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_2) <span class="sc">/</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a>                   (parametros<span class="sc">$</span>max_var_1 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_1)</span>
-<span id="cb8-13"><a href="#cb8-13"></a></span>
-<span id="cb8-14"><a href="#cb8-14"></a>    <span class="cf">if</span>(coeficiente <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">&amp;</span> coeficiente <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
-<span id="cb8-15"><a href="#cb8-15"></a>      coeficiente <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span>coeficiente)</span>
-<span id="cb8-16"><a href="#cb8-16"></a>      }</span>
-<span id="cb8-17"><a href="#cb8-17"></a>    <span class="fu">return</span>(coeficiente)</span>
-<span id="cb8-18"><a href="#cb8-18"></a>  }</span>
-<span id="cb8-19"><a href="#cb8-19"></a></span>
-<span id="cb8-20"><a href="#cb8-20"></a>coeficientes <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb8-21"><a href="#cb8-21"></a></span>
-<span id="cb8-22"><a href="#cb8-22"></a><span class="co"># seno depois exponencial</span></span>
-<span id="cb8-23"><a href="#cb8-23"></a>coeficiente_calculado_1 <span class="ot">&lt;-</span> <span class="fu">calcular_coeficiente_smart</span>(df, seno, exponencial),</span>
-<span id="cb8-24"><a href="#cb8-24"></a></span>
-<span id="cb8-25"><a href="#cb8-25"></a><span class="co"># exponencial depois seno</span></span>
-<span id="cb8-26"><a href="#cb8-26"></a>coeficiente_calculado_2 <span class="ot">&lt;-</span> <span class="fu">calcular_coeficiente_smart</span>(df, exponencial, seno)</span>
-<span id="cb8-27"><a href="#cb8-27"></a>)</span>
-<span id="cb8-28"><a href="#cb8-28"></a></span>
-<span id="cb8-29"><a href="#cb8-29"></a><span class="fu">print</span>(coeficientes)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>calcular_coeficiente_smart <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, var_1, var_2){</span>
+<span id="cb9-2"><a href="#cb9-2"></a>    </span>
+<span id="cb9-3"><a href="#cb9-3"></a>    parametros <span class="ot">&lt;-</span> dados <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>      dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb9-5"><a href="#cb9-5"></a>        <span class="at">max_var_1 =</span> <span class="fu">max</span>( {{ var_1 }} ),</span>
+<span id="cb9-6"><a href="#cb9-6"></a>        <span class="at">min_var_1 =</span> <span class="fu">min</span>( {{ var_1 }} ),</span>
+<span id="cb9-7"><a href="#cb9-7"></a>        <span class="at">max_var_2 =</span> <span class="fu">max</span>( {{ var_2 }} ),</span>
+<span id="cb9-8"><a href="#cb9-8"></a>        <span class="at">min_var_2 =</span> <span class="fu">min</span>( {{ var_2 }} )</span>
+<span id="cb9-9"><a href="#cb9-9"></a>        )</span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a>    coeficiente <span class="ot">&lt;-</span> (parametros<span class="sc">$</span>max_var_2 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_2) <span class="sc">/</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>                   (parametros<span class="sc">$</span>max_var_1 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_1)</span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-14"><a href="#cb9-14"></a>    <span class="cf">if</span>(coeficiente <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">&amp;</span> coeficiente <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb9-15"><a href="#cb9-15"></a>      coeficiente <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span>coeficiente)</span>
+<span id="cb9-16"><a href="#cb9-16"></a>      }</span>
+<span id="cb9-17"><a href="#cb9-17"></a>    <span class="fu">return</span>(coeficiente)</span>
+<span id="cb9-18"><a href="#cb9-18"></a>  }</span>
+<span id="cb9-19"><a href="#cb9-19"></a></span>
+<span id="cb9-20"><a href="#cb9-20"></a>coeficientes <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-21"><a href="#cb9-21"></a></span>
+<span id="cb9-22"><a href="#cb9-22"></a><span class="co"># seno depois exponencial</span></span>
+<span id="cb9-23"><a href="#cb9-23"></a>coeficiente_calculado_1 <span class="ot">&lt;-</span> <span class="fu">calcular_coeficiente_smart</span>(df, seno, exponencial),</span>
+<span id="cb9-24"><a href="#cb9-24"></a></span>
+<span id="cb9-25"><a href="#cb9-25"></a><span class="co"># exponencial depois seno</span></span>
+<span id="cb9-26"><a href="#cb9-26"></a>coeficiente_calculado_2 <span class="ot">&lt;-</span> <span class="fu">calcular_coeficiente_smart</span>(df, exponencial, seno)</span>
+<span id="cb9-27"><a href="#cb9-27"></a>)</span>
+<span id="cb9-28"><a href="#cb9-28"></a></span>
+<span id="cb9-29"><a href="#cb9-29"></a><span class="fu">print</span>(coeficientes)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] 258.5443
@@ -457,51 +539,51 @@ coef = \frac{\max (Var_2) - \min(Var_2)}{\max (Var_1) - \min(Var_1)}
 <h2 class="anchored" data-anchor-id="uma-função-que-faz-todas-as-operações-automaticamente">Uma função que faz todas as operações automaticamente</h2>
 <p>Nessa função também deve se implementar o cálculo do coeficiente de forma a melhorar a legibilidade e tornar mais fácil para o usuário utilizar a função. Para criar essa função, o usar o código já escrito para calcular o coeficiente será usado.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>two_y_axis_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, x, var_1, var_2){</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a>  parametros <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
-<span id="cb10-5"><a href="#cb10-5"></a>      <span class="at">max_var_1 =</span> <span class="fu">max</span>( {{ var_1 }} ),</span>
-<span id="cb10-6"><a href="#cb10-6"></a>      <span class="at">min_var_1 =</span> <span class="fu">min</span>( {{ var_1 }} ),</span>
-<span id="cb10-7"><a href="#cb10-7"></a>      <span class="at">max_var_2 =</span> <span class="fu">max</span>( {{ var_2 }} ),</span>
-<span id="cb10-8"><a href="#cb10-8"></a>      <span class="at">min_var_2 =</span> <span class="fu">min</span>( {{ var_2 }} )</span>
-<span id="cb10-9"><a href="#cb10-9"></a>        )</span>
-<span id="cb10-10"><a href="#cb10-10"></a></span>
-<span id="cb10-11"><a href="#cb10-11"></a>    coeficiente <span class="ot">&lt;-</span> (parametros<span class="sc">$</span>max_var_2 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_2) <span class="sc">/</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a>                   (parametros<span class="sc">$</span>max_var_1 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_1)</span>
-<span id="cb10-13"><a href="#cb10-13"></a></span>
-<span id="cb10-14"><a href="#cb10-14"></a>    <span class="cf">if</span>(coeficiente <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">&amp;</span> coeficiente <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
-<span id="cb10-15"><a href="#cb10-15"></a>      coeficiente <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span>coeficiente)</span>
-<span id="cb10-16"><a href="#cb10-16"></a>      }</span>
-<span id="cb10-17"><a href="#cb10-17"></a></span>
-<span id="cb10-18"><a href="#cb10-18"></a>plot <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb10-19"><a href="#cb10-19"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>({{ x }})) <span class="sc">+</span></span>
-<span id="cb10-20"><a href="#cb10-20"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> {{ var_1 }} <span class="sc">*</span> coeficiente), <span class="at">color =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
-<span id="cb10-21"><a href="#cb10-21"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> {{ var_2 }}), <span class="at">color =</span> <span class="st">"royalblue"</span>) <span class="sc">+</span></span>
-<span id="cb10-22"><a href="#cb10-22"></a>    <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb10-23"><a href="#cb10-23"></a>      <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(</span>
-<span id="cb10-24"><a href="#cb10-24"></a>        <span class="sc">~</span> . <span class="sc">/</span> coeficiente,</span>
-<span id="cb10-25"><a href="#cb10-25"></a>        <span class="at">name =</span> <span class="st">"sin(x)"</span></span>
-<span id="cb10-26"><a href="#cb10-26"></a>        )</span>
-<span id="cb10-27"><a href="#cb10-27"></a>      ) <span class="sc">+</span></span>
-<span id="cb10-28"><a href="#cb10-28"></a>    <span class="fu">labs</span>(</span>
-<span id="cb10-29"><a href="#cb10-29"></a>      <span class="at">y =</span> <span class="st">"exp(x)"</span>,</span>
-<span id="cb10-30"><a href="#cb10-30"></a>      <span class="at">title =</span> <span class="st">"two_y_axis_plot()"</span>,</span>
-<span id="cb10-31"><a href="#cb10-31"></a>      <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Coeficiente = "</span>, <span class="fu">round</span>(coeficiente, <span class="dv">2</span>)))</span>
-<span id="cb10-32"><a href="#cb10-32"></a></span>
-<span id="cb10-33"><a href="#cb10-33"></a><span class="fu">return</span>(plot)</span>
-<span id="cb10-34"><a href="#cb10-34"></a>}</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>two_y_axis_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(df, x, var_1, var_2){</span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  parametros <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb11-5"><a href="#cb11-5"></a>      <span class="at">max_var_1 =</span> <span class="fu">max</span>( {{ var_1 }} ),</span>
+<span id="cb11-6"><a href="#cb11-6"></a>      <span class="at">min_var_1 =</span> <span class="fu">min</span>( {{ var_1 }} ),</span>
+<span id="cb11-7"><a href="#cb11-7"></a>      <span class="at">max_var_2 =</span> <span class="fu">max</span>( {{ var_2 }} ),</span>
+<span id="cb11-8"><a href="#cb11-8"></a>      <span class="at">min_var_2 =</span> <span class="fu">min</span>( {{ var_2 }} )</span>
+<span id="cb11-9"><a href="#cb11-9"></a>        )</span>
+<span id="cb11-10"><a href="#cb11-10"></a></span>
+<span id="cb11-11"><a href="#cb11-11"></a>    coeficiente <span class="ot">&lt;-</span> (parametros<span class="sc">$</span>max_var_2 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_2) <span class="sc">/</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a>                   (parametros<span class="sc">$</span>max_var_1 <span class="sc">-</span> parametros<span class="sc">$</span>min_var_1)</span>
+<span id="cb11-13"><a href="#cb11-13"></a></span>
+<span id="cb11-14"><a href="#cb11-14"></a>    <span class="cf">if</span>(coeficiente <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">&amp;</span> coeficiente <span class="sc">&gt;</span> <span class="dv">0</span>){</span>
+<span id="cb11-15"><a href="#cb11-15"></a>      coeficiente <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">/</span>coeficiente)</span>
+<span id="cb11-16"><a href="#cb11-16"></a>      }</span>
+<span id="cb11-17"><a href="#cb11-17"></a></span>
+<span id="cb11-18"><a href="#cb11-18"></a>plot <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb11-19"><a href="#cb11-19"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>({{ x }})) <span class="sc">+</span></span>
+<span id="cb11-20"><a href="#cb11-20"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> {{ var_1 }} <span class="sc">*</span> coeficiente), <span class="at">color =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
+<span id="cb11-21"><a href="#cb11-21"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> {{ var_2 }}), <span class="at">color =</span> <span class="st">"royalblue"</span>) <span class="sc">+</span></span>
+<span id="cb11-22"><a href="#cb11-22"></a>    <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb11-23"><a href="#cb11-23"></a>      <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(</span>
+<span id="cb11-24"><a href="#cb11-24"></a>        <span class="sc">~</span> . <span class="sc">/</span> coeficiente,</span>
+<span id="cb11-25"><a href="#cb11-25"></a>        <span class="at">name =</span> <span class="st">"sin(x)"</span></span>
+<span id="cb11-26"><a href="#cb11-26"></a>        )</span>
+<span id="cb11-27"><a href="#cb11-27"></a>      ) <span class="sc">+</span></span>
+<span id="cb11-28"><a href="#cb11-28"></a>    <span class="fu">labs</span>(</span>
+<span id="cb11-29"><a href="#cb11-29"></a>      <span class="at">y =</span> <span class="st">"exp(x)"</span>,</span>
+<span id="cb11-30"><a href="#cb11-30"></a>      <span class="at">title =</span> <span class="st">"two_y_axis_plot()"</span>,</span>
+<span id="cb11-31"><a href="#cb11-31"></a>      <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Coeficiente = "</span>, <span class="fu">round</span>(coeficiente, <span class="dv">2</span>)))</span>
+<span id="cb11-32"><a href="#cb11-32"></a></span>
+<span id="cb11-33"><a href="#cb11-33"></a><span class="fu">return</span>(plot)</span>
+<span id="cb11-34"><a href="#cb11-34"></a>}</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">two_y_axis_plot</span>(df, x, seno, exponencial)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">two_y_axis_plot</span>(df, x, seno, exponencial)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Executando a função criada acima com os argumentos necessários</figcaption>
+<figcaption>Executando a função criada acima com os argumentos necessários</figcaption>
 </figure>
 </div>
 </div>
@@ -509,26 +591,26 @@ coef = \frac{\max (Var_2) - \min(Var_2)}{\max (Var_1) - \min(Var_1)}
 <p>A função criada retorna automaticamente o gráfico com os dois eixos, com nomes e cores predefinidas mas com a o coeficiente calculado adequadamente. É possível transformar as customizações do gráfico em argumentos da função (como cores das linhas ou até que tipo de <code>geom</code> deverá ser usado), porém o aumento da complexidade da função não é o principal a se explorar no momento.</p>
 <p>O que pode se explorar é que da mesma forma que foi criado um eixo y secundário, também pode ser criado um eixo x secundário, exatamente da mesma forma. Inclusive, é possível utilizar a função que foi criada para o gráfico de dois eixos y e adicionar novos elementos ao gráfico como linhas de referência usando <code>geom_vline</code> e <code>geom_hline</code>.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">two_y_axis_plot</span>(df, x, seno, exponencial) <span class="sc">+</span> </span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">scale_x_continuous</span>(</span>
-<span id="cb12-3"><a href="#cb12-3"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>),</span>
-<span id="cb12-4"><a href="#cb12-4"></a>    <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span>  . <span class="sc">/</span> pi,</span>
-<span id="cb12-5"><a href="#cb12-5"></a>      <span class="at">name =</span> <span class="st">"radian(x)"</span>,</span>
-<span id="cb12-6"><a href="#cb12-6"></a>      <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">"\U03C0"</span>)</span>
-<span id="cb12-7"><a href="#cb12-7"></a>    )</span>
-<span id="cb12-8"><a href="#cb12-8"></a>  ) <span class="sc">+</span></span>
-<span id="cb12-9"><a href="#cb12-9"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(pi<span class="sc">/</span><span class="dv">2</span>, pi), <span class="at">lty =</span> <span class="st">"dotted"</span>) <span class="sc">+</span></span>
-<span id="cb12-10"><a href="#cb12-10"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="st">"dashed"</span>) <span class="sc">+</span> </span>
-<span id="cb12-11"><a href="#cb12-11"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb12-12"><a href="#cb12-12"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>())</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">two_y_axis_plot</span>(df, x, seno, exponencial) <span class="sc">+</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb13-3"><a href="#cb13-3"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>),</span>
+<span id="cb13-4"><a href="#cb13-4"></a>    <span class="at">sec.axis =</span> <span class="fu">sec_axis</span>(<span class="sc">~</span>  . <span class="sc">/</span> pi,</span>
+<span id="cb13-5"><a href="#cb13-5"></a>      <span class="at">name =</span> <span class="st">"radian(x)"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6"></a>      <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_number</span>(<span class="at">suffix =</span> <span class="st">"\U03C0"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7"></a>    )</span>
+<span id="cb13-8"><a href="#cb13-8"></a>  ) <span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(pi<span class="sc">/</span><span class="dv">2</span>, pi), <span class="at">lty =</span> <span class="st">"dotted"</span>) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="st">"dashed"</span>) <span class="sc">+</span> </span>
+<span id="cb13-11"><a href="#cb13-11"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>())</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="index_files/figure-html/final-customizations-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Adição do eixo x secundário e linhas de referência</figcaption>
+<figcaption>Adição do eixo x secundário e linhas de referência</figcaption>
 </figure>
 </div>
 </div>
@@ -618,10 +700,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -631,8 +712,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -645,6 +735,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -688,6 +897,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -713,6 +923,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -775,8 +1011,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Copyright 2023, Lucas Carmo</div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-left">
+<p>Copyright 2023, Lucas Carmo</p>
+</div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
@@ -789,6 +1029,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 
