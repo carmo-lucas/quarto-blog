@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -156,8 +190,9 @@ cookieconsent.run({
     <div class="quarto-title column-body">
       <h1 class="title">Como importar múltiplos csv para o mesmo dataframe</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">ggplot2</div>
-                <div class="quarto-category">dataviz</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">data wrangling</div>
+                <div class="quarto-category">readr</div>
               </div>
                   </div>
   </div>
@@ -175,7 +210,7 @@ cookieconsent.run({
       <div>
       <div class="quarto-title-meta-heading">Publicado</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">2023 - 02 - 11</p>
+        <p class="date">2024 - 02 - 27</p>
       </div>
     </div>
     
@@ -194,8 +229,360 @@ cookieconsent.run({
 
 
 
+<section id="tldr" class="level1">
+<h1>tl;dr</h1>
+<p>Imagine que você tem 200 arquivos em uma diretório no seu computador e precisa importar todos eles para criar uma visualização. Vou te ensinar a fazer isso da forma mais simples possível.</p>
+</section>
+<section id="definições" class="level1">
+<h1>Definições</h1>
+<p>Gostaria de dar algumas definições para que possa usar os termos corretos</p>
+<dl>
+<dt>Diretório</dt>
+<dd>
+Comumente chamado de ‘pasta’, é o local onde os arquivos estão localizados
+</dd>
+<dt>Caminho</dt>
+<dd>
+Endereço do arquivo completo que inclui a extensão do arquivo
+</dd>
+</dl>
+</section>
+<section id="inspiracão" class="level1">
+<h1>Inspiracão</h1>
+<p>Durante o meu mestrado eu realizei mais de 500 experimentos em reologia e eu sabia que para organizar estas análises seria necessário organizar meus arquivos de uma forma padronizada para que eu pudesse acessar os dados rapidamente. Naquela época eu não sabia nada sobre banco de dados mas eu conhecia bem <code>.csv</code> e como a maioria dos <em>softwares</em> de equipamentos analíticos exporta desta forma eu sabia que poderia fazer funcionar.</p>
+<p>O problema é que eu precisaria importar <strong>centenas</strong> de documentos <code>.csv</code> para poder gerar as vizualizações e análises, mas a alternativa era fazê-lo no excel 😓.</p>
+</section>
+<section id="solução" class="level1">
+<h1>Solução</h1>
+<p>A solução envolveu algumas etapas:</p>
+<ol type="1">
+<li>Nomear os meus documentos muito bem e de forma padronizada</li>
+<li>Incluir o máximo de informações no cabeçalho dos documentos</li>
+<li>Sempre exportar da mesma forma</li>
+<li>Salvar os documentos de forma organizada nos diretórios apropriados</li>
+</ol>
+<p>Um exemplo de documento exportado é o demonstrado abaixo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource txt number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>C:\Documents\E_AS_a_1d.rwd</span>
+<span id="cb1-2"><a href="#cb1-2"></a>Company / Operator: / lucas</span>
+<span id="cb1-3"><a href="#cb1-3"></a>Date / Time / Version: 16.01.2019 / 16:58:44 / 4.30.0030</span>
+<span id="cb1-4"><a href="#cb1-4"></a>Substance / Sample no: E_AS_a_1d / a</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a>   ;   t in s;  Tau in Pa;  G' in Pa;   G'' in Pa;  T in °C; </span>
+<span id="cb1-7"><a href="#cb1-7"></a>1|1;   3,03816; 0,01000000; 287,874;    5510,48;    24,8900; </span>
+<span id="cb1-8"><a href="#cb1-8"></a>1|2;   4,77336; 0,0111549;  1217,39;    2093,46;    24,8900; </span>
+<span id="cb1-9"><a href="#cb1-9"></a>1|3;   6,43109; 0,0124431;  1526,54;    1898,83;    24,8900; </span>
+<span id="cb1-10"><a href="#cb1-10"></a>1|4;   8,02304; 0,0138801;  1491,70;    2424,77;    24,8900;</span>
+<span id="cb1-11"><a href="#cb1-11"></a>1|5;   9,74107; 0,0154831;  1607,40;    2188,76;    24,8900;</span>
+<span id="cb1-12"><a href="#cb1-12"></a>1|6;   11,3822; 0,0172712;  1615,57;    3013,40;    24,8900;</span>
+<span id="cb1-13"><a href="#cb1-13"></a>1|7;   13,0230; 0,0192658;  4972,53;    4013,37;    24,8900;</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Perceba que há várias informações valiosas como a data, hora e nome da amostra nas primeiras linhas do documento e o restante são dados formatados usando vírgula (<code>,</code>) como decimal e ponto e vírgula (<code>;</code>) como separador de colunas. Esta informação é importante.</p>
+<section id="readr" class="level2">
+<h2 class="anchored" data-anchor-id="readr"><code>readr</code></h2>
+<p>Eu já vou dar a dica de que o <code>readr::</code> é a melhor library para trabalhar com a grande maioria dos dados e convenientemente, as funções de leitura de dados aceita múltiplos documentos por padrão no momento da importação.</p>
+<p>Imagine que eu tenho 3 arquivos <code>.csv</code> dentro do diretório <code>importar-multiplos-csv</code> que tem um caminho conforme o seguinte <code>C:\Documentos\posts\importar-multiplos-csv</code>.</p>
+<p>Este arquivo possui a formatação como abaixo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource txt number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1"></a>linha;nome;sexo;valor</span>
+<span id="cb2-2"><a href="#cb2-2"></a>1;Alberto;M;55</span>
+<span id="cb2-3"><a href="#cb2-3"></a>2;Alberto;M;56</span>
+<span id="cb2-4"><a href="#cb2-4"></a>3;Alberto;M;49</span>
+<span id="cb2-5"><a href="#cb2-5"></a>4;Alberto;M;50</span>
+<span id="cb2-6"><a href="#cb2-6"></a>5;Alberto;M;52</span>
+<span id="cb2-7"><a href="#cb2-7"></a>6;Alberto;M;59</span>
+<span id="cb2-8"><a href="#cb2-8"></a>7;Alberto;M;60</span>
+<span id="cb2-9"><a href="#cb2-9"></a>8;Alberto;M;61</span>
+<span id="cb2-10"><a href="#cb2-10"></a>9;Alberto;M;65</span>
+<span id="cb2-11"><a href="#cb2-11"></a>10;Alberto;M;70</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Usando o pacote <code>here::</code> é mais fácil selecionar o caminho completo do diretório.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(here)</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># Encontrar o caminho para a diretório onde estão os meus arquivos csv</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>diretorio <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"posts"</span>, <span class="st">"importar-multiplos-csv"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># Cria uma lista dos arquivos csv que estão na diretório indicado </span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>lista_arquivos <span class="ot">&lt;-</span> <span class="fu">dir</span>(<span class="at">path =</span> diretorio, <span class="at">pattern =</span> <span class="st">"csv"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> lista_arquivos)</span>
+<span id="cb3-11"><a href="#cb3-11"></a></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="fu">print</span>(df)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 1
+   `linha;nome;sexo;valor`
+   &lt;chr&gt;                  
+ 1 1;Alberto;M;55         
+ 2 2;Alberto;M;56         
+ 3 3;Alberto;M;49         
+ 4 4;Alberto;M;50         
+ 5 5;Alberto;M;52         
+ 6 6;Alberto;M;59         
+ 7 7;Alberto;M;60         
+ 8 8;Alberto;M;61         
+ 9 9;Alberto;M;65         
+10 10;Alberto;M;70        
+# ℹ 20 more rows</code></pre>
+</div>
+</div>
+<p>Essencialmente, tendo um vetor com os caminhos dos arquivos, basta passar essa lista para a função <code>read_csv()</code> e todos os arquivos serão importados.</p>
+<p>Da forma que executei as ações todos os dados foram incluídos em apenas uma coluna. Isso acontece porque por padrão <code>read_csv()</code> entende a vírgula <code>,</code> como divisor de colunas e <code>.</code> como ponto decimal mas os dados que eu apresentei usam <code>;</code> como divisor de colunas e <code>,</code> como ponto decimal, causando confusão no momento de identificar os valores.</p>
+<p>Como é comum o uso de <code>,</code> como ponto decimal em vários países os desenvolvedores do <code>readr::</code> também criaram a função <code>read_csv2()</code> que entende como divisor de colunas o <code>;</code> e <code>,</code> como ponto decimal.</p>
+<p>Adicionalmente há a função <code>read_delim()</code> onde é possível especificar qualquer caractere como divisor de colunas como <code>|</code> e outros. Há outras funções da família do <code>read_*()</code> que podem ser lidos na <a href="https://readr.tidyverse.org/reference/index.html">documentação</a> da <em>library</em>.</p>
+<p>Repetindo a leitura dos dados com a função correta, obtém-se as colunas separadas corretamente.</p>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<details class="code-fold">
+<summary><code>Code</code></summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(</span>
+<span id="cb5-2"><a href="#cb5-2"></a>   <span class="at">file =</span> lista_arquivos</span>
+<span id="cb5-3"><a href="#cb5-3"></a>   )</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">print</span>(df, <span class="at">n=</span><span class="dv">30</span>)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 30 × 4
+   linha nome    sexo  valor
+   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;
+ 1     1 Alberto M        55
+ 2     2 Alberto M        56
+ 3     3 Alberto M        49
+ 4     4 Alberto M        50
+ 5     5 Alberto M        52
+ 6     6 Alberto M        59
+ 7     7 Alberto M        60
+ 8     8 Alberto M        61
+ 9     9 Alberto M        65
+10    10 Alberto M        70
+11     1 Laura   F        45
+12     2 Laura   F        45
+13     3 Laura   F        46
+14     4 Laura   F        46
+15     5 Laura   F        47
+16     6 Laura   F        45
+17     7 Laura   F        44
+18     8 Laura   F        43
+19     9 Laura   F        42
+20    10 Laura   F        45
+21     1 Jonas   M        80
+22     2 Jonas   M        82
+23     3 Jonas   M        83
+24     4 Jonas   M        86
+25     5 Jonas   M        89
+26     6 Jonas   M        90
+27     7 Jonas   M        95
+28     8 Jonas   M       101
+29     9 Jonas   M       103
+30    10 Jonas   M       110</code></pre>
+</div>
+</div>
+</div><div class="column">
+<p>Representado graficamente como abaixo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">linha</th>
+<th style="text-align: left;">nome</th>
+<th style="text-align: left;">sexo</th>
+<th style="text-align: right;">valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Alberto</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">55</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Alberto</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">56</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Alberto</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">49</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Alberto</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Alberto</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">52</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Alberto</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">59</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Alberto</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Alberto</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">61</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Alberto</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Alberto</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Laura</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Laura</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Laura</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Laura</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Laura</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">47</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Laura</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Laura</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">44</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Laura</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Laura</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Laura</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Jonas</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Jonas</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">82</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Jonas</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">83</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Jonas</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">86</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Jonas</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">89</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Jonas</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">Jonas</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">95</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Jonas</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">101</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">Jonas</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">103</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">Jonas</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">110</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

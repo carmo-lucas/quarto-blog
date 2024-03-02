@@ -1544,14 +1544,14 @@
     "href": "blog.html",
     "title": "blog",
     "section": "",
-    "text": "Ordenar por\n       Default\n         \n          Título\n        \n         \n          Data - Mais antigo\n        \n         \n          Data - Mais novo\n        \n         \n          Autor\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nComo criar eixos secundários no ggplot2\n\n\n\n\n\n\nggplot2\n\n\ndataviz\n\n\n\n\n\n\n\n\n\n2023 - 02 - 11\n\n\nLucas Carmo\n\n\n\n\n\n\n\n\n\n\n\n\nComo importar múltiplos csv para o mesmo dataframe\n\n\n\n\n\n\nggplot2\n\n\ndataviz\n\n\n\n\n\n\n\n\n\n2023 - 02 - 11\n\n\nLucas Carmo\n\n\n\n\n\n\n\n\n\n\n\n\nUsando o PowerToys para criar tarefas no ClickUp\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n2022 - 07 - 14\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
+    "text": "Ordenar por\n       Default\n         \n          Título\n        \n         \n          Data - Mais antigo\n        \n         \n          Data - Mais novo\n        \n         \n          Autor\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nComo criar eixos secundários no ggplot2\n\n\n\n\n\n\nggplot2\n\n\ndataviz\n\n\n\n\n\n\n\n\n\n2023 - 02 - 11\n\n\nLucas Carmo\n\n\n\n\n\n\n\n\n\n\n\n\nUsando o PowerToys para criar tarefas no ClickUp\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n2022 - 07 - 14\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
   },
   {
     "objectID": "posts/eixos-secundarios/index.html",
     "href": "posts/eixos-secundarios/index.html",
     "title": "Como criar eixos secundários no ggplot2",
     "section": "",
-    "text": "Nesta postagem vou ensinar a gerar gráficos com dois eixos y ou dois eixos x como o abaixo:\n\n\nCode\nlibrary(ggplot2)\n#| fig-cap: Exemplo de gráfico com dois eixos x e dois eixos y\n#| fig-cap-location: margin\n#| echo:false\n#| tidy:true\n\nexample &lt;- ggplot(data = mpg, aes(x = displ , y = hwy)) +\ngeom_point() +\ntheme_bw()+ \nscale_y_continuous(sec.axis = sec_axis(~ . /100, name=\"Y/100\")) +\nscale_x_continuous(sec.axis = sec_axis(~ . /100, name =\"X/100\")) +\nlabs(x = \"Valor de X\",\ny = \"Valor de Y\")"
+    "text": "Nesta postagem vou ensinar a gerar gráficos com dois eixos Y ou dois eixos X como o abaixo:\n\n\n\n\n\nExemplo de gráfico com dois eixos x e dois eixos y"
   },
   {
     "objectID": "posts/eixos-secundarios/index.html#adequação-da-função-de-cálculo-dos-coeficientes",
