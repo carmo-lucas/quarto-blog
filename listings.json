@@ -21,6 +21,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/importar-multiplos-csv/index.html",
       "/posts/eixos-secundarios/index.html",
       "/posts/powertoys-run/index.html"
     ]
