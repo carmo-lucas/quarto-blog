@@ -70,5 +70,4 @@ atualizado nesta seção, assim como outros projetos de desenvolvimento.
 </div>
 </div>
 
-<a href='LCLC.vcf'>Vcard</a>
 
