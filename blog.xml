@@ -9,430 +9,8 @@
 <link>https://lucascarmo.com.br/blog.html</link>
 <atom:link href="https://lucascarmo.com.br/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.4.550</generator>
-<lastBuildDate>Tue, 27 Feb 2024 03:00:00 GMT</lastBuildDate>
-<item>
-  <title>Como importar múltiplos csv para o mesmo dataframe</title>
-  <dc:creator>Lucas Carmo</dc:creator>
-  <link>https://lucascarmo.com.br/posts/importar-multiplos-csv/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="tldr" class="level1">
-<h1>tl;dr</h1>
-<p>Imagine que você tem 200 arquivos em uma diretório no seu computador e precisa importar todos eles para criar uma visualização. Vou te ensinar a fazer isso da forma mais simples possível.</p>
-</section>
-<section id="definições" class="level1">
-<h1>Definições</h1>
-<p>Gostaria de dar algumas definições para que possa usar os termos corretos</p>
-<dl>
-<dt>Diretório</dt>
-<dd>
-Comumente chamado de ‘pasta’, é o local onde os arquivos estão localizados
-</dd>
-<dt>Caminho</dt>
-<dd>
-Endereço do arquivo completo que inclui a extensão do arquivo
-</dd>
-</dl>
-</section>
-<section id="inspiracão" class="level1">
-<h1>Inspiracão</h1>
-<p>Durante o meu mestrado eu realizei mais de 500 experimentos em reologia e eu sabia que para organizar estas análises seria necessário organizar meus arquivos de uma forma padronizada para que eu pudesse acessar os dados rapidamente. Naquela época eu não sabia nada sobre banco de dados mas eu conhecia bem <code>.csv</code> e como a maioria dos <em>softwares</em> de equipamentos analíticos exporta desta forma eu sabia que poderia fazer funcionar.</p>
-<p>O problema é que eu precisaria importar <strong>centenas</strong> de documentos <code>.csv</code> para poder gerar as vizualizações e análises, mas a alternativa era fazê-lo no excel 😓.</p>
-</section>
-<section id="solução" class="level1">
-<h1>Solução</h1>
-<p>A solução envolveu algumas etapas:</p>
-<ol type="1">
-<li>Nomear os meus documentos muito bem e de forma padronizada</li>
-<li>Incluir o máximo de informações no cabeçalho dos documentos</li>
-<li>Sempre exportar da mesma forma</li>
-<li>Salvar os documentos de forma organizada nos diretórios apropriados</li>
-</ol>
-<p>Um exemplo de documento exportado é o demonstrado abaixo:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource txt number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1">C:\Documents\E_AS_a_1d.rwd</span>
-<span id="cb1-2">Company / Operator: / lucas</span>
-<span id="cb1-3">Date / Time / Version: 16.01.2019 / 16:58:44 / 4.30.0030</span>
-<span id="cb1-4">Substance / Sample no: E_AS_a_1d / a</span>
-<span id="cb1-5"></span>
-<span id="cb1-6">   ;   t in s;  Tau in Pa;  G' in Pa;   G'' in Pa;  T in °C; </span>
-<span id="cb1-7">1|1;   3,03816; 0,01000000; 287,874;    5510,48;    24,8900; </span>
-<span id="cb1-8">1|2;   4,77336; 0,0111549;  1217,39;    2093,46;    24,8900; </span>
-<span id="cb1-9">1|3;   6,43109; 0,0124431;  1526,54;    1898,83;    24,8900; </span>
-<span id="cb1-10">1|4;   8,02304; 0,0138801;  1491,70;    2424,77;    24,8900;</span>
-<span id="cb1-11">1|5;   9,74107; 0,0154831;  1607,40;    2188,76;    24,8900;</span>
-<span id="cb1-12">1|6;   11,3822; 0,0172712;  1615,57;    3013,40;    24,8900;</span>
-<span id="cb1-13">1|7;   13,0230; 0,0192658;  4972,53;    4013,37;    24,8900;</span></code></pre></div>
-</div>
-<p>Perceba que há várias informações valiosas como a data, hora e nome da amostra nas primeiras linhas do documento e o restante são dados formatados usando vírgula (<code>,</code>) como decimal e ponto e vírgula (<code>;</code>) como separador de colunas. Esta informação é importante.</p>
-<section id="readr" class="level2">
-<h2 class="anchored" data-anchor-id="readr"><code>readr</code></h2>
-<p>Eu já vou dar a dica de que o <code>readr::</code> é a melhor library para trabalhar com a grande maioria dos dados e convenientemente, as funções de leitura de dados aceita múltiplos documentos por padrão no momento da importação.</p>
-<p>Imagine que eu tenho 3 arquivos <code>.csv</code> dentro do diretório <code>importar-multiplos-csv</code> que tem um caminho conforme o seguinte <code>C:\Documentos\posts\importar-multiplos-csv</code>.</p>
-<p>Este arquivo possui a formatação como abaixo:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource txt number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1">linha;nome;sexo;valor</span>
-<span id="cb2-2">1;Alberto;M;55</span>
-<span id="cb2-3">2;Alberto;M;56</span>
-<span id="cb2-4">3;Alberto;M;49</span>
-<span id="cb2-5">4;Alberto;M;50</span>
-<span id="cb2-6">5;Alberto;M;52</span>
-<span id="cb2-7">6;Alberto;M;59</span>
-<span id="cb2-8">7;Alberto;M;60</span>
-<span id="cb2-9">8;Alberto;M;61</span>
-<span id="cb2-10">9;Alberto;M;65</span>
-<span id="cb2-11">10;Alberto;M;70</span></code></pre></div>
-</div>
-<p>Usando o pacote <code>here::</code> é mais fácil selecionar o caminho completo do diretório.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(readr)</span>
-<span id="cb3-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(here)</span>
-<span id="cb3-3"></span>
-<span id="cb3-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Encontrar o caminho para a diretório onde estão os meus arquivos csv</span></span>
-<span id="cb3-5">diretorio <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">here</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"posts"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"importar-multiplos-csv"</span>)</span>
-<span id="cb3-6"></span>
-<span id="cb3-7"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Cria uma lista dos arquivos csv que estão na diretório indicado </span></span>
-<span id="cb3-8">lista_arquivos <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dir</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">path =</span> diretorio, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">pattern =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"csv"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">full.names =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span>)</span>
-<span id="cb3-9"></span>
-<span id="cb3-10">df <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_csv</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">file =</span> lista_arquivos)</span>
-<span id="cb3-11"></span>
-<span id="cb3-12"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">print</span>(df)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 30 × 1
-   `linha;nome;sexo;valor`
-   &lt;chr&gt;                  
- 1 1;Alberto;M;55         
- 2 2;Alberto;M;56         
- 3 3;Alberto;M;49         
- 4 4;Alberto;M;50         
- 5 5;Alberto;M;52         
- 6 6;Alberto;M;59         
- 7 7;Alberto;M;60         
- 8 8;Alberto;M;61         
- 9 9;Alberto;M;65         
-10 10;Alberto;M;70        
-# ℹ 20 more rows</code></pre>
-</div>
-</div>
-<p>Essencialmente, tendo um vetor com os caminhos dos arquivos, basta passar essa lista para a função <code>read_csv()</code> e todos os arquivos serão importados.</p>
-<p>Da forma que executei as ações todos os dados foram incluídos em apenas uma coluna. Isso acontece porque por padrão <code>read_csv()</code> entende a vírgula <code>,</code> como divisor de colunas e <code>.</code> como ponto decimal mas os dados que eu apresentei usam <code>;</code> como divisor de colunas e <code>,</code> como ponto decimal, causando confusão no momento de identificar os valores.</p>
-<p>Como é comum o uso de <code>,</code> como ponto decimal em vários países os desenvolvedores do <code>readr::</code> também criaram a função <code>read_csv2()</code> que entende como divisor de colunas o <code>;</code> e <code>,</code> como ponto decimal.</p>
-<p>Adicionalmente há a função <code>read_delim()</code> onde é possível especificar qualquer caractere como divisor de colunas como <code>|</code> e outros. Há outras funções da família do <code>read_*()</code> que podem ser lidos na <a href="https://readr.tidyverse.org/reference/index.html">documentação</a> da <em>library</em>.</p>
-<p>Repetindo a leitura dos dados com a função correta, obtém-se as colunas separadas corretamente.</p>
-<div class="columns">
-<div class="column">
-<div class="cell">
-<details class="code-fold">
-<summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1">df <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">read_csv2</span>(</span>
-<span id="cb5-2">   <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">file =</span> lista_arquivos</span>
-<span id="cb5-3">   )</span>
-<span id="cb5-4"></span>
-<span id="cb5-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">print</span>(df, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">n=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">30</span>)</span></code></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 30 × 4
-   linha nome    sexo  valor
-   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;
- 1     1 Alberto M        55
- 2     2 Alberto M        56
- 3     3 Alberto M        49
- 4     4 Alberto M        50
- 5     5 Alberto M        52
- 6     6 Alberto M        59
- 7     7 Alberto M        60
- 8     8 Alberto M        61
- 9     9 Alberto M        65
-10    10 Alberto M        70
-11     1 Laura   F        45
-12     2 Laura   F        45
-13     3 Laura   F        46
-14     4 Laura   F        46
-15     5 Laura   F        47
-16     6 Laura   F        45
-17     7 Laura   F        44
-18     8 Laura   F        43
-19     9 Laura   F        42
-20    10 Laura   F        45
-21     1 Jonas   M        80
-22     2 Jonas   M        82
-23     3 Jonas   M        83
-24     4 Jonas   M        86
-25     5 Jonas   M        89
-26     6 Jonas   M        90
-27     7 Jonas   M        95
-28     8 Jonas   M       101
-29     9 Jonas   M       103
-30    10 Jonas   M       110</code></pre>
-</div>
-</div>
-</div><div class="column">
-<p>Representado graficamente como abaixo.</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: right;">linha</th>
-<th style="text-align: left;">nome</th>
-<th style="text-align: left;">sexo</th>
-<th style="text-align: right;">valor</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Alberto</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">55</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Alberto</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">56</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Alberto</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">49</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Alberto</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">50</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">Alberto</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">52</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">Alberto</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">59</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">Alberto</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">60</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">Alberto</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">61</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">Alberto</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">65</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: left;">Alberto</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">70</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Laura</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: right;">45</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Laura</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: right;">45</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Laura</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: right;">46</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Laura</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: right;">46</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">Laura</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: right;">47</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">Laura</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: right;">45</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">Laura</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: right;">44</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">Laura</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: right;">43</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">Laura</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: right;">42</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: left;">Laura</td>
-<td style="text-align: left;">F</td>
-<td style="text-align: right;">45</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">Jonas</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">80</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">Jonas</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">82</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">Jonas</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">83</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">Jonas</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">86</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">Jonas</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">89</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">Jonas</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">90</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">7</td>
-<td style="text-align: left;">Jonas</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">95</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">8</td>
-<td style="text-align: left;">Jonas</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">101</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">9</td>
-<td style="text-align: left;">Jonas</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">103</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10</td>
-<td style="text-align: left;">Jonas</td>
-<td style="text-align: left;">M</td>
-<td style="text-align: right;">110</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>data wrangling</category>
-  <category>readr</category>
-  <guid>https://lucascarmo.com.br/posts/importar-multiplos-csv/</guid>
-  <pubDate>Tue, 27 Feb 2024 03:00:00 GMT</pubDate>
-</item>
+<generator>quarto-1.6.43</generator>
+<lastBuildDate>Sat, 11 Feb 2023 03:00:00 GMT</lastBuildDate>
 <item>
   <title>Como criar eixos secundários no ggplot2</title>
   <dc:creator>Lucas Carmo</dc:creator>
@@ -443,19 +21,8 @@ font-style: inherit;">30</span>)</span></code></pre></div>
 
 
 
-<section id="tldr" class="level1 page-columns page-full">
+<section id="tldr" class="level1">
 <h1>tl;dr</h1>
-<p>Nesta postagem vou ensinar a gerar gráficos com dois eixos Y ou dois eixos X como o abaixo:</p>
-<div class="cell page-columns page-full">
-<div class="cell-output-display page-columns page-full">
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/grafico-tldr-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="margin-caption">Exemplo de gráfico com dois eixos x e dois eixos y</figcaption>
-</figure>
-</div>
-</div>
-</div>
 </section>
 <section id="o-que-é-um-eixo-secundário" class="level1">
 <h1>O que é um eixo secundário?</h1>
@@ -550,7 +117,7 @@ font-style: inherit;">geom_point</span>()</span>
 </div>
 </div>
 <p>O gráfico acima é (<code>p</code>) é apenas a base para as próximas customizações.</p>
-<p>De acordo com os exemplos na documentação, basta adicionar a função para configurar a escala do eixo y (ou x) ao gráfico original e com o argumento <code>sec.axis</code> especificar as configurações do segundo eixo. Usando <code>dup_axis()</code> como valor para o argumento, apenas será duplicado o eixo y do lado esquerdo para o direito. Porém usando o valor <code>sec.axis()</code></p>
+<p>De acordo com os exemplos na documentação, basta adicionar a função para configurar a escala do eixo y (ou x) ao gráfico original e com o argumento <code>sex.axis</code> especificar as configurações do segundo eixo. Usando <code>dup_axis()</code> como valor para o argumento, apenas será duplicado o eixo y do lado esquerdo para o direito. Porém usando o valor <code>sec.axis()</code></p>
 <div class="cell">
 <details class="code-fold">
 <summary><code>Code</code></summary>
@@ -581,11 +148,11 @@ font-style: inherit;">name=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"log(y)"</span>))</span></code></pre></div>
 </details>
-<div id="fig-sec-axis" class="cell quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-sec-axis" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sec-axis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fig-sec-axis-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-sec-axis-1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-sec-axis-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-1.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672">
@@ -597,7 +164,7 @@ font-style: inherit;">"log(y)"</span>))</span></code></pre></div>
 </div>
 </div>
 <div class="cell-output-display">
-<div id="fig-sec-axis-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-sec-axis-2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-sec-axis-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-2.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672">
@@ -815,7 +382,7 @@ font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Coeficiente = "</span>, coeficiente))</span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-coeficiente" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-coeficiente" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-coeficiente-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-coeficiente-1.png" class="img-fluid figure-img" width="672">
@@ -840,6 +407,7 @@ Figura&nbsp;2: Utilização de um coeficiente com valor constante para transform
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(dados, var_1, var_2){</span>
 <span id="cb5-2">    parametros <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -990,7 +558,7 @@ font-style: inherit;">"Coeficiente = "</span>, coeficiente_calculado))</span></c
 </div>
 </div>
 </div>
-<p>Porém o desafio é implementar o cálculo do coeficiente diretamente na construção do gráfico e também há o problema da ordem das variáveis na função.P</p>
+<p>Porém o desafio é implementar o cálculo do coeficiente diretamente na construção do gráfico e também há o problema da ordem das variáveis na função.</p>
 <section id="adequação-da-função-de-cálculo-dos-coeficientes" class="level2">
 <h2 class="anchored" data-anchor-id="adequação-da-função-de-cálculo-dos-coeficientes">Adequação da função de cálculo dos coeficientes</h2>
 <p>Da forma que a função foi construída o cálculo do coeficiente é feito da seguinte forma:</p>
@@ -1098,6 +666,7 @@ font-style: inherit;">"Coeficiente = "</span>, coef2))</span></code></pre></div>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(dados, var_1, var_2){</span>
 <span id="cb8-2">    </span>
 <span id="cb8-3">    parametros <span class="ot" style="color: #003B4F;
@@ -1153,6 +722,7 @@ font-style: inherit;">$</span>min_var_1)</span>
 <span id="cb8-13"></span>
 <span id="cb8-14">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span>(coeficiente <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
@@ -1227,6 +797,7 @@ font-style: inherit;">print</span>(coeficientes)</span></code></pre></div>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(df, x, var_1, var_2){</span>
 <span id="cb10-2"></span>
 <span id="cb10-3">  parametros <span class="ot" style="color: #003B4F;
@@ -1282,6 +853,7 @@ font-style: inherit;">$</span>min_var_1)</span>
 <span id="cb10-13"></span>
 <span id="cb10-14">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span>(coeficiente <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
@@ -1560,7 +1132,7 @@ font-style: inherit;">element_blank</span>())</span></code></pre></div>
 <p>A referência que eu usei para este script é de um <a href="https://www.youtube.com/watch?v=UVUd9_k9C6A&amp;t=20735s">vídeo</a> que explica como criar scripts e funções e demonstra como torná-los executáveis.</p>
 <p>Eu aprendi que para que um script seja executável, é necessário que o arquivo seja salvo com a extensão <code>.ps1m</code> o que o identifica como sendo um módulo do powershell e também deve estar salvo no diretório <code>%user%\Documents\WindowsPowerShell\Modules\MeuModulo</code>. É importante também garantir que a pasta e o nome do arquivo sejam iguais.</p>
 <p>Este script contém a seguinte função <code>task</code>:</p>
-<div id="lst-taskFunction" class="powershell listing quarto-float" data-filename="MeuModulo.ps1m">
+<div id="lst-taskFunction" class="powershell listing quarto-float quarto-figure quarto-figure-left anchored" data-filename="MeuModulo.ps1m">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-taskFunction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Listing&nbsp;1: Função para Criar Tarefa
@@ -1572,6 +1144,7 @@ Listing&nbsp;1: Função para Criar Tarefa
 </div>
 <div class="sourceCode" id="lst-taskFunction" data-filename="MeuModulo.ps1m" style="background: #f1f3f5;"><pre class="sourceCode numberSource powershell number-lines code-with-copy"><code class="sourceCode powershell"><span id="lst-taskFunction-1"><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span> task <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">{</span></span>
@@ -1582,6 +1155,7 @@ background-color: null;
 font-style: inherit;">()]</span></span>
 <span id="lst-taskFunction-3"><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">param</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span></span>
@@ -1674,6 +1248,7 @@ background-color: null;
 font-style: inherit;">-</span>Encoding utf8</span>
 <span id="lst-taskFunction-15"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">exit</span></span>
 <span id="lst-taskFunction-16"><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1759,6 +1334,7 @@ font-style: inherit;">"ReplaceWinR"</span><span class="fu" style="color: #4758AB
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">,</span></span>
@@ -1768,6 +1344,7 @@ font-style: inherit;">"LeaveShellOpen"</span><span class="fu" style="color: #475
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">,</span></span>
@@ -1777,6 +1354,7 @@ font-style: inherit;">"RunAsAdministrator"</span><span class="fu" style="color: 
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">,</span></span>

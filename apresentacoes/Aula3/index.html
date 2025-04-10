@@ -8,12 +8,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.550">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.43">
 
   <meta name="author" content="Lucas C. L. do Carmo">
-  <title>lucas carmo - Aula 3 - Manipulando dataframes e gráficos</title>
+  <title>lucas carmo – Aula 3 - Manipulando dataframes e gráficos</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -44,7 +43,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -72,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -86,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -97,7 +96,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2f366650f320edcfcf53d73c80250a32.css">
   
   <script type="text/javascript" charset="UTF-8">
   document.addEventListener('DOMContentLoaded', function () {
@@ -121,204 +120,6 @@
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style>html{ scroll-behavior: smooth; }</style>
-  <style type="text/css">
-
-  .callout {
-    margin-top: 1em;
-    margin-bottom: 1em;  
-    border-radius: .25rem;
-  }
-
-  .callout.callout-style-simple { 
-    padding: 0em 0.5em;
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-    display: flex;
-  }
-
-  .callout.callout-style-default {
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-  }
-
-  .callout .callout-body-container {
-    flex-grow: 1;
-  }
-
-  .callout.callout-style-simple .callout-body {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-style-default .callout-body {
-    font-size: 0.9rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-titled.callout-style-simple .callout-body {
-    margin-top: 0.2em;
-  }
-
-  .callout:not(.callout-titled) .callout-body {
-      display: flex;
-  }
-
-  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
-    padding-left: 1.6em;
-  }
-
-  .callout.callout-titled .callout-header {
-    padding-top: 0.2em;
-    margin-bottom: -0.2em;
-  }
-
-  .callout.callout-titled .callout-title  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-    
-  .callout.callout-titled.callout-style-simple .callout-content  p {
-    margin-top: 0;
-  }
-
-  .callout.callout-titled.callout-style-default .callout-content  p {
-    margin-top: 0.7em;
-  }
-
-  .callout.callout-style-simple div.callout-title {
-    border-bottom: none;
-    font-size: .9rem;
-    font-weight: 600;
-    opacity: 75%;
-  }
-
-  .callout.callout-style-default  div.callout-title {
-    border-bottom: none;
-    font-weight: 600;
-    opacity: 85%;
-    font-size: 0.9rem;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-default div.callout-content {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-simple .callout-icon::before {
-    height: 1rem;
-    width: 1rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-  }
-
-  .callout.callout-style-default .callout-icon::before {
-    height: 0.9rem;
-    width: 0.9rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 0.9rem 0.9rem;
-  }
-
-  .callout-title {
-    display: flex
-  }
-    
-  .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  .callout.no-icon::before {
-    display: none !important;
-  }
-
-  .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
-  }
-
-  .callout.callout-titled .callout-icon::before {
-    margin-top: .5rem;
-    padding-right: .5rem;
-  }
-
-  .callout:not(.callout-titled) .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  /* Callout Types */
-
-  div.callout-note {
-    border-left-color: #4582ec !important;
-  }
-
-  div.callout-note .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
-  }
-
-  div.callout-note.callout-style-default .callout-title {
-    background-color: #dae6fb
-  }
-
-  div.callout-important {
-    border-left-color: #d9534f !important;
-  }
-
-  div.callout-important .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-important.callout-style-default .callout-title {
-    background-color: #f7dddc
-  }
-
-  div.callout-warning {
-    border-left-color: #f0ad4e !important;
-  }
-
-  div.callout-warning .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-warning.callout-style-default .callout-title {
-    background-color: #fcefdc
-  }
-
-  div.callout-tip {
-    border-left-color: #02b875 !important;
-  }
-
-  div.callout-tip .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-tip.callout-style-default .callout-title {
-    background-color: #ccf1e3
-  }
-
-  div.callout-caution {
-    border-left-color: #fd7e14 !important;
-  }
-
-  div.callout-caution .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
-  }
-
-  div.callout-caution.callout-style-default .callout-title {
-    background-color: #ffe5d0
-  }
-
-  </style>
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -457,11 +258,13 @@ Lucas C. L. do Carmo
 <li>Gráficos</li>
 </ul></li>
 </ul>
-</div>
-</div>
+</div></div>
 </section>
 <section id="componentes-do-tidyverse" class="slide level2">
 <h2>Componentes do <code>tidyverse</code></h2>
+<div>
+
+</div>
 <div class="quarto-layout-panel" data-layout-ncol="4">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
@@ -572,27 +375,14 @@ Lucas C. L. do Carmo
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">gt</span>(tbl)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<div id="qannxtguqc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qannxtguqc table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<div id="ddoqihlhwd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#qannxtguqc thead, #qannxtguqc tbody, #qannxtguqc tfoot, #qannxtguqc tr, #qannxtguqc td, #qannxtguqc th {
-  border-style: none;
-}
-
-#qannxtguqc p {
-  margin: 0;
-  padding: 0;
-}
-
-#qannxtguqc .gt_table {
+#ddoqihlhwd .gt_table {
   display: table;
   border-collapse: collapse;
-  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -615,36 +405,7 @@ Lucas C. L. do Carmo
   border-left-color: #D3D3D3;
 }
 
-#qannxtguqc .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#qannxtguqc .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#qannxtguqc .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#qannxtguqc .gt_heading {
+#ddoqihlhwd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -656,13 +417,42 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#qannxtguqc .gt_bottom_border {
+#ddoqihlhwd .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ddoqihlhwd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ddoqihlhwd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ddoqihlhwd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qannxtguqc .gt_col_headings {
+#ddoqihlhwd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -677,7 +467,7 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#qannxtguqc .gt_col_heading {
+#ddoqihlhwd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -697,7 +487,7 @@ Lucas C. L. do Carmo
   overflow-x: hidden;
 }
 
-#qannxtguqc .gt_column_spanner_outer {
+#ddoqihlhwd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -709,15 +499,15 @@ Lucas C. L. do Carmo
   padding-right: 4px;
 }
 
-#qannxtguqc .gt_column_spanner_outer:first-child {
+#ddoqihlhwd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qannxtguqc .gt_column_spanner_outer:last-child {
+#ddoqihlhwd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qannxtguqc .gt_column_spanner {
+#ddoqihlhwd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -729,11 +519,7 @@ Lucas C. L. do Carmo
   width: 100%;
 }
 
-#qannxtguqc .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#qannxtguqc .gt_group_heading {
+#ddoqihlhwd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -759,7 +545,7 @@ Lucas C. L. do Carmo
   text-align: left;
 }
 
-#qannxtguqc .gt_empty_group_heading {
+#ddoqihlhwd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -774,15 +560,15 @@ Lucas C. L. do Carmo
   vertical-align: middle;
 }
 
-#qannxtguqc .gt_from_md > :first-child {
+#ddoqihlhwd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qannxtguqc .gt_from_md > :last-child {
+#ddoqihlhwd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qannxtguqc .gt_row {
+#ddoqihlhwd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -801,7 +587,7 @@ Lucas C. L. do Carmo
   overflow-x: hidden;
 }
 
-#qannxtguqc .gt_stub {
+#ddoqihlhwd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -814,7 +600,7 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#qannxtguqc .gt_stub_row_group {
+#ddoqihlhwd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -828,15 +614,11 @@ Lucas C. L. do Carmo
   vertical-align: top;
 }
 
-#qannxtguqc .gt_row_group_first td {
+#ddoqihlhwd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qannxtguqc .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#qannxtguqc .gt_summary_row {
+#ddoqihlhwd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -846,16 +628,16 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#qannxtguqc .gt_first_summary_row {
+#ddoqihlhwd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qannxtguqc .gt_first_summary_row.thick {
+#ddoqihlhwd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qannxtguqc .gt_last_summary_row {
+#ddoqihlhwd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -865,7 +647,7 @@ Lucas C. L. do Carmo
   border-bottom-color: #D3D3D3;
 }
 
-#qannxtguqc .gt_grand_summary_row {
+#ddoqihlhwd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -875,7 +657,7 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#qannxtguqc .gt_first_grand_summary_row {
+#ddoqihlhwd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -885,21 +667,11 @@ Lucas C. L. do Carmo
   border-top-color: #D3D3D3;
 }
 
-#qannxtguqc .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#qannxtguqc .gt_striped {
+#ddoqihlhwd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qannxtguqc .gt_table_body {
+#ddoqihlhwd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -908,7 +680,7 @@ Lucas C. L. do Carmo
   border-bottom-color: #D3D3D3;
 }
 
-#qannxtguqc .gt_footnotes {
+#ddoqihlhwd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -922,16 +694,16 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#qannxtguqc .gt_footnote {
+#ddoqihlhwd .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#qannxtguqc .gt_sourcenotes {
+#ddoqihlhwd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -945,7 +717,7 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#qannxtguqc .gt_sourcenote {
+#ddoqihlhwd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -953,70 +725,71 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#qannxtguqc .gt_left {
+#ddoqihlhwd .gt_left {
   text-align: left;
 }
 
-#qannxtguqc .gt_center {
+#ddoqihlhwd .gt_center {
   text-align: center;
 }
 
-#qannxtguqc .gt_right {
+#ddoqihlhwd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qannxtguqc .gt_font_normal {
+#ddoqihlhwd .gt_font_normal {
   font-weight: normal;
 }
 
-#qannxtguqc .gt_font_bold {
+#ddoqihlhwd .gt_font_bold {
   font-weight: bold;
 }
 
-#qannxtguqc .gt_font_italic {
+#ddoqihlhwd .gt_font_italic {
   font-style: italic;
 }
 
-#qannxtguqc .gt_super {
+#ddoqihlhwd .gt_super {
   font-size: 65%;
 }
 
-#qannxtguqc .gt_footnote_marks {
+#ddoqihlhwd .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
-  position: initial;
 }
 
-#qannxtguqc .gt_asterisk {
+#ddoqihlhwd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qannxtguqc .gt_indent_1 {
+#ddoqihlhwd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qannxtguqc .gt_indent_2 {
+#ddoqihlhwd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qannxtguqc .gt_indent_3 {
+#ddoqihlhwd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qannxtguqc .gt_indent_4 {
+#ddoqihlhwd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qannxtguqc .gt_indent_5 {
+#ddoqihlhwd .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
-<table class="gt_table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
+<table class="gt_table caption-top" data-quarto-postprocess="true">
+<thead class="gt_col_headings">
+<tr class="header">
 <th id="Pais" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Pais</th>
 <th id="X1999" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">X1999</th>
 <th id="X2000" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">X2000</th>
@@ -1042,9 +815,7 @@ Lucas C. L. do Carmo
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="transformando-a-tabela-para-formato-long" class="slide level2">
 <h2>Transformando a tabela para formato <em>long</em></h2>
@@ -1053,27 +824,14 @@ Lucas C. L. do Carmo
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">gt</span>(tbl)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<div id="wfonulgoyg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wfonulgoyg table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<div id="mqalqygzsi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#wfonulgoyg thead, #wfonulgoyg tbody, #wfonulgoyg tfoot, #wfonulgoyg tr, #wfonulgoyg td, #wfonulgoyg th {
-  border-style: none;
-}
-
-#wfonulgoyg p {
-  margin: 0;
-  padding: 0;
-}
-
-#wfonulgoyg .gt_table {
+#mqalqygzsi .gt_table {
   display: table;
   border-collapse: collapse;
-  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -1096,36 +854,7 @@ Lucas C. L. do Carmo
   border-left-color: #D3D3D3;
 }
 
-#wfonulgoyg .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#wfonulgoyg .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#wfonulgoyg .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#wfonulgoyg .gt_heading {
+#mqalqygzsi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1137,13 +866,42 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#wfonulgoyg .gt_bottom_border {
+#mqalqygzsi .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mqalqygzsi .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mqalqygzsi .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mqalqygzsi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wfonulgoyg .gt_col_headings {
+#mqalqygzsi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1158,7 +916,7 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#wfonulgoyg .gt_col_heading {
+#mqalqygzsi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1178,7 +936,7 @@ Lucas C. L. do Carmo
   overflow-x: hidden;
 }
 
-#wfonulgoyg .gt_column_spanner_outer {
+#mqalqygzsi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1190,15 +948,15 @@ Lucas C. L. do Carmo
   padding-right: 4px;
 }
 
-#wfonulgoyg .gt_column_spanner_outer:first-child {
+#mqalqygzsi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wfonulgoyg .gt_column_spanner_outer:last-child {
+#mqalqygzsi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wfonulgoyg .gt_column_spanner {
+#mqalqygzsi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1210,11 +968,7 @@ Lucas C. L. do Carmo
   width: 100%;
 }
 
-#wfonulgoyg .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#wfonulgoyg .gt_group_heading {
+#mqalqygzsi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1240,7 +994,7 @@ Lucas C. L. do Carmo
   text-align: left;
 }
 
-#wfonulgoyg .gt_empty_group_heading {
+#mqalqygzsi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1255,15 +1009,15 @@ Lucas C. L. do Carmo
   vertical-align: middle;
 }
 
-#wfonulgoyg .gt_from_md > :first-child {
+#mqalqygzsi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wfonulgoyg .gt_from_md > :last-child {
+#mqalqygzsi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wfonulgoyg .gt_row {
+#mqalqygzsi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1282,7 +1036,7 @@ Lucas C. L. do Carmo
   overflow-x: hidden;
 }
 
-#wfonulgoyg .gt_stub {
+#mqalqygzsi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1295,7 +1049,7 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#wfonulgoyg .gt_stub_row_group {
+#mqalqygzsi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1309,15 +1063,11 @@ Lucas C. L. do Carmo
   vertical-align: top;
 }
 
-#wfonulgoyg .gt_row_group_first td {
+#mqalqygzsi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wfonulgoyg .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#wfonulgoyg .gt_summary_row {
+#mqalqygzsi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1327,16 +1077,16 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#wfonulgoyg .gt_first_summary_row {
+#mqalqygzsi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wfonulgoyg .gt_first_summary_row.thick {
+#mqalqygzsi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wfonulgoyg .gt_last_summary_row {
+#mqalqygzsi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1346,7 +1096,7 @@ Lucas C. L. do Carmo
   border-bottom-color: #D3D3D3;
 }
 
-#wfonulgoyg .gt_grand_summary_row {
+#mqalqygzsi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1356,7 +1106,7 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#wfonulgoyg .gt_first_grand_summary_row {
+#mqalqygzsi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1366,21 +1116,11 @@ Lucas C. L. do Carmo
   border-top-color: #D3D3D3;
 }
 
-#wfonulgoyg .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#wfonulgoyg .gt_striped {
+#mqalqygzsi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wfonulgoyg .gt_table_body {
+#mqalqygzsi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1389,7 +1129,7 @@ Lucas C. L. do Carmo
   border-bottom-color: #D3D3D3;
 }
 
-#wfonulgoyg .gt_footnotes {
+#mqalqygzsi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1403,16 +1143,16 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#wfonulgoyg .gt_footnote {
+#mqalqygzsi .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#wfonulgoyg .gt_sourcenotes {
+#mqalqygzsi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1426,7 +1166,7 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#wfonulgoyg .gt_sourcenote {
+#mqalqygzsi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1434,70 +1174,71 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#wfonulgoyg .gt_left {
+#mqalqygzsi .gt_left {
   text-align: left;
 }
 
-#wfonulgoyg .gt_center {
+#mqalqygzsi .gt_center {
   text-align: center;
 }
 
-#wfonulgoyg .gt_right {
+#mqalqygzsi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wfonulgoyg .gt_font_normal {
+#mqalqygzsi .gt_font_normal {
   font-weight: normal;
 }
 
-#wfonulgoyg .gt_font_bold {
+#mqalqygzsi .gt_font_bold {
   font-weight: bold;
 }
 
-#wfonulgoyg .gt_font_italic {
+#mqalqygzsi .gt_font_italic {
   font-style: italic;
 }
 
-#wfonulgoyg .gt_super {
+#mqalqygzsi .gt_super {
   font-size: 65%;
 }
 
-#wfonulgoyg .gt_footnote_marks {
+#mqalqygzsi .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
-  position: initial;
 }
 
-#wfonulgoyg .gt_asterisk {
+#mqalqygzsi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wfonulgoyg .gt_indent_1 {
+#mqalqygzsi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wfonulgoyg .gt_indent_2 {
+#mqalqygzsi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wfonulgoyg .gt_indent_3 {
+#mqalqygzsi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wfonulgoyg .gt_indent_4 {
+#mqalqygzsi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wfonulgoyg .gt_indent_5 {
+#mqalqygzsi .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
-<table class="gt_table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
+<table class="gt_table caption-top" data-quarto-postprocess="true">
+<thead class="gt_col_headings">
+<tr class="header">
 <th id="Pais" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Pais</th>
 <th id="X1999" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">X1999</th>
 <th id="X2000" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">X2000</th>
@@ -1520,7 +1261,6 @@ Lucas C. L. do Carmo
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -1534,27 +1274,14 @@ Lucas C. L. do Carmo
 <span id="cb6-6"><a></a></span>
 <span id="cb6-7"><a></a><span class="fu">gt</span>(tbl_long)</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<div id="mqdehlncrt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mqdehlncrt table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<div id="eqtwlyssjz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#mqdehlncrt thead, #mqdehlncrt tbody, #mqdehlncrt tfoot, #mqdehlncrt tr, #mqdehlncrt td, #mqdehlncrt th {
-  border-style: none;
-}
-
-#mqdehlncrt p {
-  margin: 0;
-  padding: 0;
-}
-
-#mqdehlncrt .gt_table {
+#eqtwlyssjz .gt_table {
   display: table;
   border-collapse: collapse;
-  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -1577,36 +1304,7 @@ Lucas C. L. do Carmo
   border-left-color: #D3D3D3;
 }
 
-#mqdehlncrt .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#mqdehlncrt .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#mqdehlncrt .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#mqdehlncrt .gt_heading {
+#eqtwlyssjz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1618,13 +1316,42 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#mqdehlncrt .gt_bottom_border {
+#eqtwlyssjz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#eqtwlyssjz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#eqtwlyssjz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#eqtwlyssjz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mqdehlncrt .gt_col_headings {
+#eqtwlyssjz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1639,7 +1366,7 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#mqdehlncrt .gt_col_heading {
+#eqtwlyssjz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1659,7 +1386,7 @@ Lucas C. L. do Carmo
   overflow-x: hidden;
 }
 
-#mqdehlncrt .gt_column_spanner_outer {
+#eqtwlyssjz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1671,15 +1398,15 @@ Lucas C. L. do Carmo
   padding-right: 4px;
 }
 
-#mqdehlncrt .gt_column_spanner_outer:first-child {
+#eqtwlyssjz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mqdehlncrt .gt_column_spanner_outer:last-child {
+#eqtwlyssjz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mqdehlncrt .gt_column_spanner {
+#eqtwlyssjz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1691,11 +1418,7 @@ Lucas C. L. do Carmo
   width: 100%;
 }
 
-#mqdehlncrt .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#mqdehlncrt .gt_group_heading {
+#eqtwlyssjz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1721,7 +1444,7 @@ Lucas C. L. do Carmo
   text-align: left;
 }
 
-#mqdehlncrt .gt_empty_group_heading {
+#eqtwlyssjz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1736,15 +1459,15 @@ Lucas C. L. do Carmo
   vertical-align: middle;
 }
 
-#mqdehlncrt .gt_from_md > :first-child {
+#eqtwlyssjz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mqdehlncrt .gt_from_md > :last-child {
+#eqtwlyssjz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mqdehlncrt .gt_row {
+#eqtwlyssjz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1763,7 +1486,7 @@ Lucas C. L. do Carmo
   overflow-x: hidden;
 }
 
-#mqdehlncrt .gt_stub {
+#eqtwlyssjz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1776,7 +1499,7 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#mqdehlncrt .gt_stub_row_group {
+#eqtwlyssjz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1790,15 +1513,11 @@ Lucas C. L. do Carmo
   vertical-align: top;
 }
 
-#mqdehlncrt .gt_row_group_first td {
+#eqtwlyssjz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mqdehlncrt .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#mqdehlncrt .gt_summary_row {
+#eqtwlyssjz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1808,16 +1527,16 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#mqdehlncrt .gt_first_summary_row {
+#eqtwlyssjz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mqdehlncrt .gt_first_summary_row.thick {
+#eqtwlyssjz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mqdehlncrt .gt_last_summary_row {
+#eqtwlyssjz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1827,7 +1546,7 @@ Lucas C. L. do Carmo
   border-bottom-color: #D3D3D3;
 }
 
-#mqdehlncrt .gt_grand_summary_row {
+#eqtwlyssjz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1837,7 +1556,7 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#mqdehlncrt .gt_first_grand_summary_row {
+#eqtwlyssjz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1847,21 +1566,11 @@ Lucas C. L. do Carmo
   border-top-color: #D3D3D3;
 }
 
-#mqdehlncrt .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#mqdehlncrt .gt_striped {
+#eqtwlyssjz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mqdehlncrt .gt_table_body {
+#eqtwlyssjz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1870,7 +1579,7 @@ Lucas C. L. do Carmo
   border-bottom-color: #D3D3D3;
 }
 
-#mqdehlncrt .gt_footnotes {
+#eqtwlyssjz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1884,16 +1593,16 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#mqdehlncrt .gt_footnote {
+#eqtwlyssjz .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#mqdehlncrt .gt_sourcenotes {
+#eqtwlyssjz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1907,7 +1616,7 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#mqdehlncrt .gt_sourcenote {
+#eqtwlyssjz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1915,70 +1624,71 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#mqdehlncrt .gt_left {
+#eqtwlyssjz .gt_left {
   text-align: left;
 }
 
-#mqdehlncrt .gt_center {
+#eqtwlyssjz .gt_center {
   text-align: center;
 }
 
-#mqdehlncrt .gt_right {
+#eqtwlyssjz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mqdehlncrt .gt_font_normal {
+#eqtwlyssjz .gt_font_normal {
   font-weight: normal;
 }
 
-#mqdehlncrt .gt_font_bold {
+#eqtwlyssjz .gt_font_bold {
   font-weight: bold;
 }
 
-#mqdehlncrt .gt_font_italic {
+#eqtwlyssjz .gt_font_italic {
   font-style: italic;
 }
 
-#mqdehlncrt .gt_super {
+#eqtwlyssjz .gt_super {
   font-size: 65%;
 }
 
-#mqdehlncrt .gt_footnote_marks {
+#eqtwlyssjz .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
-  position: initial;
 }
 
-#mqdehlncrt .gt_asterisk {
+#eqtwlyssjz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mqdehlncrt .gt_indent_1 {
+#eqtwlyssjz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mqdehlncrt .gt_indent_2 {
+#eqtwlyssjz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mqdehlncrt .gt_indent_3 {
+#eqtwlyssjz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mqdehlncrt .gt_indent_4 {
+#eqtwlyssjz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mqdehlncrt .gt_indent_5 {
+#eqtwlyssjz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
-<table class="gt_table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
+<table class="gt_table caption-top" data-quarto-postprocess="true">
+<thead class="gt_col_headings">
+<tr class="header">
 <th id="Pais" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Pais</th>
 <th id="Ano" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Ano</th>
 <th id="Valor" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Valor</th>
@@ -2021,9 +1731,7 @@ Lucas C. L. do Carmo
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="e-agora-podemos-usar-os-dados-para-fazer-gráficos" class="slide level2">
 <h2>E agora podemos usar os dados para fazer gráficos</h2>
@@ -2056,7 +1764,7 @@ Lucas C. L. do Carmo
 <section id="gramática-de-gráficos" class="slide level2 scrollable">
 <h2>Gramática de gráficos</h2>
 <p>Os elementos dos gráficos são:</p>
-<table>
+<table class="caption-top">
 <colgroup>
 <col style="width: 17%">
 <col style="width: 24%">
@@ -2156,27 +1864,14 @@ Lucas C. L. do Carmo
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb8-2"><a></a><span class="fu">gt</span>(<span class="fu">head</span>(mpg))</span></code><button title="Copiar" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<div id="qzxxsqfxnl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qzxxsqfxnl table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<div id="pwxrkevvfl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#qzxxsqfxnl thead, #qzxxsqfxnl tbody, #qzxxsqfxnl tfoot, #qzxxsqfxnl tr, #qzxxsqfxnl td, #qzxxsqfxnl th {
-  border-style: none;
-}
-
-#qzxxsqfxnl p {
-  margin: 0;
-  padding: 0;
-}
-
-#qzxxsqfxnl .gt_table {
+#pwxrkevvfl .gt_table {
   display: table;
   border-collapse: collapse;
-  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -2199,36 +1894,7 @@ Lucas C. L. do Carmo
   border-left-color: #D3D3D3;
 }
 
-#qzxxsqfxnl .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#qzxxsqfxnl .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#qzxxsqfxnl .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#qzxxsqfxnl .gt_heading {
+#pwxrkevvfl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2240,13 +1906,42 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#qzxxsqfxnl .gt_bottom_border {
+#pwxrkevvfl .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pwxrkevvfl .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pwxrkevvfl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pwxrkevvfl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qzxxsqfxnl .gt_col_headings {
+#pwxrkevvfl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2261,7 +1956,7 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#qzxxsqfxnl .gt_col_heading {
+#pwxrkevvfl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2281,7 +1976,7 @@ Lucas C. L. do Carmo
   overflow-x: hidden;
 }
 
-#qzxxsqfxnl .gt_column_spanner_outer {
+#pwxrkevvfl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2293,15 +1988,15 @@ Lucas C. L. do Carmo
   padding-right: 4px;
 }
 
-#qzxxsqfxnl .gt_column_spanner_outer:first-child {
+#pwxrkevvfl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qzxxsqfxnl .gt_column_spanner_outer:last-child {
+#pwxrkevvfl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qzxxsqfxnl .gt_column_spanner {
+#pwxrkevvfl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2313,11 +2008,7 @@ Lucas C. L. do Carmo
   width: 100%;
 }
 
-#qzxxsqfxnl .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#qzxxsqfxnl .gt_group_heading {
+#pwxrkevvfl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2343,7 +2034,7 @@ Lucas C. L. do Carmo
   text-align: left;
 }
 
-#qzxxsqfxnl .gt_empty_group_heading {
+#pwxrkevvfl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2358,15 +2049,15 @@ Lucas C. L. do Carmo
   vertical-align: middle;
 }
 
-#qzxxsqfxnl .gt_from_md > :first-child {
+#pwxrkevvfl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qzxxsqfxnl .gt_from_md > :last-child {
+#pwxrkevvfl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qzxxsqfxnl .gt_row {
+#pwxrkevvfl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2385,7 +2076,7 @@ Lucas C. L. do Carmo
   overflow-x: hidden;
 }
 
-#qzxxsqfxnl .gt_stub {
+#pwxrkevvfl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2398,7 +2089,7 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#qzxxsqfxnl .gt_stub_row_group {
+#pwxrkevvfl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2412,15 +2103,11 @@ Lucas C. L. do Carmo
   vertical-align: top;
 }
 
-#qzxxsqfxnl .gt_row_group_first td {
+#pwxrkevvfl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qzxxsqfxnl .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#qzxxsqfxnl .gt_summary_row {
+#pwxrkevvfl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2430,16 +2117,16 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#qzxxsqfxnl .gt_first_summary_row {
+#pwxrkevvfl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qzxxsqfxnl .gt_first_summary_row.thick {
+#pwxrkevvfl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qzxxsqfxnl .gt_last_summary_row {
+#pwxrkevvfl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2449,7 +2136,7 @@ Lucas C. L. do Carmo
   border-bottom-color: #D3D3D3;
 }
 
-#qzxxsqfxnl .gt_grand_summary_row {
+#pwxrkevvfl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2459,7 +2146,7 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#qzxxsqfxnl .gt_first_grand_summary_row {
+#pwxrkevvfl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2469,21 +2156,11 @@ Lucas C. L. do Carmo
   border-top-color: #D3D3D3;
 }
 
-#qzxxsqfxnl .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#qzxxsqfxnl .gt_striped {
+#pwxrkevvfl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qzxxsqfxnl .gt_table_body {
+#pwxrkevvfl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2492,7 +2169,7 @@ Lucas C. L. do Carmo
   border-bottom-color: #D3D3D3;
 }
 
-#qzxxsqfxnl .gt_footnotes {
+#pwxrkevvfl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2506,16 +2183,16 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#qzxxsqfxnl .gt_footnote {
+#pwxrkevvfl .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-#qzxxsqfxnl .gt_sourcenotes {
+#pwxrkevvfl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2529,7 +2206,7 @@ Lucas C. L. do Carmo
   border-right-color: #D3D3D3;
 }
 
-#qzxxsqfxnl .gt_sourcenote {
+#pwxrkevvfl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2537,70 +2214,71 @@ Lucas C. L. do Carmo
   padding-right: 5px;
 }
 
-#qzxxsqfxnl .gt_left {
+#pwxrkevvfl .gt_left {
   text-align: left;
 }
 
-#qzxxsqfxnl .gt_center {
+#pwxrkevvfl .gt_center {
   text-align: center;
 }
 
-#qzxxsqfxnl .gt_right {
+#pwxrkevvfl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qzxxsqfxnl .gt_font_normal {
+#pwxrkevvfl .gt_font_normal {
   font-weight: normal;
 }
 
-#qzxxsqfxnl .gt_font_bold {
+#pwxrkevvfl .gt_font_bold {
   font-weight: bold;
 }
 
-#qzxxsqfxnl .gt_font_italic {
+#pwxrkevvfl .gt_font_italic {
   font-style: italic;
 }
 
-#qzxxsqfxnl .gt_super {
+#pwxrkevvfl .gt_super {
   font-size: 65%;
 }
 
-#qzxxsqfxnl .gt_footnote_marks {
+#pwxrkevvfl .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
-  position: initial;
 }
 
-#qzxxsqfxnl .gt_asterisk {
+#pwxrkevvfl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qzxxsqfxnl .gt_indent_1 {
+#pwxrkevvfl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qzxxsqfxnl .gt_indent_2 {
+#pwxrkevvfl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qzxxsqfxnl .gt_indent_3 {
+#pwxrkevvfl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qzxxsqfxnl .gt_indent_4 {
+#pwxrkevvfl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qzxxsqfxnl .gt_indent_5 {
+#pwxrkevvfl .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
-<table class="gt_table" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
+<table class="gt_table caption-top" data-quarto-postprocess="true">
+<thead class="gt_col_headings">
+<tr class="header">
 <th id="manufacturer" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">manufacturer</th>
 <th id="model" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">model</th>
 <th id="displ" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">displ</th>
@@ -2699,7 +2377,6 @@ Lucas C. L. do Carmo
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="inicializando" class="slide level2">
 <h2>Inicializando</h2>
@@ -2718,8 +2395,7 @@ Lucas C. L. do Carmo
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="mapeando-variáveis" class="slide level2">
 <h2>Mapeando variáveis</h2>
@@ -2741,8 +2417,7 @@ Lucas C. L. do Carmo
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="adicionando-os-geoms" class="slide level2">
 <h2>Adicionando os geoms</h2>
@@ -2765,8 +2440,7 @@ Lucas C. L. do Carmo
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="adicionando-rótulos" class="slide level2">
 <h2>Adicionando rótulos</h2>
@@ -2790,8 +2464,7 @@ Lucas C. L. do Carmo
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="mudando-coordenadas" class="slide level2">
 <h2>Mudando coordenadas</h2>
@@ -2816,8 +2489,7 @@ Lucas C. L. do Carmo
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="modificando-as-escalas" class="slide level2">
 <h2>Modificando as escalas</h2>
@@ -2843,8 +2515,7 @@ Lucas C. L. do Carmo
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="subdividindo-gráfico" class="slide level2">
 <h2>Subdividindo gráfico</h2>
@@ -2871,8 +2542,7 @@ Lucas C. L. do Carmo
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="modificando-o-tema" class="slide level2">
 <h2>Modificando o tema</h2>
@@ -2900,8 +2570,7 @@ Lucas C. L. do Carmo
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section class="slide level2">
 
@@ -2913,14 +2582,14 @@ Lucas C. L. do Carmo
 <section id="fim" class="title-slide slide level1 center">
 <h1>FIM</h1>
 
-<div class="quarto-auto-generated-content">
-<div class="footer footer-default">
-<p><a href="../..">lucas carmo</a> / <a href="../..\apresentacoes.html">apresentações</a></p>
-</div>
-</div>
+
 </section>
     </div>
-  </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p><a href="../..">lucas carmo</a> / <a href="../../apresentacoes.html">apresentações</a></p>
+</div>
+</div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="../../site_libs/revealjs/dist/reveal.js"></script>
@@ -2949,7 +2618,8 @@ Lucas C. L. do Carmo
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -3103,7 +2773,7 @@ Lucas C. L. do Carmo
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -3199,18 +2869,7 @@ Lucas C. L. do Carmo
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -3242,7 +2901,45 @@ Lucas C. L. do Carmo
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/lucascarmo\.com\.br");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -3279,7 +2976,11 @@ Lucas C. L. do Carmo
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

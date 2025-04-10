@@ -1,10 +1,9 @@
 [
   {
-    "listing": "/projetos.html",
+    "listing": "/blog.html",
     "items": [
-      "/projetos/tidytuesday/2022/2022-Week_23/index.html",
-      "/projetos/tidytuesday/2020/2020-Week_03/index.html",
-      "/projetos/tidytuesday/2020/2020-Week_02/index.html"
+      "/posts/eixos-secundarios/index.html",
+      "/posts/powertoys-run/index.html"
     ]
   },
   {
@@ -19,11 +18,11 @@
     ]
   },
   {
-    "listing": "/blog.html",
+    "listing": "/projetos.html",
     "items": [
-      "/posts/importar-multiplos-csv/index.html",
-      "/posts/eixos-secundarios/index.html",
-      "/posts/powertoys-run/index.html"
+      "/projetos/tidytuesday/2022/2022-Week_23/index.html",
+      "/projetos/tidytuesday/2020/2020-Week_03/index.html",
+      "/projetos/tidytuesday/2020/2020-Week_02/index.html"
     ]
   }
 ]
