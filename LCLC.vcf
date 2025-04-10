@@ -1,19 +1,18 @@
 BEGIN:VCARD
 VERSION:3.0
 FN;CHARSET=UTF-8:Lucas Carmo
-N;CHARSET=UTF-8:Carmo;Lucas;;;
+N;CHARSET=UTF-8:Carmo;Lucas;;Msc;
 GENDER:M
-EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:msclucaslima@gmail.com
+EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:lucascarmo@hotmail.com
 EMAIL;CHARSET=UTF-8;type=WORK,INTERNET:lucas.carmo@formedica.com.br
-TEL;TYPE=CELL:+5541997430166
-LABEL;CHARSET=UTF-8;TYPE=WORK:Sede 2
-ADR;CHARSET=UTF-8;TYPE=WORK:;;Rua João Scuissiato 001;Curitiba;Paraná;;Brazil
+TEL;TYPE=CELL:+5541991216285
+TEL;TYPE=WORK,VOICE:+5541991216285
+LABEL;CHARSET=UTF-8;TYPE=WORK:Filial
+ADR;CHARSET=UTF-8;TYPE=WORK:;;Rua Nardy Muller da Costa 789;Curitiba;Paraná;;Brasil
 TITLE;CHARSET=UTF-8:Pharmacist
-ROLE;CHARSET=UTF-8:Research Specialist
+ROLE;CHARSET=UTF-8:Researcher
 ORG;CHARSET=UTF-8:Formédica Farmácia de Manipulação
 URL;type=WORK;CHARSET=UTF-8:www.formedica.com.br
-X-SOCIALPROFILE;TYPE=facebook:https://www.facebook.com/formedicafarmaa/
-X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/company/formedicafarma/mycompany/
-X-SOCIALPROFILE;TYPE=instagram:https://www.instagram.com/formedicafarma/
-REV:2025-03-10T12:21:51.628Z
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/carmo-lucas/
+REV:2025-04-10T23:21:25.133Z
 END:VCARD

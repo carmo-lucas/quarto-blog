@@ -9,13 +9,14 @@
 <link>https://lucascarmo.com.br/blog.html</link>
 <atom:link href="https://lucascarmo.com.br/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.3.450</generator>
+<generator>quarto-1.6.43</generator>
 <lastBuildDate>Sat, 11 Feb 2023 03:00:00 GMT</lastBuildDate>
 <item>
   <title>Como criar eixos secundários no ggplot2</title>
   <dc:creator>Lucas Carmo</dc:creator>
-  <link>https://lucascarmo.com.br/posts/eixos-secundarios/index.html</link>
+  <link>https://lucascarmo.com.br/posts/eixos-secundarios/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -36,9 +37,9 @@
 <section id="gráfico-exemplo" class="level1 page-columns page-full">
 <h1>Gráfico exemplo</h1>
 <div class="cell page-columns page-full">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb1" data-cap-location="margin" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(ggplot2)</span>
 <span id="cb1-2"></span>
@@ -110,16 +111,15 @@ font-style: inherit;">geom_point</span>()</span>
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/gráfico-base-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption margin-caption">Gráfico base criado com valores aleatórios.</figcaption>
+<figcaption class="margin-caption">Gráfico base criado com valores aleatórios.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>O gráfico acima é (<code>p</code>) é apenas a base para as próximas customizações.</p>
 <p>De acordo com os exemplos na documentação, basta adicionar a função para configurar a escala do eixo y (ou x) ao gráfico original e com o argumento <code>sex.axis</code> especificar as configurações do segundo eixo. Usando <code>dup_axis()</code> como valor para o argumento, apenas será duplicado o eixo y do lado esquerdo para o direito. Porém usando o valor <code>sec.axis()</code></p>
-<div id="fig-sec-axis" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<details>
+<div class="cell">
+<details class="code-fold">
 <summary><code>Code</code></summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1">p <span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -148,24 +148,39 @@ font-style: inherit;">name=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"log(y)"</span>))</span></code></pre></div>
 </details>
+<div id="fig-sec-axis" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sec-axis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="fig-sec-axis-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-1.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
-<figcaption class="figure-caption">(a) dup_axis()</figcaption>
+<div id="fig-sec-axis-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sec-axis-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-1.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sec-axis-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) dup_axis()
+</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
-<div id="fig-sec-axis-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-2.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672"></p>
-<figcaption class="figure-caption">(b) sec_axis(~ log10(y))</figcaption>
+<div id="fig-sec-axis-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sec-axis-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-sec-axis-2.png" class="img-fluid figure-img" data-ref-parent="fig-sec-axis" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sec-axis-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) sec_axis(~ log10(y))
+</figcaption>
 </figure>
 </div>
 </div>
-<figcaption class="figure-caption">Figura&nbsp;1: Adição de eixos y secundários no lado direito.</figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sec-axis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Adição de eixos y secundários no lado direito.
+</figcaption>
 </figure>
+</div>
 </div>
 <p>Veja que ao criar um eixo secundário usando <code>sec_axis()</code> é possível aplicar uma transformação na escala do eixo. No exemplo acima foi aplicado a transformação <img src="https://latex.codecogs.com/png.latex?%5Clog_%7B10%7D%20y"> porem podem ser aplicadas outras transformações lineares, como multiplicação, exponenciação, soma, divisão etc.</p>
 </section>
@@ -173,7 +188,7 @@ font-style: inherit;">"log(y)"</span>))</span></code></pre></div>
 <h1>Exemplo mais complexo</h1>
 <p>Nos exemplos acima apenas criei um gráfico com os dois eixos mas sem os dados relacionados ao eixo y do lado direito portanto abaixo irei especificar melhor os usos dos dois eixos.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1">x <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -274,7 +289,7 @@ font-style: inherit;">"sin x"</span>)</span>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Função seno vs função exponencial</figcaption>
+<figcaption>Função seno vs função exponencial</figcaption>
 </figure>
 </div>
 </div>
@@ -367,10 +382,14 @@ font-style: inherit;">paste</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Coeficiente = "</span>, coeficiente))</span></code></pre></div>
 <div class="cell-output-display">
-<div id="fig-coeficiente" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-coeficiente-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figura&nbsp;2: Utilização de um coeficiente com valor constante para transformar os dados e a escala do eixo secundário.</figcaption>
+<div id="fig-coeficiente" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-coeficiente-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/fig-coeficiente-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coeficiente-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Utilização de um coeficiente com valor constante para transformar os dados e a escala do eixo secundário.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -388,6 +407,7 @@ font-style: inherit;">"Coeficiente = "</span>, coeficiente))</span></code></pre>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(dados, var_1, var_2){</span>
 <span id="cb5-2">    parametros <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -452,7 +472,7 @@ font-style: inherit;">calcular_coeficiente</span>(df, seno, exponencial)</span><
 </div>
 <p>Acima é demostrada uma função que calcula o coeficiente baseado nos valores máximos e mínimos das variáveis dadas a ela. O coeficiente calculado pela função tem o valor 258.5442863 e se utilizado para refazer o gráfico percebe-se que as duas curvas se sobrepõem de forma mais normalizada.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -531,7 +551,11 @@ background-color: null;
 font-style: inherit;">"Coeficiente = "</span>, coeficiente_calculado))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Porém o desafio é implementar o cálculo do coeficiente diretamente na construção do gráfico e também há o problema da ordem das variáveis na função.</p>
@@ -541,7 +565,7 @@ font-style: inherit;">"Coeficiente = "</span>, coeficiente_calculado))</span></c
 <p><img src="https://latex.codecogs.com/png.latex?%0Acoef%20=%20%5Cfrac%7B%5Cmax%20(Var_2)%20-%20%5Cmin(Var_2)%7D%7B%5Cmax%20(Var_1)%20-%20%5Cmin(Var_1)%7D%0A"></p>
 <p>Portanto se os valores da <img src="https://latex.codecogs.com/png.latex?Var_2"> apresentarem uma amplitude maior do que a amplitude dos valores da <img src="https://latex.codecogs.com/png.latex?Var_1"> o valor do coeficiente será positivo enquanto o inverso irá resultar em um coeficiente maior que zero e menor que 1 (<img src="https://latex.codecogs.com/png.latex?0%3Ccoef%3C1">), o que resultaria no gráfico abaixo, logo, a ordem das variáveis é importante no momento de executar a função.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -629,7 +653,11 @@ background-color: null;
 font-style: inherit;">"Coeficiente = "</span>, coef2))</span></code></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Para resolver isso pode-se adicionar um bloco na função <code>calcular_coeficiente()</code> que verifica se <img src="https://latex.codecogs.com/png.latex?0%3Ccoef%3C1"> e inverter o valor se necessário, essa função nova será chamada: <code>calcular_coeficiente_smart()</code>.</p>
@@ -638,6 +666,7 @@ font-style: inherit;">"Coeficiente = "</span>, coef2))</span></code></pre></div>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(dados, var_1, var_2){</span>
 <span id="cb8-2">    </span>
 <span id="cb8-3">    parametros <span class="ot" style="color: #003B4F;
@@ -693,6 +722,7 @@ font-style: inherit;">$</span>min_var_1)</span>
 <span id="cb8-13"></span>
 <span id="cb8-14">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span>(coeficiente <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
@@ -767,6 +797,7 @@ font-style: inherit;">print</span>(coeficientes)</span></code></pre></div>
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span>(df, x, var_1, var_2){</span>
 <span id="cb10-2"></span>
 <span id="cb10-3">  parametros <span class="ot" style="color: #003B4F;
@@ -822,6 +853,7 @@ font-style: inherit;">$</span>min_var_1)</span>
 <span id="cb10-13"></span>
 <span id="cb10-14">    <span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">if</span>(coeficiente <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;</span> <span class="dv" style="color: #AD0000;
@@ -935,7 +967,7 @@ font-style: inherit;">return</span>(plot)</span>
 <span id="cb10-34">}</span></code></pre></div>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -945,7 +977,7 @@ font-style: inherit;">two_y_axis_plot</span>(df, x, seno, exponencial)</span></c
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Executando a função criada acima com os argumentos necessários</figcaption>
+<figcaption>Executando a função criada acima com os argumentos necessários</figcaption>
 </figure>
 </div>
 </div>
@@ -953,7 +985,7 @@ font-style: inherit;">two_y_axis_plot</span>(df, x, seno, exponencial)</span></c
 <p>A função criada retorna automaticamente o gráfico com os dois eixos, com nomes e cores predefinidas mas com a o coeficiente calculado adequadamente. É possível transformar as customizações do gráfico em argumentos da função (como cores das linhas ou até que tipo de <code>geom</code> deverá ser usado), porém o aumento da complexidade da função não é o principal a se explorar no momento.</p>
 <p>O que pode se explorar é que da mesma forma que foi criado um eixo y secundário, também pode ser criado um eixo x secundário, exatamente da mesma forma. Inclusive, é possível utilizar a função que foi criada para o gráfico de dois eixos y e adicionar novos elementos ao gráfico como linhas de referência usando <code>geom_vline</code> e <code>geom_hline</code>.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary><code>Code</code></summary>
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1050,7 +1082,7 @@ font-style: inherit;">element_blank</span>())</span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/eixos-secundarios/index_files/figure-html/final-customizations-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Adição do eixo x secundário e linhas de referência</figcaption>
+<figcaption>Adição do eixo x secundário e linhas de referência</figcaption>
 </figure>
 </div>
 </div>
@@ -1063,14 +1095,15 @@ font-style: inherit;">element_blank</span>())</span></code></pre></div>
  ]]></description>
   <category>ggplot2</category>
   <category>dataviz</category>
-  <guid>https://lucascarmo.com.br/posts/eixos-secundarios/index.html</guid>
+  <guid>https://lucascarmo.com.br/posts/eixos-secundarios/</guid>
   <pubDate>Sat, 11 Feb 2023 03:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Usando o PowerToys para criar tarefas no ClickUp</title>
   <dc:creator>Lucas Carmo</dc:creator>
-  <link>https://lucascarmo.com.br/posts/powertoys-run/index.html</link>
+  <link>https://lucascarmo.com.br/posts/powertoys-run/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -1099,13 +1132,19 @@ font-style: inherit;">element_blank</span>())</span></code></pre></div>
 <p>A referência que eu usei para este script é de um <a href="https://www.youtube.com/watch?v=UVUd9_k9C6A&amp;t=20735s">vídeo</a> que explica como criar scripts e funções e demonstra como torná-los executáveis.</p>
 <p>Eu aprendi que para que um script seja executável, é necessário que o arquivo seja salvo com a extensão <code>.ps1m</code> o que o identifica como sendo um módulo do powershell e também deve estar salvo no diretório <code>%user%\Documents\WindowsPowerShell\Modules\MeuModulo</code>. É importante também garantir que a pasta e o nome do arquivo sejam iguais.</p>
 <p>Este script contém a seguinte função <code>task</code>:</p>
-<div class="code-with-filename listing">
-<p>Listing&nbsp;1: Função para Criar Tarefa</p>
+<div id="lst-taskFunction" class="powershell listing quarto-float quarto-figure quarto-figure-left anchored" data-filename="MeuModulo.ps1m">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-taskFunction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;1: Função para Criar Tarefa
+</figcaption>
+<div aria-describedby="lst-taskFunction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>MeuModulo.ps1m</strong></pre>
 </div>
-<div class="sourceCode" id="lst-taskFunction" data-lst-cap="Função para Criar Tarefa" style="background: #f1f3f5;"><pre class="sourceCode numberSource powershell number-lines code-with-copy"><code class="sourceCode powershell"><span id="lst-taskFunction-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="lst-taskFunction" data-filename="MeuModulo.ps1m" style="background: #f1f3f5;"><pre class="sourceCode numberSource powershell number-lines code-with-copy"><code class="sourceCode powershell"><span id="lst-taskFunction-1"><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">function</span> task <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">{</span></span>
@@ -1116,6 +1155,7 @@ background-color: null;
 font-style: inherit;">()]</span></span>
 <span id="lst-taskFunction-3"><span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">param</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">(</span></span>
@@ -1134,14 +1174,18 @@ font-style: inherit;">)]</span></span>
 background-color: null;
 font-style: inherit;">$nome</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> $1<span class="op" style="color: #5E5E5E;
+font-style: inherit;">=</span> $<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
 <span id="lst-taskFunction-6">    <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">$prioridade</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> $2</span>
+font-style: inherit;">=</span> $<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
 <span id="lst-taskFunction-7">  <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">)</span></span>
@@ -1153,35 +1197,41 @@ background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"{</span></span>
-<span id="lst-taskFunction-10">    <span class="st" style="color: #20794D;
+<span id="lst-taskFunction-10"><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">""</span>name<span class="st" style="color: #20794D;
+font-style: inherit;">    </span><span class="ch" style="color: #20794D;
 background-color: null;
-font-style: inherit;">""</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">""</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+font-style: inherit;">name</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">: </span><span class="ch" style="color: #20794D;
 background-color: null;
 font-style: inherit;">""</span><span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">$nome</span><span class="st" style="color: #20794D;
+font-style: inherit;">$nome</span><span class="ch" style="color: #20794D;
 background-color: null;
-font-style: inherit;">""</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">""</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="lst-taskFunction-11">    <span class="st" style="color: #20794D;
+<span id="lst-taskFunction-11"><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">""</span>priority<span class="st" style="color: #20794D;
+font-style: inherit;">    </span><span class="ch" style="color: #20794D;
 background-color: null;
-font-style: inherit;">""</span><span class="op" style="color: #5E5E5E;
+font-style: inherit;">""</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">:</span> <span class="va" style="color: #111111;
+font-style: inherit;">priority</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">: </span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">$prioridade</span></span>
-<span id="lst-taskFunction-12"><span class="op" style="color: #5E5E5E;
+<span id="lst-taskFunction-12"><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">}</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span></span>
+font-style: inherit;">}"</span></span>
 <span id="lst-taskFunction-13"></span>
 <span id="lst-taskFunction-14"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1196,12 +1246,16 @@ background-color: null;
 font-style: inherit;">"~\Automations.json"</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span>Encoding utf8</span>
-<span id="lst-taskFunction-15"><span class="kw" style="color: #003B4F;
+<span id="lst-taskFunction-15"><span class="cf" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">exit</span></span>
 <span id="lst-taskFunction-16"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">}</span></span></code></pre></div>
+</div>
+</div>
+</figure>
 </div>
 <p>A função <code>task</code> aceita dois argumentos; o nome e prioridade da tarefa e salva-os em um arquivo que será usado como uma forma de cache para a execução das etapas seguintes do workflow. Este arquivo é formatado no modelo <code>json</code> para que sejam facilmente lidas pelo <a href="https://www.n8n.io">n8n</a> posteriormente.</p>
 <p>Assim que o arquivo <code>json</code> é criado, o <a href="https://www.n8n.io">n8n</a> inicia a automação que foi configurada e manda as informações para o ClickUp.</p>
@@ -1210,7 +1264,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 <div class="code-with-filename-file">
 <pre><strong>Automations.json</strong></pre>
 </div>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb1" data-filename="Automations.json" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span></span>
 <span id="cb1-2">  <span class="dt" style="color: #AD0000;
@@ -1242,7 +1296,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/powertoys-run/powertoysrun.png" class="img-fluid figure-img" alt="screenshot a interface do powertoys run"></p>
-<figcaption class="figure-caption">Prompt do PowerToys Run</figcaption>
+<figcaption>Prompt do PowerToys Run</figcaption>
 </figure>
 </div>
 <p>Porém como eu escrevi a função em <code>ps1</code>, ela não é executável através do prompt <code>cmd</code>, portanto deve-se configurar o powertoys para utilizar o prompt do powershell como default. Isso é feito através da modificação do arquivo <code>ShellPluginSettings.json</code> localizado em <code>%localappdata%\Microsoft\PowerToys\PowerToys Run\Settings\Plugins\Microsoft.Plugin.Shell</code>. Onde a configuração para <code>Shell</code> deve ser alterada de 2 para 1.</p>
@@ -1250,7 +1304,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 <div class="code-with-filename-file">
 <pre><strong>ShellPluginSettings.json</strong></pre>
 </div>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb2" data-filename="ShellPluginSettings.json" style="background: #f1f3f5;"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span></span>
 <span id="cb2-2">  <span class="dt" style="color: #AD0000;
@@ -1280,6 +1334,7 @@ font-style: inherit;">"ReplaceWinR"</span><span class="fu" style="color: #4758AB
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">,</span></span>
@@ -1289,6 +1344,7 @@ font-style: inherit;">"LeaveShellOpen"</span><span class="fu" style="color: #475
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">,</span></span>
@@ -1298,6 +1354,7 @@ font-style: inherit;">"RunAsAdministrator"</span><span class="fu" style="color: 
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
+font-weight: bold;
 font-style: inherit;">false</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">,</span></span>
@@ -1326,7 +1383,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://lucascarmo.com.br/posts/powertoys-run/n8nexample.png" class="img-fluid figure-img" alt="screenshot da interface de um exemplo de workflow do n8n"></p>
-<figcaption class="figure-caption">Exemplo de workflow do n8n</figcaption>
+<figcaption>Exemplo de workflow do n8n</figcaption>
 </figure>
 </div>
 <p>Adicionalmente podem ser adicionados nodes para tratamento de erros ou com lógica de condicionais mas isso vou deixar para outro post.</p>
@@ -1339,7 +1396,7 @@ font-style: inherit;">}</span></span></code></pre></div>
   <category>powertoys</category>
   <category>n8n</category>
   <category>clickup</category>
-  <guid>https://lucascarmo.com.br/posts/powertoys-run/index.html</guid>
+  <guid>https://lucascarmo.com.br/posts/powertoys-run/</guid>
   <pubDate>Thu, 14 Jul 2022 03:00:00 GMT</pubDate>
 </item>
 </channel>

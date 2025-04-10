@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "blog",
     "section": "",
-    "text": "Ordenar por\n       Default\n         \n          Título\n        \n         \n          Data - Mais antigo\n        \n         \n          Data - Mais novo\n        \n         \n          Autor\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nComo criar eixos secundários no ggplot2\n\n\n\n\n\n\n\nggplot2\n\n\ndataviz\n\n\n\n\n\n\n\n\n\n\n\n2023 - 02 - 11\n\n\nLucas Carmo\n\n\n\n\n\n\n  \n\n\n\n\nUsando o PowerToys para criar tarefas no ClickUp\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n\n\n2022 - 07 - 14\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
+    "text": "Ordenar por\n       Default\n         \n          Título\n        \n         \n          Data - Mais antigo\n        \n         \n          Data - Mais novo\n        \n         \n          Autor\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nComo criar eixos secundários no ggplot2\n\n\n\n\n\n\nggplot2\n\n\ndataviz\n\n\n\n\n\n\n\n\n\n2023 - 02 - 11\n\n\nLucas Carmo\n\n\n\n\n\n\n\n\n\n\n\n\nUsando o PowerToys para criar tarefas no ClickUp\n\n\nO processo e as dificuldades de conseguir criar tarefas no ClickUp usando o PowerToys Run\n\n\n\npowershell\n\n\npowertoys\n\n\nn8n\n\n\nclickup\n\n\n\n\n\n\n\n\n\n2022 - 07 - 14\n\n\nLucas Carmo\n\n\n\n\n\n\nSem matches"
   },
   {
     "objectID": "projetos/tidytuesday/2020/2020-Week_03/index.html",
@@ -214,7 +214,7 @@
     "href": "apresentacoes/Aula1/index.html#resumo-da-aula",
     "title": "Aula 1 - Instalação e introdução ao R",
     "section": "Resumo da aula",
-    "text": "Resumo da aula\n\nInstalamos o R e o RStudio\nAprendemos quais são os tipos de dados (classes) básicos do R\nAprendemos o que são objetos e como atribuir valores a eles\n\nVetores, Matrizes, Listas, Dataframes, Fórmulas, Funções\n\nAprendemos a selecionar elementos dos objetos\nAprendemos a usar alguns operadores aritméticos e lógicos\nAprendemos a usar estruturas de condição if e if else\nAprendemos a escrever um for loop e um while loop\n\n\n\nlucas carmo/apresentações"
+    "text": "Resumo da aula\n\nInstalamos o R e o RStudio\nAprendemos quais são os tipos de dados (classes) básicos do R\nAprendemos o que são objetos e como atribuir valores a eles\n\nVetores, Matrizes, Listas, Dataframes, Fórmulas, Funções\n\nAprendemos a selecionar elementos dos objetos\nAprendemos a usar alguns operadores aritméticos e lógicos\nAprendemos a usar estruturas de condição if e if else\nAprendemos a escrever um for loop e um while loop"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#anteriormente",
@@ -298,14 +298,14 @@
     "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Sobrescrevendo mapeamentos estéticos",
-    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = cyl) + \n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + \n  geom_point()"
+    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = cyl) + \n  geom_point() \n\n\n\n\n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + \n  geom_point()"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
     "href": "apresentacoes/Aula5/index.html#sobrescrevendo-mapeamentos-estéticos-1",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Sobrescrevendo mapeamentos estéticos",
-    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + \n  geom_point() \n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy) + \n  geom_point(col = \"blue\")"
+    "text": "Sobrescrevendo mapeamentos estéticos\n\n\n\nggplot(mpg) +\n  aes(displ, hwy,\n      col = \"blue\") + \n  geom_point() \n\n\n\n\n\n\n\n\n\n\nggplot(mpg) +\n  aes(displ, hwy) + \n  geom_point(col = \"blue\")"
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#mudando-escalas",
@@ -354,7 +354,7 @@
     "href": "apresentacoes/Aula5/index.html#resultado-dos-métodos",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Resultado dos métodos",
-    "text": "Resultado dos métodos\n\n\nMétodo 1\n\n\n\n\n\n\nMétodo 2\n\n\n\n\n\n\n\nNeste caso foi usado apenas a função média, mas pode ser usada qualquer função escrita que retorne o valor central, mínimos e máximos."
+    "text": "Resultado dos métodos\n\n\nMétodo 1\n\n\n\n\n\n\n\n\n\n\nMétodo 2\n\n\n\n\n\n\n\n\n\n\nNeste caso foi usado apenas a função média, mas pode ser usada qualquer função escrita que retorne o valor central, mínimos e máximos."
   },
   {
     "objectID": "apresentacoes/Aula5/index.html#temas-do-ggplot2",
@@ -424,7 +424,7 @@
     "href": "apresentacoes/Aula5/index.html#como-salvar-gráficos-2",
     "title": "Aula 5 - Gráficos com ggplot2",
     "section": "Como salvar gráficos?",
-    "text": "Como salvar gráficos?\nA forma mais “adequada” de se salvar gráficos é usando a função ggsave().\n\nggsave(\n  plot = grafico,\n  filename = \"grafico-1.png\",\n  device = \"png\",\n  path = \"pasta-de-graficos\",\n  width = 16,\n  height = 12,\n  units = \"cm\",\n  dpi = 600\n)\n\n\n\nlucas carmo / apresentações"
+    "text": "Como salvar gráficos?\nA forma mais “adequada” de se salvar gráficos é usando a função ggsave().\n\nggsave(\n  plot = grafico,\n  filename = \"grafico-1.png\",\n  device = \"png\",\n  path = \"pasta-de-graficos\",\n  width = 16,\n  height = 12,\n  units = \"cm\",\n  dpi = 600\n)"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#anteriormente",
@@ -466,7 +466,7 @@
     "href": "apresentacoes/Aula3/index.html#importando-dados-do-computador",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Importando dados do computador",
-    "text": "Importando dados do computador\nPara importar dados do computador recomenda-se que estejam no formato .csv ou .txt ou algum outro tipo de formato de texto.\nPara importar os dados usamos as funções da família read_*() ou seja:\n\ninstall.packages(\"readr\") # ou melhor install.packages(\"tidyverse\")\n\nlibrary(readr) # ou melhor library(tidyverse)\n\nread_csv(file = \"Pasta/para/Arquivo.csv\") # aspas importam\n\n\n\n\n\n\n\nImportant\n\n\nNão se esqueça de atribuir o resultado desta função a um objeto com um nome significativo.\n\ncalibracao_HPLC &lt;- read_csv(\"Pasta/para/Arquivo.csv\")"
+    "text": "Importando dados do computador\nPara importar dados do computador recomenda-se que estejam no formato .csv ou .txt ou algum outro tipo de formato de texto.\nPara importar os dados usamos as funções da família read_*() ou seja:\n\ninstall.packages(\"readr\") # ou melhor install.packages(\"tidyverse\")\n\nlibrary(readr) # ou melhor library(tidyverse)\n\nread_csv(file = \"Pasta/para/Arquivo.csv\") # aspas importam\n\n\n\n\n\n\n\n\nImportant\n\n\nNão se esqueça de atribuir o resultado desta função a um objeto com um nome significativo.\n\ncalibracao_HPLC &lt;- read_csv(\"Pasta/para/Arquivo.csv\")"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#read_",
@@ -487,14 +487,14 @@
     "href": "apresentacoes/Aula3/index.html#wide-data-e-long-data",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Wide data e long data",
-    "text": "Wide data e long data\n\n\n\n\ntbl &lt;- data.frame(\n  \"Pais\" = c(\"Brasil\", \"Argentina\"),\n  \"1999\" = c(0.5, 0.69),\n  \"2000\" = c(0.6, 0.98),\n  \"2001\" = c(0.71, 0.96)\n)\n\n\n\ngt(tbl)\n\n\n\n\n\n\n\n\nPais\nX1999\nX2000\nX2001\n\n\n\n\nBrasil\n0.50\n0.60\n0.71\n\n\nArgentina\n0.69\n0.98\n0.96"
+    "text": "Wide data e long data\n\n\n\n\ntbl &lt;- data.frame(\n  \"Pais\" = c(\"Brasil\", \"Argentina\"),\n  \"1999\" = c(0.5, 0.69),\n  \"2000\" = c(0.6, 0.98),\n  \"2001\" = c(0.71, 0.96)\n)\n\n\n\ngt(tbl)\n\n\n\n\n\n\n\nPais\nX1999\nX2000\nX2001\n\n\n\n\nBrasil\n0.50\n0.60\n0.71\n\n\nArgentina\n0.69\n0.98\n0.96"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#transformando-a-tabela-para-formato-long",
     "href": "apresentacoes/Aula3/index.html#transformando-a-tabela-para-formato-long",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Transformando a tabela para formato long",
-    "text": "Transformando a tabela para formato long\n\n\n\ngt(tbl)\n\n\n\n\n\n\n\n\nPais\nX1999\nX2000\nX2001\n\n\n\n\nBrasil\n0.50\n0.60\n0.71\n\n\nArgentina\n0.69\n0.98\n0.96\n\n\n\n\n\n\n\n\n\ntbl_long &lt;- pivot_longer(\n  data = tbl,          # quais os dados vou usar\n  cols = -Pais,        # quais colunas quero transformar\n  names_to = \"Ano\",    # nomes das colunas vão para...\n  values_to = \"Valor\") # valores vão para coluna ...\n\ngt(tbl_long)\n\n\n\n\n\n\n\n\nPais\nAno\nValor\n\n\n\n\nBrasil\nX1999\n0.50\n\n\nBrasil\nX2000\n0.60\n\n\nBrasil\nX2001\n0.71\n\n\nArgentina\nX1999\n0.69\n\n\nArgentina\nX2000\n0.98\n\n\nArgentina\nX2001\n0.96"
+    "text": "Transformando a tabela para formato long\n\n\n\ngt(tbl)\n\n\n\n\n\n\n\nPais\nX1999\nX2000\nX2001\n\n\n\n\nBrasil\n0.50\n0.60\n0.71\n\n\nArgentina\n0.69\n0.98\n0.96\n\n\n\n\n\n\n\n\n\ntbl_long &lt;- pivot_longer(\n  data = tbl,          # quais os dados vou usar\n  cols = -Pais,        # quais colunas quero transformar\n  names_to = \"Ano\",    # nomes das colunas vão para...\n  values_to = \"Valor\") # valores vão para coluna ...\n\ngt(tbl_long)\n\n\n\n\n\n\n\nPais\nAno\nValor\n\n\n\n\nBrasil\nX1999\n0.50\n\n\nBrasil\nX2000\n0.60\n\n\nBrasil\nX2001\n0.71\n\n\nArgentina\nX1999\n0.69\n\n\nArgentina\nX2000\n0.98\n\n\nArgentina\nX2001\n0.96"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#e-agora-podemos-usar-os-dados-para-fazer-gráficos",
@@ -578,7 +578,7 @@
     "href": "apresentacoes/Aula3/index.html#nosso-primeiro-gráfico",
     "title": "Aula 3 - Manipulando dataframes e gráficos",
     "section": "Nosso primeiro gráfico",
-    "text": "Nosso primeiro gráfico\nVamos usar o dataset mpg para fazer este gráfico:\n\nlibrary(tidyverse)\ngt(head(mpg))\n\n\n\n\n\n\n\n\nmanufacturer\nmodel\ndispl\nyear\ncyl\ntrans\ndrv\ncty\nhwy\nfl\nclass\n\n\n\n\naudi\na4\n1.8\n1999\n4\nauto(l5)\nf\n18\n29\np\ncompact\n\n\naudi\na4\n1.8\n1999\n4\nmanual(m5)\nf\n21\n29\np\ncompact\n\n\naudi\na4\n2.0\n2008\n4\nmanual(m6)\nf\n20\n31\np\ncompact\n\n\naudi\na4\n2.0\n2008\n4\nauto(av)\nf\n21\n30\np\ncompact\n\n\naudi\na4\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\ncompact\n\n\naudi\na4\n2.8\n1999\n6\nmanual(m5)\nf\n18\n26\np\ncompact"
+    "text": "Nosso primeiro gráfico\nVamos usar o dataset mpg para fazer este gráfico:\n\nlibrary(tidyverse)\ngt(head(mpg))\n\n\n\n\n\n\n\nmanufacturer\nmodel\ndispl\nyear\ncyl\ntrans\ndrv\ncty\nhwy\nfl\nclass\n\n\n\n\naudi\na4\n1.8\n1999\n4\nauto(l5)\nf\n18\n29\np\ncompact\n\n\naudi\na4\n1.8\n1999\n4\nmanual(m5)\nf\n21\n29\np\ncompact\n\n\naudi\na4\n2.0\n2008\n4\nmanual(m6)\nf\n20\n31\np\ncompact\n\n\naudi\na4\n2.0\n2008\n4\nauto(av)\nf\n21\n30\np\ncompact\n\n\naudi\na4\n2.8\n1999\n6\nauto(l5)\nf\n16\n26\np\ncompact\n\n\naudi\na4\n2.8\n1999\n6\nmanual(m5)\nf\n18\n26\np\ncompact"
   },
   {
     "objectID": "apresentacoes/Aula3/index.html#inicializando",
@@ -641,7 +641,7 @@
     "href": "posts/eixos-secundarios/index.html#adequação-da-função-de-cálculo-dos-coeficientes",
     "title": "Como criar eixos secundários no ggplot2",
     "section": "Adequação da função de cálculo dos coeficientes",
-    "text": "Adequação da função de cálculo dos coeficientes\nDa forma que a função foi construída o cálculo do coeficiente é feito da seguinte forma:\n\\[\ncoef = \\frac{\\max (Var_2) - \\min(Var_2)}{\\max (Var_1) - \\min(Var_1)}\n\\]\nPortanto se os valores da \\(Var_2\\) apresentarem uma amplitude maior do que a amplitude dos valores da \\(Var_1\\) o valor do coeficiente será positivo enquanto o inverso irá resultar em um coeficiente maior que zero e menor que 1 (\\(0&lt;coef&lt;1\\)), o que resultaria no gráfico abaixo, logo, a ordem das variáveis é importante no momento de executar a função.\n\n\nCode\n# ordem das variáveis invertida\ncoef2 &lt;- calcular_coeficiente(df, exponencial, seno)\n\nggplot(df, aes(x = x)) +\n  geom_line(aes(y = seno * coef2), color = \"firebrick\", linewidth = 1) +\n  geom_line(aes(y = exponencial), color = \"royalblue\", linewidth = 1) +\n  scale_y_continuous(sec.axis = sec_axis(~ . / coef2, name=\"sin(x)\")) +\n  labs(y = \"exp(x)\", title = paste(\"Coeficiente = \", coef2))\n\n\n\n\n\nPara resolver isso pode-se adicionar um bloco na função calcular_coeficiente() que verifica se \\(0&lt;coef&lt;1\\) e inverter o valor se necessário, essa função nova será chamada: calcular_coeficiente_smart().\n\ncalcular_coeficiente_smart &lt;- function(dados, var_1, var_2){\n    \n    parametros &lt;- dados |&gt;\n      dplyr::summarise(\n        max_var_1 = max( {{ var_1 }} ),\n        min_var_1 = min( {{ var_1 }} ),\n        max_var_2 = max( {{ var_2 }} ),\n        min_var_2 = min( {{ var_2 }} )\n        )\n\n    coeficiente &lt;- (parametros$max_var_2 - parametros$min_var_2) /\n                   (parametros$max_var_1 - parametros$min_var_1)\n\n    if(coeficiente &lt; 1 & coeficiente &gt; 0){\n      coeficiente &lt;- (1/coeficiente)\n      }\n    return(coeficiente)\n  }\n\ncoeficientes &lt;- list(\n\n# seno depois exponencial\ncoeficiente_calculado_1 &lt;- calcular_coeficiente_smart(df, seno, exponencial),\n\n# exponencial depois seno\ncoeficiente_calculado_2 &lt;- calcular_coeficiente_smart(df, exponencial, seno)\n)\n\nprint(coeficientes)\n\n[[1]]\n[1] 258.5443\n\n[[2]]\n[1] 258.5443\n\n\nAgora independente da ordem das variáveis passadas à função o coeficiente calculado será sempre o valor esperado. Mas ainda falta implementar isso diretamente no gráfico."
+    "text": "Adequação da função de cálculo dos coeficientes\nDa forma que a função foi construída o cálculo do coeficiente é feito da seguinte forma:\n\\[\ncoef = \\frac{\\max (Var_2) - \\min(Var_2)}{\\max (Var_1) - \\min(Var_1)}\n\\]\nPortanto se os valores da \\(Var_2\\) apresentarem uma amplitude maior do que a amplitude dos valores da \\(Var_1\\) o valor do coeficiente será positivo enquanto o inverso irá resultar em um coeficiente maior que zero e menor que 1 (\\(0&lt;coef&lt;1\\)), o que resultaria no gráfico abaixo, logo, a ordem das variáveis é importante no momento de executar a função.\n\n\nCode\n# ordem das variáveis invertida\ncoef2 &lt;- calcular_coeficiente(df, exponencial, seno)\n\nggplot(df, aes(x = x)) +\n  geom_line(aes(y = seno * coef2), color = \"firebrick\", linewidth = 1) +\n  geom_line(aes(y = exponencial), color = \"royalblue\", linewidth = 1) +\n  scale_y_continuous(sec.axis = sec_axis(~ . / coef2, name=\"sin(x)\")) +\n  labs(y = \"exp(x)\", title = paste(\"Coeficiente = \", coef2))\n\n\n\n\n\n\n\n\n\nPara resolver isso pode-se adicionar um bloco na função calcular_coeficiente() que verifica se \\(0&lt;coef&lt;1\\) e inverter o valor se necessário, essa função nova será chamada: calcular_coeficiente_smart().\n\ncalcular_coeficiente_smart &lt;- function(dados, var_1, var_2){\n    \n    parametros &lt;- dados |&gt;\n      dplyr::summarise(\n        max_var_1 = max( {{ var_1 }} ),\n        min_var_1 = min( {{ var_1 }} ),\n        max_var_2 = max( {{ var_2 }} ),\n        min_var_2 = min( {{ var_2 }} )\n        )\n\n    coeficiente &lt;- (parametros$max_var_2 - parametros$min_var_2) /\n                   (parametros$max_var_1 - parametros$min_var_1)\n\n    if(coeficiente &lt; 1 & coeficiente &gt; 0){\n      coeficiente &lt;- (1/coeficiente)\n      }\n    return(coeficiente)\n  }\n\ncoeficientes &lt;- list(\n\n# seno depois exponencial\ncoeficiente_calculado_1 &lt;- calcular_coeficiente_smart(df, seno, exponencial),\n\n# exponencial depois seno\ncoeficiente_calculado_2 &lt;- calcular_coeficiente_smart(df, exponencial, seno)\n)\n\nprint(coeficientes)\n\n[[1]]\n[1] 258.5443\n\n[[2]]\n[1] 258.5443\n\n\nAgora independente da ordem das variáveis passadas à função o coeficiente calculado será sempre o valor esperado. Mas ainda falta implementar isso diretamente no gráfico."
   },
   {
     "objectID": "posts/eixos-secundarios/index.html#uma-função-que-faz-todas-as-operações-automaticamente",
@@ -676,7 +676,7 @@
     "href": "posts/powertoys-run/index.html#mas-o-que-é-n8n",
     "title": "Usando o PowerToys para criar tarefas no ClickUp",
     "section": "Mas o que é n8n?",
-    "text": "Mas o que é n8n?\nO n8n é um software que serve para criação de workflows baseados em nódulos (nodes). Cada node recebe dados de um ou mais nodes, processa-o e repassa para um ou mais nodes, ou seja, o dado inicial é processado através de várias etapas para que seja criada um dado final, geralmente, mas não necessariamente, com a intenção de gerar conhecimento.\n\nEu nunca aprendi powershell então tive que ir atrás de referências de como criar uma função nesta linguagem que me permitisse passar o nome e a prioridade de uma nova tarefa.\nA referência que eu usei para este script é de um vídeo que explica como criar scripts e funções e demonstra como torná-los executáveis.\nEu aprendi que para que um script seja executável, é necessário que o arquivo seja salvo com a extensão .ps1m o que o identifica como sendo um módulo do powershell e também deve estar salvo no diretório %user%\\Documents\\WindowsPowerShell\\Modules\\MeuModulo. É importante também garantir que a pasta e o nome do arquivo sejam iguais.\nEste script contém a seguinte função task:\n\nListing 1: Função para Criar Tarefa\n\nMeuModulo.ps1m\n\nfunction task {\n[CmdletBinding()]\nparam(\n    [Parameter(Mandatory=$True)]\n    $nome = $1,\n    $prioridade = $2\n  )\n\n$json = \"{\n    \"\"name\"\": \"\"$nome\"\",\n    \"\"priority\"\": $prioridade\n}\"\n\nOut-File -InputObject $json -FilePath \"~\\Automations.json\" -Encoding utf8\nexit\n}\n\nA função task aceita dois argumentos; o nome e prioridade da tarefa e salva-os em um arquivo que será usado como uma forma de cache para a execução das etapas seguintes do workflow. Este arquivo é formatado no modelo json para que sejam facilmente lidas pelo n8n posteriormente.\nAssim que o arquivo json é criado, o n8n inicia a automação que foi configurada e manda as informações para o ClickUp.\nO arquivo criado pela função tem esta estrutura:\n\n\nAutomations.json\n\n{\n  \"name\": \"Aqui vai o nome da tarefa a ser criada\", \n  \"priority\": 1\n}\n\nAté aí tudo certo mas como que eu faço para executar esta função?"
+    "text": "Mas o que é n8n?\nO n8n é um software que serve para criação de workflows baseados em nódulos (nodes). Cada node recebe dados de um ou mais nodes, processa-o e repassa para um ou mais nodes, ou seja, o dado inicial é processado através de várias etapas para que seja criada um dado final, geralmente, mas não necessariamente, com a intenção de gerar conhecimento.\n\nEu nunca aprendi powershell então tive que ir atrás de referências de como criar uma função nesta linguagem que me permitisse passar o nome e a prioridade de uma nova tarefa.\nA referência que eu usei para este script é de um vídeo que explica como criar scripts e funções e demonstra como torná-los executáveis.\nEu aprendi que para que um script seja executável, é necessário que o arquivo seja salvo com a extensão .ps1m o que o identifica como sendo um módulo do powershell e também deve estar salvo no diretório %user%\\Documents\\WindowsPowerShell\\Modules\\MeuModulo. É importante também garantir que a pasta e o nome do arquivo sejam iguais.\nEste script contém a seguinte função task:\n\n\n\nListing 1: Função para Criar Tarefa\n\n\n\n\nMeuModulo.ps1m\n\nfunction task {\n[CmdletBinding()]\nparam(\n    [Parameter(Mandatory=$True)]\n    $nome = $1,\n    $prioridade = $2\n  )\n\n$json = \"{\n    \"\"name\"\": \"\"$nome\"\",\n    \"\"priority\"\": $prioridade\n}\"\n\nOut-File -InputObject $json -FilePath \"~\\Automations.json\" -Encoding utf8\nexit\n}\n\n\n\n\nA função task aceita dois argumentos; o nome e prioridade da tarefa e salva-os em um arquivo que será usado como uma forma de cache para a execução das etapas seguintes do workflow. Este arquivo é formatado no modelo json para que sejam facilmente lidas pelo n8n posteriormente.\nAssim que o arquivo json é criado, o n8n inicia a automação que foi configurada e manda as informações para o ClickUp.\nO arquivo criado pela função tem esta estrutura:\n\n\nAutomations.json\n\n{\n  \"name\": \"Aqui vai o nome da tarefa a ser criada\", \n  \"priority\": 1\n}\n\nAté aí tudo certo mas como que eu faço para executar esta função?"
   },
   {
     "objectID": "apresentacoes/Apresentacao-dissertacao-mestrado/index.html#acknowledgements",
@@ -1383,14 +1383,14 @@
     "href": "apresentacoes/Aula2/index.html#para-dataframes",
     "title": "Aula 2 - Funções e Manipulação de Objetos",
     "section": "Para Dataframes",
-    "text": "Para Dataframes\n\ntbl &lt;- data.frame(\n    nome = c(\"Lucas\", \"Robson\", \"Marta\"),\n    idade = c(28, 44, 12)\n)\n\n\n\n\ntbl$idade &gt; 30\n\n[1] FALSE  TRUE FALSE\n\n\n\ntbl[\"idade\"] &gt; 30\n\n     idade\n[1,] FALSE\n[2,]  TRUE\n[3,] FALSE\n\n\n\n\ntbl[tbl[\"idade\"] &gt; 30]\n\n[1] \"Robson\" \"44\"    \n\n\n\n\n\n\nHá formas menos confusas de fazer isto."
+    "text": "Para Dataframes\n\ntbl &lt;- data.frame(\n    nome = c(\"Lucas\", \"Robson\", \"Marta\"),\n    idade = c(28, 44, 12)\n)\n\n\n\n\ntbl$idade &gt; 30\n\n[1] FALSE  TRUE FALSE\n\n\n\ntbl[\"idade\"] &gt; 30\n\n     idade\n[1,] FALSE\n[2,]  TRUE\n[3,] FALSE\n\n\n\n\ntbl[tbl[\"idade\"] &gt; 30]\n\n[1] \"Robson\" \"44\"    \n\n\n\n\n\nHá formas menos confusas de fazer isto."
   },
   {
     "objectID": "apresentacoes/Aula2/index.html#o-que-são-funções",
     "href": "apresentacoes/Aula2/index.html#o-que-são-funções",
     "title": "Aula 2 - Funções e Manipulação de Objetos",
     "section": "O que são funções?",
-    "text": "O que são funções?\nFunção é um termo genérico que representa uma abstração de código.\nMas o que isso significa?\n\n\n\\(Maths:\\)\n\\(f(x) = 3x + 9\\)\n\\(f(3) = 18\\)\n\nCódigo:\n\nf &lt;- function(x) {\n    3 * x + 9\n}\n\nf(3)\n\n[1] 18\n\n\n\n\nJá usamos diversas funções na aula anterior como:\n\nc() serve para combinar vários elementos em um vetor\nlist() serve para criar listas\ndata.frame() serve para criar dataframes\n\n\nFazer meio que uma piadinha que eu to fazendo eles perder tempo."
+    "text": "O que são funções?\nFunção é um termo genérico que representa uma abstração de código.\nMas o que isso significa?\n\n\n\\(Maths:\\)\n\\(f(x) = 3x + 9\\)\n\\(f(3) = 18\\)\n\nCódigo:\n\nf &lt;- function(x) {\n    3 * x + 9\n}\n\nf(3)\n\n[1] 18\n\n\n\nJá usamos diversas funções na aula anterior como:\n\nc() serve para combinar vários elementos em um vetor\nlist() serve para criar listas\ndata.frame() serve para criar dataframes\n\n\nFazer meio que uma piadinha que eu to fazendo eles perder tempo."
   },
   {
     "objectID": "apresentacoes/Aula2/index.html#como-escrever-funções",
@@ -1460,7 +1460,7 @@
     "href": "apresentacoes/Aula2/index.html#nesta-aula",
     "title": "Aula 2 - Funções e Manipulação de Objetos",
     "section": "Nesta aula",
-    "text": "Nesta aula\n\nAprendemos a selecionar elementos de vetores baseado em condições lógicas\nAprendemos que o R executa operações de forma vetorizada\nAprendemos o que são funções e como escrevê-las\nAprendemos o que são pacotes:\n\nInstalação de pacotes\nImportando funções de pacotes\n\n\n\n\nlucas carmo / apresentações"
+    "text": "Nesta aula\n\nAprendemos a selecionar elementos de vetores baseado em condições lógicas\nAprendemos que o R executa operações de forma vetorizada\nAprendemos o que são funções e como escrevê-las\nAprendemos o que são pacotes:\n\nInstalação de pacotes\nImportando funções de pacotes"
   },
   {
     "objectID": "apresentacoes/Aula6/index.html#anteriormente",
@@ -1579,7 +1579,7 @@
     "href": "projetos.html",
     "title": "projetos",
     "section": "",
-    "text": "Data\n\n\nTítulo\n\n\nSubtítulo\n\n\n\n\n\n\n2022 - 06 - 07\n\n\ntidytuesday 2022 Semana 23\n\n\nPride Corporate Accountability Project\n\n\n\n\n2020 - 01 - 14\n\n\ntidytuesday 2020 Semana 03\n\n\nPasswords\n\n\n\n\n2020 - 01 - 07\n\n\ntidytuesday 2020 Semana 02\n\n\nAustralian Fires\n\n\n\n\n\n\nSem matches"
+    "text": "Data\n\n\nTítulo\n\n\nSubtítulo\n\n\n\n\n\n\n2022 - 06 - 07\n\n\ntidytuesday 2022 Semana 23\n\n\nPride Corporate Accountability Project\n\n\n\n\n2020 - 01 - 14\n\n\ntidytuesday 2020 Semana 03\n\n\nPasswords\n\n\n\n\n2020 - 01 - 07\n\n\ntidytuesday 2020 Semana 02\n\n\nAustralian Fires\n\n\n\n\n\nSem matches"
   },
   {
     "objectID": "projetos/tidytuesday/2022/2022-Week_23/index.html",
